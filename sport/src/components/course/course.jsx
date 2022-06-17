@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Card from '../Card';
 import 'bootstrap/dist/css/bootstrap.css';
+import Card from '../Card';
 import Carousels from '../Carousels';
 import './course.css';
 
