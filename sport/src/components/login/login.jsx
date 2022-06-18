@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from 'react-tooltip'; //npm i react-tooltip
 import 'bootstrap/dist/css/bootstrap.css';
 import './login.css';
 
