@@ -5,17 +5,23 @@ import './login.css';
 
 class Login extends Component {
   state = {
-    opacity: [1,0], translate: ['0','50%']
+    opacity: [1,0,0], translate: ['0','50%','0']
   }
 
+  backLogin = () => {
+    if ( this.state.translate[0] == '-125%' ) { this.setState({opacity: [1, 0, 0], translate: ['0','50%','0']}) }
+  }
   register = () => {
-    if ( this.state.opacity[0] != 1 ) { this.setState({opacity: [1, 0], translate: ['0','50%']}) }
-    else { this.setState({opacity: [0, 1], translate: ['-100%','-100%']}) }
+    if ( this.state.opacity[0] == 1 ) {  this.setState({opacity: [0, 1,0], translate: ['-125%','-100%','-100%']}) }
+    else if ( this.state.opacity[1] == 1 ) { this.setState({opacity: [0, 0, 1], translate: ['100%','-200%','-200%']}) }
+    else { this.setState({opacity: [1, 0, 0], translate: ['0','50%','-325%']}) }
   }
 
   render() {
     return (
+      
       <div id='box' className="login row">
+        {/* -- 1 -- */}
         <div id='login' className='text-center' 
           style={{ opacity: this.state.opacity[0], transform: `translate(${this.state.translate[0]},0)`}}>
           <h2>Login</h2>
@@ -38,11 +44,11 @@ class Login extends Component {
           <button id="buttonL" type="submit" className='mb-3'>Forgot password ?</button>
         </div>
 
+        {/* -- 2 -- */}
         <div id='login' className='text-center' 
             style={{ opacity: this.state.opacity[1], transform: `translate(${this.state.translate[1]},0)`}}>
-          
           <div className="row">
-            <button id='bti' className='button' onClick={this.register}><img id='icon1' src={require('../icon/left.png')} /></button>
+            <button id='bti' className='button' onClick={this.backLogin}><img id='icon1' src={require('../icon/left.png')} /></button>
             <h2>Sign up</h2>
           </div >
           <div className='container'>
@@ -62,10 +68,28 @@ class Login extends Component {
             </div>
           </div>
           <div className='mt-3'>
-              <button type="submit" className='button my-1 mx-3' id='buts'>Sign up fo Free</button>
+              <button type="submit" className='button my-1 mx-3' id='buts' onClick={this.register}>Sign up fo Free</button>
           </div>
           <button id="buttonL" type="submit" className='mb-3'>Forgot password ?</button>
         </div>
+
+        {/* -- 3 -- */}
+        <div id='login' className='text-center' 
+            style={{ opacity: this.state.opacity[2], transform: `translate(${this.state.translate[2]},0)`}}>
+          <div className="row">
+            <h2>Email 已送出</h2>
+          </div >
+          <div className='container'>
+              <p className='m-5 '>已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證</p>
+              <span className='mt-5'>沒收到驗證信 ?</span>
+              <button id="buttonL" type="submit" className='mb-5'>再寄送一次</button>
+          </div>
+          <div className='mt-3'>
+              <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.register}>LogIn</button>
+          </div>
+        </div>
+
+
       </div>
     )
   }

@@ -25,7 +25,7 @@ body {
     align-items: center;
 }
 
-h2, .input, .button, #buttonL {
+h2, .input, .button, #buttonL, p {
     font-family: 'font01', sans-serif;
     letter-spacing: 1.3px;
 }
