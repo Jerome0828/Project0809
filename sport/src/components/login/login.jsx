@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactTooltip from 'react-tooltip'; //npm i react-tooltip
+import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login.css';
 
@@ -32,7 +33,7 @@ class Login extends Component {
           <div className='container'>
             <div className="row">
               <div className='container mt-3'>
-                <img className='icon col-6 mx-2 my-3' src={require('../icon/email.png')} />
+                <img className='icon col-6 mx-2 my-3 ' src={require('../icon/email.png')} />
                 <input className="input col-6 " type="e-mal" placeholder="Email" /><br />
                 <img className='icon col-6 mx-2 my-3' src={require('../icon/password.png')} />
                 <input className="input col-6 " type="password" placeholder="Password"/><br />
@@ -49,24 +50,27 @@ class Login extends Component {
         {/* -- 1 -- */}
         <div id='login' className='text-center' 
           style={{ opacity: this.state.opacity[1], transform: `translate(${this.state.translate[1]},0)`}}>
-          <h2>Login</h2>
-          <div className='container'>
-            <div className="row">
-              <div className='container mt-3'>
-                <img className='icon col-6 mx-3 my-3' src={require('../icon/login.png')} />
-                <input className="input col-6 m-0" type="text" placeholder="Username" data-tip data-for="Username"/><br />
-                <ReactTooltip id="Username" type='error' place="right" effect="solid" event='click'>aaa</ReactTooltip>
-                 
-                <img className='icon col-6 mx-3 my-3' src={require('../icon/password.png')} />
-                <input className="input col-6 m-0" type="password" placeholder="Password"/>
+          <div className='animate__animated animate__slideInRight'>
+            <h2>Login</h2>
+            <div className='container'>
+              <div className="row">
+                <div className='container mt-3 '>
+                  <img className='icon col-6 mx-3 my-3' src={require('../icon/login.png')} />
+                  <input className="input col-6 m-0" type="text" placeholder="Username" data-tip data-for="Username"/><br />
+                  <ReactTooltip id="Username" type='error' place="right" effect="solid" event='click'>aaa</ReactTooltip>
+                  
+                  <img className='icon col-6 mx-3 my-3' src={require('../icon/password.png')} />
+                  <input className="input col-6 m-0" type="password" placeholder="Password"/>
+                </div>
               </div>
             </div>
+            <div className='mt-3'>
+                <button type="submit" className='button my-2 mx-3' >LogIn</button>
+                <button type="submit" className='button my-2 mx-3' onClick={this.next}>Sign up</button>
+            </div>
+            <button id="buttonL" type="submit" className='mb-3' onClick={this.back}>Forgot password ?</button>
           </div>
-          <div className='mt-3'>
-              <button type="submit" className='button my-2 mx-3' >LogIn</button>
-              <button type="submit" className='button my-2 mx-3' onClick={this.next}>Sign up</button>
-          </div>
-          <button id="buttonL" type="submit" className='mb-3' onClick={this.back}>Forgot password ?</button>
+          
         </div>
 
         {/* -- 2 -- */}
