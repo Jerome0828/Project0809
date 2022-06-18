@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'font01';
+    src: url(../icon/Advertisement.ttf);
+}
+
+#box {
+    font-family: 'font01';
+}
+
 #spa {
     display: inline-block;
     border: 2px solid red;

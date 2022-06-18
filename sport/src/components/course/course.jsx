@@ -10,7 +10,15 @@ class Course extends Component {
     render() { 
         return (
             <div id="box" className='container'>
-                <h5>aa/bb/cc</h5>
+                <div className='container'>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Library</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        </ol>
+                    </nav>
+                </div>
                 <div className='row justify-content-center'>
                     <div className="carousel slide col-lg-7">
                         <Carousels />
@@ -79,7 +87,7 @@ class Course extends Component {
                             <div className='container'>
                                 <div className="row">
                                     <table className="table" data-toggle="table">
-                                        <tbody>
+                                        <thead>
                                             <tr>
                                                 <th scope="row" className='bg-info'>週一</th>
                                                 <td>08:00 ~ 23:00</td>
@@ -104,7 +112,7 @@ class Course extends Component {
                                                 <th scope="row"></th>
                                                 <td></td>
                                             </tr>
-                                        </tbody>
+                                        </thead>
                                     </table>
                                 </div>
                             

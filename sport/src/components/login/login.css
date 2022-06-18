@@ -8,11 +8,16 @@
 
 @font-face {
     font-family: 'font01';
-    src: url(../Advertisement.ttf);
+    src: url(../icon/Advertisement.ttf);
+}
+
+#login, #Register {
+    transition: all 1.5s;
+    
 }
 
 body {
-    background-color: black;
+    background-color: white;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -20,9 +25,35 @@ body {
     align-items: center;
 }
 
-h2, #input, #button, #buttonL {
+h2, .input, .button, #buttonL {
     font-family: 'font01', sans-serif;
     letter-spacing: 1.3px;
+}
+
+.icon {
+    width: 50px;
+}
+
+#icon1 {
+    transform: translate(-50%,0);
+    width: 30px;
+    height: auto;
+}
+#bti {
+    width: 5%;
+    float: left;
+    margin-top: 0%;
+    box-shadow:none;
+}
+
+#buts {
+    width: 350px;
+}
+
+#left-arrow {
+    width: 10px;
+    border: none;
+    background-color: transparent;
 }
   
 .login {
@@ -30,24 +61,23 @@ h2, #input, #button, #buttonL {
     height: 450px;
     width: 520px;
     border-radius: 5px;
-    box-shadow: 0px 4px 30px -5px rgba(0,0,0,0.65);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* box-shadow: 0px 4px 30px -5px rgba(0,0,0,0.65); */
 }
   
   
 .input-login {
     position: relative;
     margin-bottom: 30px;
-    width: 340px;
+    width: 400px;
 }
   
-#input {
+.input {
     box-sizing: border-box;
     background: transparent;
-    width: 100%;
     border: none;
     border-bottom: 1px solid var(--medium-gray);
     color: var(--light-gray);
@@ -58,13 +88,13 @@ h2, #input, #button, #buttonL {
 }
  
   
-#input:focus {
+.input:focus {
     border-bottom: 1px solid transparent;
     border-image: var(--gradient);
     border-image-slice: 1;
 }
 
-#input:focus + i {
+.input:focus + i {
     color: var(--light-gray);
 }
   
@@ -74,7 +104,7 @@ h2, #input, #button, #buttonL {
     opacity: .4;
 }
 
-#button {
+.button {
     width: 200px;
     background: lighten(var(--gray), 5%);
     border: none;
@@ -104,7 +134,7 @@ h2, #input, #button, #buttonL {
     transition: all .3s;
 }
   
-#button:hover {
+.button:hover {
     background: lighten(var(--gray), 10%);
     box-shadow: 0px 5px 20px -3px rgba(0,0,0,0.65);
 }

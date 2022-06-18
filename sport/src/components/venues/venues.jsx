@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Card from '../Card';
 import 'bootstrap/dist/css/bootstrap.css';
+import Card from '../Card';
 import Carousels from '../Carousels';
 import './venues.css'
 
@@ -10,8 +10,17 @@ class Venues extends Component {
     render() { 
         return (
             <div id="box" className='container'>
-                <h5>aa/bb/cc</h5>
+                <div className='container'>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Library</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        </ol>
+                    </nav>
+                </div>
                 <div className='row justify-content-center'>
+                    
                     <div className="col-lg-7">
                         <Carousels />
                     </div>
@@ -23,20 +32,22 @@ class Venues extends Component {
                                 <span id='spa'>混合健身</span>
                             </div>
                             <div className='col-lg-12 m-3 text-center'>
-                                <img id='icon' src={require('../icon/chronometer.png')} />
-                                <p className='p-3'>臺中市北屯區東山路一段156-6</p>
+                                    <img id='icon' src={require('../icon/map.png')} />
+                                    <span className='p-2'>臺中市北屯區東山路一段156-6</span>
                             </div>
-                            <div className='col-lg-12 text-center mt-0'>
+                            <div className='col-lg-12  mt-1 text-center mt-0'>
                                 <img id='icon' src={require('../icon/place.png')} />
                                 <span >線上視訊教學</span>
                             </div>
-                            <div className='row'>
-                                <div className='col-lg-6 text-center'>
-                                    <img src="https://dummyimage.com/100/000/fff" className='img-fluid mx-3 mt-1 rounded-circle h-100'/> 
+                            <div className='row mt-1'>
+                                <div className='col-lg-6 mt-4 mb-0 text-center'>
+                                    <div>
+                                        <img src="https://dummyimage.com/1000/000/fff" className='img-fluid ml-0 mt-1 rounded-circle h-100'/> 
+                                    </div>
                                 </div>
-                                <div className='col-lg-6 mt-2 ml-1 text-center'>
+                                <div className='col-lg-6 mt-5 ml-1 text-center'>
                                     <h4 className='mt-2'>$ 50+ </h4>
-                                    <button className='button m-1 mt-4 w-100'>聯絡師資</button><br />
+                                    <button className='button m-1 my-4 w-100'>聯絡師資</button><br />
                                     <button className='button m-1 w-100'>立即購課</button>
                                 </div>
                             </div>
@@ -59,8 +70,48 @@ class Venues extends Component {
                             <p id='title' className='container'>課程時段</p>
                             <ul>
                                 <li>特定時段</li>
-                                {/* vvvvvvv */}
                             </ul>
+                            <div className='container'>
+                                <table className="table" data-toggle="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="row" className='bg-info'>週一</th>
+                                            <td>08:00 ~ 23:00</td>
+                                            <td>$ 1000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" className='bg-info'>週二</th>
+                                            <td>08:00 ~ 23:00</td>
+                                            <td>$ 1000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" className='bg-info'>週三</th>
+                                            <td>08:00 ~ 23:00</td>
+                                            <td>$ 1000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" className='bg-info'>週四</th>
+                                            <td>08:00 ~ 23:00</td>
+                                            <td>$ 1000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" className='bg-info'>週五</th>
+                                            <td>08:00 ~ 23:00</td>
+                                            <td>$ 1000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" className='bg-info'>週六</th>
+                                            <td>08:00 ~ 23:00</td>
+                                            <td>$ 1000</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" className='bg-info'>週日</th>
+                                            <td>08:00 ~ 23:00</td>
+                                            <td>$ 1000</td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                         <div className='container'>
                             <p id='title' className='container'>課程地點</p>
@@ -102,20 +153,20 @@ class Venues extends Component {
                             </div>
                             <div className='row container mt-4'>
                                 <div className='col-12'>
-                                        <dl>
-                                            <dt>證照</dt>
-                                            <ul>
-                                                <p>ACE CPT 美國運動委員會 私人教練專業證照認證</p>
-                                                <p>AFAA PFT 美國運動體適能協會 個人體適能指導員</p>
-                                                <p>TRX STC 懸吊訓練師</p>
-                                                <p>Cross core 懸吊訓練</p>
-                                                <p>VIPR 功能性訓練</p>
-                                                <p>運動體適能營養專家LV1+LV2</p>
-                                                <p>SMART 自我筋膜放鬆</p>
-                                                <p>肌能系貼紮</p>
-                                                <p>身體感知訓練技巧</p>
-                                            </ul>
-                                        </dl>
+                                    <dl>
+                                        <dt>證照</dt>
+                                        <ul>
+                                            <p>ACE CPT 美國運動委員會 私人教練專業證照認證</p>
+                                            <p>AFAA PFT 美國運動體適能協會 個人體適能指導員</p>
+                                            <p>TRX STC 懸吊訓練師</p>
+                                            <p>Cross core 懸吊訓練</p>
+                                            <p>VIPR 功能性訓練</p>
+                                            <p>運動體適能營養專家LV1+LV2</p>
+                                            <p>SMART 自我筋膜放鬆</p>
+                                            <p>肌能系貼紮</p>
+                                            <p>身體感知訓練技巧</p>
+                                        </ul>
+                                    </dl>
                                 </div>
                             </div>
                             
