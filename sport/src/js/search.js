@@ -6,4 +6,5 @@ $(function(){
     $('a.col-6.shadow.btn').on('mouseleave', function(e){
         $(this).removeClass('bg-danger');
     })
+    
 });
