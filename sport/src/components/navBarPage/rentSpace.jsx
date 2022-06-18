@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../../scss/all.css';
 
 class RentSpace extends Component {
     state = {  } 

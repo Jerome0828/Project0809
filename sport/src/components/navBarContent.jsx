@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import '../scss/all.scss';
+import '../scss/all.css';
 import 'bootstrap/dist/js/bootstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ class NavBarContent extends Component {
             // position: 'sticky'
         }
     } 
-
     render() { 
         return (
             <div className='sticky-top' >

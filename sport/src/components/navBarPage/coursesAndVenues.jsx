@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../scss/all.css';
 
 class CoursesAndVenues extends Component {
     state = {  } 
