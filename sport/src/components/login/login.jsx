@@ -5,18 +5,18 @@ import './login.css';
 
 class Login extends Component {
   state = {
-    opacity: [0,1,0,0], translate: ['-125%','-100%','-50%','100%']
+    opacity: [0,1,0,0], translate: ['-125%','-100%','-75%','100%']
   }
 
   back = () => {
-    if ( this.state.opacity[2] == 1 ) { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','100%']}) }
+    if ( this.state.opacity[2] == 1 ) { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-75%','100%']}) }
     else if ( this.state.opacity[1] == 1 ) { this.setState({opacity: [1, 0, 0, 0], translate: ['0','0','0','100%']}) }
     else { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','100%']}) }
   }
   register = () => {
     if ( this.state.opacity[1] == 1 ) {  this.setState({opacity: [0, 0, 1,0], translate: ['-225%','-200%','-200%','-200%']}) }
     else if ( this.state.opacity[2] == 1 ) { this.setState({opacity: [0, 0, 0, 1], translate: ['-225%','  0','-300%','-300%']}) }
-    else { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','-400%']}) }
+    else { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','-375%']}) }
   }
 
   render() {
