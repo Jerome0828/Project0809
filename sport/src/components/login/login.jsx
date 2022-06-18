@@ -13,7 +13,7 @@ class Login extends Component {
     else if ( this.state.opacity[1] == 1 ) { this.setState({opacity: [1, 0, 0, 0], translate: ['0','0','0','100%']}) }
     else { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','100%']}) }
   }
-  register = () => {
+  next = () => {
     if ( this.state.opacity[1] == 1 ) {  this.setState({opacity: [0, 0, 1,0], translate: ['-225%','-200%','-200%','-200%']}) }
     else if ( this.state.opacity[2] == 1 ) { this.setState({opacity: [0, 0, 0, 1], translate: ['-225%','  0','-300%','-300%']}) }
     else { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','-375%']}) }
@@ -63,7 +63,7 @@ class Login extends Component {
           </div>
           <div className='mt-3'>
               <button type="submit" className='button my-2 mx-3' >LogIn</button>
-              <button type="submit" className='button my-2 mx-3' onClick={this.register}>Sign up</button>
+              <button type="submit" className='button my-2 mx-3' onClick={this.next}>Sign up</button>
           </div>
           <button id="buttonL" type="submit" className='mb-3' onClick={this.back}>Forgot password ?</button>
         </div>
@@ -92,7 +92,7 @@ class Login extends Component {
             </div>
           </div>
           <div className='mt-3'>
-              <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.register}>Sign up fo Free</button>
+              <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>Sign up fo Free</button>
           </div>
         </div>
 
@@ -108,7 +108,7 @@ class Login extends Component {
               <button id="buttonL" type="submit" className='mb-5'>再寄送一次</button>
           </div>
           <div className='mt-3'>
-              <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.register}>LogIn</button>
+              <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>LogIn</button>
           </div>
         </div>
 
