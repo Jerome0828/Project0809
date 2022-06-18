@@ -10,4 +10,4 @@ class LoginRegister extends Component {
     }
 }
  
-export default LoginRegister;
+export default LoginRegister;                                                                                                                                                                                                

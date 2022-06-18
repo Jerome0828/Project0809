@@ -7,7 +7,7 @@ class BecomeCoach extends Component {
     render() { 
         return (
             <>
-            <div className='navBarBox1'>測試成為教練</div>
+            <div className=''>測試成為教練</div>
             </>
         );
     }

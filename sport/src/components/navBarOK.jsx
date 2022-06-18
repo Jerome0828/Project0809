@@ -28,7 +28,7 @@ class NavBarOK extends Component {
 
             <NavBarContent />
             </div>
-                <div style={{margin:'auto'}}>
+                <div>
                 <Switch>
                     <Route path="/" component={home} exact/>
                     <Route path="/coursesAndVenues" component={coursesAndVenues} exact/>

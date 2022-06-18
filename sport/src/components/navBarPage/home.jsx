@@ -4,10 +4,14 @@ import '../../scss/bootstrap.scss';
 import 'bootstrap/dist/js/bootstrap';
 import Content from '../content.jsx';
 class home extends Component {
-    state = {  }    
+    state = { 
+        topStyle:{
+            marginTop:'0%'
+        }
+    }    
     render() { 
         return (
-            <div>
+            <div style={this.state.topStyle}>
                 <Content/>
             </div>
         );
