@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import Citys from './Citys';
 import '../css/search.css';
 import '../js/search.js';
 class SearchSitePage extends Component {
@@ -15,17 +16,8 @@ class SearchSitePage extends Component {
                         <form className='mt-3'>
                             <input type="text" placeholder="搜尋" />
 
-                            <div className='d-flex justify-content-between mt-3'><span>地點</span><span className='text-secondary'>清除</span></div>
-                            <select>
-                                <option value="" selected="selected"></option>
-                                <option value="KL">基隆</option><option value="Tp">台北</option><option value="TY">桃園</option>
-                            </select>
-
-                            <div className='d-flex justify-content-between mt-3'><span>區域</span><span className='text-secondary'>清除</span></div>
-                            <select>
-                                <option value="" selected="selected"></option>
-                                <option value="KL">基隆</option><option value="Tp">台北</option><option value="TY">桃園</option>
-                            </select>
+                            <div className='d-flex justify-content-between mt-3'><span>地區</span><span className='text-secondary'>清除</span></div>
+                            <Citys />
 
                             <div className='d-flex justify-content-between mt-3'><span>日期</span><span className='text-secondary'>清除</span></div>
                             <input type="date" /> ~<input type="date" />
@@ -50,19 +42,19 @@ class SearchSitePage extends Component {
                             <input type="range" />
 
                             <div className='d-flex justify-content-between mt-3'><span>價錢</span><span className='text-secondary'>清除</span></div>
-                            <input type="radio" name='price' /> $ 0 ~ $ 500 <br />
-                            <input type="radio" name='price' /> $ 501 ~ $ 1,000 <br />
-                            <input type="radio" name='price' /> $ 1,001 ~ $ 2,000 <br />
-                            <input type="radio" name='price' /> $ 2,001 ~ $ 3,000 <br />
-                            <input type="radio" name='price' /> $ 3000 ~ 以上
+                            <label><input type="radio" name='price' /> $ 0 ~ $ 500 </label><br />
+                            <label><input type="radio" name='price' /> $ 501 ~ $ 1,000 </label><br />
+                            <label><input type="radio" name='price' /> $ 1,001 ~ $ 2,000 </label><br />
+                            <label><input type="radio" name='price' /> $ 2,001 ~ $ 3,000 </label><br />
+                            <label><input type="radio" name='price' /> $ 3000 ~ 以上</label>
 
                             <div className='d-flex justify-content-between mt-3'><span>類別</span><span className='text-secondary'>清除</span></div>
                             <input type="checkbox" id="yoga" name="sun" />
                             <label for="yoga" className='m-1'>瑜珈</label><br />
 
                             <div className='d-flex justify-content-between mt-3'><span>人數</span><span className='text-secondary'>清除</span></div>
-                            <input type="radio" name='people' /> 一對一 <br />
-                            <input type="radio" name='people' /> 一對多
+                            <label><input type="radio" name='people' /> 一對一</label> <br />
+                            <label><input type="radio" name='people' /> 一對多</label>
 
                             <input className='mt-3' type="submit" value={'顯示結果'} />
 

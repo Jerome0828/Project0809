@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import Citys from './Citys';
 import '../css/search.css';
 import '../js/search.js';
 class SearchCoachPage extends Component {
-    state = {
-        
-    }
+    state = {}
+
     render() {
-        // let selectedOptionId = 1;
-        let citysValue = ['','kl','tp','ty'];
-        let citys = [{cityName:''},{cityName:'基隆'},{cityName:'台北'},{cityName:'桃園'}];
         return (
             <div className='container'>
                 <span>教練</span><span> / </span><span className='text-danger'>探索</span>
@@ -19,20 +16,8 @@ class SearchCoachPage extends Component {
                         <form className='mt-3'>
                             <input type="text" placeholder="搜尋" />
 
-                            <div className='d-flex justify-content-between mt-3'><span>地點</span><span className='text-secondary'>清除</span></div>
-                            <select id='city'>
-                                {citysValue.map(id =>
-                                    <option value={citysValue[id]} >{citys[id].cityName}</option>
-                                )}
-                            </select>
-
-                            <div className='d-flex justify-content-between mt-3'><span>區域</span><span className='text-secondary'>清除</span></div>
-                            <select>
-                                <option value=""></option>
-                                <option value="KL">基隆</option>
-                                <option value="Tp">台北</option>
-                                <option value="TY">桃園</option>
-                            </select>
+                            <div className='d-flex justify-content-between mt-3'><span>地區</span><span className='text-secondary'>清除</span></div>
+                            <Citys />
 
                             <div className='d-flex justify-content-between mt-3'><span>日期</span><span className='text-secondary'>清除</span></div>
                             <input type="date" /> ~<input type="date" />
@@ -68,7 +53,7 @@ class SearchCoachPage extends Component {
                             <label for="yoga" className='m-1'>瑜珈</label><br />
 
                             <div className='d-flex justify-content-between mt-3'><span>人數</span><span className='text-secondary'>清除</span></div>
-                            <label><input type="radio" name='people' /> 一對一 </label><br />
+                            <label><input type="radio" name='people' /> 一對一</label> <br />
                             <label><input type="radio" name='people' /> 一對多</label>
 
                             <input className='mt-3' type="submit" value={'顯示結果'} />

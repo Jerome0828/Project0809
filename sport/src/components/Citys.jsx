@@ -53,6 +53,7 @@ class Citys extends Component {
         return (
             <>
                 <select id="city" defaultValue={selectedOptionId} onChange={this.check}>
+                    <option value=""></option>
                     {citycountrydata.map((val,idx)=>
                         <option key={idx} value={val.CityEngName}>{val.CityName}</option>
                         )}
