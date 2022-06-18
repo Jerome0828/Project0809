@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../../scss/all.css';
+
 class LoginRegister extends Component {
     state = {  } 
     render() { 

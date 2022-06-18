@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../scss/all.scss';
+import '../scss/all.css';
 
 import 'bootstrap/dist/js/bootstrap';
 import HomeHead from './contentComponents/HomeHead.jsx'
