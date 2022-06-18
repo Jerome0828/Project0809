@@ -52,13 +52,13 @@ class Citys extends Component {
 
         return (
             <>
-                <select id="city" defaultValue={selectedOptionId} onChange={this.check}>
+                <select className='form-control' id="city" defaultValue={selectedOptionId} onChange={this.check} required>
                     <option value=""></option>
                     {citycountrydata.map((val,idx)=>
                         <option key={idx} value={val.CityEngName}>{val.CityName}</option>
                         )}
-                </select>
-                <select id="district"></select>
+                </select >
+                <select className='form-control' id="district" required></select>
             </>
 
         )
