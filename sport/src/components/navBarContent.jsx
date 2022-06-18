@@ -12,17 +12,18 @@ class NavBarContent extends Component {
     } 
     render() { 
         return (
-            <div className='sticky-top' >
-                <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-                    <div class="container-fluid ">
+            <div className="sticky-top">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" >
+                    {/* 左右對齊則用container-fluid  */}
+                    <div class="container"> 
                         <div className=''><NavLink  to="/" exact><img src="https://dummyimage.com/200x50/000/fff" /></NavLink></div>
                         <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto">    
+                        <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">    
                             <li class="nav-item">
-                            <div id=""><NavLink className="nav-link col-lg " to="/coursesAndVenues" exact >課程與場地</NavLink></div>
+                            <div id=""><NavLink className="nav-link col-lg" to="/coursesAndVenues" exact >課程與場地</NavLink></div>
                             </li>
                             <li class="nav-item">
                             <div id="" ><NavLink className="nav-link col-lg " to="/becomeCoach" exact >成為教練</NavLink></div>
@@ -36,7 +37,7 @@ class NavBarContent extends Component {
                         </ul>
                         </div>
                     </div>
-                    </nav>
+                </nav>
              </div>
         );
     }

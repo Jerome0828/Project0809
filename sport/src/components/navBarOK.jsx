@@ -4,6 +4,7 @@ import '../scss/all.css';
 
 // 導覽列物件
 import NavBarContent from './navBarContent';
+import NavBarContent1 from './navBarContentTest';
 
 // 首頁
 import home from './navBarPage/home.jsx'; 
@@ -26,7 +27,7 @@ class NavBarOK extends Component {
             <HashRouter>
             <div >
 
-            <NavBarContent />
+            <NavBarContent1 />
             </div>
                 <div>
                 <Switch>

@@ -1,17 +1,20 @@
-// 首頁上部分標頭style樣式
-.HomeHeadBoxStyle {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  border: 1px solid rgb(255, 255, 255);
-  // background-color: aquamarine;
-}
-
 .HomeHeadBoxLeft{
   position: relative;
   display: flex;
-  background-color: black;
-  border: 1px solid rgb(28, 192, 34);
+  // border: 1px solid rgb(28, 192, 34);
+  // width: 100%;
+  background-color: rgb(0, 0, 0);
+}
+
+.HomeHeadBoxRight{
+  position: relative;
+  // width: 100%;
+  // right: 0;
+  display: flex;
+  // background-color: black;
+  // border: 1px solid rgb(28, 192, 34);
+  padding: 0;
+  margin: 0;
 }
 
 .HomeHeadBoxImgStyle{
@@ -22,6 +25,17 @@
   margin: auto;
   object-fit:cover;
   opacity:0.7;
+
+}
+
+.HomeHeadBoxImgStyle1{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  // left: 0;
+  margin: 0;
+  object-fit:cover;
+  opacity:1;
 }
 
 .HomeHeadBoxText{

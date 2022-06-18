@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../../scss/all.css';
 import 'bootstrap/dist/js/bootstrap';
 import Content from '../content.jsx';
+
 class home extends Component {
     state = { 
         topStyle:{
@@ -11,7 +12,7 @@ class home extends Component {
     }    
     render() { 
         return (
-            <div style={this.state.topStyle}>
+            <div>
                 <Content/>
             </div>
         );

@@ -11922,6 +11922,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  margin-top: 76px;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -11940,18 +11944,17 @@ ul {
   padding: 0;
 }
 
-.HomeHeadBoxStyle {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  border: 1px solid rgb(255, 255, 255);
-}
-
 .HomeHeadBoxLeft {
   position: relative;
   display: flex;
-  background-color: black;
-  border: 1px solid rgb(28, 192, 34);
+  background-color: rgb(0, 0, 0);
+}
+
+.HomeHeadBoxRight {
+  position: relative;
+  display: flex;
+  padding: 0;
+  margin: 0;
 }
 
 .HomeHeadBoxImgStyle {
@@ -11963,6 +11966,16 @@ ul {
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 0.7;
+}
+
+.HomeHeadBoxImgStyle1 {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 1;
 }
 
 .HomeHeadBoxText {
@@ -12002,4 +12015,16 @@ ul {
 
 .btnRegister:hover {
   background-color: rgb(237, 101, 151);
+}
+
+.navbar-nav {
+  margin-right: 50px;
+}
+
+.HomeHeadBoxStyle {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  margin: 0;
 }/*# sourceMappingURL=all.css.map */
