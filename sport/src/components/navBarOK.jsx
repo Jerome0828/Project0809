@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
+import '../scss/all.scss';
 
 // 導覽列物件
 import NavBarContent from './navBarContent';

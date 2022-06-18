@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../../scss/bootstrap.scss';
-import 'bootstrap/dist/js/bootstrap';
+import '../../scss/all.css';
+// import 'bootstrap/dist/js/bootstrap';
 
 import leftImg from '../../img/ben01.jpg';
 
@@ -40,7 +39,11 @@ class HomeHead extends Component {
                 </div>
 
                 <div className='col-md-12 col-xl-7 border border-info'>
-                    右邊內容
+                    <div className='test1'>右邊內容</div>
+                    <div className='btn btn-test'>右邊內容</div>
+                    <div className='text-test'>右邊內容</div>
+                    <div className='bg-test'>右邊內容</div>
+                    
                 </div>
                 
 

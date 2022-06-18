@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../scss/bootstrap.scss';
+import '../../scss/all.css';
 import 'bootstrap/dist/js/bootstrap';
 
 class BecomeCoach extends Component {

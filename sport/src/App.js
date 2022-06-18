@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './scss/all.scss';
 import NavBarOK from './components/navBarOK.jsx';
 // import NavBarContent from './components/navBarContent.jsx';
 import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'

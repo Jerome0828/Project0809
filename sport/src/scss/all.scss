@@ -1,10 +1,9 @@
+// 來自bootstrap的scss改名使用
 @import "bootstrap/bootstrap";
-@import "index";
-@import "faq";
 
-.herader {
-    width: 30px;
-    a{
-        color:rgb(0, 0, 0);
-    }
-}
+// 依照頁功能進行修改_index就好,本頁用於合併其他scss屬性
+@import "home/index";
+@import "home/faq";
+
+// 新增自訂義屬性 ->scss ->bootstrap ->_variables.scss-> $theme-colors: 
+// 自訂義"test":#FFDF65 ,套用所有text-test、bg-test、btn-test 所有色系,以已達成一次修改主色需求

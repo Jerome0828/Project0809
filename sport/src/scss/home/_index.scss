@@ -14,7 +14,7 @@ $bodySectionRowHeight:96px;
   position: relative;
   width: 100%;
   height: 500px;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   // background-color: aquamarine;
 }
 
@@ -34,8 +34,6 @@ $bodySectionRowHeight:96px;
   object-fit:cover;
   opacity:0.7;
 }
-
-
 
 .HomeHeadBoxText{
   position: relative;
@@ -75,9 +73,9 @@ $bodySectionRowHeight:96px;
   // justify-content:left;
   // text-align:left;
 }
-
-
-
+.test1{
+  color: rgb(22, 13, 180);
+}
 
 // .HmeHeadBoxLeftStyle{
 //   position: relative;
