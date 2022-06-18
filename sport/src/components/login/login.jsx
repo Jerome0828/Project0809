@@ -22,6 +22,7 @@ class Login extends Component {
   render() {
     return (
       <div id='box' className="login row">
+        {/* -- 0 -- */}
         <div id='login' className='text-center' 
           style={{ opacity: this.state.opacity[0], transform: `translate(${this.state.translate[0]},0)`}}>
           <div className="row justify-content-end">
@@ -33,8 +34,8 @@ class Login extends Component {
               <div className='container mt-3'>
                 <img className='icon col-6 mx-2 my-3' src={require('../icon/email.png')} />
                 <input className="input col-6 " type="e-mal" placeholder="Email" /><br />
-                <img className='icon col-6 mx-3 my-3' src={require('../icon/password.png')} />
-                <input className="input col-6 m-0" type="password" placeholder="Password"/><br />
+                <img className='icon col-6 mx-2 my-3' src={require('../icon/password.png')} />
+                <input className="input col-6 " type="password" placeholder="Password"/><br />
                 <img className='icon col-6 mx-2 my-3' src={require('../icon/password.png')} />
                 <input className="input col-6 " type="password" placeholder="Password Again" /><br />
               </div>
@@ -78,15 +79,15 @@ class Login extends Component {
           <div className='container'>
             <div className="row">
               <div className='container mt-3'>
-                <img className='icon col-6 mx-2 my-3' src={require('../icon/login.png')} />
+                <img className='icon col-6 mx-0 my-3' src={require('../icon/login.png')} />
                 <input className="input col-6 " type="text" placeholder="Username" /><br />
-                <img className='icon col-6 mx-2 my-3' src={require('../icon/email.png')} />
+                <img className='icon col-6 mx-0 my-3' src={require('../icon/email.png')} />
                 <input className="input col-6 " type="e-mal" placeholder="Email" /><br />
-                <img className='icon col-6 mx-2 my-3' src={require('../icon/password.png')} />
+                <img className='icon col-6 mx-0 my-3' src={require('../icon/password.png')} />
                 <input className="input col-6 " type="password" placeholder="Password"/><br />
-                <img className='icon col-6 mx-2 my-3' src={require('../icon/password.png')} />
+                <img className='icon col-6 mx-0 my-3' src={require('../icon/password.png')} />
                 <input className="input col-6 " type="password" placeholder="Password Again" /><br />
-                <img className='icon col-6 mx-2 my-3' src={require('../icon/mobile-app.png')} />
+                <img className='icon col-6 mx-0 my-3' src={require('../icon/mobile-app.png')} />
                 <input className="input col-6 " type="text" placeholder="Cellphone Number" /><br />
               </div>
             </div>
@@ -105,7 +106,7 @@ class Login extends Component {
           <div className='container'>
               <p className='m-5 '>已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證</p>
               <span className='mt-5'>沒收到驗證信 ?</span>
-              <button id="buttonL" type="submit" className='mb-5'>再寄送一次</button>
+              <button id="buttonL" type="submit" className='mb-4'>再寄送一次</button>
           </div>
           <div className='mt-3'>
               <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>LogIn</button>

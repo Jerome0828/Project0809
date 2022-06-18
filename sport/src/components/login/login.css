@@ -82,6 +82,7 @@ h2, .input, .button, #buttonL, p {
 }
   
 .input {
+    width: 55%;
     box-sizing: border-box;
     background: transparent;
     border: none;
