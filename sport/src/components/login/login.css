@@ -40,8 +40,14 @@ h2, .input, .button, #buttonL, p {
     height: auto;
 }
 #bti {
-    width: 5%;
+    width: 3%;
     float: left;
+    margin-top: 0%;
+    box-shadow:none;
+}
+#btj {
+    width: 5%;
+    /* float: right; */
     margin-top: 0%;
     box-shadow:none;
 }
