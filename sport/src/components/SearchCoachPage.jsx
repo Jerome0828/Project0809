@@ -11,7 +11,7 @@ class SearchCoachPage extends Component {
             <div className='container'>
                 <span>教練</span><span> / </span><span className='text-danger'>探索</span>
                 <div className='row mt-3'>
-                    <div className='col-3 border'>
+                    <div className='col-3'>
                         <h3>篩選</h3>
                         <form className='mt-3'>
                             <input type="text" placeholder="搜尋" />
@@ -60,7 +60,7 @@ class SearchCoachPage extends Component {
 
                         </form>
                     </div>
-                    <div className='col-9 border '>
+                    <div className='col-9 border-end border-start'>
                         <div className='row text-center'>
                             <a className='col-6 shadow btn bg-black text-white' href="/">找課程</a>
                             <a className='col-6 shadow btn' href="/site">找場地</a>

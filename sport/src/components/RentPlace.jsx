@@ -28,7 +28,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1">
-                        <input type="text" className="form-control" placeholder="請輸入課程名稱" required />
+                        <input type="text" className="form-control" placeholder="請輸入場地名稱" />
                     </div>
 
                     {/* 場地地址 */}
@@ -47,7 +47,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1">
-                        <textarea class="form-control" rows="3" placeholder="輸入課程簡介" required></textarea>
+                        <textarea class="form-control" rows="3" placeholder="輸入場地簡介" required></textarea>
                     </div>
 
                     {/* 人數限制 */}
