@@ -3,9 +3,10 @@ import Citys from './Citys';
 class BeCoach extends Component {
     state = {}
     render() {
+        let selectedOptionId = '';
         return (
             <div className="container mt-3">
-                <h3>成為教練</h3>
+                <h3>上傳課程</h3>
                 <form className="was-validated form-group">
 
                     {/* 上傳圖片 */}
@@ -17,7 +18,7 @@ class BeCoach extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="  mb-3 mt-1">
+                    <div className="mb-3">
                         <input type="file" className="form-control" required />
                     </div>
 
@@ -34,50 +35,13 @@ class BeCoach extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="  mb-3 mt-1">
+                    <div className="mb-3">
                         <input type="text" className="form-control" placeholder="請輸入課程名稱" required />
-                    </div>
-
-                    {/* 暱稱 */}
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>暱稱 :</b>
-                        </li>
-                    </ul>
-                    <div className="  mb-3 mt-1">
-                        <input type="text" className="form-control" placeholder="請輸入暱稱" required />
-                    </div>
-
-                    {/* 真實姓名 */}
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>真實姓名 :</b>
-                        </li>
-                    </ul>
-                    <div className="  mb-3 mt-1">
-                        <input type="text" className="form-control" placeholder="請輸入真實姓名" required />
-                    </div>
-
-                    {/* 電話 */}
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>電話 :</b>
-                        </li>
-                    </ul>
-                    <div className="  mb-3 mt-1">
-                        <input type="number" className="form-control" placeholder="請輸入電話" required />
-                    </div>
-
-                    {/* 地址 */}
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>上課地點 :</b>
-                        </li>
-                    </ul>
-                    <div className="  mb-3 mt-1" >
-                        <Citys />
-                        <input type="text" className="form-control" placeholder="請請輸入地址" required />
                     </div>
 
                     {/* 課程簡介 */}
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>課程簡介 :</b>
+                        <li className="list-group-item"><b>課程介紹 :</b>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
                                     簡介可敘述課程進行的模式，您與其他課程的區隔以及獨到之處，越豐富詳細的介紹，會讓您在Google等搜尋引擎中的自然排名有效提升。
@@ -85,8 +49,18 @@ class BeCoach extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="  mb-3 mt-1">
+                    <div className="mb-3">
                         <textarea class="form-control" rows="3" placeholder="輸入課程簡介" required></textarea>
+                    </div>
+
+                    {/* 上課地點 */}
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item"><b>上課地點 :</b>
+                        </li>
+                    </ul>
+                    <div className="mb-3 mt-1" >
+                        <Citys />
+                        <input type="text" className="form-control" placeholder="請請輸入地址" required />
                     </div>
 
                     {/* 刊登日期 */}
@@ -98,25 +72,14 @@ class BeCoach extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="  mb-3 mt-1">
-                        <input type="date" className="form-control" required />
+                    <div className="mb-3">
+                        <label>
+                            <input type="date" className="form-control" required />
+                        </label>
                         <p className="mt-3 mb-3">至</p>
-                        <input type="date" className="form-control" required />
-                    </div>
-
-                    {/* 上課時間 */}
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>課程長度 :</b>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div className="  mb-3 mt-1">
-                        <input type="time" className="form-control" required />
-                        <p className="mt-3 mb-3">至</p>
-                        <input type="time" className="form-control" required />
+                        <label>
+                            <input type="date" className="form-control" required />
+                        </label>
                     </div>
 
                     {/* 分類 */}
@@ -125,13 +88,33 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
-                        <label class="form-check-label" for="inlineCheckbox1">瑜珈</label>
+                        <input class="form-check-input" type="checkbox" id="yoga" value="yoga" />
+                        <label class="form-check-label" for="yoga">瑜珈</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" />
-                        <label class="form-check-label" for="inlineCheckbox2">健身</label>
+                    <div class="form-check form-check-inline mb-3">
+                        <input class="form-check-input" type="checkbox" id="workout" value="workout" />
+                        <label class="form-check-label" for="workout">健身</label>
                     </div>
+
+                    {/* 上課時間 */}
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item"><b>課程時間長度 :</b>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div className="mb-3">
+                        <select className="form-control" defaultValue={selectedOptionId} name="classTime" placeholder='請選擇課程長度' required>
+                            <option className='d-none' value="">請選擇課程長度</option>
+                            <option value="30">30</option>
+                            <option value="60">60</option>
+                            <option value="90">90</option>
+                            <option value="120">120</option>
+                        </select>
+                        <p className='text-muted mt-2'>(分鐘)</p>
+                    </div>                    
 
                     {/* 人數 */}
                     <ul className="list-group list-group-flush">
@@ -139,7 +122,7 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required/>
                         <label class="form-check-label" for="inlineRadio1">一對一</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -158,7 +141,8 @@ class BeCoach extends Component {
                         <div className="valid-feedback">Valid.</div>
                         <div className="invalid-feedback">Check this checkbox to continue.</div>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-outline-success">送出</button>
+                    <button type="submit" className="btn btn-outline-danger mx-3">取消</button>    
                 </form>
             </div>
         );

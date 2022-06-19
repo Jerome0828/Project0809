@@ -53,7 +53,7 @@ class Citys extends Component {
         return (
             <>
                 <select className='form-control' id="city" defaultValue={selectedOptionId} onChange={this.check} required>
-                    <option value=""></option>
+                    <option value="">縣市</option>
                     {citycountrydata.map((val,idx)=>
                         <option key={idx} value={val.CityEngName}>{val.CityName}</option>
                         )}
