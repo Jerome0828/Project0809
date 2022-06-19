@@ -22,9 +22,9 @@ class HomeHead extends Component {
                 
             <div className='HomeHeadBoxStyle row'>
 
-                <div className='col-md-12 col-xl-5 HomeHeadBoxLeft'>
-
-                    <img src={leftImg} className="HomeHeadBoxImgStyle h-100 "alt="" />
+                <div className='col-12 col-sm-5 HomeHeadBoxLeft'>
+                    <div className='HomeHeadBoxLeftImgBox'>
+                    <img src={leftImg} className="HomeHeadBoxImgStyle"alt="" />
                         <div className='HomeHeadBoxText'>
                             <div className="text-center" >
                                 <h1 className='rounded-top'>這是一段標題</h1>
@@ -34,22 +34,19 @@ class HomeHead extends Component {
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
 
-                <div className='row col-md-12 col-xl HomeHeadBoxRight'>
-                
-                        <div className='col-md-3 col-sm-6 bg-test'>
-                            <img className="img-fluid" src={rightImg0} alt="" />
-                        </div>
-                        <div className='col-md-3 col-sm-6 bg-test1 '>321</div>
-                        <div className='col-md-3 col-sm-6 bg-test'><img src={rightImg1} alt="" />123</div>
-                        <div className='col-md-3 col-sm-6 bg-test1 '>321</div>
+                <div className='col-12 col-sm-7 HomeHeadBoxRight'>
+                    <div className='HomeHeadBoxRightImgBox'>
+                        <div className='HomeHeadBoxRightText row'>
     
-                        <div className='col-md-3 col-sm-6 bg-test1'>123</div>
-                        <div className='col-md-3 col-sm-6 bg-test '><img src={rightImg2} alt="" /></div>
-                        <div className='col-md-3 col-sm-6 bg-test1'>123</div>
-                        <div className='col-md-3 col-sm-6 bg-test '><img src={rightImg3} alt="" />321</div>
+                        </div>
 
+                    </div>
+             
+
+                  
              
 
                     

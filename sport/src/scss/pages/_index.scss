@@ -1,47 +1,95 @@
+// 首頁上部分標頭style樣式
+.HomeHeadBoxStyle {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  margin:0;
+}
+
+// 左側區塊
 .HomeHeadBoxLeft{
   position: relative;
   display: flex;
-  // border: 1px solid rgb(28, 192, 34);
-  // width: 100%;
+  left: 0;
+}
+
+// 右側區塊
+.HomeHeadBoxRight{
+  position: relative;
+  display: flex;
+  background-color: black;
+}
+
+// 左側區塊-設定圖片區塊內
+.HomeHeadBoxLeftImgBox{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  left: 0;
   background-color: rgb(0, 0, 0);
 }
 
-.HomeHeadBoxRight{
-  position: relative;
-  // width: 100%;
-  // right: 0;
+// 右側區塊-設定圖片區塊內
+.HomeHeadBoxRightImgBox{
+  position: absolute;
   display: flex;
-  // background-color: black;
-  // border: 1px solid rgb(28, 192, 34);
-  padding: 0;
-  margin: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(248, 248, 248);
 }
 
+
+
+
+// RWD
+// @media (max-width:600px){
+//   .HomeHeadBoxRight {
+//     height: 0;
+//     width: 0;
+//   }
+// }
+
+// @media (max-width:600px)
+// {
+//   .HomeHeadBoxStyle {
+//     position: relative;
+//     width: 100%;
+//     height: 800px;
+//     display: flex;
+//     margin:0;
+//     padding: 0;
+//   }
+// }
+
+// 左側圖片
 .HomeHeadBoxImgStyle{
   position: absolute;
   width: 100%;
-  height: 100vh;
-  left: 0;
-  margin: auto;
+  height: 100%;
+  // left: 0;
+  // margin: auto;
   object-fit:cover;
   opacity:0.7;
-
 }
 
-.HomeHeadBoxImgStyle1{
+//左側圖片測試
+.HomeHeadBoxImgStyleTest{
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   // left: 0;
-  margin: 0;
+  // margin: auto;
   object-fit:cover;
-  opacity:1;
+  opacity:0.7;
 }
 
+// 左側區塊內的文字設定
 .HomeHeadBoxText{
   position: relative;
   // background-color: rgb(255, 255, 255);
- 
   display: flex;
   margin:auto;
   text-align:center;
@@ -84,4 +132,42 @@
 
 .btnRegister:hover {
   background-color: rgb(237, 101, 151);
+}
+
+// 右側圖片文字區塊設定
+.HomeHeadBoxRightText{
+  position: relative;
+  background-color: rgb(253, 5, 5);
+  width: 100%;
+  height: 100%;
+  margin:auto;
+}
+
+// 右側小區塊設定
+.HomeHeadBoxRightImgBox{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+}
+
+// 測試中
+.HomeHeadBoxRightTextBoxTest{
+  position: relative;
+  display: flex;
+  width: 25%;
+  height: auto;
+  margin: auto;
+  background-color: rgb(0, 0, 0);
+}
+
+.HomeHeadBoxRightImgBoxTest{
+  position: relative;
+  display: flex;
+  width: 25%;
+  height: auto;
+  margin: auto;
+  background-color: rgb(60, 255, 0);
 }

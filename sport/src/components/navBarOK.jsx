@@ -3,7 +3,6 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import '../scss/all.css';
 
 // 導覽列物件
-import NavBarContent from './navBarContent';
 import NavBarContent1 from './navBarContentTest';
 
 // 首頁
