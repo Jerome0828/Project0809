@@ -7,7 +7,7 @@
     font-family: 'font01';
 }
 
-#spa {
+.spa {
     display: inline-block;
     border: 2px solid red;
     padding: 5px;
@@ -15,7 +15,7 @@
     white-space: nowrap;
 }
 
-#icon {
+.icon {
     width: 30px;
     height: 30px;
 } 
@@ -26,7 +26,7 @@
     height: 10%;
 }
 
-#title {
-    font-size: 30px;
+.title {
+    /* font-size: 30px; */
     background-color: rgba(211, 211, 211, 0.4);
 }

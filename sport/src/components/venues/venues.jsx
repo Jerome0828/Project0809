@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../Card';
 import Carousels from '../Carousels';
 import './venues.css'
 
 class Venues extends Component {
-    state = { } ;
+    state = { activeIndex : 0 } ;
+
+    handleSelect = (selectedIndex, e) => {
+        this.setState({index: selectedIndex})
+    };
 
     render() { 
         return (
             <div id="box" className='container'>
                 <div className='container'>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Library</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                            <li className="breadcrumb-item"><a href="#">Library</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">Data</li>
                         </ol>
                     </nav>
                 </div>
@@ -28,15 +33,15 @@ class Venues extends Component {
                         <div className='row justify-content-center'>
                             <h2 className='col-lg-12 my-3 text-center'>每日線上視訊直播運動課程</h2>
                             <div className='col-lg-12 mx-3 text-center'>
-                                <span id='spa'>團體課程</span>
-                                <span id='spa'>混合健身</span>
+                                <span className='spa'>團體課程</span>
+                                <span className='spa'>混合健身</span>
                             </div>
                             <div className='col-lg-12 m-3 text-center'>
-                                    <img id='icon' src={require('../icon/map.png')} />
+                                    <img className='icon' src={require('../icon/map.png')} />
                                     <span className='p-2'>臺中市北屯區東山路一段156-6</span>
                             </div>
                             <div className='col-lg-12  mt-1 text-center mt-0'>
-                                <img id='icon' src={require('../icon/place.png')} />
+                                <img className='icon' src={require('../icon/place.png')} />
                                 <span >線上視訊教學</span>
                             </div>
                             <div className='row mt-1'>
@@ -57,7 +62,7 @@ class Venues extends Component {
 
                     <div className='container my-5'>
                         <div className='container'>
-                            <p id='title' className='container'>課程簡介</p>
+                            <h3 className='container title p-2'>課程簡介</h3>
                             <div className='container'>
                                 <p>
                                     在離開俱樂部後，我也台中到處跑去上課，深知自由教練的不易，剛好有機會承租了這個店面，環境不大，但該有的設備都有，專門為自由教練所準備的場地，外面有個休息區，沒課的時候可以在這裡休息、訓練。
@@ -67,7 +72,7 @@ class Venues extends Component {
                             
                         </div>
                         <div className='container'>
-                            <p id='title' className='container'>課程時段</p>
+                            <h3 className='container title p-2'>課程時段</h3>
                             <ul>
                                 <li>特定時段</li>
                             </ul>
@@ -114,31 +119,31 @@ class Venues extends Component {
                             </div>
                         </div>
                         <div className='container'>
-                            <p id='title' className='container'>課程地點</p>
+                            <h3 className='container title p-2'>課程地點</h3>
                             <ul>
                                 <li>師資指定地點</li>
                             </ul>
                             <div className='container'>
-                                <div className='row align-items-center m-2'>
+                                <div id='map' className='row align-items-center m-2'>
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.055014686727!2d120.70789029999999!3d24.169803299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917f71782ec5b%3A0xdf6c6936864c2259!2zNDA25Y-w5Lit5biC5YyX5bGv5Y2A5p2x5bGx6Lev5LiA5q61MTU2LTbomZ8!5e0!3m2!1szh-TW!2stw!4v1655384835675!5m2!1szh-TW!2stw" className='col-lg-6' height='300vh'></iframe>
                                     <div className='col-lg-6 container text-center'>
                                         <p className='text-align:center'>臺中市北屯區東山路一段156-6</p>
                                         <a href="https://goo.gl/maps/PnXNtARA1F72HbM67" target="_blank">
-                                            <img id='icon' src={require('../icon/google-maps.png')} />查看地圖
+                                            <img className='icon' src={require('../icon/google-maps.png')} />查看地圖
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className='container'>
-                            <p id='title' className='container'>取消政策</p>
+                            <h3 className='container title p-2'>取消政策</h3>
                             <div className='container'>
                                 <div className='row'>
-                                    <h5 className='col-lg-5 p-3'><img id='icon' src={require('../icon/check.png')} className='mx-2'/>
+                                    <h5 className='col-lg-5 p-3'><img src={require('../icon/check.png')} className='icon mx-2'/>
                                         課程開始1小時前
                                         <span style={{fontSize: '15px'}}> (可全額退款100%) </span>
                                     </h5>
-                                    <h5 className='col-lg-5 p-3'><img id='icon' src={require('../icon/cross.png')} className='mx-2'/>
+                                    <h5 className='col-lg-5 p-3'><img src={require('../icon/cross.png')} className='icon mx-2'/>
                                         課程開始少於1小時
                                         <span style={{fontSize: '15px'}}> (不可退款) </span>
                                     </h5>
@@ -146,7 +151,7 @@ class Venues extends Component {
                             </div>
                         </div> 
                         <div className='container'>
-                            <p id='title' className='container'>授課師資</p>
+                            <h3 className='container title p-2'>授課師資</h3>
                             <div className='text-center mt-3'>
                                     <img src="https://dummyimage.com/100/000/fff" className='rounded-circle h-100'/>
                                     <span className='p-5'>name</span>
@@ -172,11 +177,12 @@ class Venues extends Component {
                             
                         </div>
                         <div className='container'>
-                            <p id='title' className='container'>課後評價 <span style={{fontSize: '20px'}}>共有 81 人向您推薦這堂課</span></p>
+                            <h3 className='container title p-2'>課後評價 <span style={{fontSize: '20px'}}>共有 81 人向您推薦這堂課</span></h3>
                             <div className='container'>
                                 <div className='row justify-content-center'>
                                     <div className='col-lg-5 mx-5'>
                                         <table className="table " data-toggle="table">
+                                            <tbody>
                                             <tr>
                                                 <th scope="row" className='row text-center'>
                                                     <img src="https://dummyimage.com/100/000/fff" className='col-5 mt-3 rounded-circle h-100'/>
@@ -195,10 +201,12 @@ class Venues extends Component {
                                                     </div>
                                                 </th>
                                             </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <div className='col-lg-5 mr-5'>
                                         <table className="table " data-toggle="table">
+                                            <tbody>
                                             <tr>
                                                 <th scope="row" className=' row text-center'>
                                                     <img src="https://dummyimage.com/5000/000/fff" className='col-5 mt-3 rounded-circle h-100'/>
@@ -217,18 +225,28 @@ class Venues extends Component {
                                                     </div>
                                                 </th>
                                             </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className='container'>
-                            <p id='title' className='container'>關聯課程</p>
+                            <h3 className='container title p-2'>關聯課程</h3>
                             <div className='container'>
                                 <div className='row mt-5 justify-content-center'>
-                                    <Card />
-                                    <Card />
-                                    <Card />
+                                <Carousel activeIndex={this.state.index} onSelect={this.handleSelect} interval={5000}>
+                                    <Carousel.Item>
+                                        <div className='row justify-content-center'>
+                                            <Card /><Card /><Card />
+                                        </div>
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                            <div className='row justify-content-center'>
+                                                <Card /><Card /><Card />
+                                            </div>
+                                    </Carousel.Item>
+                                </Carousel>
                                 </div>
                             </div>
                         </div>

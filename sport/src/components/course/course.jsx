@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../Card';
 import Carousels from '../Carousels';
 import './course.css';
 
 class Course extends Component {
-    state = { } ;
+    state = {  activeIndex : 0 } ;
+
+    handleSelect = (selectedIndex, e) => {
+        this.setState({index: selectedIndex})
+    };
 
     render() { 
         return (
@@ -242,9 +247,18 @@ class Course extends Component {
                             <p id='title' className='container'>關聯課程</p>
                             <div className='container'>
                                 <div className='row mt-5 justify-content-center'>
-                                    <Card />
-                                    <Card />
-                                    <Card />
+                                <Carousel activeIndex={this.state.index} onSelect={this.handleSelect} interval={5000}>
+                                    <Carousel.Item>
+                                        <div className='row justify-content-center'>
+                                            <Card /><Card /><Card />
+                                        </div>
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                            <div className='row justify-content-center'>
+                                                <Card /><Card /><Card />
+                                            </div>
+                                    </Carousel.Item>
+                                </Carousel>
                                 </div>
                             </div>
                         </div>
