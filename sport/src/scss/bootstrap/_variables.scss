@@ -395,6 +395,22 @@ $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) 
 // scss-docs-start position-map
 $position-values: (
   0: 0,
+  1:1%,
+  2:2%,
+  3:3%,
+  4:4%,
+  5:5%,
+  10:10%,
+  11:11%,
+  12:12%,
+  13:10%,
+  14:14%,
+  15:15%,
+  17:17%,
+  18:18%,
+  19:19%,
+  20:20%,
+  30:30%,
   50: 50%,
   100: 100%
 ) !default;
@@ -445,10 +461,10 @@ $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !defau
 //
 // Style anchor elements.
 
-$link-color:                              black !default; //預設值$primary
-$link-decoration:                         underline !default;
+$link-color:                              rgb(0, 0, 0) !default; //預設值$primary
+$link-decoration:                         none !default; //預設值underline
 $link-shade-percentage:                   20% !default;
-$link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-color:                        rgb(255, 255, 255) !default; //預設 shift-color($link-color, $link-shade-percentage) 
 $link-hover-decoration:                   null !default;
 
 $stretched-link-pseudo-element:           after !default;

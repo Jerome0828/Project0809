@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../scss/all.css';
 
 // 導覽列物件
@@ -35,7 +36,40 @@ class NavBarOK extends Component {
                     <Route path="/becomeCoach" component={becomeCoach} exact/>
                     <Route path="/rentSpace" component={rentSpace} exact/>
                     <Route path="/loginRegister" component={loginRegister} exact/>
-                 </Switch>
+                </Switch>
+                <div/>
+
+
+
+
+
+                {/* 設定視窗定位按鈕 */}
+                <div className='position-relative'>
+
+                {/* 聊天按鈕 */}
+                <div className='position-fixed bottom-14 end-2  cartButtonStyle'> 
+                <div type="button" class="btn btn-primary position-relative">
+                <NavLink to="/rentSpace">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-messenger" viewBox="0 0 16 16">
+                    <path d="M0 7.76C0 3.301 3.493 0 8 0s8 3.301 8 7.76-3.493 7.76-8 7.76c-.81 0-1.586-.107-2.316-.307a.639.639 0 0 0-.427.03l-1.588.702a.64.64 0 0 1-.898-.566l-.044-1.423a.639.639 0 0 0-.215-.456C.956 12.108 0 10.092 0 7.76zm5.546-1.459-2.35 3.728c-.225.358.214.761.551.506l2.525-1.916a.48.48 0 0 1 .578-.002l1.869 1.402a1.2 1.2 0 0 0 1.735-.32l2.35-3.728c.226-.358-.214-.761-.551-.506L9.728 7.381a.48.48 0 0 1-.578.002L7.281 5.98a1.2 1.2 0 0 0-1.735.32z"/>
+                    </svg>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">+99 <span class="visually-hidden">unread messages</span></span>
+                </NavLink>
+                </div>
+                </div>
+
+                {/* 購物車按鈕 */}
+                <div className='position-fixed bottom-5 end-2 cartButtonStyle'> 
+                <div to="/coursesAndVenues" type="button" class="btn btn-primary position-relative">
+                <NavLink to="/loginRegister">
+                    <svg style={{color:''}}xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">+99 <span class="visually-hidden">unread messages</span></span>
+                </NavLink>
+                </div>
+</div>
+</div>
 
                  
             </div>

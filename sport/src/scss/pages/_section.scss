@@ -1,0 +1,63 @@
+// 測試與上層距離,改使用mt-6
+// .sectionBox1 {
+//     margin-top: 96px !important;
+// }
+
+
+// 輪播卡片區塊
+.cardBox {
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+// 輪播圖片設定
+.carouselImgTest {
+    object-fit: cover;
+    justify-content:center;
+    opacity:1;
+    transition: all 0.6s ease;
+}
+
+// 輪播圖片動畫
+.carouselImgTest:hover {
+    // box-shadow:1px;
+    opacity:0.7;
+}
+
+// 輪播中文字區塊
+.cardBoxText {
+    position:absolute;
+    margin: auto;
+    display: flex;
+    
+    // top:10%;
+    // bottom: 10%;
+    align-items: center;
+    justify-content: center;
+    background-color: antiquewhite;
+    width: 90%;
+    height: 50px;
+    opacity: 0.7;
+    transition: all 0.6 ease-in-out;
+}
+
+// 輪播中文字區塊特效
+.cardBoxText:hover {
+    color: rgb(255, 255, 255) !important;
+    background-color: black;
+    opacity: 1;
+}
+
+.cardBoxText:hover a{
+    color: rgb(255, 255, 255) !important;
+    opacity: 1;
+}
+
+// 第二層背景底色
+.twoSectionBackgroundImg {
+    top: 1000px;
+    background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/white_wall_hash.png');
+}
