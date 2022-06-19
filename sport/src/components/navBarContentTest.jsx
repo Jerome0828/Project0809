@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 import '../scss/all.css';
 import 'bootstrap/dist/js/bootstrap';
@@ -12,7 +12,7 @@ function NavBarContent1() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
         <Container>
-          <Navbar.Brand><NavLink  to="/" exact><img src="https://dummyimage.com/200x50/000/fff" /></NavLink></Navbar.Brand>
+          <Navbar.Brand><NavLink  to="/" exact><img src="https://dummyimage.com/200x50/000/fff" alt="test1"/></NavLink></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

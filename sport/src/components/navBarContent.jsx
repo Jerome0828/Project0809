@@ -16,7 +16,7 @@ class NavBarContent extends Component {
                 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" >
                     {/* 左右對齊則用container-fluid  */}
                     <div class="container"> 
-                        <div className=''><NavLink  to="/" exact><img src="https://dummyimage.com/200x50/000/fff" /></NavLink></div>
+                        <div className=''><NavLink  to="/" exact><img src="https://dummyimage.com/200x50/000/fff" alt='test2' /></NavLink></div>
                         <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>

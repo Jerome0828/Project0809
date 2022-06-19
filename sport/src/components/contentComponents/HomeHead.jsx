@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 
 import leftImg from '../../img/ben01.jpg';
 
-import rightImg0 from '../../img/fitness03.jpg';
-import rightImg1 from '../../img/fitness05.jpg';
-import rightImg2 from '../../img/space01.jpg';
-import rightImg3 from '../../img/space04.jpg';
+import rightImg from '../../img/fitness06.jpg';
+import rightImg1 from '../../img/ben004.jpg';
+import rightImg2 from '../../img/ben003.jpg';
+import rightImg3 from '../../img/ben002.jpg';
 class HomeHead extends Component {
     state = { 
 
@@ -39,8 +39,40 @@ class HomeHead extends Component {
 
                 <div className='col-12 col-sm-7 HomeHeadBoxRight'>
                     <div className='HomeHeadBoxRightImgBox'>
-                        <div className='HomeHeadBoxRightText row'>
-    
+                        <div className='HomeHeadBoxRightText row-cols-4 ' >  
+                            <div className='rightBox'>
+                                <div className='rightBoxTopImg'>
+                                    <img className="" src={rightImg} alt="img" /> 
+                                </div>
+                                <div className='rightBoxBottomText'>
+                                    <h3>這是廣告標題</h3>
+                                </div>
+                            </div>
+                            <div className='rightBox'>
+                                <div className='rightBoxBottomImg'>
+                                    <img src={rightImg1} alt="img" />
+                                </div>
+                                <div className='rightBoxTopText'>
+                                    <h3>這是廣告標題</h3>
+                                </div>
+                            </div>
+                            <div className='rightBox'>
+                                <div className='rightBoxTopImg'>
+                                    <img src={rightImg2} alt="img" />
+                                </div>
+                                <div className='rightBoxBottomText'>
+                                    <h3>這是廣告標題</h3>
+                                </div>
+                            </div>
+                            <div className='rightBox'>
+                                <div className='rightBoxBottomImg'>
+                                  <img src={rightImg3} alt="img" />
+                                </div>
+                                <div className='rightBoxTopText'>
+                                    <h3>這是廣告標題</h3>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
@@ -52,20 +84,41 @@ class HomeHead extends Component {
                     
                 </div>
             </div>
-            <div className='HomeHeadBoxStyle row mx-auto'>
 
-                <div className="test">
-                    <h1><a href="#"></a></h1>
-                    <ul><a href="#"></a></ul>
-                </div>                
-                    
-                <div className='btn btn-test'>下邊內容</div>
-                    <div className='text-test'>右邊內容</div>
-                    <div className='bg-test'>右邊內容</div>
-                    <div className='btn btn-test1 mt-md-6'>右邊內容</div>
-                    <div className='text-test1'>右邊內容</div>
-                    <div className='bg-test1'>右邊內容</div>
+            <div className='row container m-auto mt-6'>
+                <div className="col-4">
+                    <div class="card">
+                        <img src={leftImg} class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-4">
+                    <div class="card">
+                        <img src={leftImg} class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-4">
+                    <div class="card">
+                        <img src={leftImg} class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
+
             </header>
         );
     }

@@ -11944,6 +11944,7 @@ ul {
   height: 400px;
   display: flex;
   margin: 0;
+  border: 1px solid black;
 }
 
 .HomeHeadBoxLeft {
@@ -12035,7 +12036,7 @@ ul {
 
 .HomeHeadBoxRightText {
   position: relative;
-  background-color: rgb(253, 5, 5);
+  display: flex;
   width: 100%;
   height: 100%;
   margin: auto;
@@ -12045,27 +12046,82 @@ ul {
   position: absolute;
   display: flex;
   width: 100%;
+  max-height: 100%;
   height: 100%;
   left: 0;
-  background-color: rgb(0, 0, 0);
 }
 
-.HomeHeadBoxRightTextBoxTest {
+.rightBox {
   position: relative;
+  overflow: hidden;
   display: flex;
   width: 25%;
-  height: auto;
-  margin: auto;
-  background-color: rgb(0, 0, 0);
+  height: 100%;
+  border: 1px solid black;
 }
 
-.HomeHeadBoxRightImgBoxTest {
-  position: relative;
+.rightBoxBottomText {
+  position: absolute;
   display: flex;
-  width: 25%;
-  height: auto;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  height: 35%;
+  border-top: 1px solid black;
+  background: rgb(165, 165, 165);
+}
+
+.rightBoxTopText {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  height: 35%;
+  border-bottom: 1px solid black;
+  background: rgb(165, 165, 165);
+}
+
+.rightBoxBottomImg {
+  position: absolute;
   margin: auto;
-  background-color: rgb(60, 255, 0);
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rightBoxTopImg {
+  position: absolute;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rightBoxBottomImg img {
+  /* border: 2px solid red; */
+  transform: scale(1, 1);
+  transition: all 0.6s ease-in-out;
+}
+
+.rightBoxBottomImg img:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.rightBoxTopImg img {
+  /* border: 2px solid red; */
+  transform: scale(1, 1);
+  transition: all 0.6s ease-in-out;
+}
+
+.rightBoxTopImg img:hover {
+  transform: scale(1.2, 1.2);
 }
 
 .navbar-nav {
