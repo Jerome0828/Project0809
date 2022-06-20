@@ -11,11 +11,6 @@
     src: url(../icon/Advertisement.ttf);
 }
 
-#login, #Register {
-    /* transform: translate(-25vw,0); */
-    transition: all 1.5s;
-}
-
 body {
     background-color: white;
     height: 100vh;
@@ -30,8 +25,15 @@ h2, .input, .button, #buttonL, p {
     letter-spacing: 1.3px;
 }
 
-.icon {
-    width: 50px;
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.list-group-item {
+    border-top  : none;
+    border-left: none;
+    border-right: none ;
+    background: transparent;
 }
 
 #icon1 {
@@ -39,15 +41,19 @@ h2, .input, .button, #buttonL, p {
     width: 30px;
     height: auto;
 }
+
 #bti {
-    width: 3%;
+    background: transparent;
     float: left;
-    margin-top: 0%;
+    margin: 0%;
     box-shadow:none;
+    border: none;
 }
 #btj {
-    width: 5%;
-    /* float: right; */
+    transform: translate(0,-50%);
+    margin-top: 50%;
+    width: 200px;
+    width: auto;
     margin-top: 0%;
     box-shadow:none;
 }
@@ -63,33 +69,26 @@ h2, .input, .button, #buttonL, p {
 }
   
 .login {
+    transform: translate(-50, 0);
+    transition: all 1.5s;
     background: white;
-    height: 450px;
-    width: 520px;
-    border-radius: 5px;
+    height: 80vh;
+    width: 40vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin-top: 5vh;
     align-items: center;
-    /* box-shadow: 0px 4px 30px -5px rgba(0,0,0,0.65); */
-}
-  
-  
-.input-login {
-    position: relative;
-    margin-bottom: 30px;
-    width: 400px;
 }
   
 .input {
-    width: 55%;
+    width: 15vw;
     box-sizing: border-box;
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--medium-gray);
     color: var(--light-gray);
-    padding: 12px 6px 12px 36px;
-    font-size: 19px;
+    padding: 12px 20px 12px 15px;
+    font-size: 20px;
     outline: none;
     caret-color: rgb(229, 91, 141);
 }
@@ -101,7 +100,7 @@ h2, .input, .button, #buttonL, p {
     border-image-slice: 1;
 }
 
-.input:focus + i {
+.input:focus + img {
     color: var(--light-gray);
 }
   
@@ -111,6 +110,14 @@ h2, .input, .button, #buttonL, p {
     opacity: .4;
 }
 
+img {
+    width: 50px;
+    padding: 5px;
+    color: var(--medium-gray);
+    position: relative;
+}
+  
+
 .button {
     width: 200px;
     background: lighten(var(--gray), 5%);
@@ -118,16 +125,15 @@ h2, .input, .button, #buttonL, p {
     border-radius: 30px; 
     color: var(--light-gray);
     font-size: 16px;
-    padding: 16px 36px;
+    padding: 16px 25px;
     cursor: pointer;
     transition: all .3s;
     margin-top: 20px;
     margin-bottom: -30px;
     box-shadow: 0px 4px 15px -5px rgba(0,0,0,0.65);
-    transition: all .3s;
 }
 
-#buttonL {
+.buttonL {
     background: lighten(var(--gray), 5%);
     border: none;
     border-radius: 30px; 
@@ -138,7 +144,7 @@ h2, .input, .button, #buttonL, p {
     transition: all .3s;
     margin-top: 20px;
     margin-bottom: -30px;
-    transition: all .3s;
+    transition: all 1s;
 }
   
 .button:hover {
@@ -147,7 +153,7 @@ h2, .input, .button, #buttonL, p {
 }
 
 #buttonL:hover {
-    color: red;
+    color: var(--gradient);
 }
  
 
