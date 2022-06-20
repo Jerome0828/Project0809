@@ -212,7 +212,8 @@ class Course extends Component {
                                                     <img src="https://dummyimage.com/100/000/fff" className='col-5 mt-3 rounded-circle h-100'/>
                                                     <div className='col-5 mx-3 my-2'>
                                                         <h3>name <span style={{fontSize: '15px'}}> time </span></h3>
-                                                        <p className='mt-3'>我會想再繼續租借我會想再繼續租借我會想再繼我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借</p>
+                                                        <p className='mt-3'>我會想再繼續租借我會想再繼續租借我會想再繼我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借
+                                                        </p>
                                                     </div>
                                                 </th>
                                             </tr>

@@ -6,18 +6,30 @@ import './login.css';
 
 class Login extends Component {
   state = {
-    opacity: [0,1,0,0], translate: ['-125%','-100%','-75%','100%']
+    opacity: [0,1,0,0], display: [ '', '', '', 'none'], marginLeft: ['-30vw', '0', '0', '0']
   }
 
   back = () => {
-    if ( this.state.opacity[2] == 1 ) { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-75%','100%']}) }
-    else if ( this.state.opacity[1] == 1 ) { this.setState({opacity: [1, 0, 0, 0], translate: ['0','0','0','100%']}) }
-    else { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','100%']}) }
+    if ( this.state.opacity[2] == 1 ) { 
+      this.setState({ opacity: [0,1,0,0], display: [ '', '', '', 'none'], marginLeft: ['-30vw', '0', '0', '0'] }) 
+    }
+    else if ( this.state.opacity[1] == 1 ) { 
+      this.setState({ opacity: [1,0,0,0], display: [ '', '', '', 'none'], marginLeft: ['0', '0', '0', '0'] }) 
+    }
+    else { 
+      this.setState({ opacity: [0,1,0,0], display: [ '', '', '', 'none'], marginLeft: ['-30vw', '0', '0', '0'] }) 
+    }
   }
   next = () => {
-    if ( this.state.opacity[1] == 1 ) {  this.setState({opacity: [0, 0, 1,0], translate: ['-225%','-200%','-200%','-200%']}) }
-    else if ( this.state.opacity[2] == 1 ) { this.setState({opacity: [0, 0, 0, 1], translate: ['-225%','  0','-300%','-300%']}) }
-    else { this.setState({opacity: [0, 1, 0, 0], translate: ['-125%','-100%','-50%','-375%']}) }
+    if ( this.state.opacity[1] == 1 ) {
+      this.setState({display: [ 'none', '', '', ''], opacity: [0, 0, 1, 0], marginLeft: [' ', '-30vw', '0', '0']}) 
+    }
+    else if ( this.state.opacity[2] == 1 ) {
+      this.setState({display: [ 'none', 'none', '', ''], opacity: [0, 0, 0, 1], marginLeft: [' ', '0', '-30vw', '0']})
+    }
+    else { 
+      this.setState({ display: [ '', '', '', 'none'], opacity: [0, 1, 0, 0], marginLeft: ['-30vw', '0', '0', '0'] })
+    }
   }
 
   render() {
@@ -25,7 +37,7 @@ class Login extends Component {
       <div id='box' className="login row">
         {/* -- 0 -- */}
         <div id='login' className='text-center' 
-          style={{ opacity: this.state.opacity[0], transform: `translate(${this.state.translate[0]},0)`}}>
+          style={{ opacity: this.state.opacity[0], display: this.state.display[0],  marginLeft: this.state.marginLeft[0]}}>
           <div className="row justify-content-end">
             <button id='btj' className='button ' onClick={this.back}><img id='icon1' src={require('../icon/right.png')} /></button>
             <h2> ??????? </h2>
@@ -49,8 +61,8 @@ class Login extends Component {
         </div>
         {/* -- 1 -- */}
         <div id='login' className='text-center' 
-          style={{ opacity: this.state.opacity[1], transform: `translate(${this.state.translate[1]},0)`}}>
-          <div className='animate__animated animate__slideInRight'>
+          style={{ opacity: this.state.opacity[1], display: this.state.display[1], marginLeft: this.state.marginLeft[1]}}>
+          <div className='animate__animated animate__fadeInDown'>
             <h2>Login</h2>
             <div className='container'>
               <div className="row">
@@ -75,7 +87,7 @@ class Login extends Component {
 
         {/* -- 2 -- */}
         <div id='login' className='text-center' 
-            style={{ opacity: this.state.opacity[2], transform: `translate(${this.state.translate[2]},0)`}}>
+            style={{ opacity: this.state.opacity[2], display: this.state.display[2], marginLeft: this.state.marginLeft[2]}}>
           <div className="row">
             <button id='bti' className='button' onClick={this.back}><img id='icon1' src={require('../icon/left.png')} /></button>
             <h2>Sign up</h2>
@@ -103,12 +115,12 @@ class Login extends Component {
 
         {/* -- 3 -- */}
         <div id='login' className='text-center' 
-            style={{ opacity: this.state.opacity[3], transform: `translate(${this.state.translate[3]},0)`}}>
+            style={{ opacity: this.state.opacity[3], display: this.state.display[3], marginLeft: this.state.marginLeft[3]}}>
           <div className="row">
             <h2>Email 已送出</h2>
           </div >
           <div className='container'>
-              <p className='m-5 '>已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證</p>
+              <p className='m-5 '>已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證 </p>
               <span className='mt-5'>沒收到驗證信 ?</span>
               <button id="buttonL" type="submit" className='mb-4'>再寄送一次</button>
           </div>
