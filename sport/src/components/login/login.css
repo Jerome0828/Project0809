@@ -3,7 +3,7 @@
     --gray: #27282d;
     --medium-gray: lighten(#27282d, 25%);
     --light-gray: lighten(#27282d, 65%);
-    --gradient: linear-gradient(140deg, rgb(219, 98, 65) 0%, rgb(229, 91, 141) 100%);
+    --gradient: linear-gradient(140deg, rgb(129, 60, 133) 0%, rgb(35, 118, 183) 100%);
 }
 
 @font-face {
@@ -12,12 +12,19 @@
 }
 
 body {
-    background-color: white;
+    background-color: black;
     height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#all {
+    opacity: 1;
+    height: 70vh;
+    width: 100vw;
+    background: linear-gradient(to top left, gray , white 70%);
 }
 
 input[type=number]::-webkit-inner-spin-button {
@@ -70,18 +77,30 @@ input[type=number]::-webkit-inner-spin-button {
     border: none;
     background-color: transparent;
 }
-  
+
+.loginA {
+    letter-spacing: 1.3px;
+    font-family: 'font01', sans-serif;
+    background: transparent;
+    height: 75vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vh;
+    align-items: center;
+}
+
 .login {
     letter-spacing: 1.3px;
     font-family: 'font01', sans-serif;
-    transform: translate(-50, 0);
-    transition: all 1s;
-    background: white;
-    height: 80vh;
-    width: 40vw;
+    transform: translate(-50%, 0);
+    transition: all 1.5s ;
+    background: transparent;
+    height: 75vh;
+    width: 50vw;
     display: flex;
     flex-direction: column;
-    margin-top: 5vh;
+    margin-top: 3vh;
     align-items: center;
 }
   
@@ -95,12 +114,12 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 12px 0px 12px 0px;
     font-size: 20px;
     outline: none;
-    caret-color: rgb(229, 91, 141);
+    caret-color: rgb(129, 60, 133);
 }
  
   
 .input:focus {
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
     border-image: var(--gradient);
     border-image-slice: 1;
 }
@@ -117,11 +136,11 @@ input[type=number]::-webkit-inner-spin-button {
 
 .button {
     width: 200px;
-    background: lighten(var(--gray), 5%);
+    background: transparent;
     border: none;
-    border-radius: 30px; 
+    border-radius: 10px; 
     color: var(--light-gray);
-    font-size: 16px;
+    font-size: 20px;
     padding: 16px 25px;
     cursor: pointer;
     transition: all .3s;
@@ -131,14 +150,12 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .buttonL {
-    background: lighten(var(--gray), 5%);
+    background: transparent;
     border: none;
-    border-radius: 30px; 
     color: var(--light-gray);
-    font-size: 16px;
+    font-size: 20px;
     padding: 16px 36px;
     cursor: pointer;
-    transition: all .3s;
     margin-top: 20px;
     margin-bottom: -30px;
     transition: all 1s;
