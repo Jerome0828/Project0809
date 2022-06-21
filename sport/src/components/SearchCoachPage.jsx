@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import Card from './Card';
 import Citys from './Citys';
+import SportList from './SportList'
 import '../css/search.css';
 import '../js/search.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { text } from '@fortawesome/fontawesome-svg-core';
 class SearchCoachPage extends Component {
     state = {
-
+        // sportList: [{ id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes }, { id: 2, value: 'workout', cName: '健身', chkicon: faTimes }]
     }
     style = {
         'display': 'none'
@@ -23,7 +27,7 @@ class SearchCoachPage extends Component {
             week[i].checked = false;
         }
         var labelforweek = document.querySelectorAll('input[name="week"]+label.form-control.text-center.mt-1');
-        for (var i = 0; i < labelforweek.length; i++) {
+        for (i = 0; i < labelforweek.length; i++) {
             labelforweek[i].className = 'form-control text-center mt-1';
         }
         this.setState({});
@@ -48,13 +52,7 @@ class SearchCoachPage extends Component {
         document.getElementsByName('timeRange')[0].value = 50;
         this.setState({});
     }
-    clearSportType = () => {
-        var sportType = document.getElementsByName('sportType');
-        for (var i = 0; i < sportType.length; i++) {
-            sportType[i].checked = false;
-        }
-        this.setState({});
-    }
+    
     clearPeople = () => {
         document.getElementsByName('people')[0].checked = false;
         document.getElementsByName('people')[1].checked = false;
@@ -66,7 +64,7 @@ class SearchCoachPage extends Component {
         this.clearPeople();
         this.clearPrice();
         this.clearRange();
-        this.clearSportType();
+        // this.clearSportType();
         this.clearTime();
         this.clearWeek();
     }
@@ -122,11 +120,7 @@ class SearchCoachPage extends Component {
                             <label name='price' className='form-control text-center mt-1'><input type="radio" name='price' className='d-none' /> $ 2,001 ~ $ 3,000 </label>
                             <label name='price' className='form-control text-center mt-1'><input type="radio" name='price' className='d-none' /> $ 3000 ~ 以上</label>
 
-                            <div className='d-flex justify-content-between mt-3'><span>類別</span><span onClick={this.clearSportType} className='btn text-secondary'>清除</span></div>
-                            <input type="checkbox" id="yoga" name="sportType" />
-                            <label htmlFor="yoga" className='m-1'>瑜珈</label><br />
-                            <input type="checkbox" id="workout" name="sportType" />
-                            <label htmlFor="workout" className='m-1'>健身</label>
+                            <SportList />
 
                             <div className='d-flex justify-content-between mt-3'><span>人數</span><span onClick={this.clearPeople} className='btn text-secondary'>清除</span></div>
                             <div>
