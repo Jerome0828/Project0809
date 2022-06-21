@@ -12,6 +12,7 @@ $(function(){
     })
 
     $('label[name="price"]').on('click', function(){
+        $('label[name="price"]').removeClass('bg-success');
         $(this).addClass('bg-success');
         // console.log($(this));
     })
