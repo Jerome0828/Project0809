@@ -50,7 +50,7 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div className="mb-3">
-                        <textarea class="form-control" rows="3" placeholder="輸入課程簡介" required></textarea>
+                        <textarea className="form-control" rows="3" placeholder="輸入課程簡介" required></textarea>
                     </div>
 
                     {/* 上課地點 */}
@@ -89,11 +89,11 @@ class BeCoach extends Component {
                     </ul>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="yoga" value="yoga" />
-                        <label class="form-check-label" for="yoga">瑜珈</label>
+                        <label class="form-check-label" htmlFor="yoga">瑜珈</label>
                     </div>
                     <div class="form-check form-check-inline mb-3">
                         <input class="form-check-input" type="checkbox" id="workout" value="workout" />
-                        <label class="form-check-label" for="workout">健身</label>
+                        <label class="form-check-label" htmlFor="workout">健身</label>
                     </div>
 
                     {/* 上課時間 */}
@@ -106,6 +106,7 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div className="mb-3">
+                        <label>
                         <select className="form-control" defaultValue={selectedOptionId} name="classTime" placeholder='請選擇課程長度' required>
                             <option className='d-none' value="">請選擇課程長度</option>
                             <option value="30">30</option>
@@ -113,6 +114,7 @@ class BeCoach extends Component {
                             <option value="90">90</option>
                             <option value="120">120</option>
                         </select>
+                        </label>
                         <p className='text-muted mt-2'>(分鐘)</p>
                     </div>                    
 
@@ -122,12 +124,12 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required/>
-                        <label class="form-check-label" for="inlineRadio1">一對一</label>
+                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required/>
+                        <label className="form-check-label" htmlFor="inlineRadio1">一對一</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                        <label class="form-check-label" for="inlineRadio2">一對多</label>
+                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                        <label className="form-check-label" htmlFor="inlineRadio2">一對多</label>
                     </div>
 
                     {/* 我同意 */}
@@ -137,7 +139,7 @@ class BeCoach extends Component {
                     </ul>
                     <div className="form-check mb-3">
                         <input className="form-check-input" type="checkbox" id="myCheck" name="remember" required />
-                        <label className="form-check-label" for="myCheck">I agree on....</label>
+                        <label className="form-check-label" htmlFor="myCheck">I agree on....</label>
                         <div className="valid-feedback">Valid.</div>
                         <div className="invalid-feedback">Check this checkbox to continue.</div>
                     </div>

@@ -24,19 +24,19 @@ class SearchSitePage extends Component {
 
                             <div className='d-flex justify-content-between mt-3'><span>星期</span><span className='text-secondary'>清除</span></div>
                             <input type="checkbox" id="mon" name="mon" />
-                            <label for="mon" className='m-1'> 星期一</label><br />
+                            <label htmlFor="mon" className='m-1'> 星期一</label><br />
                             <input type="checkbox" id="tues" name="tues" />
-                            <label for="tues" className='m-1'> 星期二</label><br />
+                            <label htmlFor="tues" className='m-1'> 星期二</label><br />
                             <input type="checkbox" id="wed" name="wed" />
-                            <label for="wed" className='m-1'> 星期三</label><br />
+                            <label htmlFor="wed" className='m-1'> 星期三</label><br />
                             <input type="checkbox" id="thur" name="thur" />
-                            <label for="thur" className='m-1'> 星期四</label><br />
+                            <label htmlFor="thur" className='m-1'> 星期四</label><br />
                             <input type="checkbox" id="fri" name="fri" />
-                            <label for="fri" className='m-1'> 星期五</label><br />
+                            <label htmlFor="fri" className='m-1'> 星期五</label><br />
                             <input type="checkbox" id="sat" name="sat" />
-                            <label for="sat" className='m-1'> 星期六</label><br />
+                            <label htmlFor="sat" className='m-1'> 星期六</label><br />
                             <input type="checkbox" id="sun" name="sun" />
-                            <label for="sun" className='m-1'> 星期日</label><br />
+                            <label htmlFor="sun" className='m-1'> 星期日</label><br />
 
                             <div className='d-flex justify-content-between mt-3'><span>時段</span><span className='text-secondary'>清除</span></div>
                             <input type="range" />
@@ -50,7 +50,7 @@ class SearchSitePage extends Component {
 
                             <div className='d-flex justify-content-between mt-3'><span>類別</span><span className='text-secondary'>清除</span></div>
                             <input type="checkbox" id="yoga" name="sun" />
-                            <label for="yoga" className='m-1'>瑜珈</label><br />
+                            <label htmlFor="yoga" className='m-1'>瑜珈</label><br />
 
                             <div className='d-flex justify-content-between mt-3'><span>人數</span><span className='text-secondary'>清除</span></div>
                             <label><input type="radio" name='people' /> 一對一</label> <br />

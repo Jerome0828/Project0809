@@ -31,10 +31,10 @@ class Citys extends Component {
         }
         let district = document.getElementById('district');
         districtList.map((val,idx) => {
-            console.log(val, idx)
+            // console.log(val, idx)
             district.innerHTML += `<option key=${idx} value=${val.AreaEngName}>${val.AreaName}</option>`
         });
-        console.log(cityDistrict);
+        // console.log(cityDistrict);
         this.setState({});
     }
     check = (e) => {
@@ -43,7 +43,7 @@ class Citys extends Component {
             district.innerHTML = '';
         }
         this.district(e.target.value);
-        console.log(e.target.value);
+        // console.log(e.target.value);
         this.setState({});
     }
     render() {

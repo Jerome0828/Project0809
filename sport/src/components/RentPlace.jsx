@@ -24,11 +24,11 @@ class RentPlace extends Component {
 
                     {/* 場地名稱 */}
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>場地名稱 :</b>                            
+                        <li className="list-group-item"><b>場地名稱 :</b>
                         </li>
                     </ul>
                     <div className="mb-3 mt-1">
-                        <input type="text" className="form-control" placeholder="請輸入場地名稱" />
+                        <input type="text" className="form-control" placeholder="請輸入場地名稱" required/>
                     </div>
 
                     {/* 場地地址 */}
@@ -52,29 +52,31 @@ class RentPlace extends Component {
 
                     {/* 人數限制 */}
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>場地人數限制 :</b>                            
+                        <li className="list-group-item"><b>場地人數限制 :</b>
                         </li>
                     </ul>
                     <div className="mb-3 mt-1">
-                        <input type="number" className="form-control" placeholder="請輸入人數限制" required />
+                        <label>
+                            <input type="number" className="form-control" placeholder="請輸入人數限制" required />
+                        </label>
                     </div>
-                   
+
                     {/* 適用課程類別 */}
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item"><b>適用課程類別 :</b>
                         </li>
                     </ul>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="yoga" value="yoga" />
-                        <label class="form-check-label" for="yoga">瑜珈</label>
+                        <input className="form-check-input" type="checkbox" id="yoga" value="yoga" />
+                        <label className="form-check-label" htmlFor="yoga">瑜珈</label>
                     </div>
                     <div class="form-check form-check-inline mb-3">
-                        <input class="form-check-input" type="checkbox" id="workout" value="workout" />
-                        <label class="form-check-label" for="workout">健身</label>
+                        <input className="form-check-input" type="checkbox" id="workout" value="workout" />
+                        <label className="form-check-label" htmlFor="workout">健身</label>
                     </div>
 
-                     {/* 刊登日期 */}
-                     <ul className="list-group list-group-flush">
+                    {/* 刊登日期 */}
+                    <ul className="list-group list-group-flush">
                         <li className="list-group-item"><b>刊登日期 :</b>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
@@ -100,13 +102,13 @@ class RentPlace extends Component {
                     </ul>
                     <div className="form-check mb-3">
                         <input className="form-check-input" type="checkbox" id="myCheck" name="remember" required />
-                        <label className="form-check-label" for="myCheck">I agree on....</label>
+                        <label className="form-check-label" htmlFor="myCheck">I agree on....</label>
                         <div className="valid-feedback">Valid.</div>
                         <div className="invalid-feedback">Check this checkbox to continue.</div>
                     </div>
-                    
-                        <button type="submit" className="btn btn-outline-success">送出</button>
-                        <button type="submit" className="btn btn-outline-danger mx-3">取消</button>                    
+
+                    <button type="submit" className="btn btn-outline-success">送出</button>
+                    <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                 </form>
             </div>
         );

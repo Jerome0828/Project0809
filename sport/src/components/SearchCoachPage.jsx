@@ -5,8 +5,18 @@ import '../css/search.css';
 import '../js/search.js';
 class SearchCoachPage extends Component {
     state = {}
-
+    clearChecked = '';
+    clearForm = (e) => {
+        document.getElementById('city').value = '';
+        document.getElementById('district').value = '';        
+        this.setState({});
+    }
+    clearWeek = (e) => {
+        console.log(this.clearChecked);
+        this.setState({});
+    }
     render() {
+        var clearChecked;
         return (
             <div className='container'>
                 <span>教練</span><span> / </span><span className='text-danger'>探索</span>
@@ -16,26 +26,29 @@ class SearchCoachPage extends Component {
                         <form className='mt-3'>
                             <input type="text" placeholder="搜尋" />
 
-                            <div className='d-flex justify-content-between mt-3'><span>地區</span><span className='text-secondary'>清除</span></div>
+                            <div className='d-flex justify-content-between mt-3'>
+                                <span>地區</span>
+                                <span onClick={this.clearForm} className='btn text-secondary'>清除</span>
+                            </div>
                             <Citys />
 
                             <div className='d-flex justify-content-between mt-3'><span>日期</span><span className='text-secondary'>清除</span></div>
                             <input type="date" /> ~<input type="date" />
 
-                            <div className='d-flex justify-content-between mt-3'><span>星期</span><span className='text-secondary'>清除</span></div>
-                            <input type="checkbox" id="mon" name="mon" />
-                            <label for="mon" className='m-1'> 星期一</label><br />
-                            <input type="checkbox" id="tues" name="tues" />
+                            <div className='d-flex justify-content-between mt-3'><span>星期</span><span onClick={this.clearWeek} className='btn text-secondary'>清除</span></div>
+                            <input type="checkbox" id="mon" name="week" checked={clearChecked}/>
+                            <label for="mon" className='m-1' > 星期一</label><br />
+                            <input type="checkbox" id="tues" name="week" checked={clearChecked}/>
                             <label for="tues" className='m-1'> 星期二</label><br />
-                            <input type="checkbox" id="wed" name="wed" />
+                            <input type="checkbox" id="wed" name="week" checked={clearChecked}/>
                             <label for="wed" className='m-1'> 星期三</label><br />
-                            <input type="checkbox" id="thur" name="thur" />
+                            <input type="checkbox" id="thur" name="week" checked={clearChecked}/>
                             <label for="thur" className='m-1'> 星期四</label><br />
-                            <input type="checkbox" id="fri" name="fri" />
+                            <input type="checkbox" id="fri" name="week" checked={clearChecked}/>
                             <label for="fri" className='m-1'> 星期五</label><br />
-                            <input type="checkbox" id="sat" name="sat" />
+                            <input type="checkbox" id="sat" name="week" checked={clearChecked}/>
                             <label for="sat" className='m-1'> 星期六</label><br />
-                            <input type="checkbox" id="sun" name="sun" />
+                            <input type="checkbox" id="sun" name="week" checked={true}/>
                             <label for="sun" className='m-1'> 星期日</label><br />
 
                             <div className='d-flex justify-content-between mt-3'><span>時段</span><span className='text-secondary'>清除</span></div>
