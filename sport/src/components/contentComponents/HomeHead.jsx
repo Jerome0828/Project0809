@@ -3,8 +3,6 @@ import '../../scss/all.css';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 
-
-
 // import 'bootstrap/dist/js/bootstrap';
 import { NavLink } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
@@ -162,8 +160,87 @@ class HomeHead extends Component {
                 </div>
             </div>
         </header>
+        
+{/* 第一層section(設定滿版標語) */}
+            <section>
+                <div className='oneSectionBox' 
+                
+                >
+                    <div className='row container m-auto'>
+                        <div className='col-3 oneSectionBoxCol'
 
-{/* 第一層section(輪播Carousel設定) */}
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"
+
+                        >
+                        <h1 className='container text-center mt-4 text-white'>30,000+</h1>
+                        <h4 className='container text-center text-white'>運動愛好者</h4>
+                            <div className='oneSectionBoxButton'>
+                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
+                                立即加入
+                            </NavLink>
+                            </div>
+                        </div>
+
+                        <div className='col-3 oneSectionBoxCol'
+                        
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"
+                        
+                        >
+                        <h1 className='container text-center mt-4 text-white'>1000+</h1>
+                        <h4 className='container text-center text-white'>專業教練老師</h4>
+                            <div className='oneSectionBoxButton'>
+                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
+                                立即加入
+                            </NavLink>
+                            </div>
+                        </div>
+
+                        <div className='col-3 oneSectionBoxCol'
+                        
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"
+                        
+                        >
+                        <h1 className='container text-center mt-4 text-white'>1,600+</h1>
+                        <h4 className='container text-center text-white'>實體/線上課程</h4>
+                            <div className='oneSectionBoxButton'>
+                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
+                                立即加入
+                            </NavLink>
+                            </div>
+                        </div>
+
+                        <div className='col-3 oneSectionBoxCol'
+                        
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"
+                        
+                        >
+                        <h1 className='container text-center mt-4 text-white'>100+</h1>
+                        <h4 className='container text-center text-white'>運動訓練空間</h4>
+                            <div className='oneSectionBoxButton'>
+                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
+                                立即加入
+                            </NavLink>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </section>
+
+{/* 第二層section(輪播Carousel設定) */}
         <section>
             <div className='mt-6 m-5 h-100'
             data-aos="fade-up"
@@ -171,12 +248,11 @@ class HomeHead extends Component {
                 
 
                 <div
-                className='carouselBoxBigText container' 
-                data-aos="fade-left"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
+                className='carouselBoxBigText container mb-3' 
+                data-aos="fade-up"
                 >
-                    <h3>精選課程</h3>
+                    <h1>全台超過1000位專業教練</h1>
+                    <a>健身、重訓、瑜珈、有氧、皮拉提斯、舞蹈全都有</a>
                 </div>
             
 
@@ -199,102 +275,102 @@ class HomeHead extends Component {
                 </Carousel.Item>
 
             </Carousel>
+
+
+            <div
+                className='carouselBoxBottomText cont' 
+                data-aos="fade-up"
+                >   
+                    <div className='carouselBoxBottomTextV1 mt-3'>
+                        <NavLink to="/coursesAndVenues">
+
+                        <a className='carouselBoxBottomTextV2'>探索更多教練
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
+                        </a>
+
+                        </NavLink>
+                    </div>
             </div>
 
+        
+            </div>
         </section>
         
-{/* 第二層section(輪播Carousel設定) */}
+{/* 第三層section(輪播Carousel設定) */}
         <section>
-
-            {/* 第一層輪播設定 */}
-            <div className='mt-6 m-5 h-100'
-
+            <div className=' m-5 h-100'
             data-aos="fade-up"
-
             >
+                
+
                 <div
-                className='carouselBoxBigText container' 
-                data-aos="fade-left"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
+                className='carouselBoxBigText container mb-3' 
+                data-aos="fade-up"
+
                 >
-                    <h3>優質場地</h3>
+                    <h1>各類運動訓練空間</h1>
+                    <a>室內運動、室內健身、戶外運動、戶外健身</a>
                 </div>
+            
 
-
-
-            <Carousel interval={1500} indicators={false} nextLabel={false} prevLabel={false} fade
+            <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
             pause={'hover'} slide={true} touch={true} controls={false}>
 
             {/* 第一頁輪播 */}
+            <Carousel.Item className='w-100 d-flex'>
+                {this.state.commodityV2.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+                </Carousel.Item>
+                
+            {/* 第二頁輪播 */}  
                 <Carousel.Item className='w-100 d-flex'>
                 {this.state.commodityV1.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
                 </Carousel.Item>
 
-            {/* 第二頁輪播 */}
-            <Carousel.Item className='w-100 d-flex'>
-                {this.state.commodityV2.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
-                </Carousel.Item>              
 
-            {/* 第三頁輪播 */}  
-            <Carousel.Item className='w-100 d-flex'>
+            {/* 第三頁輪播 */}
+                <Carousel.Item className='w-100 d-flex'>
                 {this.state.commodityV3.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
                 </Carousel.Item>
+
+
+
+
             </Carousel>
+
+
+            <div
+                className='carouselBoxBottomText cont' 
+                data-aos="fade-up"
+
+                >   
+                    <div className='carouselBoxBottomTextV1 mt-3'>
+                        <NavLink to="/coursesAndVenues">
+
+                        <a className='carouselBoxBottomTextV2'>探索更多場地
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
+                        </a>
+
+                        </NavLink>
+                    </div>
             </div>
 
+        
+            </div>
         </section>
-
+        
 {/* 第三層section設定固定底圖 */}
-        <section>
+        <section className='mt-6 mb-5'>
         <div className='threeSectionBox mt-6'>
             <div className='threeSectionBoxBottomImg h-100 w-100'>
             </div>
         </div> 
         </section>
-
-{/* 第四層section設定樣式 */}
-        <section>
-            <div className='mt-6 row m-auto container'>
-                <div class="card col-4 h-100 " >
-                    <img src={sectionCarouselImg2} class="card-img-top" alt="..."/>
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card col-4" >
-                    <img src={sectionCarouselImg3} class="card-img-top " alt="..."/>
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card col-4" >
-                    <img src={sectionCarouselImg4} class="card-img-top" alt="..."/>
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-{/* 第五層section設定樣式 */}
-        <section>
-            <div className='threeSectionBox mt-6'>
-                <div className='threeSectionBoxBottomImg2 h-100 w-100'>
-                </div>
-            </div> 
-        </section>
-
 
 
 

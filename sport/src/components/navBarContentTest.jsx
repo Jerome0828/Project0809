@@ -12,8 +12,6 @@ function NavBarContent1() {
     return (
       <div>
 
-
-
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
           <Container>
             <Navbar.Brand><NavLink  to="/" exact><img src="https://dummyimage.com/200x50/000/fff" alt="test1"/></NavLink></Navbar.Brand>
