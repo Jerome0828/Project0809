@@ -58,7 +58,7 @@ class Citys extends Component {
                         <option key={idx} value={val.CityEngName}>{val.CityName}</option>
                         )}
                 </select >
-                <select className='form-control' id="district" required></select>
+                <select className='mt-2 form-control' id="district" required></select>
             </>
 
         )
