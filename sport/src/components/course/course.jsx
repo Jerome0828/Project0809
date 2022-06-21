@@ -25,7 +25,7 @@ class Course extends Component {
                     </nav>
                 </div>
                 <div className='row justify-content-center'>
-                    <div className="carousel slide col-lg-7">
+                    <div className="carousel slide col-lg-12">
                         <Carousels />
                     </div>
                     <div className='col-lg-5 row justify-content-center'>

@@ -20,11 +20,6 @@ body {
     align-items: center;
 }
 
-h2, .input, .button, #buttonL, p {
-    font-family: 'font01', sans-serif;
-    letter-spacing: 1.3px;
-}
-
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
@@ -35,6 +30,14 @@ input[type=number]::-webkit-inner-spin-button {
     border-right: none ;
     background: transparent;
 }
+
+.icon {
+    width: 50px;
+    padding: 5px;
+    color: var(--medium-gray);
+    position: relative;
+}
+  
 
 #icon1 {
     transform: translate(-50%,0);
@@ -69,8 +72,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
   
 .login {
+    letter-spacing: 1.3px;
+    font-family: 'font01', sans-serif;
     transform: translate(-50, 0);
-    transition: all 1.5s;
+    transition: all 1s;
     background: white;
     height: 80vh;
     width: 40vw;
@@ -81,13 +86,13 @@ input[type=number]::-webkit-inner-spin-button {
 }
   
 .input {
-    width: 15vw;
+    width: 14vw;
     box-sizing: border-box;
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--medium-gray);
     color: var(--light-gray);
-    padding: 12px 20px 12px 15px;
+    padding: 12px 0px 12px 0px;
     font-size: 20px;
     outline: none;
     caret-color: rgb(229, 91, 141);
@@ -109,14 +114,6 @@ input[type=number]::-webkit-inner-spin-button {
     color: var(--light-gray);
     opacity: .4;
 }
-
-img {
-    width: 50px;
-    padding: 5px;
-    color: var(--medium-gray);
-    position: relative;
-}
-  
 
 .button {
     width: 200px;
@@ -152,8 +149,8 @@ img {
     box-shadow: 0px 5px 20px -3px rgba(0,0,0,0.65);
 }
 
-#buttonL:hover {
-    color: var(--gradient);
+.buttonL:hover {
+    color: rgb(229, 91, 141);
 }
  
 
@@ -163,7 +160,7 @@ img {
         margin-bottom: 40px;
     }
     
-    #button {
+    .button {
         margin-top: 10px;
         margin-bottom: -20px;
     }
