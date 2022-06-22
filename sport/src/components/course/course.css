@@ -1,8 +1,52 @@
-#spa {
+* {
+    z-index: 2;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#box {
+    z-index: auto;
+    background-color: white;
+}
+
+#a {
+    position: absolute;
+    height: 400vh;
+    background: linear-gradient( 135deg, gray 10%, white 70%);
+    z-index: 0;
+}
+
+.tit {
+    font-size: 18px;
+    transform: translate(30%,0);
+    /* margin-top: 1%; */
+    /* padding: 40px; */
+    height: auto;
+    color: white;
+}
+
+.tbox {
+    /* transform: translate(0,-15%); */
+}
+
+iframe {
+    margin-top:3%;
+    width: 80%;
+    height: 50vh;
+}
+
+.btn {
+    height: 60px;
+    font-size: 20px;
+}
+
+.span {
+    background-color: gray;
+    width: 150%;
     display: inline-block;
-    border: 2px solid red;
-    padding: 5px;
-    margin: 3px;
+    border: 2px inset blue;
     white-space: nowrap;
 }
 
@@ -10,12 +54,6 @@
     width: 30px;
     height: 30px;
 } 
-
-#buttonA {
-    margin-top: 8%;
-    width: 80%;
-    height: 10%;
-}
 
 #title {
     font-size: 30px;

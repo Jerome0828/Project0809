@@ -21,6 +21,7 @@ function Carousels() {
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
+      
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -33,13 +34,13 @@ function Carousels() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item>
         <img
           className="d-block w-100"
           src="https://fakeimg.pl/350x200/ff0000/000"
           alt="Third slide"
         />
-
         <Carousel.Caption>
           <h3>Third slide label</h3>
           <p>
