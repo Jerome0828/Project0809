@@ -25,7 +25,7 @@ class SportList extends Component {
                      return (
                         <React.Fragment>
                             <input onChange={this.sportListOnclick} className='d-none' type="checkbox" id={elm.value} name="sportType" />
-                            <label htmlFor={elm.value} className='m-1'><span name={elm.value}><FontAwesomeIcon icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
+                            <label htmlFor={elm.value} className='rounded-pill shadow m-1 mx-2'><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
                         </React.Fragment>
                     )
                 })}
