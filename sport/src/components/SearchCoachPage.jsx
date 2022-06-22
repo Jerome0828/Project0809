@@ -101,6 +101,12 @@ class SearchCoachPage extends Component {
     clearPeople = () => {
         document.getElementsByName('people')[0].checked = false;
         document.getElementsByName('people')[1].checked = false;
+        var people = document.querySelectorAll('input[name="people"]');
+        var labelPeople = document.querySelectorAll('label[name="people"]');
+        for (var i = 0; i < people.length; i++) {
+            people[i].checked = false;
+            labelPeople[i].className = 'form-control text-center mt-1';
+        }
         this.setState({});
     }
 
@@ -180,8 +186,8 @@ class SearchCoachPage extends Component {
                             {/* 上課模式 */}
                             <div className='d-flex justify-content-between mt-3'><span>人數</span><span onClick={this.clearPeople} className='btn text-secondary'>清除</span></div>
                             <div>
-                                <label><input type="radio" name='people' /> 一對一</label> <br />
-                                <label><input type="radio" name='people' /> 一對多</label>
+                                <label name='people' className="form-control text-center mt-1"><input type="radio" name='people' className='d-none'/> 一對一</label>
+                                <label name='people' className="form-control text-center mt-1"><input type="radio" name='people' className='d-none'/> 一對多</label>
                             </div>
 
                             <input className='mt-3' type="submit" value={'顯示結果'} />

@@ -16,6 +16,12 @@ $(function(){
         $(this).addClass('bg-success');
         // console.log($(this));
     })
+
+    $('label[name="people"]').on('click', function(){
+        $('label[name="people"]').removeClass('bg-success');
+        $(this).addClass('bg-success');
+        // console.log($(this));
+    })
     // for(var i =0; i<$('input[type="checkbox"]').length; i++){
     //     // if($('input[type="checkbox"]')[i].checked){
     //     //     $('label.form-control.text-center.mt-1').css('background-color', 'red');
