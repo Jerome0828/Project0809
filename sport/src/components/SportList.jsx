@@ -9,6 +9,12 @@ class SportList extends Component {
     state = {
         
     }
+    
+    priceStyle = {
+        'color':'balck',
+        'padding': '5px',
+        'border':'2px solid #a7193090'
+    }
     sportListOnclick=(event)=>{
         let e = event
         this.props.sportListOnclick(e)
@@ -25,7 +31,7 @@ class SportList extends Component {
                      return (
                         <React.Fragment>
                             <input onChange={this.sportListOnclick} className='d-none' type="checkbox" id={elm.value} name="sportType" />
-                            <label htmlFor={elm.value} className='rounded-pill shadow m-1 mx-2'><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
+                            <label htmlFor={elm.value} style={this.priceStyle} className='rounded shadow m-1 mx-2'><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
                         </React.Fragment>
                     )
                 })}

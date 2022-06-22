@@ -9,8 +9,8 @@ class App extends Component {
   state = {}
   render() {
     return (
-      // <MySearchPage /> 
-      <RentPlace />      
+      <MySearchPage /> 
+      // <RentPlace />      
     )
   }
 }
