@@ -19,7 +19,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3">
-                        <input type="file" className="form-control" required />
+                        <input type="file" className="form-control" required={false} />
                     </div>
 
                     {/* 場地名稱 */}
