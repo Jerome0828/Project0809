@@ -18,17 +18,28 @@ body {
     z-index: 0;
 }
 
+#v {
+    position: absolute;
+    /* overflow:hidden ; */
+}
+
+.img {
+    min-width: 60vw;
+    height: auto;
+    position: absolute;
+}
+
 .tit {
     font-size: 18px;
     transform: translate(30%,0);
-    /* margin-top: 1%; */
-    /* padding: 40px; */
     height: auto;
     color: white;
 }
 
+
 .tbox {
     /* transform: translate(0,-15%); */
+    
 }
 
 iframe {

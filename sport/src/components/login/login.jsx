@@ -156,7 +156,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/profile.png')} />
-                      <input className="input" type="text" placeholder="帳號" required/><br />
+                      <input className="input" type="text" placeholder="帳號"/><br />
                       <span> &nbsp; {this.state.adr}</span>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/email.png')} />
-                      <input className="input " type="e-mal" placeholder="Email" onChange={this.reX} required/><br />
+                      <input className="input " type="e-mal" placeholder="Email" onChange={this.reX}/><br />
                       <span> &nbsp; {this.state.emr}</span>
                     </div>
                   </div>
@@ -176,7 +176,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/password.png')} />
-                      <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼" required/><br />
+                      <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼"/><br />
                       <span style={{color: 'red'}}> &nbsp; {this.state.pwr}</span>
                     </div>
                   </div>
@@ -185,7 +185,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/password.png')} />
-                      <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" required/>
+                      <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼"/>
                       <br />
                       <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                     </div>
@@ -197,7 +197,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/identity-card.png')} />
-                      <input className="input" type="text" placeholder="暱稱" required/><br />
+                      <input className="input" type="text" placeholder="暱稱"/><br />
                     </div>
                   </div>
                 </li>
@@ -219,7 +219,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/account.png')} />
-                      <input className="input" type="text" placeholder="真實姓名" required/>
+                      <input className="input" type="text" placeholder="真實姓名" />
                     </div>
                   </div>
                 </li>
@@ -227,7 +227,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/mobile-app.png')} />
-                      <input className="input" type="number" placeholder="連絡電話" required/><br />
+                      <input className="input" type="number" placeholder="連絡電話"/><br />
                     </div>
                   </div>
                 </li>

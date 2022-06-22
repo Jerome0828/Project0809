@@ -18,18 +18,14 @@ class Course extends Component {
             <div id="box">
                 <div className='col-lg-10' id='a' ></div>
                 <div className='row justify-content-center '>
-                    <h1 className='col-lg-5 my-5 text-right px-1' >肌地台 自由教練場地租借</h1>
+                    <h1 className='col-lg-5 mt-5 mb-4 text-right'>肌地台 自由教練場地租借</h1>
                 </div>
-                <div className='row h-100 mb-5' >
+                <div className='row h-100 mb-0' ref={this.abc}>
                     <div className='col-lg-9 b-0'>
-                        <div className=' w-100'>
-                            <img className='w-75 ' src="https://fakeimg.pl/350x200/ff0000,128/000,255" alt="" />
-                        </div>
-
-                        
-                        <div className='row mt-5 mx-5 w-100 text-center'>
-                            <button href="#" class="btn col-lg-5 bg-info mx-3 p-3">立即租借</button>
-                            <button href="#" class="btn col-lg-5 bg-info mx-3 p-3">聯絡場地</button>
+                        <div className='w-75' style={{position: 'absolute'}} >
+                            <div id='v' className='' style={{width: '80vw', height: '30vh'}}>
+                                <Carousels />
+                            </div>
                         </div>
                     </div>
                     <div className='tbox container-fluid col-lg-3 w-25 m-0'>
@@ -48,6 +44,10 @@ class Course extends Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='row mt-0 mb-5 mx-5 w-75 text-center'>
+                    <button href="#" class="btn col-lg-5 bg-info mx-3 p-3">立即租借</button>
+                    <button href="#" class="btn col-lg-5 bg-info mx-3 p-3">聯絡場地</button>
                 </div>
                 
 

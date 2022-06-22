@@ -10,7 +10,6 @@ class App extends Component {
         return (
             <Course />
             // <Login />
-            // <AAA />
         );
     }
 }

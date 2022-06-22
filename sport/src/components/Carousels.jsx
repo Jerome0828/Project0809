@@ -8,13 +8,17 @@ function Carousels() {
     setIndex(selectedIndex);
   };
 
+
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} interval={1000} indicators={false} nextLabel={null} prevLabel={null}>
+    <Carousel activeIndex={index} onSelect={handleSelect} interval={1000} 
+      style={{display: 'block', width: '80vw', height: '30vw'}}>
+      
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className=""
           src="https://fakeimg.pl/350x200/ff0000/000"
           alt="First slide"
+          style={{width: '80vw', height: '30vw'   }}
         />
         <Carousel.Caption>
           <h3>First slide label</h3>
@@ -24,9 +28,10 @@ function Carousels() {
       
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="https://fakeimg.pl/350x200/ff0000/000"
+          className=""
+          src="https://fakeimg.pl/350x200/ff0000,128/000,255"
           alt="Second slide"
+          style={{width: '80vw', height: '30vw'   }}
         />
 
         <Carousel.Caption>
@@ -36,11 +41,15 @@ function Carousels() {
       </Carousel.Item>
 
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://fakeimg.pl/350x200/ff0000/000"
-          alt="Third slide"
-        />
+        <div>
+          <img
+            className=""
+            src="https://fakeimg.pl/200x100/?retina=1&text=こんにちは&font=noto"
+            alt="Third slide"
+            style={{width: '80vw', height: '30vw'   }}
+          />
+        </div>
+        
         <Carousel.Caption>
           <h3>Third slide label</h3>
           <p>
