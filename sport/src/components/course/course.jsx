@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.css';
+import Teachers from '../teachers';
 import Card from '../Card';
-import Carousels from '../Carousels';
-import Evaluation from './Evaluation';
+import Carousels from './c_carousels';
+import Evaluation from '../Evaluation';
 import './course.css';
 
 class Course extends Component {
@@ -22,7 +23,7 @@ class Course extends Component {
                 </div>
                 <div className='row h-100 mb-0' ref={this.abc}>
                     <div className='col-lg-9 b-0'>
-                        <div className='w-75' style={{position: 'absolute'}} >
+                        <div className='w-75' >
                             <div id='v' className='' style={{width: '80vw', height: '30vh'}}>
                                 <Carousels />
                             </div>
@@ -51,7 +52,7 @@ class Course extends Component {
                 </div>
                 
 
-                <div className='row justify-content-start mt-0'>
+                <div className='row mt-0 justify-content-end'>
                     <div className='col-9 '>
                             <div className='container'>
                                 <p id='title' className='container'>場地簡介</p>
@@ -165,45 +166,27 @@ class Course extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className='container-fluid'>
-                                <p id='title' className='container'>授課師資</p>
-                                <div className='text-center mt-3'>
-                                        <img src="https://dummyimage.com/100/000/fff"  style={{height: '100%'}} id='img'/>
-                                        <span className='p-5'>name</span>
-                                </div>
-                                <div className='row container mt-4'>
-                                    <div className='col-12'>
-                                            <dl>
-                                                <dt>證照</dt>
-                                                <ul>
-                                                    <p>ACE CPT 美國運動委員會 私人教練專業證照認證</p>
-                                                    <p>AFAA PFT 美國運動體適能協會 個人體適能指導員</p>
-                                                    <p>TRX STC 懸吊訓練師</p>
-                                                    <p>Cross core 懸吊訓練</p>
-                                                    <p>VIPR 功能性訓練</p>
-                                                    <p>運動體適能營養專家LV1+LV2</p>
-                                                    <p>SMART 自我筋膜放鬆</p>
-                                                    <p>肌能系貼紮</p>
-                                                    <p>身體感知訓練技巧</p>
-                                                </ul>
-                                            </dl>
-                                    </div>
-                                </div>
-                                
-                            </div>
                     </div>
-                    <div className='col-lg-3'>
+                    <div className='col-lg-3 '>
                         <h3 className='text-center mb-5'>課後評價</h3>
                         <div className='container-fluid'>
+                            <Evaluation />
                             <Evaluation />
                             <Evaluation />
                             <Evaluation />
                         </div>
                     </div>
                 </div><br />
-                <div className='row container-fluid'>
-                    <h1 id='title' className=' mt-3'>關聯課程</h1>
-                    <div className='container-fluid col-lg-12'>
+                
+
+                <div className='row mx-5 border'>
+                    <p id='title' className='col-lg-12 mt-3'>授課師資</p>
+                    <Teachers />
+                </div><br />
+
+                <div className='row mx-5 '>
+                    <h1 id='title' className='col-lg-12 mt-3'>關聯課程</h1>
+                    <div className='container-fluid col-lg-11'>
                         <div className='row mt-4'>
                             <Carousel activeIndex={this.state.index} onSelect={this.handleSelect} interval={3000}>
                                 <Carousel.Item>
@@ -219,7 +202,6 @@ class Course extends Component {
                             </Carousel>
                         </div>
                     </div>
-                    {/* <div className='col-lg-3'>fffffffffffffffffffffffff</div> */}
                 </div>
             </div>
         );

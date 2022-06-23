@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactTooltip from 'react-tooltip'; //npm i react-tooltip
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login.css';
@@ -7,36 +6,63 @@ import './login.css';
 class Login extends Component {
   state = {
     opacity: [0, 1, 0, 0], display: ['', '', '', ''], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
-    class: "",
-    // 載入特效, 
-    passwordCheck: "",
+    class: "", fontcolor: "red",
+    // 載入特效, 文字提示顏色,  
+    passwordCheck: "", summit: false,
     // 密碼暫存
     aeh: '', vec: '',  pwd: '',
     // 帳號or信箱不存在, 驗證碼錯誤, 兩次密碼不相同
     aew: '',  pwr: '',  
     // 帳號or信箱錯誤, 密碼錯誤
-    adr: '',  emr: '', cel: ''
-    // 帳號已註冊, 信箱已註冊, 電話提示
+    adr: '',  emr: '', cel: '', ada: '6位數，且使用一個英文字母和數字', pwa: '6位數，且使用一個英文字母和數字', naa: ''
+    // 帳號已註冊, 信箱已註冊, 電話提示, 帳號提示, 密碼提示, 姓名提示
   }
 
   // 正規檢查 //
-  reX = (e) => {
-    // Email正規檢查
+  // Email正規檢查
+  reE = (e) => {
     let eml = new RegExp(/^[a-za-z0-9_-]+@[a-za-z0-9_-]+(\.[a-za-z0-9_-]+)+$/);
-    if ( eml.test(e.target.value) ) { this.setState({ emr: "Email 正確"}) }
-    else { this.setState({ emr: "提示email"}) };
+    if ( eml.test(e.target.value) ) { this.setState({ emr: ""}) }
+    else if ( e.target.value.length == 0 ) { this.setState({ emr: ""})}
+    else{ this.setState({ emr: "請輸入正確Email"}) };
+  }
 
+  // 帳號正規檢查
+  reA = (e) => {
+    let add = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
+    if ( e.target.value.length >= 6 ) {
+      if ( add.test( e.target.value ) == false ) {
+        this.setState({ ada: '帳號格式錯誤' })
+      }else {
+        this.setState({ ada: '' })
+      }
+    }else {
+      this.setState({ ada: '6位數，且使用一個英文字母和數字' })
+    }
   }
 
 // ---------------------------------
-  // (註冊 & 忘記密碼) 檢查重複 //
+  // (註冊 & 忘記密碼) 重複檢查 & 正規檢查//
   passwordCheck1 = (e) => {
-    this.setState({passwordCheck: e.target.value})
+    let pws = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
+    if ( e.target.value.length < 6 ) {
+      this.setState({ pwa: '最少6個位數，且最少使用一個英文字母和一個數字' })
+    }else {
+      if ( pws.test( e.target.value ) ) {
+        this.setState({ passwordCheck: e.target.value, pwa: '', pwr: '' })
+        }else {
+          this.setState({ pwa: '', pwr: '密碼格式錯誤' })
+        };
+    };
+
   }
-  passwordCheck2 =(e) => {
+
+  passwordCheck2 = (e) => {
     if ( this.state.passwordCheck.length <= e.target.value.length ) {
-      if ( this.state.passwordCheck != e.target.value) {
-        this.setState({ pwd: "兩次密碼不相同"})
+      if ( this.state.passwordCheck == e.target.value) {
+        this.setState({ pwd: ""})
+      }else {
+        this.setState({ pwd: "兩次密碼不相同" })
       }
     }
     else { this.setState({ pwd: "" }) }
@@ -70,6 +96,21 @@ class Login extends Component {
   }
 
   // componentDidUpdate() 
+
+  aaa = (e) => {
+    return this.state.summit;
+  } 
+
+  abc = (e) => {
+    let inp = Array.from(document.querySelectorAll('form input')) 
+    let x = [];
+    for ( var i=0 ; i<inp.length-2 ; i++) {
+      if ( inp[i].value != 0 ) {
+        x.push("text")
+      }
+    }
+    if ( x.length == 6 ) { this.setState({ summit: true}) }
+  }
 
   render() {
     return (
@@ -142,6 +183,7 @@ class Login extends Component {
           
         </div>
         {/* <div style={{backgroundColor: 'red', width: '300px', height: '300px '}}>aaa</div> */}
+        
         {/* -- Sign up -- */}
         <div className='login text-center' 
             style={{ opacity: this.state.opacity[2], display: this.state.display[2], marginLeft: this.state.marginLeft[2]}}>
@@ -150,14 +192,17 @@ class Login extends Component {
             <h2 className='col-10 text-center'>註冊</h2>
             <p className='text-center w-100'></p>
           </div >
-          <form className='' novalidate style={{width: "130%"}}>
+          {/* onChange={this.abc}  */}
+          <form className='' novalidate style={{width: "130%"}} 
+            onSubmit={(e) => {this.aaa(); e.preventDefault();}} >
               <ul className="list-group list-group-horizontal">
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/profile.png')} />
-                      <input className="input" type="text" placeholder="帳號"/><br />
-                      <span> &nbsp; {this.state.adr}</span>
+                      <input className="input" type="text" placeholder="帳號" onChange={this.reA} required="required"/><br />
+                      {/* required="required" */}
+                      <span> &nbsp; {this.state.adr} {this.state.ada}</span>
                     </div>
                   </div>
                 </li>
@@ -165,7 +210,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/email.png')} />
-                      <input className="input " type="e-mal" placeholder="Email" onChange={this.reX}/><br />
+                      <input className="input " type="e-mal" placeholder="Email" onChange={this.reE} required="required"/><br />
                       <span> &nbsp; {this.state.emr}</span>
                     </div>
                   </div>
@@ -176,8 +221,9 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/password.png')} />
-                      <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼"/><br />
-                      <span style={{color: 'red'}}> &nbsp; {this.state.pwr}</span>
+                      <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼" required="required"
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"/><br />
+                      <span style={{color: ''}}> {this.state.pwa} {this.state.pwr}</span>
                     </div>
                   </div>
                 </li>
@@ -185,8 +231,8 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/password.png')} />
-                      <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼"/>
-                      <br />
+                      <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" required="required"
+                        /><br />
                       <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                     </div>
                   </div>
@@ -196,8 +242,28 @@ class Login extends Component {
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <div className='row'>
                     <div className='col-12'>
+                      <img className='icon mx-3 my-1' src={require('../icon/account.png')}/>
+                      <input className="input" type="text" onChange={this.reN} placeholder="真實姓名" required="required"/><br />
+                      <span style={{color: 'red'}}> &nbsp; {this.state.naa}</span>
+                    </div>
+                  </div>
+                </li>
+                <li className={`list-group-item w-100  ${this.state.class}`}>
+                  <div className='row'>
+                    <div className='col-12'>
+                      <img className='icon mx-3 my-1' src={require('../icon/mobile-app.png')} required="required"/>
+                      <input className="input" type="number" placeholder="連絡電話" 
+                        maxlength="10"/><br />
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <ul className="list-group list-group-horizontal" >
+                <li className={`list-group-item w-100 ${this.state.class}`}>
+                  <div className='row'>
+                    <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/identity-card.png')} />
-                      <input className="input" type="text" placeholder="暱稱"/><br />
+                      <input className="input" type="text" placeholder="暱稱 (選填)"/><br />
                     </div>
                   </div>
                 </li>
@@ -214,28 +280,8 @@ class Login extends Component {
                   </div>
                 </li>
               </ul>
-              <ul className="list-group list-group-horizontal" >
-                <li className={`list-group-item w-100 ${this.state.class}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('../icon/account.png')} />
-                      <input className="input" type="text" placeholder="真實姓名" />
-                    </div>
-                  </div>
-                </li>
-                <li className={`list-group-item w-100  ${this.state.class}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('../icon/mobile-app.png')} />
-                      <input className="input" type="number" placeholder="連絡電話"/><br />
-                    </div>
-                  </div>
-                </li>
-              </ul>
+              <input type="submit" className='button' id='buts' value='確認註冊' /> 
           </form>
-          <div className='mt-3'>
-              <button type="submit" className='button my-3 mx-3' id='buts' onClick={this.next}>確認註冊</button>
-          </div>
         </div>
 
         {/* -- Email 信箱驗證 -- */}
