@@ -285,7 +285,7 @@ class Login extends Component {
           </form>
         </div>
 
-        {/* -- Email 信箱驗證 -- */}
+        {/* -- Email 驗證 -- */}
         <div className='login text-center' 
             style={{ opacity: this.state.opacity[3], marginLeft: this.state.marginLeft[3], visibility: this.state.visibility[3]}}>
           <div className="row my-4">
@@ -300,7 +300,7 @@ class Login extends Component {
               <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>回到登入頁面</button>
           </div>
         </div>
-        
+
       </div>
     )
   }
