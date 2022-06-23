@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // npm install --save @fortawesome/react-fontawesome
 
 
-class SportList extends Component {
+class InesrtSportList extends Component {
     state = {
 
     }
@@ -21,13 +21,11 @@ class SportList extends Component {
         let inputBoxStyle = this.props.style;
         return (
             <div id='sportList'>
-                <div className='d-flex justify-content-between mt-3'><span>類別</span><span onClick={this.clearSportType} className='btn text-secondary'>清除</span></div>
-
                 {this.props.datas.map((elm) => {
                     return (
                         <React.Fragment>
-                            <input onChange={this.sportListOnclick} className='d-none' type="checkbox" id={elm.value} name="sportType" />
-                            <label htmlFor={elm.value} style={inputBoxStyle} className='rounded shadow m-1 mx-2'><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
+                            <input onChange={this.sportListOnclick} className='d-none' type="checkbox" id={elm.value} name="sportType" required/>
+                            <label htmlFor={elm.value} style={inputBoxStyle} className='rounded border border-secondary shadow p-1 mx-2'><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
                         </React.Fragment>
                     )
                 })}
@@ -37,4 +35,4 @@ class SportList extends Component {
     }
 }
 
-export default SportList;
+export default InesrtSportList;
