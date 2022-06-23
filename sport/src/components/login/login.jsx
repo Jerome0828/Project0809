@@ -103,10 +103,8 @@ class Login extends Component {
         x.push(inp[i].value)
       }
     }
-    console.log(this.state.summit)
     if ( x.length == 6 ){ 
       this.state.summit.push(x);
-      this.setState({})
       this.next()
       return true
     }else {
@@ -188,7 +186,6 @@ class Login extends Component {
           </div>
           
         </div>
-        {/* <div style={{backgroundColor: 'red', width: '300px', height: '300px '}}>aaa</div> */}
 
         {/* -- Sign up -- */}
         <div className='login text-center' 
@@ -303,6 +300,7 @@ class Login extends Component {
               <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>回到登入頁面</button>
           </div>
         </div>
+        
       </div>
     )
   }
