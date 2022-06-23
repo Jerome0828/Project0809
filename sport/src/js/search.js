@@ -11,10 +11,10 @@ $(function(){
         $(this).toggleClass('bg-success');
     })
 
-    $('label[name="people"]').on('click', function(){
-        $('label[name="people"]').removeClass('bg-success');
-        $(this).addClass('bg-success');
-    })
+    // $('label[name="people"]').on('click', function(){
+    //     $('label[name="people"]').removeClass('bg-success');
+    //     $(this).addClass('bg-success');
+    // })
 
 
 });

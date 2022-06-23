@@ -3,7 +3,7 @@ import Citys from './Citys';
 class RentPlace extends Component {
     state = {}
     render() {
-        let selectedOptionId = '';
+        // 我還沒給價錢設定
         return (
             <div className="container mt-3">
                 <h3>上傳場地</h3>

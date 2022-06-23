@@ -10,7 +10,8 @@ class App extends Component {
   render() {
     return (
       <MySearchPage /> 
-      // <RentPlace />      
+      // <RentPlace />
+      
     )
   }
 }

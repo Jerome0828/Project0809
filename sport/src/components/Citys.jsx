@@ -48,17 +48,17 @@ class Citys extends Component {
     }
     render() {
         let selectedOptionId = '';
-        
+        let inputBoxStyle = this.props.style;
 
         return (
             <>
-                <select className='form-control' id="city" defaultValue={selectedOptionId} onChange={this.check} required>
+                <select style={inputBoxStyle} className='shadow form-control' id="city" defaultValue={selectedOptionId} onChange={this.check} required>
                     <option value="">縣市</option>
                     {citycountrydata.map((val,idx)=>
                         <option key={idx} value={val.CityEngName}>{val.CityName}</option>
                         )}
                 </select >
-                <select className='mt-2 form-control' id="district" required></select>
+                <select style={inputBoxStyle} className='shadow mt-2 form-control' id="district" required></select>
             </>
 
         )
