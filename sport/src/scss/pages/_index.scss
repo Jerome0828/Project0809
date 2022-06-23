@@ -176,7 +176,7 @@
 .rightBoxBottomText{
   position: absolute;
   display: flex;
-  align-items: center;
+  align-content: center;
   justify-content: center;
   bottom: 0;
   width: 100%;
@@ -184,6 +184,29 @@
   border-top: 1px solid black ;
   background: rgb(165, 165, 165);
 }
+
+// 右邊每列中的文字設定,分top跟bottom
+.rightBoxBottomTextV1{
+  align-content: center;
+  justify-content:center;
+  width: auto;
+  height: auto;
+  margin: auto;
+  padding: auto;
+  // background-color: azure;
+}
+
+// 右邊每列中的文字 RWD設定
+.rightBoxBottomTextV1 h1 {
+  font-size: calc(0.8rem);
+}
+
+@media (min-width: 1200px) {
+  .rightBoxBottomTextV1 h1{
+    font-size: 1.5rem;
+  }
+}
+
 
 .rightBoxTopText{
   position: absolute;

@@ -11,8 +11,8 @@ import CarouselCard from './carouselCard/carouselCard.jsx'
 import leftImg from '../../img/ben01.jpg';
 
 
-
-
+import IndexRightBox from '../contentComponents/indexComponents/indexRightBox.jsx';
+import IndexLeftBox from '../contentComponents/indexComponents/indexLeftBox.jsx';
 
 import rightImg from '../../img/fitness06.jpg';
 import rightImg1 from '../../img/fitness06.jpg';
@@ -72,7 +72,20 @@ class HomeHead extends Component {
             {id:3,value:"這是一段標題V3",src:sectionCarouselImg8},
             {id:4,value:"這是一段標題V3",src:sectionCarouselImg9},
             {id:5,value:"這是一段標題V3",src:sectionCarouselImg10},
+        ],
+
+        // header 左側區塊設定
+        oneLeftBoxStyle:[
+            {id:1,title:"這是一段標題1",value:"介紹內容",BottomText:"加入會員1",src1:leftImg,to:"/coursesAndVenues"},
+        ],
+        // header 右側區塊設定
+        oneRightBoxStyle:[
+            {id:1,value:"這是一段標題1",src:rightImg,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/coursesAndVenues"},
+            {id:2,value:"這是一段標題2",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/coursesAndVenues"},
+            {id:3,value:"這是一段標題3",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/coursesAndVenues"},
+            {id:4,value:"這是一段標題4",src:rightImg3,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/coursesAndVenues"},
         ]
+
     } 
 
 
@@ -99,61 +112,23 @@ class HomeHead extends Component {
                 data-aos-easing="linear"
                 data-aos-duration="1500"
             >
-
-                <div className='col-12 col-sm-5 HomeHeadBoxLeft img-fluid' >
-                    <div className='HomeHeadBoxLeftImgBox'
-                    
-                >
-                    <img src={leftImg} className="HomeHeadBoxImgStyle"alt="" />
-                        <div className='HomeHeadBoxText'>
-                            <div className="text-center" >
-                                <h1 className='rounded-top'>這是一段標題</h1>
-                                <p className='rounded-bottom'>這是一段介紹</p>
-                                <div className="btnRegister rounded-bottom">
-                                    <NavLink className="nav-link" to="/loginRegister" exact >加入會員</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {this.state.oneLeftBoxStyle.map((e,index)=>{return <IndexLeftBox 
+                        id={e.id} key={index} title={e.title} value={e.value} src={e.src1}
+                        to={e.to}
+                        
+                        />  })}
+                
 
             {/* header第一段右邊 */}
                 <div className='col-12 col-sm-7 HomeHeadBoxRight'>
                     <div className='HomeHeadBoxRightImgBox'>
                         <div className='HomeHeadBoxRightText row-cols-4 ' >  
-                            <div className='rightBox'>
-                                <div className='rightBoxTopImg'>
-                                    <img className="" src={rightImg} alt="img" /> 
-                                </div>
-                                <div className='rightBoxBottomText'>
-                                        <NavLink to="/coursesAndVenues"><h3>這是廣告標題</h3></NavLink>
-                                </div>
-                            </div>
-                            <div className='rightBox'>
-                                <div className='rightBoxBottomImg'>
-                                    <img src={rightImg4} alt="img" />
-                                </div>
-                                <div className='rightBoxTopText'>
-                                     <NavLink to="/coursesAndVenues"><h3>這是廣告標題</h3></NavLink>
-                                </div>
-                            </div>
-                            <div className='rightBox'>
-                                <div className='rightBoxTopImg'>
-                                    <img src={rightImg2} alt="img" />
-                                </div>
-                                <div className='rightBoxBottomText'>
-                                     <NavLink to="/coursesAndVenues"><h3>這是廣告標題</h3></NavLink>
-                                </div>
-                            </div>
-                            <div className='rightBox'>
-                                <div className='rightBoxBottomImg'>
-                                  <img src={rightImg3} alt="img" />
-                                </div>
-                                <div className='rightBoxTopText'>
-                                     <NavLink to="/coursesAndVenues"><h3>這是廣告標題</h3></NavLink>
-                                </div>
-                            </div>
-
+                        {this.state.oneRightBoxStyle.map((e,index)=>{return <IndexRightBox 
+                        id={e.id} key={index} value={e.value} src={e.src}
+                        imgAlign={e.imgAlign}  
+                        textAlign={e.TextAlign}
+                        to={e.to
+                        }/>  })}
                         </div>
 
                     </div>     
@@ -252,7 +227,7 @@ class HomeHead extends Component {
                 data-aos="fade-up"
                 >
                     <h1>全台超過1000位專業教練</h1>
-                    <a>健身、重訓、瑜珈、有氧、皮拉提斯、舞蹈全都有</a>
+                    <a>健身、重訓、瑜珈、有氧、皮拉提斯、舞蹈都有</a>
                 </div>
             
 
@@ -278,10 +253,11 @@ class HomeHead extends Component {
 
 
             <div
-                className='carouselBoxBottomText cont' 
+                className='carouselBoxBottomText' 
                 data-aos="fade-up"
                 >   
                     <div className='carouselBoxBottomTextV1 mt-3'>
+                        <div className='carouselBoxBottomTextV1Right'>
                         <NavLink to="/coursesAndVenues">
 
                         <a className='carouselBoxBottomTextV2'>探索更多教練
@@ -292,6 +268,7 @@ class HomeHead extends Component {
                         </a>
 
                         </NavLink>
+                        </div>
                     </div>
             </div>
 
@@ -301,7 +278,7 @@ class HomeHead extends Component {
         
 {/* 第三層section(輪播Carousel設定) */}
         <section>
-            <div className=' m-5 h-100'
+            <div className=' m-5 h-100 row-sm-12'
             data-aos="fade-up"
             >
                 
@@ -320,7 +297,7 @@ class HomeHead extends Component {
             pause={'hover'} slide={true} touch={true} controls={false}>
 
             {/* 第一頁輪播 */}
-            <Carousel.Item className='w-100 d-flex'>
+            <Carousel.Item className='w-100 d-flex '>
                 {this.state.commodityV2.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
                 </Carousel.Item>
                 
@@ -347,6 +324,7 @@ class HomeHead extends Component {
 
                 >   
                     <div className='carouselBoxBottomTextV1 mt-3'>
+                        <div className='carouselBoxBottomTextV1Right'>
                         <NavLink to="/coursesAndVenues">
 
                         <a className='carouselBoxBottomTextV2'>探索更多場地
@@ -357,6 +335,7 @@ class HomeHead extends Component {
                         </a>
 
                         </NavLink>
+                        </div>
                     </div>
             </div>
 
@@ -368,9 +347,40 @@ class HomeHead extends Component {
         <section className='mt-6 mb-5'>
         <div className='threeSectionBox mt-6'>
             <div className='threeSectionBoxBottomImg h-100 w-100'>
+                <div>
+                </div>
             </div>
         </div> 
         </section>
+
+
+{/* 第四層section設定固定底圖 */}
+        <section>
+            <div className='bg-test h-100 w-100 container mt-6'>
+                <div className='fourthSectionBox d-flex row m-auto'>
+                    <div className='col-sm-3 fourthSectionBoxCol'>123</div>
+                    <div className='col-sm-8 fourthSectionBoxColText'>123</div>
+
+                    <div className='col-sm-8 fourthSectionBoxCol'>123</div>
+                    <div className='col-sm-3 fourthSectionBoxColText'>123</div>
+                    
+                    
+
+
+                </div>
+
+            </div>
+        </section>
+
+
+{/* 第五層section設定固定底圖 */}
+        <section>
+        <div className='bg-test h-25 w-100 mt-6'>
+                <div className='fifthSectionBox'>
+                </div>
+            </div>
+        </section>
+
 
 
 
