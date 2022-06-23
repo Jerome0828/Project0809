@@ -35,7 +35,7 @@ class SearchSitePage extends Component {
         { key: 6, id: 'sat', value: '星期六', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 7, id: 'sun', value: '星期日', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' }],
 
-        rangeValue: [0, 100], timeValue:['00 : 00','24 : 00']
+        rangeValue: [0, 100], timeValue: ['00 : 00', '24 : 00']
     }
     // <label name='price' className='text-center mt-1'><input type="radio" name='price' className='d-none' /> 
     // <span ><FontAwesomeIcon className='d-none text-success' icon={faCheck} /></span>$ 3000 ~ 以上</label>
@@ -200,8 +200,8 @@ class SearchSitePage extends Component {
     handleChange = (e) => {
         this.state.rangeValue[0] = e.target.value[0];
         this.state.rangeValue[1] = e.target.value[1];
-        this.state.timeValue[0] = `${Math.floor((24*(e.target.value[0]/100)))} : 00`;
-        this.state.timeValue[1] = `${Math.floor((24*(e.target.value[1]/100)))} : 00`;
+        this.state.timeValue[0] = `${Math.floor((24 * (e.target.value[0] / 100)))} : 00`;
+        this.state.timeValue[1] = `${Math.floor((24 * (e.target.value[1] / 100)))} : 00`;
         // 時:((24*60*60)*(20/100))/24
         // 分:((24*60*60)*(20/100))/24/60
         this.setState({});
@@ -273,14 +273,15 @@ class SearchSitePage extends Component {
                                         </>
                                     )
                                 })}
-                            </div>                            
+                            </div>
 
                             {/* 運動類別 */}
-                            <SportList datas={this.state.sportList}
-                                style={this.inputBoxStyle}
-                                sportListOnclick={(e) => this.sportListOnclick(e)}
-                                clearSportType={this.clearSportType} />
-
+                            <div className='text-center'>
+                                <SportList datas={this.state.sportList}
+                                    style={this.inputBoxStyle}
+                                    sportListOnclick={(e) => this.sportListOnclick(e)}
+                                    clearSportType={this.clearSportType} />
+                            </div>
                             {/* 租借對象 */}
                             <div className='d-flex justify-content-between mt-3'><span>租借對象</span><span onClick={this.clearPeople} className='btn text-secondary'>清除</span></div>
                             <div className='w-100'>

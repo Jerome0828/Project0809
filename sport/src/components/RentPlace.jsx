@@ -96,6 +96,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     {/* 運動類別 */}
+                    
                     <InesrtSportList datas={this.state.sportList}
                                 sportListOnclick={(e) => this.sportListOnclick(e)}
                                 clearSportType={this.clearSportType}/>
