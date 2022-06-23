@@ -8,7 +8,7 @@ class Login extends Component {
     opacity: [0, 1, 0, 0], display: ['', '', '', ''], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
     class: "", fontcolor: "red",
     // 載入特效, 文字提示顏色,  
-    passwordCheck: "", summit: false,
+    passwordCheck: "", summit: [],
     // 密碼暫存
     aeh: '', vec: '',  pwd: '',
     // 帳號or信箱不存在, 驗證碼錯誤, 兩次密碼不相同
@@ -26,7 +26,6 @@ class Login extends Component {
     else if ( e.target.value.length == 0 ) { this.setState({ emr: ""})}
     else{ this.setState({ emr: "請輸入正確Email"}) };
   }
-
   // 帳號正規檢查
   reA = (e) => {
     let add = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
@@ -42,7 +41,7 @@ class Login extends Component {
   }
 
 // ---------------------------------
-  // (註冊 & 忘記密碼) 重複檢查 & 正規檢查//
+  // (註冊 & 忘記密碼) 重複檢查 & 正規檢查 //
   passwordCheck1 = (e) => {
     let pws = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
     if ( e.target.value.length < 6 ) {
@@ -56,7 +55,6 @@ class Login extends Component {
     };
 
   }
-
   passwordCheck2 = (e) => {
     if ( this.state.passwordCheck.length <= e.target.value.length ) {
       if ( this.state.passwordCheck == e.target.value) {
@@ -95,29 +93,36 @@ class Login extends Component {
     }
   }
 
-  // componentDidUpdate() 
-
-  aaa = (e) => {
-    return this.state.summit;
-  } 
-
-  abc = (e) => {
-    let inp = Array.from(document.querySelectorAll('form input')) 
+//---------------------------
+  // 確認表單填入完整 //
+  checkForm = () => {
+    let inp = Array.from(document.querySelectorAll('form input'))
     let x = [];
     for ( var i=0 ; i<inp.length-2 ; i++) {
       if ( inp[i].value != 0 ) {
-        x.push("text")
+        x.push(inp[i].value)
       }
     }
-    if ( x.length == 6 ) { this.setState({ summit: true}) }
+    console.log(this.state.summit)
+    if ( x.length == 6 ){ 
+      this.state.summit.push(x);
+      this.setState({})
+      this.next()
+      return true
+    }else {
+      return false
+    }
   }
+
+  // componentDidUpdate() 
+
 
   render() {
     return (
       <div className="loginA row" id='all'>
         {/* -- Forgot password -- */}
         <div className='login text-center ' 
-          style={{ opacity: this.state.opacity[0], display: this.state.display[0],  marginLeft: this.state.marginLeft[0] }}>
+          style={{ opacity: this.state.opacity[0], marginLeft: this.state.marginLeft[0], visibility: this.state.visibility[0] }}>
           <h2 className='mt-4 text-center' > 忘記密碼 </h2>
           <span className='text-center w-100 my-0' style={{color: 'red'}}>
              {this.state.aeh} &nbsp; {this.state.vec} &nbsp; {this.state.pwd}
@@ -141,7 +146,8 @@ class Login extends Component {
               <ul className="list-group list-group-horizontal " >
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
-                  <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼"/>
+                  <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼"/><br />
+                  <span>{this.state.pwa}</span>
                 </li>
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
@@ -158,7 +164,7 @@ class Login extends Component {
 
         {/* -- Login -- */}
         <div className='login text-center' 
-          style={{ opacity: this.state.opacity[1], display: this.state.display[1], marginLeft: this.state.marginLeft[1]}}>
+          style={{ opacity: this.state.opacity[1], marginLeft: this.state.marginLeft[1], visibility: this.state.visibility[1]}}>
           <div className="animate__animated animate__fadeInDown">
             <h2 className='my-4 text-center'>Login</h2>
             <p className='text-center w-100' style={{color: 'red'}}>
@@ -183,25 +189,22 @@ class Login extends Component {
           
         </div>
         {/* <div style={{backgroundColor: 'red', width: '300px', height: '300px '}}>aaa</div> */}
-        
+
         {/* -- Sign up -- */}
         <div className='login text-center' 
-            style={{ opacity: this.state.opacity[2], display: this.state.display[2], marginLeft: this.state.marginLeft[2]}}>
+            style={{ opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2]}}>
           <div className="row w-100 my-0">
             <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('../icon/left.png')} /></button>
             <h2 className='col-10 text-center'>註冊</h2>
             <p className='text-center w-100'></p>
           </div >
-          {/* onChange={this.abc}  */}
-          <form className='' novalidate style={{width: "130%"}} 
-            onSubmit={(e) => {this.aaa(); e.preventDefault();}} >
+          <form className='' style={{width: "130%"}} onSubmit={(e) => {this.checkForm(); e.preventDefault();}} >
               <ul className="list-group list-group-horizontal">
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/profile.png')} />
-                      <input className="input" type="text" placeholder="帳號" onChange={this.reA} required="required"/><br />
-                      {/* required="required" */}
+                      <input className="input " type="text" placeholder="帳號" onChange={this.reA} required="required"/><br />
                       <span> &nbsp; {this.state.adr} {this.state.ada}</span>
                     </div>
                   </div>
@@ -210,7 +213,8 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/email.png')} />
-                      <input className="input " type="e-mal" placeholder="Email" onChange={this.reE} required="required"/><br />
+                      <input className="input " type="e-mail" placeholder="Email" onChange={this.reE} required="required"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br />
                       <span> &nbsp; {this.state.emr}</span>
                     </div>
                   </div>
@@ -251,9 +255,9 @@ class Login extends Component {
                 <li className={`list-group-item w-100  ${this.state.class}`}>
                   <div className='row'>
                     <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('../icon/mobile-app.png')} required="required"/>
-                      <input className="input" type="number" placeholder="連絡電話" 
-                        maxlength="10"/><br />
+                      <img className='icon mx-3 my-1' src={require('../icon/mobile-app.png')} />
+                      <input className="input" type="text" placeholder="連絡電話" required="required" 
+                        pattern="^[0-9]{10}$" maxLength="10" /><br />
                     </div>
                   </div>
                 </li>
@@ -286,7 +290,7 @@ class Login extends Component {
 
         {/* -- Email 信箱驗證 -- */}
         <div className='login text-center' 
-            style={{ opacity: this.state.opacity[3], display: this.state.display[3], marginLeft: this.state.marginLeft[3]}}>
+            style={{ opacity: this.state.opacity[3], marginLeft: this.state.marginLeft[3], visibility: this.state.visibility[3]}}>
           <div className="row my-4">
             <h2>Email 已送出</h2>
           </div >
