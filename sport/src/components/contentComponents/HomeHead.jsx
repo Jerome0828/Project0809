@@ -106,7 +106,7 @@ class HomeHead extends Component {
 {/* 第一層header */}
         <header>
             {/* header第一段左邊 */}
-            <div className='HomeHeadBoxStyle row' 
+            <div className='HomeHeadBoxStyle row container m-auto' 
 
                 data-aos="fade-down"
                 data-aos-easing="linear"
@@ -232,7 +232,7 @@ class HomeHead extends Component {
             
 
             <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
-            pause={'hover'} slide={true} touch={true} controls={false}>
+            pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
 
             {/* 第一頁輪播 */}
                 <Carousel.Item className='w-100 d-flex'>
@@ -294,7 +294,7 @@ class HomeHead extends Component {
             
 
             <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
-            pause={'hover'} slide={true} touch={true} controls={false}>
+            pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
 
             {/* 第一頁輪播 */}
             <Carousel.Item className='w-100 d-flex '>
