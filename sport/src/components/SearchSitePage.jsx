@@ -304,7 +304,7 @@ class SearchSitePage extends Component {
                     </div>
                     <div className='col-9 border-end border-start'>
                         <div className='row text-center'>
-                            <a className='col-6 shadow btn' href="/">找課程</a>
+                            <a className='col-6 shadow btn' href="/coach">找課程</a>
                             <a className='col-6 shadow btn bg-black text-white' href="/site">找場地</a>
                         </div>
                         <div className='row mt-5 justify-content-center'>

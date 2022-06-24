@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
+import pic from '../imgs/user.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 class RentPlace extends Component {
@@ -11,13 +12,16 @@ class RentPlace extends Component {
         { id: 4, value: 'workout4', cName: '健身4', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
         { id: 5, value: 'workout5', cName: '健身5', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' }],
 
-        agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }]
+        agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
+        src: [pic, pic, pic]
 
 
     }
     agreeStyle = {
         'width': '15%'
     }
+
+    // 運動類別更動
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
 
@@ -40,6 +44,8 @@ class RentPlace extends Component {
             }
         })
     }
+
+    // button我同意
     agreeOnclick = (e) => {
         let agreeBox = this.state.agreeBox[0];
         let text = document.getElementById('myCheckText');
@@ -59,8 +65,20 @@ class RentPlace extends Component {
         this.setState({});
     }
 
+    // 價格預覽
     spanPrice = (e) =>{
         document.getElementById('spanPrice').innerHTML = `$ ${e.target.value}`;
+    }
+
+    // 圖片預覽
+    fileInput = () => {
+        const file = document.getElementById('imgInput').files;
+        for (var i = 0; i < file.length; i++) {
+            if (file[i]) {
+                this.state.src[i] = URL.createObjectURL(file[i]);
+                this.setState({});
+            }
+        }
     }
     
     render() {
@@ -81,7 +99,23 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 w-50">
-                        <input type="file" className="rounded shadow form-control" required multiple/>
+                        <input id='imgInput' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required multiple />
+                    </div>
+
+                    {/* 預覽圖 */}
+                    <div className="d-flex">
+                        {this.state.src.map((elm, idx) => {
+                            return (
+                                <>
+                                    <img style={{
+                                        width: '260px',
+                                        height: '280px',
+                                        background: 'white',
+                                        objectFit: 'contain'
+                                    }} src={this.state.src[idx]} className="mt-3 mx-2" />
+                                </>
+                            )
+                        })}
                     </div>
                     <hr />
 

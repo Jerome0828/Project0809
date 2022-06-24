@@ -3,7 +3,7 @@ import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
 import pic from '../imgs/user.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
 class BeCoach extends Component {
     state = {
         sportList: [{ id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
@@ -16,7 +16,7 @@ class BeCoach extends Component {
         { key: 1, checked: false, value: '一對多', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' }],
 
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
-        src:[pic]
+        src: [pic, pic, pic]
     }
     style = {
         'width': '15%'
@@ -24,9 +24,8 @@ class BeCoach extends Component {
     agreeStyle = {
         'width': '15%'
     }
-    imgSize = {
-        'width': '200px'
-    }
+
+    // 運動類別變更
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
 
@@ -49,6 +48,8 @@ class BeCoach extends Component {
             }
         })
     }
+
+    // 人數更動
     setPeople = (e) => {
         this.state.peopleList.map((elm) => {
             if (e.target.value == elm.value) {
@@ -64,6 +65,7 @@ class BeCoach extends Component {
         this.setState({})
     }
 
+    // button我同意
     agreeOnclick = (e) => {
         let agreeBox = this.state.agreeBox[0];
         let text = document.getElementById('myCheckText');
@@ -83,17 +85,23 @@ class BeCoach extends Component {
         this.setState({});
     }
 
-    spanPrice = (e) =>{
+    // 價格預覽
+    spanPrice = (e) => {
         document.getElementById('spanPrice').innerHTML = `$ ${e.target.value}`;
     }
 
-    fileInput = () =>{
-        const [file] = document.getElementById('imgInput').files;
-        if(file){
-            this.state.src = URL.createObjectURL(file);
-            this.setState({});
+    // 圖片預覽
+    fileInput = () => {
+        const file = document.getElementById('imgInput').files;
+        for (var i = 0; i < file.length; i++) {
+            if (file[i]) {
+                this.state.src[i] = URL.createObjectURL(file[i]);
+                this.setState({});
+            }
         }
     }
+
+
     render() {
         let selectedOptionId = '';
         return (
@@ -112,11 +120,25 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 w-50">
-                        <input id='imgInput' accept="image/gif, image/jpeg, image/png"  type="file" onChange={this.fileInput} className="rounded shadow form-control" required multiple/>
+                        <input id='imgInput' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required multiple />
                     </div>
-                    <div className='border'>
-                        <img style={this.imgSize} className='mt-3' id='blah' src={this.state.src} />
+
+                    {/* 預覽圖 */}
+                    <div className="d-flex">
+                        {this.state.src.map((elm, idx) => {
+                            return (
+                                <>
+                                    <img style={{
+                                        width: '260px',
+                                        height: '280px',
+                                        background: 'white',
+                                        objectFit: 'contain'
+                                    }} src={this.state.src[idx]} className="mt-3 mx-2" />
+                                </>
+                            )
+                        })}
                     </div>
+
                     <hr />
 
                     {/* 課程名稱 */}
