@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login.css';
+import Pic1 from '../icon/jpg/1.jpg'
 
 class Login extends Component {
   state = {
     opacity: [0, 1, 0, 0], display: ['', '', '', ''], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
-    class: "", fontcolor: "red",
-    // 載入特效, 文字提示顏色,  
-    passwordCheck: "", summit: [],
+    class: "", fontcolor: "red", style:['80'],
+    // 載入特效, 文字提示顏色,  背景變換
+    passwordCheck: ['',''], summit: [],
     // 密碼暫存
     aeh: '', vec: '',  pwd: '',
     // 帳號or信箱不存在, 驗證碼錯誤, 兩次密碼不相同
@@ -31,35 +32,52 @@ class Login extends Component {
     let add = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
     if ( e.target.value.length >= 6 ) {
       if ( add.test( e.target.value ) == false ) {
-        this.setState({ ada: '帳號格式錯誤' })
+        this.setState({ ada: '', adr: '帳號格式錯誤' })
       }else {
-        this.setState({ ada: '' })
+        this.setState({ ada: '', adr: '' });
       }
     }else {
-      this.setState({ ada: '6位數，且使用一個英文字母和數字' })
+      this.setState({ ada: '6位數，且使用一個英文字母和數字', adr: '' });
+    }
+  }
+  // 電話正規檢查
+  reP = (e) => {
+    let pho = new RegExp(/^[0][9][0-9]{8}$/)
+    if ( e.target.value.length == 10) {
+      if ( pho.test(e.target.value) ) { this.setState({ cel: ''}) }
+      else { this.setState({ cel: '電話格式錯誤'}) };
+    }else{
+      this.setState({ cel: ''});
     }
   }
 
+  
 // ---------------------------------
   // (註冊 & 忘記密碼) 重複檢查 & 正規檢查 //
   passwordCheck1 = (e) => {
     let pws = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
     if ( e.target.value.length < 6 ) {
-      this.setState({ pwa: '最少6個位數，且最少使用一個英文字母和一個數字' })
+      this.setState({ pwa: '6位數，且使用一個英文字母和數字', pwr: '' })
     }else {
-      if ( pws.test( e.target.value ) ) {
-        this.setState({ passwordCheck: e.target.value, pwa: '', pwr: '' })
-        }else {
-          this.setState({ pwa: '', pwr: '密碼格式錯誤' })
-        };
-    };
-
-  }
-  passwordCheck2 = (e) => {
-    if ( this.state.passwordCheck.length <= e.target.value.length ) {
-      if ( this.state.passwordCheck == e.target.value) {
+      if ( this.state.passwordCheck[1] == e.target.value ) {
         this.setState({ pwd: ""})
       }else {
+        this.setState({ pwd: "兩次密碼不相同" })
+      }
+      if ( pws.test( e.target.value ) ) {
+        this.state.passwordCheck[0] = e.target.value
+        this.setState({ pwa: '', pwr: ''})
+      }else {
+        this.setState({ pwa: '', pwr: '密碼格式錯誤' })
+      };
+    };
+  }
+  passwordCheck2 = (e) => {
+    if ( this.state.passwordCheck[0].length <= e.target.value.length ) {
+      if ( this.state.passwordCheck[0] == e.target.value) {
+        this.setState({ pwd: ""})
+      }else {
+        this.state.passwordCheck[1] = e.target.value
         this.setState({ pwd: "兩次密碼不相同" })
       }
     }
@@ -72,97 +90,136 @@ class Login extends Component {
   back = () => {
     if ( this.state.opacity[1] == 1 ) {
       this.setState({ opacity: [1, 0, 0, 0], marginLeft: ['50vw', '-0', '0', '0'], visibility: ['','hidden','hidden','hidden'],
-      class: "animate__animated animate__slideInRight"})
+        class: "animate__animated animate__slideInRight"})
     }
     else if ( this.state.opacity[2] == 1 ) { 
-      this.setState({ opacity: [0, 1, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden']})
-    }
+      this.setState({ opacity: [0, 1, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
+        class: ""})}
     else { 
-      this.setState({ opacity: [0, 1, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden']})
+      this.setState({ opacity: [0, 1, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
+        class: ""})
     }
   }
   next = () => {
     if ( this.state.opacity[1] == 1 ) {
-      this.setState({ opacity: [0, 0, 1, 0], marginLeft: ['-20vw', '-50vw', '20vw', '30vw'], visibility: ['hidden','hidden','','hidden'] })
+      this.setState({ opacity: [0, 0, 1, 0], marginLeft: ['-20vw', '-50vw', '20vw', '10vw'], visibility: ['hidden','hidden','','hidden'],
+        class: "animate__animated animate__backInRight", style: ['87']})
     }
     else if ( this.state.opacity[2] == 1 ) {
-      this.setState({ opacity: [0, 0, 0, 1], marginLeft: ['0', '-60vw', '-30vw', '0'], visibility: ['hidden','hidden','hidden','']})
-    }
+      this.setState({ opacity: [0, 0, 0, 1], marginLeft: ['0', '-60vw', '-30vw', '0'], visibility: ['hidden','hidden','hidden',''],
+        class: ""})}
+        
     else { 
-      this.setState({ opacity: [0, 1, 0, 0],  marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden']})
+      this.setState({ opacity: [0, 1, 0, 0],  marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
+        class: ""}) 
     }
   }
 
 //---------------------------
-  // 確認表單填入完整 //
-  checkForm = () => {
+  // 確認(註冊)表單填入完整 //
+  // 忘記密碼表單
+  checkFPF = () => {
     let inp = Array.from(document.querySelectorAll('form input'))
     let x = [];
-    for ( var i=0 ; i<inp.length-2 ; i++) {
+    for ( var i=0 ; i<inp.length-9 ; i++) {
       if ( inp[i].value != 0 ) {
         x.push(inp[i].value)
       }
     }
-    if ( x.length == 6 ){ 
-      this.state.summit.push(x);
-      this.next()
+    if ( x.length == 4 ){ 
+      return true
+    }else {
+      return false
+    }
+  } 
+
+  // 登入表單
+  checkLIF = () => {
+    let inp = Array.from(document.querySelectorAll('form input'))
+    let x = [];
+    for ( var i=4 ; i<inp.length-7 ; i++) {
+      if ( inp[i].value != 0 ) {
+        x.push(inp[i].value)
+      }
+    }
+    if ( x.length == 2 ){ 
       return true
     }else {
       return false
     }
   }
 
-  // componentDidUpdate() 
+  // 註冊表單
+  checkSUF = () => {
+    let inp = Array.from(document.querySelectorAll('form input'))
+    let x = [];
+    for ( var i=6 ; i<inp.length-1 ; i++) {
+      if ( inp[i].value != 0 ) {
+        x.push(inp[i].value)
+      }
+    }
+    if ( x.length == 6 ){ 
+      return true
+    }else {
+      return false
+    }
+  }
+
+  // componentDidUpdate() // noValidate
 
 
   render() {
     return (
-      <div className="loginA row" id='all'>
+      <div className="loginA row" id='all' 
+        style={{ background: `linear-gradient( 300deg, transparent , white 50%)`, height: `80vh`}}>
         {/* -- Forgot password -- */}
         <div className='login text-center ' 
-          style={{ opacity: this.state.opacity[0], marginLeft: this.state.marginLeft[0], visibility: this.state.visibility[0] }}>
+          style={{ opacity: this.state.opacity[0], marginLeft: this.state.marginLeft[0], visibility: this.state.visibility[0],
+            }}>
           <h2 className='mt-4 text-center' > 忘記密碼 </h2>
           <span className='text-center w-100 my-0' style={{color: 'red'}}>
-             {this.state.aeh} &nbsp; {this.state.vec} &nbsp; {this.state.pwd}
+             {this.state.aeh} &nbsp; {this.state.vec} &nbsp; 
           </span>
-          <div className='text-center mt-0' style={{width: "125%"}}>
+          <form className='text-center mt-0' style={{width: "125%"}} onSubmit={(e) => {this.checkFPF(); e.preventDefault();}}>
             <div>
               <ul className="list-group list-group-horizontal" >
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <img className='icon mx-3 my-1' src={require('../icon/profile.png')} />
-                  <input className="input" type="text" placeholder="帳號 or Email" />
-                  <button className='buttonL'>發送驗證碼</button>
-                  <span className='text'></span>
+                  <input className="input" type="text" placeholder="帳號 or Email" required="required"/>
+                  <button type='button' className='buttonL'>發送驗證碼</button><br />
+                  <span> &nbsp; {this.state.ada}</span>
                 </li>
               </ul>
               <ul className="list-group list-group-horizontal ">
                   <li className={`list-group-item w-100 ${this.state.class}`}>
                     <img className='icon mx-3 my-1' src={require('../icon/question.png')} />
-                    <input className="input" type="e-mal" placeholder="請輸入驗證碼" />
+                    <input className="input" type="e-mal" placeholder="請輸入驗證碼" required="required"/>
                   </li>
               </ul>
               <ul className="list-group list-group-horizontal " >
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
-                  <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼"/><br />
-                  <span>{this.state.pwa}</span>
+                  <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼" required="required"/><br />
+                  <span> &nbsp; {this.state.pwa}</span>
+                  <span style={{color: 'red'}}>{this.state.pwr}</span>
                 </li>
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
-                  <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" />
+                  <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" 
+                    required="required"/><br />
+                  <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                 </li>
               </ul>
             </div>
-          </div>
-          <div className='mt-3'>
-          <button type="submit" className='button my-2 mx-3' onClick={this.back}>確認變更</button>
-            <button type="submit" className='button my-2 mx-3' onClick={this.back}>回到登入頁面</button>
-          </div>
+            <button type="submit" className='button my-2 mx-3' >確認變更</button>
+            <button type="button" className='button my-2 mx-3' onClick={this.back}>回到登入頁面</button>
+          </form>
         </div>
 
         {/* -- Login -- */}
         <div className='login text-center' 
-          style={{ opacity: this.state.opacity[1], marginLeft: this.state.marginLeft[1], visibility: this.state.visibility[1]}}>
+          style={{ opacity: this.state.opacity[1], marginLeft: this.state.marginLeft[1], visibility: this.state.visibility[1],
+            }}>
           <div className="animate__animated animate__fadeInDown">
             <h2 className='my-4 text-center'>Login</h2>
             <p className='text-center w-100' style={{color: 'red'}}>
@@ -170,18 +227,20 @@ class Login extends Component {
             </p>
             <div className='container'>
               <div className="row">
-                <div className='container mt-4 '>
+                <form className='container mt-4' onSubmit={(e) => {this.checkLIF(); e.preventDefault();}}>
                   <img className='icon mx-3 my-3' src={require('../icon/profile.png')} />
-                  <input autoFocus="autofocus" className="input col-6 m-0" type="text" placeholder="帳號 or Email" /><br />
+                  <input autoFocus="autofocus" className="input col-6 m-0" type="text" placeholder="帳號 or Email" 
+                    required="required"/><br />
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
-                  <input className="input col-6 m-0" type="password" placeholder="請輸入密碼"/><br />
-                </div>
+                  <input className="input col-6 m-0" type="password" placeholder="請輸入密碼" required="required"/><br />
+                  <div className='mt-5'>
+                    <button type="submit" className='button my-2 mx-3' >登入</button>
+                    <button type="button" className='button my-2 mx-3' onClick={this.next}>註冊</button>
+                  </div>
+                </form>
               </div>
             </div>
-            <div className='mt-5'>
-                <button type="submit" className='button my-2 mx-3' >登入</button>
-                <button type="submit" className='button my-2 mx-3' onClick={this.next}>註冊</button>
-            </div>
+            
             <button type="submit" className='buttonL m-3' onClick={this.back}>忘記密碼 ?</button>
           </div>
           
@@ -189,20 +248,22 @@ class Login extends Component {
 
         {/* -- Sign up -- */}
         <div className='login text-center' 
-            style={{ opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2]}}>
+            style={{ opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2],
+              }}>
           <div className="row w-100 my-0">
             <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('../icon/left.png')} /></button>
             <h2 className='col-10 text-center'>註冊</h2>
             <p className='text-center w-100'></p>
           </div >
-          <form className='' style={{width: "130%"}} onSubmit={(e) => {this.checkForm(); e.preventDefault();}} >
+          <form className='' style={{width: "130%"}} onSubmit={(e) => {this.checkSUF(); e.preventDefault();}} >
               <ul className="list-group list-group-horizontal">
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/profile.png')} />
                       <input className="input " type="text" placeholder="帳號" onChange={this.reA} required="required"/><br />
-                      <span> &nbsp; {this.state.adr} {this.state.ada}</span>
+                      <span> &nbsp; {this.state.ada}</span>
+                      <span style={{color: 'red'}}>{this.state.adr}</span>
                     </div>
                   </div>
                 </li>
@@ -224,7 +285,8 @@ class Login extends Component {
                       <img className='icon mx-3 my-1' src={require('../icon/password.png')} />
                       <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼" required="required"
                         pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"/><br />
-                      <span style={{color: ''}}> {this.state.pwa} {this.state.pwr}</span>
+                      <span > {this.state.pwa} </span>
+                      <span style={{color: 'red'}}>{this.state.pwr}</span>
                     </div>
                   </div>
                 </li>
@@ -253,8 +315,9 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/mobile-app.png')} />
-                      <input className="input" type="text" placeholder="連絡電話" required="required" 
-                        pattern="^[0-9]{10}$" maxLength="10" /><br />
+                      <input className="input" type="text" placeholder="連絡電話" onChange={this.reP} required="required" 
+                        pattern="^[0][9][0-9]{8}$" maxLength="10" /><br />
+                        <span style={{color: 'red'}}> &nbsp; {this.state.cel}</span>
                     </div>
                   </div>
                 </li>
@@ -281,17 +344,17 @@ class Login extends Component {
                   </div>
                 </li>
               </ul>
-              <input type="submit" className='button' id='buts' value='確認註冊' /> 
+              <button type="submit" className='button' id='buts' >確認註冊</button> 
           </form>
         </div>
 
         {/* -- Email 驗證 -- */}
-        <div className='login text-center' 
+        <div className="login text-center"
             style={{ opacity: this.state.opacity[3], marginLeft: this.state.marginLeft[3], visibility: this.state.visibility[3]}}>
           <div className="row my-4">
             <h2>Email 已送出</h2>
           </div >
-          <div className={`container ${this.state.class}`}>
+          <div className="container animate__animated animate__lightSpeedInRight">
               <p className='m-5' >已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證 </p>
               <p className='mt-5'>沒收到驗證信 ?</p>
               <button type="submit" className='buttonL mb-4'>再寄送一次</button>

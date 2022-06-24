@@ -12,7 +12,7 @@
 }
 
 body {
-    background-color: black;
+    background-image: url(../icon/jpg/bg/2.jpg);
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -20,11 +20,18 @@ body {
     align-items: center;
 }
 
+.login {
+    transition: all 1.5s ;
+    background-color: white;
+}
+
 #all {
+    /* background-repeat: no-repeat; */
+    /* background: linear-gradient(to top left, gray , white 70%); */
+    transition: all 1.5s ;
     opacity: 1;
     height: 80vh;
     width: 100vw;
-    background: linear-gradient(to top left, gray , white 70%);
 }
 
 input[type=number]::-webkit-inner-spin-button {
@@ -91,10 +98,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .login {
+    border-radius: 5%;
     letter-spacing: 1.3px;
     font-family: 'font01', sans-serif;
     transform: translate(-50%, 0);
-    transition: all 1.5s ;
     background: transparent;
     height: 75vh;
     width: 50vw;
