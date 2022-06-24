@@ -119,14 +119,14 @@ class Login extends Component {
   // 確認(註冊)表單填入完整 //
   // 忘記密碼表單
   checkFPF = () => {
-    let inp = Array.from(document.querySelectorAll('form input'))
+    let inp = Array.from(document.querySelectorAll('.fpf'))
     let x = [];
-    for ( var i=0 ; i<inp.length-9 ; i++) {
-      if ( inp[i].value != 0 ) {
+    for ( var i = 0 ; i < inp.length ; i++ ) {
+      if ( inp[2].value == inp[3].value && inp[i].value != 0 ) {
         x.push(inp[i].value)
       }
     }
-    if ( x.length == 4 ){ 
+    if ( x.length == 4 ){
       return true
     }else {
       return false
@@ -135,9 +135,9 @@ class Login extends Component {
 
   // 登入表單
   checkLIF = () => {
-    let inp = Array.from(document.querySelectorAll('form input'))
+    let inp = Array.from(document.querySelectorAll('.lof'))
     let x = [];
-    for ( var i=4 ; i<inp.length-7 ; i++) {
+    for ( var i = 0 ; i < inp.length ; i++ ) {
       if ( inp[i].value != 0 ) {
         x.push(inp[i].value)
       }
@@ -149,17 +149,19 @@ class Login extends Component {
     }
   }
 
-  // 註冊表單
+  // 註冊表單   x = [ { xxx = "" },]
   checkSUF = () => {
-    let inp = Array.from(document.querySelectorAll('form input'))
+    let inp = Array.from(document.querySelectorAll('.isu'))
     let x = [];
-    for ( var i=6 ; i<inp.length-1 ; i++) {
-      if ( inp[i].value != 0 ) {
-        x.push(inp[i].value)
+    for ( var i = 0 ; i < inp.length ; i++ ) {
+      if ( inp[2].value == inp[3].value && inp[i].value != '') {
+          let y = {};
+          y[inp[i].placeholder] = inp[i].value;
+          x.push(y);
       }
     }
-    if ( x.length == 6 ){ 
-      this.state.summit.push(x)
+    if ( x.length == 6 ){
+      this.next();
       return true
     }else {
       return false
@@ -180,12 +182,12 @@ class Login extends Component {
           <span className='text-center w-100 my-0' style={{color: 'red'}}>
              {this.state.aeh} &nbsp; {this.state.vec} &nbsp; 
           </span>
-          <form className='text-center mt-0' style={{width: "125%"}} onSubmit={(e) => {this.checkFPF(); e.preventDefault();}}>
+          <form className='text-center mt-0' id='fgF' style={{width: "125%"}} onSubmit={(e) => {this.checkFPF(); e.preventDefault();}}>
             <div>
               <ul className="list-group list-group-horizontal" >
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <img className='icon mx-3 my-1' src={require('../icon/profile.png')} />
-                  <input className="input" type="text" placeholder="帳號 or Email" required="required"/>
+                  <input className="input fpf" type="text" placeholder="帳號 or Email" required="required"/>
                   <button type='button' className='buttonL'>發送驗證碼</button><br />
                   <span> &nbsp; {this.state.ada}</span>
                 </li>
@@ -193,19 +195,20 @@ class Login extends Component {
               <ul className="list-group list-group-horizontal ">
                   <li className={`list-group-item w-100 ${this.state.class}`}>
                     <img className='icon mx-3 my-1' src={require('../icon/question.png')} />
-                    <input className="input" type="e-mal" placeholder="請輸入驗證碼" required="required"/>
+                    <input className="input fpf" type="e-mal" placeholder="請輸入驗證碼" required="required"/>
                   </li>
               </ul>
               <ul className="list-group list-group-horizontal " >
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
-                  <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼" required="required"/><br />
+                  <input className="input fpf" type="password" onChange={this.passwordCheck1} placeholder="密碼" 
+                    required="required"/><br />
                   <span> &nbsp; {this.state.pwa}</span>
                   <span style={{color: 'red'}}>{this.state.pwr}</span>
                 </li>
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
-                  <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" 
+                  <input className="input fpf" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" 
                     required="required"/><br />
                   <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                 </li>
@@ -227,12 +230,12 @@ class Login extends Component {
             </p>
             <div className='container'>
               <div className="row">
-                <form className='container mt-4' onSubmit={(e) => {this.checkLIF(); e.preventDefault();}}>
+                <form className='container mt-4' onSubmit={(e) => {this.checkLIF(); e.preventDefault();}} >
                   <img className='icon mx-3 my-3' src={require('../icon/profile.png')} />
-                  <input autoFocus="autofocus" className="input col-6 m-0" type="text" placeholder="帳號 or Email" 
+                  <input autoFocus="autofocus" className="input col-6 m-0 lof" type="text" placeholder="帳號 or Email" 
                     required="required"/><br />
                   <img className='icon mx-3 my-3' src={require('../icon/password.png')} />
-                  <input className="input col-6 m-0" type="password" placeholder="請輸入密碼" required="required"/><br />
+                  <input className="input col-6 m-0 lof" type="password" placeholder="請輸入密碼" required="required"/><br />
                   <div className='mt-5'>
                     <button type="submit" className='button my-2 mx-3' >登入</button>
                     <button type="button" className='button my-2 mx-3' onClick={this.next}>註冊</button>
@@ -255,13 +258,13 @@ class Login extends Component {
             <h2 className='col-10 text-center'>註冊</h2>
             <p className='text-center w-100'></p>
           </div >
-          <form className='' style={{width: "130%"}} onSubmit={(e) => {this.checkSUF(); e.preventDefault();}} >
+          <form className='' style={{width: "125%"}} onSubmit={(e) => {this.checkSUF(); e.preventDefault();}} noValidate>
               <ul className="list-group list-group-horizontal">
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/profile.png')} />
-                      <input className="input " type="text" placeholder="帳號" onChange={this.reA} required="required"/><br />
+                      <input className="input isu" type="text" placeholder="帳號" onChange={this.reA} required="required"/><br />
                       <span> &nbsp; {this.state.ada}</span>
                       <span style={{color: 'red'}}>{this.state.adr}</span>
                     </div>
@@ -271,7 +274,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/email.png')} />
-                      <input className="input " type="e-mail" placeholder="Email" onChange={this.reE} required="required"
+                      <input className="input isu" type="e-mail" placeholder="Email" onChange={this.reE} required="required"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br />
                       <span> &nbsp; {this.state.emr}</span>
                     </div>
@@ -283,7 +286,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/password.png')} />
-                      <input className="input" type="password" onChange={this.passwordCheck1} placeholder="密碼" required="required"
+                      <input className="input isu" type="password" onChange={this.passwordCheck1} placeholder="密碼" required="required"
                         pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"/><br />
                       <span > {this.state.pwa} </span>
                       <span style={{color: 'red'}}>{this.state.pwr}</span>
@@ -294,7 +297,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/password.png')} />
-                      <input className="input" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" required="required"
+                      <input className="input isu" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" required="required"
                         /><br />
                       <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                     </div>
@@ -306,7 +309,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/account.png')}/>
-                      <input className="input" type="text" onChange={this.reN} placeholder="真實姓名" required="required"/><br />
+                      <input className="input isu" type="text" onChange={this.reN} placeholder="真實姓名" required="required"/><br />
                       <span style={{color: 'red'}}> &nbsp; {this.state.naa}</span>
                     </div>
                   </div>
@@ -315,7 +318,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('../icon/mobile-app.png')} />
-                      <input className="input" type="text" placeholder="連絡電話" onChange={this.reP} required="required" 
+                      <input className="input isu" type="text" placeholder="連絡電話" onChange={this.reP} required="required" 
                         pattern="^[0][9][0-9]{8}$" maxLength="10" /><br />
                         <span style={{color: 'red'}}> &nbsp; {this.state.cel}</span>
                     </div>
