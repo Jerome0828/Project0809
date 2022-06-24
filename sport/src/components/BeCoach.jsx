@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
+import pic from '../imgs/user.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 class BeCoach extends Component {
@@ -14,13 +15,17 @@ class BeCoach extends Component {
         peopleList: [{ key: 0, checked: false, value: '一對一', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' },
         { key: 1, checked: false, value: '一對多', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' }],
 
-        agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }]
+        agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
+        src:[pic]
     }
     style = {
         'width': '15%'
     }
     agreeStyle = {
         'width': '15%'
+    }
+    imgSize = {
+        'width': '200px'
     }
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
@@ -82,13 +87,20 @@ class BeCoach extends Component {
         document.getElementById('spanPrice').innerHTML = `$ ${e.target.value}`;
     }
 
+    fileInput = () =>{
+        const [file] = document.getElementById('imgInput').files;
+        if(file){
+            this.state.src = URL.createObjectURL(file);
+            this.setState({});
+        }
+    }
     render() {
         let selectedOptionId = '';
         return (
             <div className="container mt-3">
                 <h3>上傳課程</h3>
                 <hr />
-                <form id='beCoach' onChange={this.formChange} className="was-validated form-group">
+                <form id='beCoach' onChange={this.formChange} className="was-validated form-group" enctype="multipart/form-data">
 
                     {/* 上傳圖片 */}
                     <ul className="list-group list-group-flush">
@@ -99,8 +111,11 @@ class BeCoach extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="mb-3 w-75">
-                        <input type="file" className="rounded shadow form-control" required />
+                    <div className="mb-3 w-50">
+                        <input id='imgInput' accept="image/gif, image/jpeg, image/png"  type="file" onChange={this.fileInput} className="rounded shadow form-control" required multiple/>
+                    </div>
+                    <div className='border'>
+                        <img style={this.imgSize} className='mt-3' id='blah' src={this.state.src} />
                     </div>
                     <hr />
 
@@ -117,7 +132,7 @@ class BeCoach extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="mb-3 w-75">
+                    <div className="mb-3 w-50">
                         <input type="text" className="rounded shadow form-control" placeholder="請輸入課程名稱" required />
                     </div>
                     <hr />
@@ -132,7 +147,7 @@ class BeCoach extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="mb-3 w-75">
+                    <div className="mb-3 w-50">
                         <textarea className="rounded shadow form-control" rows="3" placeholder="輸入課程簡介" required></textarea>
                     </div>
                     <hr />
@@ -142,7 +157,7 @@ class BeCoach extends Component {
                         <li className="list-group-item"><b>上課地點 :</b>
                         </li>
                     </ul>
-                    <div className="mb-3 mt-1 w-75" >
+                    <div className="mb-3 mt-1 w-50" >
                         <Citys />
                         <input type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
                     </div>

@@ -80,8 +80,8 @@ class RentPlace extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="mb-3 w-75">
-                        <input type="file" className="rounded shadow form-control" required />
+                    <div className="mb-3 w-50">
+                        <input type="file" className="rounded shadow form-control" required multiple/>
                     </div>
                     <hr />
 
@@ -90,7 +90,7 @@ class RentPlace extends Component {
                         <li className="list-group-item"><b>場地名稱 :</b>
                         </li>
                     </ul>
-                    <div className="mb-3 mt-1 w-75">
+                    <div className="mb-3 mt-1 w-50">
                         <input type="text" className="rounded shadow form-control" placeholder="請輸入場地名稱" required />
                     </div>
                     <hr />
@@ -100,7 +100,7 @@ class RentPlace extends Component {
                         <li className="list-group-item"><b>場地介紹 :</b>
                         </li>
                     </ul>
-                    <div className="mb-3 mt-1 w-75">
+                    <div className="mb-3 mt-1 w-50">
                         <textarea class="rounded shadow form-control" rows="3" placeholder="輸入場地簡介" required></textarea>
                     </div>
                     <hr />
@@ -110,7 +110,7 @@ class RentPlace extends Component {
                         <li className="list-group-item"><b>地址 :</b>
                         </li>
                     </ul>
-                    <div className="mb-3 mt-1 w-75" >
+                    <div className="mb-3 mt-1 w-50" >
                         <Citys />
                         <input type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
                     </div>
