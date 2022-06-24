@@ -202,8 +202,6 @@ class SearchCoachPage extends Component {
         this.state.rangeValue[1] = e.target.value[1];
         this.state.timeValue[0] = `${Math.floor((24 * (e.target.value[0] / 100)))} : 00`;
         this.state.timeValue[1] = `${Math.floor((24 * (e.target.value[1] / 100)))} : 00`;
-        // 時:((24*60*60)*(20/100))/24
-        // 分:((24*60*60)*(20/100))/24/60
         this.setState({});
     }
 
