@@ -27,7 +27,7 @@ body {
 
 #all {
     /* background-repeat: no-repeat; */
-    /* background: linear-gradient(to top left, gray , white 70%); */
+    background: linear-gradient(to top left, transparent, white 35%);
     transition: all 1.5s ;
     opacity: 1;
     height: 80vh;

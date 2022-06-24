@@ -159,6 +159,7 @@ class Login extends Component {
       }
     }
     if ( x.length == 6 ){ 
+      this.state.summit.push(x)
       return true
     }else {
       return false
@@ -170,8 +171,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="loginA row" id='all' 
-        style={{ background: `linear-gradient( 300deg, transparent , white 50%)`, height: `80vh`}}>
+      <div className="loginA row" id='all' >
         {/* -- Forgot password -- */}
         <div className='login text-center ' 
           style={{ opacity: this.state.opacity[0], marginLeft: this.state.marginLeft[0], visibility: this.state.visibility[0],
