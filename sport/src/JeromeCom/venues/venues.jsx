@@ -90,7 +90,7 @@ class Venues extends Component {
                                     </div>
                                     <div className='col-lg-6 mt-5 ml-1 text-center'>
                                         <div className='col-lg-12  my-5 text-center'>
-                                            <img className='icon' src={require('../icon/place.png')} />
+                                            <img className='icon' src={require('./components/icon/place.png')} />
                                             <span >線上視訊教學</span>
                                         </div>
                                         <div className='my-2'>
@@ -117,7 +117,7 @@ class Venues extends Component {
                                         <div className='col-lg-6 container text-center'>
                                             <p className='text-align:center'>臺中市北屯區東山路一段156-6</p>
                                             <a href="https://goo.gl/maps/PnXNtARA1F72HbM67" target="_blank">
-                                                <img className='icon' src={require('../icon/google-maps.png')} />查看地圖
+                                                <img className='icon' src={require('./components/icon/google-maps.png')} />查看地圖
                                             </a>
                                         </div>
                                     </div>
@@ -131,11 +131,11 @@ class Venues extends Component {
                                 <h3 className='container title p-2'>取消政策</h3>
                                 <div className='container'>
                                     <div className='row'>
-                                        <h5 className='col-lg-5 p-3'><img src={require('../icon/check.png')} className='icon mx-2'/>
+                                        <h5 className='col-lg-5 p-3'><img src={require('./components/icon/check.png')} className='icon mx-2'/>
                                             課程開始1小時前
                                             <span style={{fontSize: '15px'}}> (可全額退款100%) </span>
                                         </h5>
-                                        <h5 className='col-lg-5 p-3'><img src={require('../icon/cross.png')} className='icon mx-2'/>
+                                        <h5 className='col-lg-5 p-3'><img src={require('./components/icon/cross.png')} className='icon mx-2'/>
                                             課程開始少於1小時
                                             <span style={{fontSize: '15px'}}> (不可退款) </span>
                                         </h5>

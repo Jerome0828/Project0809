@@ -22,7 +22,7 @@ class Teachers extends Component {
                                     <th className='text-center'><h4>證照</h4></th>
                                         <tr>
                                             <td>
-                                                <div className='container'>
+                                                <div className=''>
                                                     <table className='table'>
                                                         <tbody >
                                                             <tr>
