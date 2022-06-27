@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
-import pic from '../imgs/user.png';
+import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
 class BeCoach extends Component {
