@@ -67,7 +67,13 @@ class RentPlace extends Component {
 
     // 價格預覽
     spanPrice = (e) =>{
-        document.getElementById('spanPrice').innerHTML = `$ ${e.target.value}`;
+        // console.log(e.target.value);
+        document.getElementById('spanPrice').innerHTML = `${e.target.value}`;
+        // console.log(document.getElementsByName('moneyPerTimes')[0]);
+    }
+    spanTimes = (e) =>{
+        var spanTime = document.querySelectorAll(`option[name=${e.target.value}]`)[0].innerText;
+        document.getElementById('spanTimes').innerHTML = `${spanTime}`;
     }
 
     // 圖片預覽
@@ -82,6 +88,7 @@ class RentPlace extends Component {
     }
     
     render() {
+        let selectedOptionId = '';
         // 我還沒給價錢設定
         return (
             <div className="container mt-3">
@@ -200,8 +207,15 @@ class RentPlace extends Component {
                     <div className="mb-3 mt-1">
                         <label>
                             <input onInput={this.spanPrice} type="number" className="rounded shadow form-control" placeholder="請輸入價錢" required />
+                            <select name="moneyPerTimes" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue={selectedOptionId} required>
+                                <option name="" value=""></option>
+                                <option name="times" value="times">1次</option>
+                                <option name="min" value="min">1分鐘</option>
+                                <option name="thrmin" value="thrmin">30分鐘</option>
+                                <option name="hour" value="hour">1小時</option>
+                            </select>
                         </label>
-                        <p className='text-muted mt-2'><span id='spanPrice'>$ </span> / 分鐘</p>
+                        <p className='text-muted mt-2'>$ <span id='spanPrice'> </span> / <span id='spanTimes'></span></p>
                     </div>
                     <hr />
 
