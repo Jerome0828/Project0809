@@ -16,7 +16,15 @@ class BeCoach extends Component {
         { key: 1, checked: false, value: '一對多', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' }],
 
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
-        src: [pic, pic, pic]
+        src: [pic, pic, pic],
+
+        weekTime: [{ eName: 'monTime', cName: '週一', required: false },
+        { eName: 'tuesTime', cName: '週二', required: false },
+        { eName: 'wedTime', cName: '週三', required: false },
+        { eName: 'thurTime', cName: '週四', required: false },
+        { eName: 'friTime', cName: '週五', required: false },
+        { eName: 'satTime', cName: '週六', required: false },
+        { eName: 'sunTime', cName: '週日', required: false }],
     }
     style = {
         'width': '15%'
@@ -86,12 +94,12 @@ class BeCoach extends Component {
     }
 
     // 價格預覽
-    spanPrice = (e) =>{
+    spanPrice = (e) => {
         // console.log(e.target.value);
         document.getElementById('spanPrice').innerHTML = `${e.target.value}`;
         // console.log(document.getElementsByName('moneyPerTimes')[0]);
     }
-    spanTimes = (e) =>{
+    spanTimes = (e) => {
         var spanTime = document.querySelectorAll(`option[name=${e.target.value}]`)[0].innerText;
         document.getElementById('spanTimes').innerHTML = `${spanTime}`;
     }
@@ -105,6 +113,22 @@ class BeCoach extends Component {
                 console.log(URL.createObjectURL(file[i]));
                 this.setState({});
             }
+        }
+    }
+
+    // 星期+時間
+    weekTimeChange = (e) => {
+        // console.log(e.target.checked);
+        var changeId = e.target.id;
+        // console.log(document.querySelectorAll(`input[name=${changeId}]`)[0].value);
+        if (e.target.checked) {
+            document.querySelectorAll(`input[name=${changeId}]`)[0].required = true;
+            document.querySelectorAll(`input[name=${changeId}]`)[1].required = true;
+        } else {
+            document.querySelectorAll(`input[name=${changeId}]`)[0].required = false;
+            document.querySelectorAll(`input[name=${changeId}]`)[1].required = false;
+            document.querySelectorAll(`input[name=${changeId}]`)[0].value = '';
+            document.querySelectorAll(`input[name=${changeId}]`)[1].value = '';
         }
     }
 
@@ -192,23 +216,47 @@ class BeCoach extends Component {
                     </div>
                     <hr />
 
-                    {/* 刊登日期 */}
+                    {/* 開課時間 */}
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>刊登日期 :</b>
+                        <li className="list-group-item"><b>開課時間 :</b>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
                                 </li>
                             </ul>
                         </li>
                     </ul>
-                    <div className="mb-3">
-                        <label>
-                            <input type="date" className="rounded shadow form-control" required />
-                        </label>
-                        <p className="mt-2 mb-2">至</p>
-                        <label>
-                            <input type="date" className="rounded shadow form-control" required />
-                        </label>
+                    <div className="mb-4 d-flex flex-wrap">
+                        {/* {eName : 'monTime', cName : '週一', required : false} */}
+                        {this.state.weekTime.map(elm => {
+                            return (
+                                <div className="mb-3 mx-1">
+                                    <div className="mx-3 form-check form-switch">
+                                        <input className="form-check-input" type="checkbox" id={elm.eName} onChange={this.weekTimeChange} />
+                                        <label className="form-check-label" htmlFor={elm.eName}>{elm.cName}</label>
+                                    </div>
+                                    <label className='mt-2'>
+                                        <input name={elm.eName} type="time" className="rounded shadow form-control" required={elm.required} />
+                                    </label>
+                                    <p className="mt-2 mb-2">至</p>
+                                    <label>
+                                        <input name={elm.eName} type="time" className="rounded shadow form-control" required={elm.required} />
+                                    </label>
+                                </div>
+                            )
+                        })}
+                        {/* <div className="mb-3 mx-1">
+                            <div className="mx-3 form-check form-switch">
+                                <input className="form-check-input" type="checkbox" id="monTime" onChange={this.weekTimeChange} />
+                                <label className="form-check-label" htmlFor="monTime">週一</label>
+                            </div>
+                            <label className='mt-2'>
+                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
+                            </label>
+                            <p className="mt-2 mb-2">至</p>
+                            <label>
+                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
+                            </label>
+                        </div>*/}
                     </div>
                     <hr />
 
