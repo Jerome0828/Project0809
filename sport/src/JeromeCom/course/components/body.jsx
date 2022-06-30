@@ -49,11 +49,6 @@ class Body extends Component {
                         <hr />
                         <div  id='reserve'></div>
                         <div className='container' data-aos="fade-up">
-                            <p id='title' className='container'>預約狀況</p>
-                            <Monthly />
-                        </div>
-                        <hr />
-                        <div className='container' data-aos="fade-up">
                             <p id='title' className='container'>開放時段</p>
                             <div className='container'>
                                 <table className="table" data-toggle="table">
@@ -88,42 +83,21 @@ class Body extends Component {
                         </div>
                         <hr />
                         <div className='container' data-aos="fade-up">
+                            <p id='title' className='container'>預約狀況</p>
+                            <Monthly />
+                        </div>
+                        <hr />
+                        <div className='container' data-aos="fade-up">
                             <p id='title' className='container'>授課師資</p>
                             <Teachers />
                         </div>
                         <hr />
                         <div className='container' data-aos="fade-up">
-                            <div className='row'>
-                                <div className='col-lg-6'>
-                                    <p id='title' className='container'>收費方式</p>
-                                    
-                                    <div className='container'>
-                                        <h5>
-                                            <img src={require('./icon/reserved.png')} style={{height: '3vh'}}/>
-                                            <span className='mx-3'>預約</span>
-                                        </h5>
-                                        <p className='container'>
-                                            正常時段：$ 300 / 60 分鐘最低購買次數為 1 次購買滿 30 次，每次折扣 $ 100。
-                                        </p>
-                                    </div>
-                                    
-                                </div>
-                                <div className='col-lg-6'>
-                                    <p id='title' className='container'>注意事項</p>
-                                    <h5 className='container'>
-                                        <img src={require('./icon/no-smoke.png')} style={{height: '3vh'}}/>
-                                        <span className='mx-3'>禁止吸煙</span>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div className='container' data-aos="fade-up">
                             <p id='title' className='container'>地址</p>
                             <div className='row align-items-center m-2'>
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.055014686727!2d120.70789029999999!3d24.169803299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917f71782ec5b%3A0xdf6c6936864c2259!2zNDA25Y-w5Lit5biC5YyX5bGv5Y2A5p2x5bGx6Lev5LiA5q61MTU2LTbomZ8!5e0!3m2!1szh-TW!2stw!4v1655384835675!5m2!1szh-TW!2stw" 
-                                    className='col-lg-8' height='300vh'>
-                                </iframe>
+                                <iframe src="
+                                    https://www.google.com/maps/embed/v1/place?key=AIzaSyB09_GtwzgJdeUBYhUL91I60stBPgC_i4U&q=臺中市北屯區東山路一段156-6
+                                    "frameborder="0" className='col-lg-8' height='300vh'></iframe>
                                 <div className='col-lg-4 container text-center'>
                                     <p className='text-align:center'>臺中市北屯區東山路一段156-6</p>
                                     <a href="https://goo.gl/maps/PnXNtARA1F72HbM67" target="_blank">
@@ -135,25 +109,38 @@ class Body extends Component {
                         </div>
                         <hr />
                         <div className='container-fluid' data-aos="fade-up">
-                            <p id='title' className='container'>取消政策</p>
-                            <div className='container '>
-                                <h5 className='col-lg-5 p-3 w-100'>
-                                    <img src={require('./icon/check2.png')} style={{height: '3vh'}}/>
-                                    <span className='mx-3'>課程開始1小時前</span>
-                                    
-                                    <span style={{fontSize: '15px'}}> (可全額退款100%) </span>
-                                </h5>
-                                <h5 className='col-lg-5 p-3 w-100'>
-                                    <img src={require('./icon/cross.png')} style={{height: '3vh'}}/>
-                                    <span className='mx-3'>課程開始少於1小時</span>
-                                    <span style={{fontSize: '15px'}}> (不可退款) </span>
-                                </h5>
+                            <div className='row'>
+                                <div className='col-lg-7'>
+                                    <p id='title' className='container'>取消政策</p>
+                                    <div className='container '>
+                                        <h5 className='col-lg-5 p-3 w-100'>
+                                            <img src={require('./icon/check2.png')} style={{height: '3vh'}}/>
+                                            <span className='mx-3'>課程開始1小時前</span>
+                                            
+                                            <span style={{fontSize: '15px'}}> (可全額退款100%) </span>
+                                        </h5>
+                                        <h5 className='col-lg-5 p-3 w-100'>
+                                            <img src={require('./icon/cross.png')} style={{height: '3vh'}}/>
+                                            <span className='mx-3'>課程開始少於1小時</span>
+                                            <span style={{fontSize: '15px'}}> (不可退款) </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div className='col-lg-5'>
+                                    <p id='title' className='container'>注意事項</p>
+                                    <h5 className='container'>
+                                        <img src={require('./icon/no-smoke.png')} style={{height: '3vh'}}/>
+                                        <span className='mx-3'>禁止吸煙</span>
+                                    </h5>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                     <div className='col-lg-3 bg-black'>
                         <h3 className='container text-end m-1'>課後評價</h3>
                         <div style={{transform: 'translate(10%, 0)'}}>
+                            <Evaluation />
                             <Evaluation />
                             <Evaluation />
                             <Evaluation />

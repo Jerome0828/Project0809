@@ -14,7 +14,7 @@ import Label from './label';
 
 function handleClick(event) {
     event.preventDefault();
-    console.info('You clicked a breadcrumb.');
+    // console.info('You clicked a breadcrumb.');
 }
 
 function Head() {

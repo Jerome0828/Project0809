@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login.css';
-import Pic1 from '../icon/jpg/1.jpg'
 
 class Login extends Component {
   state = {
@@ -276,7 +275,7 @@ class Login extends Component {
                       <img className='icon mx-3 my-1' src={require('./icon/email.png')} />
                       <input className="input isu" type="e-mail" placeholder="Email" onChange={this.reE} required="required"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br />
-                      <span> &nbsp; {this.state.emr}</span>
+                      <span> &nbsp; {this.state.emr}</span> 
                     </div>
                   </div>
                 </li>
