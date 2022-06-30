@@ -15,13 +15,13 @@ class RentPlace extends Component {
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
         src: [pic, pic, pic],
 
-        weekTime: [{ eName: 'monTime', cName: '週一', required: false },
-        { eName: 'tuesTime', cName: '週二', required: false },
-        { eName: 'wedTime', cName: '週三', required: false },
-        { eName: 'thurTime', cName: '週四', required: false },
-        { eName: 'friTime', cName: '週五', required: false },
-        { eName: 'satTime', cName: '週六', required: false },
-        { eName: 'sunTime', cName: '週日', required: false }]
+        weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd:'monEnd'},
+        { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd:'tuesEnd' },
+        { eName: 'wedTime', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd:'wedEnd' },
+        { eName: 'thurTime', cName: '週四', required: false, timeBegin: 'thurBegin', timeEnd:'thurEnd' },
+        { eName: 'friTime', cName: '週五', required: false, timeBegin: 'friBegin', timeEnd:'friEnd' },
+        { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd:'satEnd' },
+        { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd:'sunEnd' }],
 
 
     }
@@ -98,16 +98,16 @@ class RentPlace extends Component {
     // 星期+時間
     weekTimeChange = (e) => {
         // console.log(e.target.checked);
-        var changeId = e.target.id;
+        // var changeId = e.target.id;
         // console.log(document.querySelectorAll(`input[name=${changeId}]`)[0].value);
         if (e.target.checked) {
-            document.querySelectorAll(`input[name=${changeId}]`)[0].required = true;
-            document.querySelectorAll(`input[name=${changeId}]`)[1].required = true;
+            e.target.parentElement.parentElement.childNodes[1].children[0].required = true;
+            e.target.parentElement.parentElement.childNodes[3].children[0].required = true;
         } else {
-            document.querySelectorAll(`input[name=${changeId}]`)[0].required = false;
-            document.querySelectorAll(`input[name=${changeId}]`)[1].required = false;
-            document.querySelectorAll(`input[name=${changeId}]`)[0].value = '';
-            document.querySelectorAll(`input[name=${changeId}]`)[1].value = '';
+            e.target.parentElement.parentElement.childNodes[1].children[0].required = false;
+            e.target.parentElement.parentElement.childNodes[3].children[0].required = false;
+            e.target.parentElement.parentElement.childNodes[1].children[0].value = '';
+            e.target.parentElement.parentElement.childNodes[3].children[0].value = '';
         }
     }
 
@@ -117,7 +117,8 @@ class RentPlace extends Component {
             <div className="container mt-3">
                 <h3>上傳場地</h3>
                 <hr />
-                <form className="was-validated form-group">
+                <form id='rentPlace' className="was-validated form-group" enctype="multipart/form-data"
+                action = "http://localhost/spost/form.php" method='POST'>
 
                     {/* 上傳圖片 */}
                     <ul className="list-group list-group-flush">
@@ -129,7 +130,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 w-50">
-                        <input id='imgInput' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required multiple />
+                        <input name='img' id='imgInput' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required multiple />
                     </div>
 
                     {/* 預覽圖 */}
@@ -155,7 +156,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1 w-50">
-                        <input type="text" className="rounded shadow form-control" placeholder="請輸入場地名稱" required />
+                        <input name="title" type="text" className="rounded shadow form-control" placeholder="請輸入場地名稱" required />
                     </div>
                     <hr />
 
@@ -165,7 +166,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1 w-50">
-                        <textarea class="rounded shadow form-control" rows="3" placeholder="輸入場地簡介" required></textarea>
+                        <textarea name="info" class="rounded shadow form-control" rows="3" placeholder="輸入場地簡介" required></textarea>
                     </div>
                     <hr />
 
@@ -176,7 +177,7 @@ class RentPlace extends Component {
                     </ul>
                     <div className="mb-3 mt-1 w-50" >
                         <Citys />
-                        <input type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
+                        <input name="addr" type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
                     </div>
                     <hr />
 
@@ -190,7 +191,6 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-4 d-flex flex-wrap">
-                        {/* {eName : 'monTime', cName : '週一', required : false} */}
                         {this.state.weekTime.map(elm => {
                             return (
                                 <div className="mb-3 mx-1">
@@ -199,28 +199,15 @@ class RentPlace extends Component {
                                         <label className="form-check-label" htmlFor={elm.eName}>{elm.cName}</label>
                                     </div>
                                     <label className='mt-2'>
-                                        <input name={elm.eName} type="time" className="rounded shadow form-control" required={elm.required} />
+                                        <input name={elm.timeBegin} type="time" className="rounded shadow form-control" required={elm.required} />
                                     </label>
                                     <p className="mt-2 mb-2">至</p>
                                     <label>
-                                        <input name={elm.eName} type="time" className="rounded shadow form-control" required={elm.required} />
+                                        <input name={elm.timeEnd} type="time" className="rounded shadow form-control" required={elm.required} />
                                     </label>
                                 </div>
                             )
                         })}
-                        {/* <div className="mb-3 mx-1">
-                            <div className="mx-3 form-check form-switch">
-                                <input className="form-check-input" type="checkbox" id="monTime" onChange={this.weekTimeChange} />
-                                <label className="form-check-label" htmlFor="monTime">週一</label>
-                            </div>
-                            <label className='mt-2'>
-                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
-                            </label>
-                            <p className="mt-2 mb-2">至</p>
-                            <label>
-                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
-                            </label>
-                            </div>*/}
                     </div>
                     <hr />
 
@@ -231,7 +218,7 @@ class RentPlace extends Component {
                     </ul>
                     <div className="mb-3 mt-1">
                         <label>
-                            <input type="number" className="rounded shadow form-control" placeholder="請輸入人數限制" required />
+                            <input name="plimit" type="number" className="rounded shadow form-control" placeholder="請輸入人數限制" required />
                         </label>
                     </div>
                     <hr />
@@ -253,13 +240,13 @@ class RentPlace extends Component {
                     </ul>
                     <div className="mb-3 mt-1">
                         <label>
-                            <input onInput={this.spanPrice} type="number" className="rounded shadow form-control" placeholder="請輸入價錢" required />
-                            <select name="moneyPerTimes" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue={selectedOptionId} required>
+                            <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control" placeholder="請輸入價錢" required />
+                            <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue={selectedOptionId} required>
                                 <option name="" value=""></option>
-                                <option name="times" value="times">1次</option>
-                                <option name="min" value="min">1分鐘</option>
-                                <option name="thrmin" value="thrmin">30分鐘</option>
-                                <option name="hour" value="hour">1小時</option>
+                                <option name="perTimes" value="times">1次</option>
+                                <option name="perMin" value="min">1分鐘</option>
+                                <option name="perThirtyMin" value="thrmin">30分鐘</option>
+                                <option name="perHour" value="hour">1小時</option>
                             </select>
                         </label>
                         <p className='text-muted mt-2'>$ <span id='spanPrice'> </span> / <span id='spanTimes'></span></p>
