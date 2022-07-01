@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../scss/all.css';
+
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 
@@ -106,7 +107,7 @@ class HomeHead extends Component {
 {/* 第一層header */}
         <header>
             {/* header第一段左邊 */}
-            <div className='HomeHeadBoxStyle row container m-auto' 
+            <div className='HomeHeadBoxStyle row container m-auto'                                                             
 
                 data-aos="fade-down"
                 data-aos-easing="linear"
@@ -114,7 +115,7 @@ class HomeHead extends Component {
             >
                 {this.state.oneLeftBoxStyle.map((e,index)=>{return <IndexLeftBox 
                         id={e.id} key={index} title={e.title} value={e.value} src={e.src1}
-                        to={e.to}
+                        to={e.to} BottomText={e.BottomText}
                         
                         />  })}
                 
@@ -135,6 +136,9 @@ class HomeHead extends Component {
                 </div>
             </div>
         </header>
+
+        <p                       
+                        >13123123123</p>
         
 {/* 第一層section(設定滿版標語) */}
             <section>
