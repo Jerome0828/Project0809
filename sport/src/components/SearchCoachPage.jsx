@@ -217,7 +217,7 @@ class SearchCoachPage extends Component {
                                 <h3>篩選</h3>
                                 <span onClick={this.clearForm} className='btn text-secondary'>全部清除</span>
                             </div>
-                            <input style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
+                            <input name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
 
 
                             {/* 縣市 */}
