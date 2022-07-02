@@ -14,7 +14,14 @@ class CarouselCard extends Component {
             border:'1px solid black'
             }
         }
-     
+
+
+        setLocalStorage =(e)=>{
+            // localStorage.setItem("Test",JSON.stringify(this.state.commodity));
+            localStorage.setItem("Test",JSON.stringify(this.props.date));
+        }
+
+
     render() { 
         return (
             <>
@@ -27,7 +34,8 @@ class CarouselCard extends Component {
                     alt="First slide"
                     />
                     {/* 設定cardBoxText文字標題 */}
-                    <button className='cardBoxText rounded-3'>
+                    <button className='cardBoxText rounded-3'
+                    onClick={this.setLocalStorage}>
                         {/* 設定連接網址 */}
                     <span className='d-block'><NavLink to="/coursesAndVenues">{this.props.value}</NavLink></span>
                     </button>

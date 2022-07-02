@@ -8,6 +8,9 @@ import '../scss/all.css';
 import 'bootstrap/dist/js/bootstrap';
 import { NavLink } from 'react-router-dom';
 
+
+import logo from "../img/logo/logo.png";
+
 function NavBarContent1() {
     return (
       <div >
@@ -16,7 +19,8 @@ function NavBarContent1() {
  
         >
           <Container>
-            <Navbar.Brand><NavLink  to="/" exact><img src="https://dummyimage.com/200x50/000/fff" alt="test1"/></NavLink></Navbar.Brand>
+             {/* 更換LOGO圖片 */}
+            <Navbar.Brand><NavLink  to="/" exact><img src={logo} alt="test1" width={150} height={50}/></NavLink></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">

@@ -35,7 +35,11 @@ class NavBarOK extends Component {
                 <div>
                 <Switch>
                     <Route path="/" component={home} exact/>
-                    <Route path="/coursesAndVenues" component={coursesAndVenues} exact/>
+
+                    {/* 課程與場地路由 */}
+                    <Route path="/coursesAndVenues" component={coursesAndVenues}/>
+                    {/* <Route path={`/coursesAndVenues/${this.props.id}`} component={coursesAndVenues}/> */}
+
                     <Route path="/becomeCoach" component={becomeCoach} exact/>
                     <Route path="/rentSpace" component={rentSpace} exact/>
                     <Route path="/loginRegister" component={loginRegister} exact/>

@@ -6,13 +6,21 @@ import CardTest from "../siteSearch/CardTest.jsx";
 
 
 class ShoppingCart extends Component {
-    state = {  } 
+    state = { 
+        commodityValue:[
+            localStorage.getItem("place"),
+            // JSON.parse(localStorage.getItem("place"))
+        ],
+     } 
     render() { 
         return (
             <>
             
                 測試購物車頁面
-                <CardTest/>
+                <hr />
+                {this.state.commodityValue}
+                {/* {JSON.parse(this.state.commodityValue)} */}
+             
             </>
         );
     }
