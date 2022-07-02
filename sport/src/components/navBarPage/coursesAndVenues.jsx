@@ -64,12 +64,26 @@ class CoursesAndVenues extends Component {
                 ]
         }]} 
 
+        // componentDidMount(){
+        //     addShoppingCartCount =()=>{
+        //         var a= localStorage.setItem("place",JSON.stringify(this.state.place));
+        //         // localStorage.setItem("Test",JSON.stringify(this.state.commodity));
+        //         // localStorage.setItem("Test",this.state.commodity);
+        //         this.setState({selectedProduct:a}) 
+        //     }
 
-    addShoppingCartCount =()=>{
-        localStorage.setItem("place",JSON.stringify(this.state.place));
-        // localStorage.setItem("Test",JSON.stringify(this.state.commodity));
-        // localStorage.setItem("Test",this.state.commodity);
-    }
+        // }
+
+            addShoppingCartCount =()=>{
+                // var a= localStorage.setItem("place",JSON.stringify(this.state.place));
+                var a= localStorage.setItem("place",this.state.place);
+                // localStorage.setItem("Test",JSON.stringify(this.state.commodity));
+                // localStorage.setItem("Test",this.state.commodity);
+                this.setState({selectedProduct:a}) 
+            }
+
+
+
 
 
     render() { 

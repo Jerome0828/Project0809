@@ -117,7 +117,7 @@ class HomeHead extends Component {
                         id={e.id} key={index} title={e.title} value={e.value} src={e.src1}
                         to={e.to} BottomText={e.BottomText}
                         
-                        />  })}
+                />  })}
                 
 
             {/* header第一段右邊圖片牆 */}
@@ -136,9 +136,6 @@ class HomeHead extends Component {
                 </div>
             </div>
         </header>
-
-        <p                       
-                        >13123123123</p>
         
 {/* 第一層section(設定滿版標語) */}
             <section>
