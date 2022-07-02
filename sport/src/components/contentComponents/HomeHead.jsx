@@ -120,7 +120,7 @@ class HomeHead extends Component {
                         />  })}
                 
 
-            {/* header第一段右邊 */}
+            {/* header第一段右邊圖片牆 */}
                 <div className='col-12 col-sm-7 HomeHeadBoxRight'>
                     <div className='HomeHeadBoxRightImgBox'>
                         <div className='HomeHeadBoxRightText row-cols-4 ' >  

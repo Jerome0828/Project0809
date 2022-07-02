@@ -18,6 +18,7 @@ class CarouselCard extends Component {
     render() { 
         return (
             <>
+            {/* 首頁輪播中卡片替換 */}
             <div className="cardBox" style={this.state.cardBoxText}>
                     <img
                     style={this.state.cardImage}
@@ -25,7 +26,9 @@ class CarouselCard extends Component {
                     src={this.props.src}
                     alt="First slide"
                     />
+                    {/* 設定cardBoxText文字標題 */}
                     <button className='cardBoxText rounded-3'>
+                        {/* 設定連接網址 */}
                     <span className='d-block'><NavLink to="/coursesAndVenues">{this.props.value}</NavLink></span>
                     </button>
             </div>
