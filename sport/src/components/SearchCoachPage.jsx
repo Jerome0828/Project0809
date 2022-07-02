@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 import Card from './Card';
 import Citys from './Citys';
 import SportList from './SportList'
@@ -35,7 +36,9 @@ class SearchCoachPage extends Component {
         { key: 6, id: 'sat', value: '星期六', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 7, id: 'sun', value: '星期日', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' }],
 
-        rangeValue: [0, 100], timeValue: ['00 : 00', '24 : 00']
+        rangeValue: [0, 100], timeValue: ['00 : 00', '24 : 00'],
+
+        data:[]
     }
     // <label name='price' className='text-center mt-1'><input type="radio" name='price' className='d-none' /> 
     // <span ><FontAwesomeIcon className='d-none text-success' icon={faCheck} /></span>$ 3000 ~ 以上</label>
@@ -46,16 +49,31 @@ class SearchCoachPage extends Component {
         'padding': '5px',
         'border': '1px solid #00000050'
     }
+    timeRangeStyle = {
+        'color': 'balck',
+        'padding': '5px',
+        'border': '1px solid #00000050',
+        'width':'32%'
+    }
     submitStyle = {
         'padding': '5px',
         'border': '1px solid #00000050',
         'fontSize': '20px',
         'fontWeight': 'bold',
     }
+    // 課程預設
+    async componentDidMount() {        
+        var url = `http://localhost/spost/coach.php`;
+        var result = await Axios.get(url);
+        this.state.data = result.data;
+        this.setState({});
+        // console.log(this.state.data);
+    }
     // 清除縣市
     clearCity = () => {
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
+        console.log(document.getElementsByClassName('card-img-top')[0]);
         this.setState({});
     }
 
@@ -71,7 +89,7 @@ class SearchCoachPage extends Component {
     // weeklistonchange
     weekListOnclick = (e) => {
         let weekList = this.state.weekList;
-        console.log(e.target.checked);
+        // console.log(e.target.checked);
         weekList.map(elm => {
             if (e.target.id == elm.id) {
                 // 若icon為 XX
@@ -91,8 +109,8 @@ class SearchCoachPage extends Component {
     }
     // 清除日期
     clearTime = () => {
-        document.getElementsByName('classTime')[0].value = '';
-        document.getElementsByName('classTime')[1].value = '';
+        document.getElementsByName('weekBegin')[0].value = '';
+        document.getElementsByName('weekEnd')[0].value = '';
         this.setState({});
     }
 
@@ -108,7 +126,7 @@ class SearchCoachPage extends Component {
     // 點選價格更改樣式
     setPrice = (e) => {
         this.state.priceList.map((elm) => {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             if (e.target.value == elm.price) {
                 elm.checked = true;
                 elm.className = 'text-success';
@@ -164,7 +182,7 @@ class SearchCoachPage extends Component {
 
     setPeople = (e) => {
         this.state.peopleList.map((elm) => {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             if (e.target.value == elm.value) {
                 elm.checked = true;
                 elm.className = 'text-success';
@@ -212,12 +230,12 @@ class SearchCoachPage extends Component {
                 <span>教練</span><span> / </span><span className='text-danger'>探索</span>
                 <div className='row mt-3'>
                     <div className='col-3'>
-                        <form className='mt-3 form-group'>
+                        <form action = "http://localhost/spost/form.php" method='POST' className='mt-3 form-group'>
                             <div className='d-flex justify-content-between mt-3'>
                                 <h3>篩選</h3>
                                 <span onClick={this.clearForm} className='btn text-secondary'>全部清除</span>
                             </div>
-                            <input name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
+                            <input name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋"/>
 
 
                             {/* 縣市 */}
@@ -225,11 +243,11 @@ class SearchCoachPage extends Component {
                                 <span>地區</span>
                                 <span onClick={this.clearCity} className='btn text-secondary'>清除</span>
                             </div>
-                            <Citys style={this.inputBoxStyle} />
+                            <Citys style={this.inputBoxStyle} required={false}/>
 
                             {/* 日期範圍 */}
                             <div className='d-flex justify-content-between mt-3'><span>日期</span><span onClick={this.clearTime} className='btn text-secondary'>清除</span></div>
-                            <input style={this.inputBoxStyle} className='shadow form-control' name='classTime' type="date" /> ~<input style={this.inputBoxStyle} className='shadow form-control' name='classTime' type="date" />
+                            <input style={this.inputBoxStyle} className='shadow form-control' name='weekBegin' type="date"  /> ~<input style={this.inputBoxStyle} className='shadow form-control' name='weekEnd' type="date"  />
 
                             {/* 星期幾 */}
                             <WeekList datas={this.state.weekList}
@@ -239,7 +257,7 @@ class SearchCoachPage extends Component {
 
                             {/* 所選時段 */}
                             <div className='d-flex justify-content-between mt-3'><span>時段</span><span onClick={this.clearRange} className='btn text-secondary'>清除</span></div>
-                            <Box sx={{ width: 300 }}>
+                            <Box sx={{ width: 'auto' }}>
                                 <br />
                                 <Slider
                                     getAriaLabel={() => 'Temperature range'}
@@ -247,9 +265,14 @@ class SearchCoachPage extends Component {
                                     onChange={this.handleChange}
                                     valueLabelDisplay="off"
                                     getAriaValueText={this.valuetext}
-                                    color="success"
+                                    color="success"                                    
                                 />
                             </Box>
+                            <div className='d-flex justify-content-between mt-3'>
+                                <input name='timeRangeBegin' type="text" className='shadow rounded' style={this.timeRangeStyle} value={this.state.timeValue[0]}/>
+                                <input name='timeRangeEnd' type="text" className='shadow rounded' style={this.timeRangeStyle} value={this.state.timeValue[1]}/>
+                            </div>
+                            {/* <div className='d-flex justify-content-between mt-3'><span className='shadow rounded' style={this.inputBoxStyle}>{this.state.timeValue[0]}</span><span className='shadow rounded' style={this.inputBoxStyle}>{this.state.timeValue[1]}</span></div> */}
                             {/* @mui/material/styles/createPalette.d.ts */}
                             {/* primary: PaletteColor;
                             secondary: PaletteColor;
@@ -258,7 +281,7 @@ class SearchCoachPage extends Component {
                             info: PaletteColor;
                             success: PaletteColor; */}
                             {/* https://mui.com/zh/material-ui/customization/palette/ */}
-                            <div className='d-flex justify-content-between mt-3'><span className='shadow rounded' style={this.inputBoxStyle}>{this.state.timeValue[0]}</span><span className='shadow rounded' style={this.inputBoxStyle}>{this.state.timeValue[1]}</span></div>
+
                             {/* 價錢 */}
                             <div className='d-flex justify-content-between mt-3'><span>價錢</span><span onClick={this.clearPrice} className='btn text-secondary'>清除</span></div>
                             <div className='w-100'>
@@ -266,7 +289,7 @@ class SearchCoachPage extends Component {
                                     return (
                                         <>
                                             <label style={this.inputBoxStyle} name='price' className='w-100 shadow rounded text-center mt-1'>
-                                                <input value={elm.price} onClick={this.setPrice} key={elm.key} type="radio" name='price' className='d-none' checked={elm.checked} />
+                                                <input value={elm.price} onClick={this.setPrice} key={elm.key} type="radio" name='price' className='d-none' checked={elm.checked}  />
                                                 <span ><FontAwesomeIcon className={elm.className} icon={faCheck} />&nbsp;</span>{elm.price}</label><br />
                                         </>
                                     )
@@ -287,7 +310,7 @@ class SearchCoachPage extends Component {
                                     return (
                                         <>
                                             <label style={this.inputBoxStyle} name='people' className="w-100 shadow rounded text-center mt-1">
-                                                <input onClick={this.setPeople} key={elm.key} value={elm.value} type="radio" name='people' className='d-none' checked={elm.checked} />
+                                                <input onClick={this.setPeople} key={elm.key} value={elm.value} type="radio" name='people' className='d-none' checked={elm.checked}  />
                                                 <span><FontAwesomeIcon className={elm.className} icon={faCheck} />&nbsp;</span>{elm.value}</label><br />
                                         </>
                                     )
@@ -306,12 +329,7 @@ class SearchCoachPage extends Component {
                             <a className='col-6 shadow btn' href="/site">找場地</a>
                         </div>
                         <div className='row mt-5 justify-content-center'>
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
+                            <Card dataList = {this.state.data}/>
                         </div>
 
                     </div>

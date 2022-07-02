@@ -176,7 +176,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1 w-50" >
-                        <Citys />
+                        <Citys required={true}/>
                         <input name="addr" type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
                     </div>
                     <hr />
