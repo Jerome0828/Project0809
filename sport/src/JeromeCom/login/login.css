@@ -21,8 +21,11 @@ body {
 }
 
 .login {
-    transition: all 1.5s ;
+    transition: all .6s ;
     background-color: white;
+}
+img {
+    transition: all 1s ;
 }
 
 #all {

@@ -11,8 +11,6 @@ import Scroll from './components/scroll';
 import Body from './components/body';
 import Footer from '../footer';
 
-
-
 AOS.init();
 
 class Course extends Component {

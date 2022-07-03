@@ -1,102 +1,49 @@
 import React, { Component } from 'react';
+
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import './login.css';
+import axios from 'axios';
 
 class Login extends Component {
   state = {
-    opacity: [0, 1, 0, 0], display: ['', '', '', ''], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
-    class: "", fontcolor: "red", 
+    opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
     // 載入特效, 文字提示顏色,  背景變換
-    passwordCheck: ['',''], summit: [],
+    class: "", fontcolor: "red", nameA: "asd",
+
+    // 找回密碼 (驗證碼)
+    verificationCode: ['', false],
+    // 登入頁( 帳號orEmail, 密碼)
+    addressOrEmail: ['', false, ''], password: ['', false], LoginCheck: false,
+    //註冊頁( 帳號, email, 密碼, 真實姓名, 電話, 暱稱, 性別 ) , 確認必填欄位
+    add: ['', false], ema: ['', false], pas: ['', false], rna: ['', false], cellphone: ['', false], nna:'', gen:'Male', 
+    registerCheck: false,
     // 密碼暫存
-    aeh: '', vec: '',  pwd: '',
+    passwordCheck: ['',''],
+
     // 帳號or信箱不存在, 驗證碼錯誤, 兩次密碼不相同
-    aew: '',  pwr: '',  
+    aeh: '', vec: '',  pwd: '',
     // 帳號or信箱錯誤, 密碼錯誤
-    adr: '',  emr: '', cel: '', ada: '6位數，且使用一個英文字母和數字', pwa: '6位數，且使用一個英文字母和數字', naa: ''
-    // 帳號已註冊, 信箱已註冊, 電話提示, 帳號提示, 密碼提示, 姓名提示
+    aew: '',  pwr: '',  
+    // 帳號或信箱已註冊,  電話提示, 帳號提示, 密碼提示, 姓名提示
+    adr: '',  cel: '', ada: '6位數，且使用一個英文字母和數字', pwa: '6位數，且使用一個英文字母和數字', naa: ''
+    
   }
-
-  // 正規檢查 //
-  // Email正規檢查
-  reE = (e) => {
-    let eml = new RegExp(/^[a-za-z0-9_-]+@[a-za-z0-9_-]+(\.[a-za-z0-9_-]+)+$/);
-    if ( eml.test(e.target.value) ) { this.setState({ emr: ""}) }
-    else if ( e.target.value.length == 0 ) { this.setState({ emr: ""})}
-    else{ this.setState({ emr: "請輸入正確Email"}) };
-  }
-  // 帳號正規檢查
-  reA = (e) => {
-    let add = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
-    if ( e.target.value.length >= 6 ) {
-      if ( add.test( e.target.value ) == false ) {
-        this.setState({ ada: '', adr: '帳號格式錯誤' })
-      }else {
-        this.setState({ ada: '', adr: '' });
-      }
-    }else {
-      this.setState({ ada: '6位數，且使用一個英文字母和數字', adr: '' });
-    }
-  }
-  // 電話正規檢查
-  reP = (e) => {
-    let pho = new RegExp(/^[0][9][0-9]{8}$/)
-    if ( e.target.value.length == 10) {
-      if ( pho.test(e.target.value) ) { this.setState({ cel: ''}) }
-      else { this.setState({ cel: '電話格式錯誤'}) };
-    }else{
-      this.setState({ cel: ''});
-    }
-  }
-
-  
-// ---------------------------------
-  // (註冊 & 忘記密碼) 重複檢查 & 正規檢查 //
-  passwordCheck1 = (e) => {
-    let pws = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
-    if ( e.target.value.length < 6 ) {
-      this.setState({ pwa: '6位數，且使用一個英文字母和數字', pwr: '' })
-    }else {
-      if ( this.state.passwordCheck[1] == e.target.value ) {
-        this.setState({ pwd: ""})
-      }else {
-        this.setState({ pwd: "兩次密碼不相同" })
-      }
-      if ( pws.test( e.target.value ) ) {
-        this.state.passwordCheck[0] = e.target.value
-        this.setState({ pwa: '', pwr: ''})
-      }else {
-        this.setState({ pwa: '', pwr: '密碼格式錯誤' })
-      };
-    };
-  }
-  passwordCheck2 = (e) => {
-    if ( this.state.passwordCheck[0].length <= e.target.value.length ) {
-      if ( this.state.passwordCheck[0] == e.target.value) {
-        this.setState({ pwd: ""})
-      }else {
-        this.state.passwordCheck[1] = e.target.value
-        this.setState({ pwd: "兩次密碼不相同" })
-      }
-    }
-    else { this.setState({ pwd: "" }) }
-  }
-
 
 //------------------------------
-  // 畫面滑動 //
+  // 畫面滑動 
   back = () => {
     if ( this.state.opacity[1] == 1 ) {
-      this.setState({ opacity: [1, 0, 0, 0], marginLeft: ['50vw', '-0', '0', '0'], visibility: ['','hidden','hidden','hidden'],
-        class: "animate__animated animate__slideInRight"})
+      this.setState({ opacity: [1, 0, 0, 0, 0], marginLeft: ['50vw', '-0', '0', '0'], visibility: ['','hidden','hidden','hidden'],
+        class: "animate__animated animate__fadeIn", addressOrEmail: ['', false, ''], password: ['', false],
+        passwordCheck: ['',''], pas: ['', true]})
     }
     else if ( this.state.opacity[2] == 1 ) { 
-      this.setState({ opacity: [0, 1, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
-        class: ""})}
-    else { 
-      this.setState({ opacity: [0, 1, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
-        class: ""})
+      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], 
+        visibility: ['hidden','','hidden','hidden'], class: "", addressOrEmail: ['', false, ''], password: ['', false]})
+    }else {
+      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], 
+        visibility: ['hidden','','hidden','hidden'], class: "", addressOrEmail: ['', false, ''], password: ['', false]})
     }
   }
   next = () => {
@@ -110,62 +57,370 @@ class Login extends Component {
         
     else { 
       this.setState({ opacity: [0, 1, 0, 0],  marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
-        class: ""}) 
+        class: "", adr: ''}) 
     }
   }
 
-//---------------------------
-  // 確認(註冊)表單填入完整 //
-  // 忘記密碼表單
-  checkFPF = () => {
-    let inp = Array.from(document.querySelectorAll('.fpf'))
-    let x = [];
-    for ( var i = 0 ; i < inp.length ; i++ ) {
-      if ( inp[2].value == inp[3].value && inp[i].value != 0 ) {
-        x.push(inp[i].value)
+//------------------------------
+  // 必填欄位檢查
+  LoginCheck = (e) => {
+    // 帳號 or Email 
+    if ( e.target.placeholder == "帳號 or Email" ) {
+      let add = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
+      let eml = new RegExp(/^[a-za-z0-9_-]+@[a-za-z0-9_-]+(\.[a-za-z0-9_-]+)+$/);
+      if ( e.target.value.length >= 6 ) {
+        // 判斷帳號 或 email
+        if ( add.test( e.target.value ) ) {
+          this.state.addressOrEmail = [e.target.value, true, 'address'];
+          this.setState({})
+        }else if ( eml.test(e.target.value) ) {
+          this.state.addressOrEmail = [e.target.value, true, 'email'];
+          this.setState({})
+        }else {
+          this.state.addressOrEmail = ['', false, ''];
+          this.setState({})
+        }
+      }else {
+        this.state.addressOrEmail = ['', false, ''];
+        this.setState({})
       }
     }
-    if ( x.length == 4 ){
-      return true
-    }else {
-      return false
+    // 密碼
+    if ( e.target.placeholder == "請輸入密碼" ) {
+      let password = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
+      if ( e.target.value.length >= 6 ) {
+        if ( password.test( e.target.value ) ) {
+          this.state.password = [e.target.value, true];
+          this.setState({})
+        }else {
+          this.state.password[1] = false;
+          this.setState({})
+        }
+      }else {
+        this.state.password[1] = false;
+        this.setState({})
+      }
     }
-  } 
 
-  // 登入表單
-  checkLIF = () => {
-    let inp = Array.from(document.querySelectorAll('.lof'))
-    let x = [];
-    for ( var i = 0 ; i < inp.length ; i++ ) {
-      if ( inp[i].value != 0 ) {
-        x.push(inp[i].value)
+    // 清除 '請輸入正確 帳號或信箱或密碼'
+    this.state.aew = '';
+    this.setState({})
+
+    // 帳號密碼是否填寫
+    if ( this.state.addressOrEmail[1] == true && this.state.password[1] == true ) {
+      this.state.LoginCheck = true;
+      this.setState({})
+    }else {
+      this.state.LoginCheck = false;
+      this.setState({})
+    }
+  }
+  
+  registerOnCheck = (e) => {
+    // 帳號
+    if ( e.target.placeholder == "帳號" ) {
+      // 正規檢查
+      let add = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
+      if ( e.target.value.length >= 6 ) {
+        if ( add.test( e.target.value ) ) {
+          this.state.ada = '';
+          this.state.adr = '';
+          this.state.add = [e.target.value, true ];
+          this.setState({})
+        }else {
+          this.state.ada = '';
+          this.state.adr = '帳號格式錯誤';
+          this.state.add[1] =  false ;
+          this.setState({})
+        }
+      }else {
+        this.state.ada = '6位數，且使用一個英文字母和數字';
+        this.state.adr = '';
+        this.state.add[1] =  false ;
+        this.setState({});
       }
     }
-    if ( x.length == 2 ){ 
-      return true
+
+    // Email
+    if ( e.target.placeholder == "Email") {
+      // 正規檢查
+      let eml = new RegExp(/^[a-za-z0-9_-]+@[a-za-z0-9_-]+(\.[a-za-z0-9_-]+)+$/);
+      if ( eml.test(e.target.value) ) { 
+        this.state.emr = '';
+        this.state.ema = [e.target.value, true];
+        this.setState({})
+      }else if ( e.target.value.length == 0 ) {
+        this.state.emr = '';
+        this.state.ema[1] = false;
+        this.setState({})
+      }
+      else{ 
+        this.state.emr = '請輸入正確Email';
+        this.state.ema[1] = false;
+        this.setState({})
+      };
+    }
+
+    // 密碼
+    if ( e.target.placeholder == "密碼" ) {
+      let password = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
+      if ( e.target.value.length < 6 ) {
+        this.state.pwa = '6位數，且使用一個英文字母和數字';
+        this.state.pwr = ''
+        this.state.pas[1] = false;
+        this.setState({})
+      }else {
+        // 正規檢查
+        if ( password.test( e.target.value ) ) {
+          this.state.passwordCheck[0] = e.target.value
+          this.state.pwa = '';
+          this.state.pwr = '';
+          this.setState({})
+        }else {
+          this.state.pwa = '';
+          this.state.pwr = '密碼格式錯誤';
+          this.state.pas[1] = false;
+          this.setState({})
+        };
+        // 重複檢查
+        if ( this.state.passwordCheck[1].length != 0 ) {
+          if ( this.state.passwordCheck[1] == e.target.value ) {
+            this.state.pwd = '';
+            this.state.pas = [e.target.value, true];
+            this.setState({})
+          }else {
+            this.state.pwd = '兩次密碼不相同';
+            this.state.pas[1] = false;
+            this.setState({})
+          }
+        }
+      }
+    }
+    // 再次輸入密碼
+    if ( e.target.placeholder == "再次輸入密碼" ) {
+      // 重複檢查
+      if ( this.state.passwordCheck[0].length != 0 && this.state.passwordCheck[0].length <= e.target.value.length ) {
+        if ( this.state.passwordCheck[0] == e.target.value) {
+          this.state.pwd = '';
+          this.state.pas = [e.target.value, true];
+          this.setState({})
+        }else {
+          this.state.passwordCheck[1] = e.target.value;
+          this.state.pwd = '兩次密碼不相同';
+          this.state.pas[1] = false;
+          this.setState({})
+        }
+      }else {
+        this.state.pwd = '';
+        this.setState({}) 
+      }
+    }
+
+    // 真實姓名
+    if ( e.target.placeholder == "真實姓名" ) {
+      if ( e.target.value != 0 ) {
+        this.state.rna = [e.target.value, true];;
+        this.setState({})
+      }else {
+        this.state.rna[1] = false;
+        this.setState({})
+      }
+    }
+
+    // 連絡電話
+    if ( e.target.placeholder == "連絡電話" ) {
+      // 正規檢查
+      let pho = new RegExp(/^[0][9][0-9]{8}$/)
+      if ( e.target.value.length == 10) {
+        if ( pho.test(e.target.value) ) { 
+          this.state.cel = '';
+          this.state.cellphone = [e.target.value, true];
+          this.setState({}) 
+        }else {
+          this.state.cel = '電話格式錯誤';
+          this.state.cellphone[1] = false;
+          this.setState({}) 
+        };
+      }else {
+        this.state.cel = '';
+        this.state.cellphone[1] = false;
+        this.setState({});
+      }
+    }
+
+    // 確認六欄位都有填寫
+    if ( this.state.add[1] == true && this.state.ema[1] == true && this.state.pas[1] == true && this.state.rna[1] == true 
+        && this.state.cellphone[1] == true) {
+      this.state.registerCheck = true;
+      this.setState({});
     }else {
-      return false
+      this.state.registerCheck = false;
+      this.setState({});
     }
   }
 
-  // 註冊表單   x = [ { xxx = "" },]
-  checkSUF = () => {
-    let inp = Array.from(document.querySelectorAll('.isu'))
-    let x = [];
-    for ( var i = 0 ; i < inp.length ; i++ ) {
-      if ( inp[2].value == inp[3].value && inp[i].value != '') {
-          let y = {};
-          y[inp[i].placeholder] = inp[i].value;
-          x.push(y);
+//------------------------------
+  // 忘記密碼
+  fgCheck = (e) => {
+    const Qs = require("qs")  //npm i qs
+    // 發送驗證信
+    if ( e.target.className == 'buttonL' && this.state.addressOrEmail[1] == true ) {
+      let fgCheck = '';
+      if ( this.state.addressOrEmail[2] == 'address' ){
+        fgCheck = Qs.stringify({
+          fgCheckAccount: this.state.addressOrEmail[0],
+          fgCheckEmail: '',
+          verificationCode: '',
+          newPassWorld: ''
+        })
+      }else {
+        fgCheck = Qs.stringify({
+          fgCheckAccount: '',
+          fgCheckEmail: this.state.addressOrEmail[0],
+          verificationCode: '',
+          newPassWorld: ''
+        })
+      }
+      axios.post("http://localhost:80/sport/Forgotpassword.php", fgCheck )
+        // .then( (response) => {
+          // if ( response.data != 1) {
+
+          // }else {
+          //   alert("ok")
+          // }
+        // })
+    }
+
+    // 驗證碼核對
+    if ( e.target.placeholder == "請輸入驗證碼" ) {
+      if ( e.target.value.length > 100 ) {   ///--------------
+        let verificationCodes = '';
+        if ( this.state.addressOrEmail[2] == 'address' ){
+          verificationCodes = Qs.stringify({
+            fgCheckAccount: this.state.addressOrEmail[0],
+            fgCheckEmail: '',
+            verificationCode: e.target.value,
+            newPassWorld: ''
+          })
+        }else {
+          verificationCodes = Qs.stringify({
+            fgCheckAccount: '',
+            fgCheckEmail: this.state.addressOrEmail[0],
+            verificationCode: e.target.value,
+            newPassWorld: ''
+          })
+        }
+        axios.post("http://localhost:80/sport/Forgotpassword.php", verificationCodes )
+          // .then( (response) => {
+          //   if ( response.data != 1) {
+          //     this.state.vec = '驗證碼錯誤';
+          //     this.setState({})
+          //   }else {
+          //     this.state.verificationCode[1] = true;
+          //     this.state.opacity[4] = 1;
+          //     this.setState({})
+          //   }
+          // })
+      }else {
+        this.state.opacity[4] = 0;
+        this.setState({})
       }
     }
-    if ( x.length == 6 ){
-      this.next();
-      return true
-    }else {
-      return false
+
+    // 表單送出 
+    if ( this.state.addressOrEmail[1] == true && this.state.verificationCode == true && this.state.pas[1] == true ) {
+      let changePassword = '';
+      if ( this.state.addressOrEmail[2] == 'address' ){
+        changePassword = Qs.stringify({
+          fgCheckAccount: this.state.addressOrEmail[0],
+          fgCheckEmail: '',
+          verificationCode: '',
+          newPassWorld: this.state.pas[0]
+        })
+      }else {
+        changePassword = Qs.stringify({
+          fgCheckAccount: '',
+          fgCheckEmail: this.state.addressOrEmail[0],
+          verificationCode: '',
+          newPassWorld: this.state.pas[0]
+        })
+      }
+      axios.post("http://localhost:80/sport/Forgotpassword.php", changePassword )
+        // .then( (response) => {
+        //   if ( response.data != 1) {
+
+        //   }else {
+        //     alert("ok")
+        //   }
+        // })
+      // this.back();
     }
   }
+  
+  // 登入頁 帳號密碼驗證 (qwe123, qwe123@qq.com)
+  loginPost = () => {
+    // LoginCheck
+    const Qs = require("qs")
+    if ( this.state.LoginCheck == true ) {
+      let singIn = ''
+      if ( this.state.addressOrEmail[2] == 'address' ){
+        singIn = Qs.stringify({
+          singInAccount: this.state.addressOrEmail[0],
+          singInEmail: '',
+          singInPassword: this.state.password[0]
+        })
+      }else {
+        singIn = Qs.stringify({
+          singInAccount: '',
+          singInEmail: this.state.addressOrEmail[0],
+          singInPassword: this.state.password[0]
+        })
+      }
+      axios.post("http://localhost:80/sport/login.php", singIn )
+        .then( (response) => {
+          if ( response.data != 1) {
+            this.state.aew = '帳號或信箱錯誤';
+            this.setState({})
+          }else {
+            alert("ok")
+          }
+        })
+    }else {
+      this.state.aew = '請輸入正確 帳號或信箱或密碼'
+      this.setState({})
+    }
+  }
+
+  // 註冊頁
+  registerPost = () => {
+    // registerCheck
+    const Qs = require("qs") //npm i qs
+    if ( this.state.registerCheck == true ) {
+      let register = Qs.stringify({
+        account: this.state.add[0], 
+        password: this.state.pas[0],
+        email: this.state.ema[0],
+        phone: this.state.cellphone[0],
+        realname: this.state.rna[0],
+        nickname: this.state.nna,
+        gender: this.state.gen
+      });
+      axios.post("http://localhost:80/sport/register.php", register )
+        .then( ( response ) => {
+          if ( response.data != 1 ) {
+            this.state.adr = '帳號或信箱已註冊';
+            this.setState({})
+          }else {
+            this.next();
+          }
+        })
+    }
+
+    // axios.get("http://localhost/sport/form.php")
+    //   .then( res => {console.log(res)})
+  }
+
+
 
   // componentDidUpdate() // noValidate
 
@@ -181,40 +436,45 @@ class Login extends Component {
           <span className='text-center w-100 my-0' style={{color: 'red'}}>
              {this.state.aeh} &nbsp; {this.state.vec} &nbsp; 
           </span>
-          <form className='text-center mt-0' id='fgF' style={{width: "125%"}} onSubmit={(e) => {this.checkFPF(); e.preventDefault();}}>
+          <form className='text-center mt-0' id='fgF' style={{width: "125%"}} >
             <div>
               <ul className="list-group list-group-horizontal" >
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
-                  <input className="input fpf" type="text" placeholder="帳號 or Email" required="required"/>
-                  <button type='button' className='buttonL'>發送驗證碼</button><br />
-                  <span> &nbsp; {this.state.ada}</span>
+                  <input className="input fpf" type="text" placeholder="帳號 or Email" onChange={ this.LoginCheck } 
+                    required="required"/>
+                  <button type='button' className='buttonL' onClick={ this.fgCheck }>發送驗證碼</button><br />
                 </li>
               </ul>
               <ul className="list-group list-group-horizontal ">
                   <li className={`list-group-item w-100 ${this.state.class}`}>
                     <img className='icon mx-3 my-1' src={require('./icon/question.png')} />
-                    <input className="input fpf" type="e-mal" placeholder="請輸入驗證碼" required="required"/>
+                    <input className="input fpf" type="e-mal" placeholder="請輸入驗證碼" required="required"
+                      onChange={ this.fgCheck }/>
+                    <span>
+                      <img className='icon mx-3 my-1' src={require('./icon/checked.png')} 
+                        style={{ opacity: this.state.opacity[4]}}/>
+                    </span>
                   </li>
               </ul>
               <ul className="list-group list-group-horizontal " >
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
-                  <input className="input fpf" type="password" onChange={this.passwordCheck1} placeholder="密碼" 
+                  <input className="input fpf" type="password" onChange={this.registerOnCheck} placeholder="密碼" 
                     required="required"/><br />
                   <span> &nbsp; {this.state.pwa}</span>
                   <span style={{color: 'red'}}>{this.state.pwr}</span>
                 </li>
                 <li className={`list-group-item w-50 ${this.state.class}`}>
                   <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
-                  <input className="input fpf" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" 
+                  <input className="input fpf" type="password" onChange={this.registerOnCheck} placeholder="再次輸入密碼" 
                     required="required"/><br />
                   <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                 </li>
               </ul>
             </div>
-            <button type="submit" className='button my-2 mx-3' >確認變更</button>
-            <button type="button" className='button my-2 mx-3' onClick={this.back}>回到登入頁面</button>
+            <button type="button" className='button my-2 mx-3' onClick={ this.fgCheck }>確認變更</button>
+            <button type="button" className='button my-2 mx-3' onClick={ this.back }>回到登入頁面</button>
           </form>
         </div>
 
@@ -229,23 +489,22 @@ class Login extends Component {
             </p>
             <div className='container'>
               <div className="row">
-                <form className='container mt-4' onSubmit={(e) => {this.checkLIF(); e.preventDefault();}} >
+                <form className='container mt-4' >
                   <img className='icon mx-3 my-3' src={require('./icon/profile.png')} />
                   <input autoFocus="autofocus" className="input col-6 m-0 lof" type="text" placeholder="帳號 or Email" 
-                    required="required"/><br />
+                    required="required" onChange={ this.LoginCheck }/><br />
                   <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
-                  <input className="input col-6 m-0 lof" type="password" placeholder="請輸入密碼" required="required"/><br />
+                  <input className="input col-6 m-0 lof" type="password" placeholder="請輸入密碼" required="required"
+                    onChange={ this.LoginCheck }/><br />
                   <div className='mt-5'>
-                    <button type="submit" className='button my-2 mx-3' >登入</button>
+                    <button type="button" className='button my-2 mx-3' onClick={this.loginPost}>登入</button>
                     <button type="button" className='button my-2 mx-3' onClick={this.next}>註冊</button>
                   </div>
                 </form>
               </div>
             </div>
-            
-            <button type="submit" className='buttonL m-3' onClick={this.back}>忘記密碼 ?</button>
+            <button type="button" className='buttonL m-3' onClick={this.back}>忘記密碼 ?</button>
           </div>
-          
         </div>
 
         {/* -- Sign up -- */}
@@ -255,17 +514,17 @@ class Login extends Component {
           <div className="row w-100 my-0">
             <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('./icon/left.png')} /></button>
             <h2 className='col-10 text-center'>註冊</h2>
-            <p className='text-center w-100'></p>
+            <span style={{color: 'red'}}>{this.state.adr}</span>
           </div >
-          <form className='' style={{width: "125%"}} onSubmit={(e) => {this.checkSUF(); e.preventDefault();}}>
+          <form className='' style={{width: "125%"}}>
               <ul className="list-group list-group-horizontal">
                 <li className={`list-group-item w-100 ${this.state.class}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
-                      <input className="input isu" type="text" placeholder="帳號" onChange={this.reA} required="required"/><br />
+                      <input className="input isu" type="text" placeholder="帳號" required="required"
+                        onChange={ this.registerOnCheck} /><br />
                       <span> &nbsp; {this.state.ada}</span>
-                      <span style={{color: 'red'}}>{this.state.adr}</span>
                     </div>
                   </div>
                 </li>
@@ -273,8 +532,8 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/email.png')} />
-                      <input className="input isu" type="e-mail" placeholder="Email" onChange={this.reE} required="required"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br />
+                      <input className="input isu" type="e-mail" placeholder="Email" required="required"
+                        onChange={ this.registerOnCheck} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br />
                       <span> &nbsp; {this.state.emr}</span> 
                     </div>
                   </div>
@@ -285,7 +544,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
-                      <input className="input isu" type="password" onChange={this.passwordCheck1} placeholder="密碼" required="required"
+                      <input className="input isu" type="password" onChange={ this.registerOnCheck } placeholder="密碼" required="required"
                         pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"/><br />
                       <span > {this.state.pwa} </span>
                       <span style={{color: 'red'}}>{this.state.pwr}</span>
@@ -296,7 +555,7 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
-                      <input className="input isu" type="password" onChange={this.passwordCheck2} placeholder="再次輸入密碼" required="required"
+                      <input className="input isu" type="password" onChange={ this.registerOnCheck } placeholder="再次輸入密碼" required="required"
                         /><br />
                       <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                     </div>
@@ -308,7 +567,8 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/account.png')}/>
-                      <input className="input isu" type="text" onChange={this.reN} placeholder="真實姓名" required="required"/><br />
+                      <input className="input isu" type="text" placeholder="真實姓名" required="required"
+                        onChange={ this.registerOnCheck }/><br />
                       <span style={{color: 'red'}}> &nbsp; {this.state.naa}</span>
                     </div>
                   </div>
@@ -317,8 +577,8 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/mobile-app.png')} />
-                      <input className="input isu" type="text" placeholder="連絡電話" onChange={this.reP} required="required" 
-                        pattern="^[0][9][0-9]{8}$" maxLength="10" /><br />
+                      <input className="input isu" type="text" placeholder="連絡電話" required="required" maxLength="10"
+                        onChange={ this.registerOnCheck } pattern="^[0][9][0-9]{8}$" /><br />
                         <span style={{color: 'red'}}> &nbsp; {this.state.cel}</span>
                     </div>
                   </div>
@@ -329,7 +589,8 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/identity-card.png')} />
-                      <input className="input" type="text" placeholder="暱稱 (選填)"/><br />
+                      <input className="input" type="text" placeholder="暱稱 (選填)"
+                        onChange={ (e) => { this.setState({ nna: e.target.value })} }/><br />
                     </div>
                   </div>
                 </li>
@@ -337,16 +598,16 @@ class Login extends Component {
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/sex.png')} />
-                      <select className='input text-center' name="性別" >
-                          <option value="b">男</option>
-                          <option value="g">女</option>
-                          <option value="s">秘密</option>
+                      <select className='input text-center' onChange={ (e) => { this.setState({ gen: e.target.value })} }>
+                            <option value="Male">男</option>
+                            <option value="Female">女</option>
+                            <option value="secret">秘密</option>
                       </select>
                     </div>
                   </div>
                 </li>
               </ul>
-              <button type="submit" className='button' id='buts' >確認註冊</button> 
+              <button type="button" className='button' onClick={this.registerPost} value="singUp">確認註冊</button> 
           </form>
         </div>
 
