@@ -99,9 +99,11 @@ class BeCoach extends Component {
         document.getElementById('spanPrice').innerHTML = `${e.target.value}`;
         // console.log(document.getElementsByName('moneyPerTimes')[0]);
     }
+    // debug
     spanTimes = (e) => {
-        var spanTime = document.querySelectorAll(`option[name=${e.target.value}]`)[0].innerText;
-        document.getElementById('spanTimes').innerHTML = `${spanTime}`;
+        // console.log(e.target.value);
+        // var spanTime = document.querySelectorAll(`option[name=${e.target.value}]`)[0].innerText;
+        document.getElementById('spanTimes').innerHTML = e.target.value;
     }
 
     // 圖片預覽
@@ -122,14 +124,15 @@ class BeCoach extends Component {
         // var changeId = e.target.id;
         // console.log(e.target.parentElement.parentElement.childNodes[1].children[0].value);
         // console.log(document.querySelectorAll(`input[name=${changeId}]`)[0].value);
+        // console.log(e.target.parentElement.parentElement.childNodes[3]);
         if (e.target.checked) {
-            e.target.parentElement.parentElement.childNodes[1].children[0].required = true;
-            e.target.parentElement.parentElement.childNodes[3].children[0].required = true;
+            e.target.parentElement.parentElement.childNodes[1].required = true;
+            e.target.parentElement.parentElement.childNodes[3].required = true;
         } else {
-            e.target.parentElement.parentElement.childNodes[1].children[0].required = false;
-            e.target.parentElement.parentElement.childNodes[3].children[0].required = false;
-            e.target.parentElement.parentElement.childNodes[1].children[0].value = '';
-            e.target.parentElement.parentElement.childNodes[3].children[0].value = '';
+            e.target.parentElement.parentElement.childNodes[1].required = false;
+            e.target.parentElement.parentElement.childNodes[3].required = false;
+            e.target.parentElement.parentElement.childNodes[1].value = '';
+            e.target.parentElement.parentElement.childNodes[3].value = '';
         }
     }
 
@@ -235,13 +238,33 @@ class BeCoach extends Component {
                                         <input className="form-check-input" type="checkbox" id={elm.eName} onChange={this.weekTimeChange} />
                                         <label className="form-check-label" htmlFor={elm.eName}>{elm.cName}</label>
                                     </div>
-                                    <label className='mt-2'>
+                                    {/* 改成24時制 select option */}
+                                    {/* <label className='mt-2'>
                                         <input name={elm.timeBegin} type="time" className="rounded shadow form-control" required={elm.required} />
                                     </label>
                                     <p className="mt-2 mb-2">至</p>
                                     <label>
-                                        <input name={elm.timeEnd} type="time" className="rounded shadow form-control" required={elm.required} />
-                                    </label>
+                                        <input name={elm.timeEnd} type="time" step={60} className="rounded shadow form-control" required={elm.required} />
+                                    </label> */}
+                                    <select name={elm.timeBegin} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                        <option value=''></option>
+                                        <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
+                                        <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
+                                        <option value='08:00'>08:00</option><option value='09:00'>09:00</option><option value='10:00'>10:00</option><option value='11:00'>11:00</option>
+                                        <option value='12:00'>12:00</option><option value='13:00'>13:00</option><option value='14:00'>14:00</option><option value='15:00'>15:00</option>
+                                        <option value='16:00'>16:00</option><option value='17:00'>17:00</option><option value='18:00'>18:00</option><option value='19:00'>19:00</option>
+                                        <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
+                                    </select>
+                                    <p className="mt-2 mb-2">至</p>
+                                    <select name={elm.timeEnd} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                        <option value=''></option>
+                                        <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
+                                        <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
+                                        <option value='08:00'>08:00</option><option value='09:00'>09:00</option><option value='10:00'>10:00</option><option value='11:00'>11:00</option>
+                                        <option value='12:00'>12:00</option><option value='13:00'>13:00</option><option value='14:00'>14:00</option><option value='15:00'>15:00</option>
+                                        <option value='16:00'>16:00</option><option value='17:00'>17:00</option><option value='18:00'>18:00</option><option value='19:00'>19:00</option>
+                                        <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
+                                    </select>
                                 </div>
                                 
                             )
@@ -322,10 +345,10 @@ class BeCoach extends Component {
                             <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control" placeholder="請輸入價錢" required />
                             <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue={selectedOptionId} required>
                                 <option name="" value=""></option>
-                                <option name="perTimes" value="times">1次</option>
-                                <option name="perMin" value="min">1分鐘</option>
-                                <option name="perThirtyMin" value="thrmin">30分鐘</option>
-                                <option name="perHour" value="hour">1小時</option>
+                                <option name="perTimes" value="1次">1次</option>
+                                <option name="perMin" value="1分鐘">1分鐘</option>
+                                <option name="perThirtyMin" value="30分鐘">30分鐘</option>
+                                <option name="perHour" value="60分鐘">60分鐘</option>
                             </select>
                         </label>
                         <p className='text-muted mt-2'>$ <span id='spanPrice'> </span> / <span id='spanTimes'></span></p>
