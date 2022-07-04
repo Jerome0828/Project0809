@@ -7,7 +7,7 @@ import WeekList from './WeekList';
 import '../css/search.css';
 import '../js/search.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCheck, faTurkishLiraSign } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -70,37 +70,24 @@ class SearchCoachPage extends Component {
     }
 
     // 取結果
-    async searchResult() {
+    searchResult = async () => {
         // action='http://localhost/spost/searchDemo.php'
         let resdata = [];
         var fd = new FormData(document.querySelector("form"));
-        await Axios.post("http://localhost/spost/searchDemo1.php", fd )
+        await Axios.post("http://localhost/spost/searchDemo.php", fd )
         .then( (response) => {
-        //   console.log(typeof(response.data));
-          resdata = response.data;
-        })
-        console.log(resdata);
+            //   console.log(typeof(response.data));
+            resdata = response.data;
+        });
+        // console.log(resdata);
+        this.state.data = resdata;
+        this.setState({});
     }
-
-    // 資料進後端
-    dataToServer(){
-        // console.log(document.forms.namedItem('formInfo'));
-        // console.log(document.querySelector("form"));
-        // var fd = new FormData(document.querySelector("form"));
-        // Axios.post("http://localhost/spost/searchDemo.php", fd )
-        // .then( (response) => {
-        //   console.log(response);
-        // })
-    }
-
-
 
     // 清除縣市
     clearCity = () => {
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
-        // console.log(document.getElementsByClassName('card-img-top')[0]);
-        // console.log(this.state.data);
         this.setState({});
     }
 
@@ -257,7 +244,7 @@ class SearchCoachPage extends Component {
                 <span>教練</span><span> / </span><span className='text-danger'>探索</span>
                 <div className='row mt-3'>
                     <div className='col-3'>
-                        <form name='formInfo' method="post" onChange={this.dataToServer} className='mt-3 form-group'>
+                        <form name='formInfo' method="post" className='mt-3 form-group'>
                             <div className='d-flex justify-content-between mt-3'>
                                 <h3>篩選</h3>
                                 <span onClick={this.clearForm} className='btn text-secondary'>全部清除</span>
