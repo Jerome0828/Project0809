@@ -6,33 +6,33 @@ class Citys extends Component {
     district = (city) => {
         var cityDistrict = citycountrydata.map((val)=>(val));
         switch(city){
-            case 'Taipei City' :var districtList = cityDistrict[0].AreaList;break;
-            case 'Keelung City' :var districtList = cityDistrict[1].AreaList;break;
-            case 'New Taipei City' :var districtList = cityDistrict[2].AreaList;break;
-            case 'Lienchiang County' :var districtList = cityDistrict[3].AreaList;break;
-            case 'Yilan County' :var districtList = cityDistrict[4].AreaList;break;
-            case 'Hsinchu City' :var districtList = cityDistrict[6].AreaList;break;
-            case 'Hsinchu County' :var districtList = cityDistrict[7].AreaList;break;
-            case 'Taoyuan City' :var districtList = cityDistrict[8].AreaList;break;
-            case 'Miaoli County' :var districtList = cityDistrict[9].AreaList;break;
-            case 'Taichung City' :var districtList = cityDistrict[10].AreaList;break;
-            case 'Changhua County' :var districtList = cityDistrict[11].AreaList;break;
-            case 'Nantou County' :var districtList = cityDistrict[12].AreaList;break;
-            case 'Chiayi City' :var districtList = cityDistrict[13].AreaList;break;
-            case 'Chiayi County' :var districtList = cityDistrict[14].AreaList;break;
-            case 'Yunlin County' :var districtList = cityDistrict[15].AreaList;break;
-            case 'Tainan City' :var districtList = cityDistrict[16].AreaList;break;
-            case 'Kaohsiung City' :var districtList = cityDistrict[17].AreaList;break;
-            case 'Penghu County' :var districtList = cityDistrict[19].AreaList;break;
-            case 'Kinmen County' :var districtList = cityDistrict[20].AreaList;break;
-            case 'Pingtung County' :var districtList = cityDistrict[21].AreaList;break;
-            case 'Taitung County' :var districtList = cityDistrict[22].AreaList;break;
-            case 'Hualien County' :var districtList = cityDistrict[23].AreaList;break;
+            case '臺北市' :var districtList = cityDistrict[0].AreaList;break;
+            case '基隆市' :var districtList = cityDistrict[1].AreaList;break;
+            case '新北市' :var districtList = cityDistrict[2].AreaList;break;
+            case '連江縣' :var districtList = cityDistrict[3].AreaList;break;
+            case '宜蘭縣' :var districtList = cityDistrict[4].AreaList;break;
+            case '新竹市' :var districtList = cityDistrict[6].AreaList;break;
+            case '新竹縣' :var districtList = cityDistrict[7].AreaList;break;
+            case '桃園市' :var districtList = cityDistrict[8].AreaList;break;
+            case '苗栗縣' :var districtList = cityDistrict[9].AreaList;break;
+            case '臺中市' :var districtList = cityDistrict[10].AreaList;break;
+            case '彰化縣' :var districtList = cityDistrict[11].AreaList;break;
+            case '南投縣' :var districtList = cityDistrict[12].AreaList;break;
+            case '嘉義市' :var districtList = cityDistrict[13].AreaList;break;
+            case '嘉義縣' :var districtList = cityDistrict[14].AreaList;break;
+            case '雲林縣' :var districtList = cityDistrict[15].AreaList;break;
+            case '臺南市' :var districtList = cityDistrict[16].AreaList;break;
+            case '高雄市' :var districtList = cityDistrict[17].AreaList;break;
+            case '澎湖縣' :var districtList = cityDistrict[19].AreaList;break;
+            case '金門縣' :var districtList = cityDistrict[20].AreaList;break;
+            case '屏東縣' :var districtList = cityDistrict[21].AreaList;break;
+            case '臺東縣' :var districtList = cityDistrict[22].AreaList;break;
+            case '花蓮縣' :var districtList = cityDistrict[23].AreaList;break;
         }
         let district = document.getElementById('district');
         districtList.map((val,idx) => {
             // console.log(val, idx)
-            district.innerHTML += `<option key=${idx} value=${val.AreaEngName}>${val.AreaName}</option>`
+            district.innerHTML += `<option key=${idx} value=${val.AreaName}>${val.AreaName}</option>`
         });
         // console.log(cityDistrict);
         this.setState({});
@@ -56,7 +56,7 @@ class Citys extends Component {
                 <select name="city" style={inputBoxStyle} className='shadow form-control' id="city" defaultValue={selectedOptionId} onChange={this.check} required={required}>
                     <option value="">縣市</option>
                     {citycountrydata.map((val,idx)=>
-                        <option key={idx} value={val.CityEngName}>{val.CityName}</option>
+                        <option key={idx} value={val.CityName}>{val.CityName}</option>
                         )}
                 </select >
                 <select name="district" style={inputBoxStyle} className='shadow mt-2 form-control' id="district" required={required}></select>
