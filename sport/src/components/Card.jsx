@@ -5,8 +5,7 @@ import brad from '../imgs/Brad.png';
 import { toHtml } from "@fortawesome/fontawesome-svg-core";
 class Card extends Component {
     state = {
-        src: [pic, brad, pic],
-        dataList: []
+        src: [pic, brad, pic]
     };
     // getData =() => {
     //     while(!this.state.dataList){
@@ -23,7 +22,7 @@ class Card extends Component {
     render() {
         // this.getData();
         let dataList = this.props.dataList;
-        // console.log(dataList);
+        console.log(dataList);
         return (
             <>
                 {

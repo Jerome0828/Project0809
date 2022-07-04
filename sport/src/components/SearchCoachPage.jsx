@@ -13,11 +13,11 @@ import Slider from '@mui/material/Slider';
 
 class SearchCoachPage extends Component {
     state = {
-        sportList: [{ id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' },
-        { id: 2, value: 'workout', cName: '健身', chkicon: faTimes, color: 'text-black' },
-        { id: 3, value: 'workout3', cName: '健身333333333', chkicon: faTimes, color: 'text-black' },
-        { id: 4, value: 'workout4', cName: '健身4', chkicon: faTimes, color: 'text-black' },
-        { id: 5, value: 'workout5', cName: '健身55555', chkicon: faTimes, color: 'text-black' }],
+        sportList: [{ id: 1, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' },
+        { id: 2, value: '健身', cName: '健身', chkicon: faTimes, color: 'text-black' },
+        { id: 3, value: '健身333333333', cName: '健身333333333', chkicon: faTimes, color: 'text-black' },
+        { id: 4, value: '健身4', cName: '健身4', chkicon: faTimes, color: 'text-black' },
+        { id: 5, value: '健身55555', cName: '健身55555', chkicon: faTimes, color: 'text-black' }],
 
         priceList: [{ key: 0, checked: false, price: '$0 ~ $500', className: 'd-none text-success' },
         { key: 1, checked: false, price: '$501 ~ $1000', className: 'd-none text-success' },
@@ -77,9 +77,10 @@ class SearchCoachPage extends Component {
             //   console.log(typeof(response.data));
             resdata = response.data;
         });
-        console.log(resdata);
-        // this.state.data = resdata;
-        // this.setState({});
+        // console.log(resdata);
+        this.state.data = resdata;
+        this.setState({});
+        
     }
 
     // 清除縣市
