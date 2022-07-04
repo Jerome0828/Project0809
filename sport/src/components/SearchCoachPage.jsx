@@ -7,7 +7,7 @@ import WeekList from './WeekList';
 import '../css/search.css';
 import '../js/search.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck, faTurkishLiraSign } from '@fortawesome/free-solid-svg-icons';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -38,7 +38,7 @@ class SearchCoachPage extends Component {
 
         rangeValue: [0, 100], timeValue: ['00 : 00', '24 : 00'],
 
-        data:[]
+        data: []
     }
     // <label name='price' className='text-center mt-1'><input type="radio" name='price' className='d-none' /> 
     // <span ><FontAwesomeIcon className='d-none text-success' icon={faCheck} /></span>$ 3000 ~ 以上</label>
@@ -53,7 +53,7 @@ class SearchCoachPage extends Component {
         'color': 'balck',
         'padding': '5px',
         'border': '1px solid #00000050',
-        'width':'32%'
+        'width': '32%'
     }
     submitStyle = {
         'padding': '5px',
@@ -62,18 +62,45 @@ class SearchCoachPage extends Component {
         'fontWeight': 'bold',
     }
     // 課程預設
-    async componentDidMount() {        
+    async componentDidMount() {
         var url = `http://localhost/spost/coach.php`;
         var result = await Axios.get(url);
         this.state.data = result.data;
         this.setState({});
-        // console.log(this.state.data);
     }
+
+    // 取結果
+    async searchResult() {
+        // action='http://localhost/spost/searchDemo.php'
+        let resdata = [];
+        var fd = new FormData(document.querySelector("form"));
+        await Axios.post("http://localhost/spost/searchDemo1.php", fd )
+        .then( (response) => {
+        //   console.log(typeof(response.data));
+          resdata = response.data;
+        })
+        console.log(resdata);
+    }
+
+    // 資料進後端
+    dataToServer(){
+        // console.log(document.forms.namedItem('formInfo'));
+        // console.log(document.querySelector("form"));
+        // var fd = new FormData(document.querySelector("form"));
+        // Axios.post("http://localhost/spost/searchDemo.php", fd )
+        // .then( (response) => {
+        //   console.log(response);
+        // })
+    }
+
+
+
     // 清除縣市
     clearCity = () => {
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
-        console.log(document.getElementsByClassName('card-img-top')[0]);
+        // console.log(document.getElementsByClassName('card-img-top')[0]);
+        // console.log(this.state.data);
         this.setState({});
     }
 
@@ -230,12 +257,12 @@ class SearchCoachPage extends Component {
                 <span>教練</span><span> / </span><span className='text-danger'>探索</span>
                 <div className='row mt-3'>
                     <div className='col-3'>
-                        <form action = "http://localhost/spost/form.php" method='POST' className='mt-3 form-group'>
+                        <form name='formInfo' method="post" onChange={this.dataToServer} className='mt-3 form-group'>
                             <div className='d-flex justify-content-between mt-3'>
                                 <h3>篩選</h3>
                                 <span onClick={this.clearForm} className='btn text-secondary'>全部清除</span>
                             </div>
-                            <input name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋"/>
+                            <input name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
 
 
                             {/* 縣市 */}
@@ -243,11 +270,11 @@ class SearchCoachPage extends Component {
                                 <span>地區</span>
                                 <span onClick={this.clearCity} className='btn text-secondary'>清除</span>
                             </div>
-                            <Citys style={this.inputBoxStyle} required={false}/>
+                            <Citys style={this.inputBoxStyle} required={false} />
 
                             {/* 日期範圍 */}
                             <div className='d-flex justify-content-between mt-3'><span>日期</span><span onClick={this.clearTime} className='btn text-secondary'>清除</span></div>
-                            <input style={this.inputBoxStyle} className='shadow form-control' name='weekBegin' type="date"  /> ~<input style={this.inputBoxStyle} className='shadow form-control' name='weekEnd' type="date"  />
+                            <input style={this.inputBoxStyle} className='shadow form-control' name='weekBegin' type="date" /> ~<input style={this.inputBoxStyle} className='shadow form-control' name='weekEnd' type="date" />
 
                             {/* 星期幾 */}
                             <WeekList datas={this.state.weekList}
@@ -265,12 +292,12 @@ class SearchCoachPage extends Component {
                                     onChange={this.handleChange}
                                     valueLabelDisplay="off"
                                     getAriaValueText={this.valuetext}
-                                    color="success"                                    
+                                    color="success"
                                 />
                             </Box>
                             <div className='d-flex justify-content-between mt-3'>
-                                <input name='timeRangeBegin' type="text" className='shadow rounded' style={this.timeRangeStyle} value={this.state.timeValue[0]}/>
-                                <input name='timeRangeEnd' type="text" className='shadow rounded' style={this.timeRangeStyle} value={this.state.timeValue[1]}/>
+                                <input name='timeRangeBegin' type="text" className='shadow rounded' style={this.timeRangeStyle} value={this.state.timeValue[0]} />
+                                <input name='timeRangeEnd' type="text" className='shadow rounded' style={this.timeRangeStyle} value={this.state.timeValue[1]} />
                             </div>
                             {/* <div className='d-flex justify-content-between mt-3'><span className='shadow rounded' style={this.inputBoxStyle}>{this.state.timeValue[0]}</span><span className='shadow rounded' style={this.inputBoxStyle}>{this.state.timeValue[1]}</span></div> */}
                             {/* @mui/material/styles/createPalette.d.ts */}
@@ -289,7 +316,7 @@ class SearchCoachPage extends Component {
                                     return (
                                         <>
                                             <label style={this.inputBoxStyle} name='price' className='w-100 shadow rounded text-center mt-1'>
-                                                <input value={elm.price} onClick={this.setPrice} key={elm.key} type="radio" name='price' className='d-none' checked={elm.checked}  />
+                                                <input value={elm.price} onClick={this.setPrice} key={elm.key} type="radio" name='price' className='d-none' checked={elm.checked} />
                                                 <span ><FontAwesomeIcon className={elm.className} icon={faCheck} />&nbsp;</span>{elm.price}</label><br />
                                         </>
                                     )
@@ -310,14 +337,19 @@ class SearchCoachPage extends Component {
                                     return (
                                         <>
                                             <label style={this.inputBoxStyle} name='people' className="w-100 shadow rounded text-center mt-1">
-                                                <input onClick={this.setPeople} key={elm.key} value={elm.value} type="radio" name='people' className='d-none' checked={elm.checked}  />
+                                                <input onClick={this.setPeople} key={elm.key} value={elm.value} type="radio" name='people' className='d-none' checked={elm.checked} />
                                                 <span><FontAwesomeIcon className={elm.className} icon={faCheck} />&nbsp;</span>{elm.value}</label><br />
                                         </>
                                     )
                                 })}
                             </div>
 
-                            <input style={this.submitStyle} className='w-100 shadow rounded text-success btn mt-3' type="submit" value={'顯示結果'} />
+                            {/* <p style={this.submitStyle} onSubmit={this.searchResult} 
+                            className='w-100 shadow rounded text-success btn mt-3'> 顯示結果
+                            </p> */}
+                            <input type="button" value="顯示結果" style={this.submitStyle} onClick={this.searchResult} 
+                            className='w-100 shadow rounded text-success btn mt-3'/>
+                            
 
                             <br /><br /><br />
 
@@ -329,7 +361,7 @@ class SearchCoachPage extends Component {
                             <a className='col-6 shadow btn' href="/site">找場地</a>
                         </div>
                         <div className='row mt-5 justify-content-center'>
-                            <Card dataList = {this.state.data}/>
+                            <Card dataList={this.state.data} />
                         </div>
 
                     </div>

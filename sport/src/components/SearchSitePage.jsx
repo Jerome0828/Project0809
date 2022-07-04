@@ -67,13 +67,14 @@ class SearchSitePage extends Component {
     async componentDidMount() {        
         var url = `http://localhost/spost/coach.php`;
         var result = await Axios.get(url);
-        this.state.data = result.data;
+        this.state.data = result.data;        
         this.setState({});
         // console.log(this.state.data);
     }
 
     // 清除縣市
     clearCity = () => {
+        console.log(this.state.data);
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
         this.setState({});
