@@ -102,7 +102,7 @@ function Monthly(props) {
   }
 
   // 讀取所有按鈕的值()
-  let btnCheck = () => {
+  let btnCheck = (e) => {
     let btn = document.getElementsByClassName('btnDiv');
     let a = []
     Object.keys(btn).map( (val) => {
@@ -111,6 +111,8 @@ function Monthly(props) {
       }
     })
     setTotal([Number(news.price) * Number(a.length), Number(a.length)])
+
+    console.log(e)
   }
 
 
@@ -131,6 +133,7 @@ function Monthly(props) {
               <br />
               <p> 正常時段：$ {news && news.price} / {news && news.pricepertime}</p>
               <p>總金額 : {total && total[0]}</p>
+              <button className="btn w-75 mt-3 bg-info" onClick={btnCheck}>加入購物車</button>
           </div>
         </div>
       </div>
