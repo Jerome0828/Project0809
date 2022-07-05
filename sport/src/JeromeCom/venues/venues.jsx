@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Evaluation from '../Evaluation';
 import Teachers from '../teachers';
 import Card from '../Card';
-import Carousels from './v_carousels';
+import Carousels from './carousels';
 import './venues.css'
 
 class Venues extends Component {
@@ -20,8 +20,6 @@ class Venues extends Component {
                 <div className='container my-5'>
                     <h2 className='col-lg-12 my-3 text-center'>每日線上視訊直播運動課程</h2>
                 </div>
-
-
                 <div className='container-fluid my-5'>
                     <div className='row justify-content-center'>
                         <div className="col-lg-5">
