@@ -25,7 +25,7 @@ class Card extends Component {
                             <p className="card-text"><small className="text-muted">地點</small></p>
                         </div>
                     </div>
-                    <div class="bg-white card-footer border border-top-0"><span>評價</span><span className="m-5">$價錢</span></div>
+                    <div className="bg-white card-footer border border-top-0"><span>評價</span><span className="m-5">$價錢</span></div>
                 </div>
             </div>
         )

@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 
+// 輪播圖function
 function handleClick(event) {
     event.preventDefault();
 }
@@ -17,10 +18,12 @@ function Head(props) {
     const [news, setNews] = useState(undefined)
     const [city, setCity] = useState()
 
+    // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
         setNews(props.all)
     }, [props])
 
+    // 地址拆分 (市 & 區)
     useEffect( () => {
         if ( typeof news == 'object' ) {
             if (  news.addr.indexOf("區") != -1 ) {

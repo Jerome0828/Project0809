@@ -7,10 +7,12 @@ import Monthly from './monthly';
 function Body(props) {
     const [news, setNews] = useState(undefined)
 
+    // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
         setNews(props.all)
     }, [props])
 
+    // 更新google地圖
     let address = () => {
         return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB09_GtwzgJdeUBYhUL91I60stBPgC_i4U&q=${news && news.addr}`
     }
@@ -20,6 +22,7 @@ function Body(props) {
         <div className='container mt-1'>
             <div className='row'>
                 <div className='col-lg-8'>
+                    {/* 場地簡介 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>場地簡介</p>
                         <div className='container'>
@@ -29,7 +32,9 @@ function Body(props) {
                         </div>
                     </div>
                     <hr />
+                    {/* "立即租借" 連結 */}
                     <div  id='reserve'></div>
+                    {/* 開放時段 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>開放時段</p>
                         <div className='container'>
@@ -64,24 +69,28 @@ function Body(props) {
                         </div>
                     </div>
                     <hr />
+                    {/* 預約狀況 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>預約狀況</p>
                         <Monthly news={news && news} pid={news && news.pid}/>
                     </div>
                     <hr />
+                    {/* 授課師資 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>授課師資</p>
                         <Teachers />
                     </div>
                     <hr />
+                    {/* 地址 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>地址</p>
                         <div className='row align-items-center m-2'>
                             <h4 className='text-center m-1'>{news && news.addr}</h4>
-                            <iframe src={address()} frameborder="0" className='col-lg-12 mt-3' height='400vh'></iframe>
+                            <iframe src={address()} frameBorder="0" className='col-lg-12 mt-3' height='400vh'></iframe>
                         </div>
                     </div>
                     <hr />
+                    {/* 取消政策 */}
                     <div className='container-fluid' data-aos="fade-up">
                         <div className='row'>
                             <div className='col-lg-7'>
@@ -111,6 +120,7 @@ function Body(props) {
                         
                     </div>
                 </div>
+                {/* 課後評價 */}
                 <div className='col-lg-3 bg-black'>
                     <h3 className='container text-end m-1'>課後評價</h3>
                     <div style={{transform: 'translate(10%, 0)'}}>

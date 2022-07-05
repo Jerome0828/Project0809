@@ -24,7 +24,6 @@ class Teachers extends Component {
                                             <td>
                                                 <div className=''>
                                                     <table className='table'>
-                                                        <tbody >
                                                             <tr>
                                                                 <td>ACE CPT 美國運動委員會 私人教練專業證照認證</td>
                                                                 <td>TRX STC 懸吊訓練師</td>
@@ -45,7 +44,6 @@ class Teachers extends Component {
                                                                 <td>身體感知訓練技巧</td>
                                                                 <td></td>
                                                             </tr>
-                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </td>

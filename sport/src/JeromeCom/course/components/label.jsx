@@ -16,9 +16,9 @@ function Labels(props) {
     }, [props])
 
 
-    return font.map( (value) => {
+    return font.map( (value, idx) => {
         return (
-            <div className='mt-2 animate__animated animate__flipInX' >
+            <div className='mt-2 animate__animated animate__flipInX' key={idx}>
                 <button className='btn w-100 text-start'>{value}</button>
             </div>
         )

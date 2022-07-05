@@ -27,42 +27,41 @@ class Login extends Component {
     aew: '',  pwr: '',  
     // 帳號或信箱已註冊,  電話提示, 帳號提示, 密碼提示, 姓名提示
     adr: '',  cel: '', ada: '6位數，且使用一個英文字母和數字', pwa: '6位數，且使用一個英文字母和數字', naa: ''
-    
   }
 
-//------------------------------
-  // 畫面滑動 
+//------------------------------畫面滑動//
   back = () => {
     if ( this.state.opacity[1] == 1 ) {
       this.setState({ opacity: [1, 0, 0, 0, 0], marginLeft: ['50vw', '-0', '0', '0'], visibility: ['','hidden','hidden','hidden'],
-        class: "animate__animated animate__fadeIn", addressOrEmail: ['', false, ''], password: ['', false],
+        className: "animate__animated animate__fadeIn", addressOrEmail: ['', false, ''], password: ['', false],
         passwordCheck: ['',''], pas: ['', true]})
     }
     else if ( this.state.opacity[2] == 1 ) { 
       this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], 
-        visibility: ['hidden','','hidden','hidden'], class: "", addressOrEmail: ['', false, ''], password: ['', false]})
+        visibility: ['hidden','','hidden','hidden'], className: "", addressOrEmail: ['', false, ''], password: ['', false]})
     }else {
       this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], 
-        visibility: ['hidden','','hidden','hidden'], class: "", addressOrEmail: ['', false, ''], password: ['', false]})
+        visibility: ['hidden','','hidden','hidden'], className: "", addressOrEmail: ['', false, ''], password: ['', false]})
     }
   }
   next = () => {
     if ( this.state.opacity[1] == 1 ) {
       this.setState({ opacity: [0, 0, 1, 0], marginLeft: ['-20vw', '-50vw', '20vw', '10vw'], visibility: ['hidden','hidden','','hidden'],
-        class: "animate__animated "})
+        className: "animate__animated "})
     }
     else if ( this.state.opacity[2] == 1 ) {
       this.setState({ opacity: [0, 0, 0, 1], marginLeft: ['0', '-60vw', '-30vw', '0'], visibility: ['hidden','hidden','hidden',''],
-        class: ""})}
+        className: ""})}
         
     else { 
       this.setState({ opacity: [0, 1, 0, 0],  marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
-        class: "", adr: ''}) 
+        className: "", adr: ''}) 
     }
   }
 
-//------------------------------
-  // 必填欄位檢查
+
+//------------------------------必填欄位檢查//
+  // 登入頁(+忘記密碼)
   LoginCheck = (e) => {
     // 帳號 or Email 
     if ( e.target.placeholder == "帳號 or Email" ) {
@@ -116,6 +115,7 @@ class Login extends Component {
     }
   }
   
+  // 註冊頁
   registerOnCheck = (e) => {
     // 帳號
     if ( e.target.placeholder == "帳號" ) {
@@ -163,6 +163,7 @@ class Login extends Component {
 
     // 密碼
     if ( e.target.placeholder == "密碼" ) {
+      // 正規檢查
       let password = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
       if ( e.target.value.length < 6 ) {
         this.state.pwa = '6位數，且使用一個英文字母和數字';
@@ -259,7 +260,8 @@ class Login extends Component {
     }
   }
 
-//------------------------------
+
+//------------------------------送出表單//
   // 忘記密碼
   fgCheck = (e) => {
     const Qs = require("qs")  //npm i qs
@@ -420,11 +422,6 @@ class Login extends Component {
     //   .then( res => {console.log(res)})
   }
 
-
-
-  // componentDidUpdate() // noValidate
-
-
   render() {
     return (
       <div className="loginA row" id='all' >
@@ -439,7 +436,7 @@ class Login extends Component {
           <form className='text-center mt-0' id='fgF' style={{width: "125%"}} >
             <div>
               <ul className="list-group list-group-horizontal" >
-                <li className={`list-group-item w-100 ${this.state.class}`}>
+                <li className={`list-group-item w-100 ${this.state.className}`}>
                   <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
                   <input className="input fpf" type="text" placeholder="帳號 or Email" onChange={ this.LoginCheck } 
                     required="required"/>
@@ -447,7 +444,7 @@ class Login extends Component {
                 </li>
               </ul>
               <ul className="list-group list-group-horizontal ">
-                  <li className={`list-group-item w-100 ${this.state.class}`}>
+                  <li className={`list-group-item w-100 ${this.state.className}`}>
                     <img className='icon mx-3 my-1' src={require('./icon/question.png')} />
                     <input className="input fpf" type="e-mal" placeholder="請輸入驗證碼" required="required"
                       onChange={ this.fgCheck }/>
@@ -458,14 +455,14 @@ class Login extends Component {
                   </li>
               </ul>
               <ul className="list-group list-group-horizontal " >
-                <li className={`list-group-item w-50 ${this.state.class}`}>
+                <li className={`list-group-item w-50 ${this.state.className}`}>
                   <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
                   <input className="input fpf" type="password" onChange={this.registerOnCheck} placeholder="密碼" 
                     required="required"/><br />
                   <span> &nbsp; {this.state.pwa}</span>
                   <span style={{color: 'red'}}>{this.state.pwr}</span>
                 </li>
-                <li className={`list-group-item w-50 ${this.state.class}`}>
+                <li className={`list-group-item w-50 ${this.state.className}`}>
                   <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
                   <input className="input fpf" type="password" onChange={this.registerOnCheck} placeholder="再次輸入密碼" 
                     required="required"/><br />
@@ -518,7 +515,7 @@ class Login extends Component {
           </div >
           <form className='' style={{width: "125%"}}>
               <ul className="list-group list-group-horizontal">
-                <li className={`list-group-item w-100 ${this.state.class}`}>
+                <li className={`list-group-item w-100 ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
@@ -528,7 +525,7 @@ class Login extends Component {
                     </div>
                   </div>
                 </li>
-                <li className={`list-group-item w-100 ${this.state.class}`}>
+                <li className={`list-group-item w-100 ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/email.png')} />
@@ -540,7 +537,7 @@ class Login extends Component {
                 </li>
               </ul>
               <ul className="list-group list-group-horizontal " >
-                <li class={`list-group-item w-100 ${this.state.class}`}>
+                <li class={`list-group-item w-100 ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
@@ -551,7 +548,7 @@ class Login extends Component {
                     </div>
                   </div>
                 </li>
-                <li className={`list-group-item w-100 ${this.state.class}`}>
+                <li className={`list-group-item w-100 ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
@@ -563,7 +560,7 @@ class Login extends Component {
                 </li>
               </ul>
               <ul className="list-group list-group-horizontal" >
-                <li className={`list-group-item w-100 ${this.state.class}`}>
+                <li className={`list-group-item w-100 ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/account.png')}/>
@@ -573,7 +570,7 @@ class Login extends Component {
                     </div>
                   </div>
                 </li>
-                <li className={`list-group-item w-100  ${this.state.class}`}>
+                <li className={`list-group-item w-100  ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/mobile-app.png')} />
@@ -585,7 +582,7 @@ class Login extends Component {
                 </li>
               </ul>
               <ul className="list-group list-group-horizontal" >
-                <li className={`list-group-item w-100 ${this.state.class}`}>
+                <li className={`list-group-item w-100 ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/identity-card.png')} />
@@ -594,7 +591,7 @@ class Login extends Component {
                     </div>
                   </div>
                 </li>
-                <li className={`list-group-item w-100 ${this.state.class}`}>
+                <li className={`list-group-item w-100 ${this.state.className}`}>
                   <div className='row'>
                     <div className='col-12'>
                       <img className='icon mx-3 my-1' src={require('./icon/sex.png')} />
@@ -626,7 +623,6 @@ class Login extends Component {
               <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>回到登入頁面</button>
           </div>
         </div>
-
       </div>
     )
   }
