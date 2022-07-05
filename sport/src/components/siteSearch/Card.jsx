@@ -25,9 +25,11 @@ class Card extends Component {
                         }} src={this.props.src} className="card-img-top" />
                         {/* <img src="Project0809\sport\src\img\ben1.jpg" alt="" /> */}
                         <div className="card-body">
+
+                            <h5 className="card-title">課程編號:{this.props.lid}</h5>
                             <h5 className="card-title">課程名稱:{this.props.title}</h5>
-                            <p className="card-text">教練名稱:{this.props.host}</p>
-                            <p className="card-text"><small className="text-muted">地點:{this.props.address}</small></p>
+                            {/* <p className="card-text">教練名稱:{this.props.host}</p> */}
+                            {/* <p className="card-text"><small className="text-muted">地點:{this.props.address}</small></p> */}
                         </div>
                     </div>
                     <div class="bg-white card-footer border border-top-0"><span>評價</span><span className="m-5">$價錢:{this.props.money}</span>

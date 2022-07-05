@@ -17,8 +17,8 @@ class CarouselCard extends Component {
 
 
         setLocalStorage =(e)=>{
-            // localStorage.setItem("Test",JSON.stringify(this.state.commodity));
-            localStorage.setItem("Test",JSON.stringify(this.props.date));
+            // lo
+// calStorage.setItem("Test",JSON.stringify(this.state.commodity));            localStorage.setItem("Test",JSON.stringify(this.props.date));
         }
 
 
