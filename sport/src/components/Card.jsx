@@ -7,18 +7,6 @@ class Card extends Component {
     state = {
         src: [pic, brad, pic]
     };
-    // getData =() => {
-    //     while(!this.state.dataList){
-    //         this.state.dataList = this.props.dataList;
-    //         console.log(this.state.dataList);
-    //         break;
-    //     }
-    //     // if (this.state.dataList) {
-    //     //     this.state.dataList = this.props.dataList;
-    //     //     console.log(this.state.dataList);
-    //     // }
-    // };
-    // {title: '體適能訓練', addr: '臺中市北區忠明路211號', price: ' 1,150', cname: 'Jimmy'}
     render() {
         // this.getData();
         let dataList = this.props.dataList;
@@ -49,9 +37,11 @@ class Card extends Component {
 
                                             </div>
                                             <p className="card-text text-nowrap text-truncate"><small className="text-muted">{elm.addr}</small></p>
-                                            <div className="col-12 d-flex">
-                                                <p className="p-1 rounded border border-dark">類別</p>
-                                                <p className="mx-2 p-1 rounded border border-dark">{elm.mode}</p>
+                                            <div className="col-12">
+                                                <p><span className="p-1 rounded border border-dark fw-bold">{elm.type}</span></p>
+                                            </div>
+                                            <div className="col-12">
+                                                <p><span className="p-1 rounded border border-dark fw-bold">{elm.mode}</span></p>
                                             </div>
                                         </div>
                                         <div className="d-flex justify-content-between bg-white card-footer ">

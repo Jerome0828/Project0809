@@ -9,6 +9,7 @@ class SportList extends Component {
     state = {
 
     }
+    
 
     sportListOnclick = (event) => {
         let e = event
@@ -24,11 +25,21 @@ class SportList extends Component {
                 <div className='d-flex justify-content-between mt-3'><span>類別</span><span onClick={this.clearSportType} className='btn text-secondary'>清除</span></div>
 
                 {this.props.datas.map((elm) => {
-                    // sportList: [{ id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' },
                     return (
+                        // { id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' }
+                        // name = sportType[]
+                        // sportType {type: '其他', className: 'text-black', chkicon: faTimes, id: 'type9'}
                         <React.Fragment>
-                            <input value={elm.cName} onChange={this.sportListOnclick} className='d-none' type="checkbox" id={elm.value} name={elm.value} required={false}/>
-                            <label htmlFor={elm.value} style={inputBoxStyle} className='rounded shadow m-1 mx-2'><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
+                            {/*------原版------*/}
+                            <input value={elm.type} onChange={this.sportListOnclick} className='d-none' 
+                                   type="checkbox" id={elm.id} name={elm.id} required={false}/>
+                                   
+                            <label htmlFor={elm.id} style={inputBoxStyle} className='rounded shadow m-1 mx-2'>
+                                <span name={elm.id}>
+                                    <FontAwesomeIcon className={elm.className} icon={elm.chkicon} />&nbsp;
+                                </span>{elm.type}
+                            </label>
+                            {/*----------------*/}
                         </React.Fragment>
                     )
                 })}

@@ -13,12 +13,6 @@ import Slider from '@mui/material/Slider';
 
 class SearchCoachPage extends Component {
     state = {
-        sportList: [{ id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' },
-        { id: 2, value: 'workout', cName: '健身', chkicon: faTimes, color: 'text-black' },
-        { id: 3, value: 'workout3', cName: '健身3', chkicon: faTimes, color: 'text-black' },
-        { id: 4, value: 'workout4', cName: '健身4', chkicon: faTimes, color: 'text-black' },
-        { id: 5, value: 'workout5', cName: '健身5', chkicon: faTimes, color: 'text-black' }],
-
         priceList: [{ key: 0, checked: false, price: '$0 ~ $500', className: 'd-none text-success' },
         { key: 1, checked: false, price: '$501 ~ $1000', className: 'd-none text-success' },
         { key: 2, checked: false, price: '$1001 ~ $2000', className: 'd-none text-success' },
@@ -38,10 +32,9 @@ class SearchCoachPage extends Component {
 
         rangeValue: [0, 100], timeValue: ['00 : 00', '24 : 00'],
 
-        data: []
-    }
-    myfaCheck = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" class="svg-inline--fa fa-check text-success" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg>'
+        data: [],sportType:[],
 
+    }
     inputBoxStyle = {
         'color': 'balck',
         'padding': '5px',
@@ -64,6 +57,16 @@ class SearchCoachPage extends Component {
         var url = `http://localhost/spost/coach.php`;
         var result = await Axios.get(url);
         this.state.data = result.data;
+
+        var url1 = `http://localhost/spost/sportType.php`;
+        var result1 = await Axios.get(url1);
+        this.state.sportType = result1.data;
+        let sportType = this.state.sportType;
+        sportType.map((elm,idx)=>{
+            elm.className = 'text-black';
+            elm.chkicon = faTimes;
+            elm.id = `type${idx}`;
+        })
         this.setState({});
     }
 
@@ -75,7 +78,6 @@ class SearchCoachPage extends Component {
         .then( (response) => {
             resdata = response.data;
         });
-        // console.log(resdata);
         this.state.data = resdata;
         this.setState({});
         
@@ -101,17 +103,14 @@ class SearchCoachPage extends Component {
     // weeklistonchange
     weekListOnclick = (e) => {
         let weekList = this.state.weekList;
-        // console.log(e.target.checked);
         weekList.map(elm => {
             if (e.target.id == elm.id) {
                 // 若icon為 XX
                 if (e.target.checked == true) {
-                    document.querySelectorAll(`span[name=${elm.id}]`).innerHTML = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" class="svg-inline--fa fa-check " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg>&nbsp;';
                     elm.chkicon = faCheck;
                     elm.color = 'text-success';
                 }// 若icon為 vv
                 else if (e.target.checked == false) {
-                    document.querySelectorAll(`span[name=${elm.id}]`).innerHTML = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark" class="svg-inline--fa fa-xmark " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"></path></svg>&nbsp;';
                     elm.chkicon = faTimes;
                     elm.color = 'text-black';
                 }
@@ -152,32 +151,27 @@ class SearchCoachPage extends Component {
 
     // 更改運動類別 icon
     sportListOnclick = (e) => {
-        let sportList = this.state.sportList
-
-        sportList.map(elm => {
-            if (e.target.id == elm.value) {
-                // 若icon為 XX
-                if (e.target.checked == true) {
-                    document.querySelectorAll(`span[name=${elm.value}]`).innerHTML = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" class="svg-inline--fa fa-check " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg>&nbsp;';
+        let sportType = this.state.sportType;
+        sportType.map(elm => {
+            if(e.target.id == elm.id) {
+                if(e.target.checked){
+                    elm.className = 'text-success';
                     elm.chkicon = faCheck;
-                    elm.color = 'text-success';
-                }// 若icon為 vv
-                else if (e.target.checked == false) {
-                    document.querySelectorAll(`span[name=${elm.value}]`).innerHTML = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark" class="svg-inline--fa fa-xmark " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"></path></svg>&nbsp;';
+                }else{
+                    elm.className = 'text-black';
                     elm.chkicon = faTimes;
-                    elm.color = 'text-black';
                 }
-                this.setState({});
+                this.setState({});                
             }
         })
     }
 
     // 清除sportType
     clearSportType = () => {
-        let sportList = this.state.sportList
-        sportList.map(elm => {
+        let sportType = this.state.sportType;
+        sportType.map(elm => {
             elm.chkicon = faTimes;
-            elm.color = 'text-black';
+            elm.className = 'text-black';
         })
         this.setState({});
     }
@@ -194,7 +188,6 @@ class SearchCoachPage extends Component {
 
     setPeople = (e) => {
         this.state.peopleList.map((elm) => {
-            // console.log(e.target.value);
             if (e.target.value == elm.value) {
                 elm.checked = true;
                 elm.className = 'text-success';
@@ -310,10 +303,10 @@ class SearchCoachPage extends Component {
 
                             {/* 運動類別 */}
                             <div className='text-center'>
-                                <SportList datas={this.state.sportList}
+                                <SportList datas={this.state.sportType}
                                     style={this.inputBoxStyle}
                                     sportListOnclick={(e) => this.sportListOnclick(e)}
-                                    clearSportType={this.clearSportType} />
+                                    clearSportType={this.clearSportType}/>
                             </div>
                             {/* 上課模式 */}
                             <div className='d-flex justify-content-between mt-3'><span>上課模式</span><span onClick={this.clearPeople} className='btn text-secondary'>清除</span></div>
@@ -328,18 +321,18 @@ class SearchCoachPage extends Component {
                                     )
                                 })}
                             </div>
-
-                            {/* <p style={this.submitStyle} onSubmit={this.searchResult} 
-                            className='w-100 shadow rounded text-success btn mt-3'> 顯示結果
-                            </p> */}
+                            
+                            {/* 送出表單 */}
                             <input type="button" value="顯示結果" style={this.submitStyle} onClick={this.searchResult} 
                             className='w-100 shadow rounded text-success btn mt-3'/>
                             
 
                             <br /><br /><br />
-
                         </form>
                     </div>
+
+
+                    {/* 檢視結果 */}
                     <div className='col-9 border-end border-start'>
                         <div className='row text-center'>
                             <a className='col-6 shadow btn bg-black text-white' href="/coach">找課程</a>
@@ -348,7 +341,6 @@ class SearchCoachPage extends Component {
                         <div className='row mt-5 justify-content-center'>
                             <Card dataList={this.state.data} />
                         </div>
-
                     </div>
                 </div>
             </div>
