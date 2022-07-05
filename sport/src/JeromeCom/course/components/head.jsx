@@ -1,36 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import Rating from '@mui/material/Rating';
+import Carousels from './carousels';
+import Labels from './label'
+
+import Rating from '@mui/material/Rating';  // npm install @mui/material @emotion/react @emotion/styled
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 
-
-import Carousels from './carousels';
-import Label from './label';
-
-
-
 function handleClick(event) {
     event.preventDefault();
-    // console.info('You clicked a breadcrumb.');
 }
 
-function Head() {
-    const breadcrumbs = [
-        <Link underline="hover" key="1" color="inherit" onClick={handleClick} href="/">
-          首頁
-        </Link>,
-        <Link
-          underline="hover" key="2" color="inherit" onClick={handleClick}
-          href="/material-ui/getting-started/installation/" >
-          探索
-        </Link>,
-        <Typography key="3" color="text.primary">
-          肌地台 自由教練場地租借
-        </Typography>,
-      ];
+function Head(props) {
+    const [news, setNews] = useState(undefined)
+    const [city, setCity] = useState()
+
+    useEffect( () => {
+        setNews(props.all)
+    }, [props])
+
+    useEffect( () => {
+        if ( typeof news == 'object' ) {
+            if (  news.addr.indexOf("區") != -1 ) {
+                setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, news.addr.indexOf("區")+1)])
+            }else {
+                setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, 6)])
+            }
+        }
+    }, [news])
 
     return (
         <div className='container mb-3'>
@@ -38,7 +37,17 @@ function Head() {
                 <div className='col-lg-12 my-3 animate__animated animate__slideInDown '>
                     <Stack>
                         <Breadcrumbs separator="›" aria-label="breadcrumb">
-                            {breadcrumbs}
+                            <Link underline="hover" key="1" color="inherit" onClick={handleClick} href="/">
+                                首頁
+                            </Link>
+                            <Link
+                                underline="hover" key="2" color="inherit" onClick={handleClick}
+                                href="/material-ui/getting-started/installation/" >
+                                探索
+                            </Link>
+                            <Typography key="3" color="text.primary">
+                                {news && news.title}
+                            </Typography>
                         </Breadcrumbs>
                     </Stack>
                 </div>
@@ -46,7 +55,7 @@ function Head() {
             <div className='row'>
                 <div className='col-lg-8' >
                     <div className='w-100 border' >
-                        <Carousels  />
+                        <Carousels  gif={news && [news.img1, news.img2, news.img3]}/>
                     </div>
                 </div>
                 <div className='col-lg-3'>
@@ -65,30 +74,32 @@ function Head() {
                             </div>
                         </div>
                         <div className='col-lg-12' style={{transform: 'translate(10%, 0)'}}>
-                            <Label   />
+                            <div className='w-100 py-2 px-3 my-3'>
+                                <Labels types={news && news.type} />
+                            </div> 
                         </div>
                     </div>
                 </div>
 
                 <div className='row mt-3 animate__animated animate__slideInDown'>
-                    <p className='text-center my-1' id='title'><h1>肌地台 自由教練場地租借</h1></p>
+                    <p className='text-center my-1' id='title'><h1>{news && news.title}</h1></p>
                 </div>
                 <div className='row mt-3 align-items-center justify-content-center'>
                     <div className='col-lg-8' style={{ zIndex: '2'}}>
                         <div className='w-100'>
                             <div className='container animate__animated animate__slideInDown '>
                                 <div>
-                                    <p>台灣 / 台中市 / 北屯區 </p>
+                                    <p>台灣 / {city && city[0]} / {city && city[1]} </p>
                                     <h5 className='container text-star'>
                                         <img src={require('./icon/location.png')} style={{height: '3vh'}}/>
-                                        &nbsp; 臺中市北屯區東山路一段156-6 
+                                        &nbsp; {news && news.addr} 
                                     </h5>
                                 </div>
                                 <br />
                                 <div className='my-1'>
                                     <h5 className='container text-star' >
                                         <img src={require('./icon/time.png')} style={{height: '3vh'}}/>
-                                        &nbsp; $ 300/60分鐘 
+                                        &nbsp; $ {news && news.price} / {news && news.pricepertime} 
                                     </h5>
                                 </div>
                             </div>

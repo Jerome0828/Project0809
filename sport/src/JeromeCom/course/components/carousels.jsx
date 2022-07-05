@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 
 function Carousels(props) {
@@ -7,6 +7,10 @@ function Carousels(props) {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+
+  useEffect( () => {
+    // console.log(props.gif)
+  }, [props])
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} interval={1000} style={{ height: '60vh', width: '100%'}} >

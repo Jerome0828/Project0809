@@ -1,34 +1,27 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class Label extends Component {
-    state = {
-        font: []
-    } 
+
+function Labels(props) {
+    const [font, setFont] = useState([])
+
+    useEffect( () => {
+        if ( typeof props.types == 'string') {
+            if ( props.types.split(';').length <= 7) {
+                setFont(props.types.split(';'))
+            }else {
+                setFont(props.types.split(';').slice(0, 7))
+            }
+        }
+    }, [props])
 
 
-
-    render() { 
+    return font.map( (value) => {
         return (
-            <div className='w-100 py-2 px-3 my-3 '>
-                <div className='mt-3 animate__animated animate__flipInX'>
-                    <button className='btn w-100 text-start ' > 拳擊格鬥 </button>
-                </div>
-                <div className='mt-3 animate__animated animate__flipInX'>
-                    <button className='btn w-100 text-start' > 拳擊格鬥 </button>
-                </div>
-                <div className='mt-3 animate__animated animate__flipInX'>
-                    <button className='btn w-100 text-start' > 拳擊格鬥 </button>
-                </div>
-                <div className='mt-3 animate__animated animate__flipInX'>
-                    <button className='btn w-100 text-start' > 拳擊格鬥 </button>
-                </div>
-                <div className='mt-3 animate__animated animate__flipInX'>
-                    <button className='btn w-100 text-start' > 拳擊格鬥 </button>
-                </div>
+            <div className='mt-2 animate__animated animate__flipInX' >
+                <button className='btn w-100 text-start'>{value}</button>
             </div>
-        );
-    }
+        )
+    })
 }
- 
-export default Label;
+export default Labels;
