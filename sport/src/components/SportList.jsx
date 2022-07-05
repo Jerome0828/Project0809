@@ -24,9 +24,10 @@ class SportList extends Component {
                 <div className='d-flex justify-content-between mt-3'><span>類別</span><span onClick={this.clearSportType} className='btn text-secondary'>清除</span></div>
 
                 {this.props.datas.map((elm) => {
+                    // sportList: [{ id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' },
                     return (
                         <React.Fragment>
-                            <input onChange={this.sportListOnclick} className='d-none' type="checkbox" id={elm.value} name={elm.value} required={false}/>
+                            <input value={elm.cName} onChange={this.sportListOnclick} className='d-none' type="checkbox" id={elm.value} name={elm.value} required={false}/>
                             <label htmlFor={elm.value} style={inputBoxStyle} className='rounded shadow m-1 mx-2'><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
                         </React.Fragment>
                     )

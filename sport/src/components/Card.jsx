@@ -22,7 +22,7 @@ class Card extends Component {
     render() {
         // this.getData();
         let dataList = this.props.dataList;
-        console.log(dataList);
+        // console.log(dataList);
         return (
             <>
                 {
@@ -30,11 +30,11 @@ class Card extends Component {
                         return (
                             <>
                                 <div className="border-0 col-xl-3 col-lg-5 col-md-5 card m-3">
-                                    <div className="card h-100 ">
+                                    <div className="border rounded shadow card h-100">
                                         <div className="h-100">
                                             <img style={{
-                                                height:'18em',
-                                                width:'100%',
+                                                height: '18em',
+                                                width: '100%',
                                                 background: 'white',
                                                 objectFit: 'cover',
                                                 objectPosition: '50% 50%'
@@ -42,16 +42,23 @@ class Card extends Component {
                                         </div>
                                         <div className="card-body row ">
                                             <div className="col-12">
-                                            <p className="card-title text-nowrap text-truncate">{elm.title}</p>
+                                                <p className="card-title text-nowrap text-truncate">{elm.title}</p>
                                             </div>
                                             <div className="col-12">
-                                            <p className="card-text text-nowrap text-truncate">{elm.cname}</p>
+                                                <p className="card-text text-nowrap text-truncate">{elm.cname}</p>
 
                                             </div>
                                             <p className="card-text text-nowrap text-truncate"><small className="text-muted">{elm.addr}</small></p>
+                                            <div className="col-12 d-flex">
+                                                <p className="p-1 rounded border border-dark">類別</p>
+                                                <p className="mx-2 p-1 rounded border border-dark">{elm.mode}</p>
+                                            </div>
+                                        </div>
+                                        <div className="d-flex justify-content-between bg-white card-footer ">
+                                            <span>評價</span>
+                                            <span>${elm.price}</span>
                                         </div>
                                     </div>
-                                    <div className="d-flex justify-content-between bg-white card-footer border border-top-0"><span>評價</span><span>${elm.price}</span></div>
                                 </div>
                             </>
                         );

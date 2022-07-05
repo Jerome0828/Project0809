@@ -13,11 +13,11 @@ import Slider from '@mui/material/Slider';
 
 class SearchCoachPage extends Component {
     state = {
-        sportList: [{ id: 1, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' },
-        { id: 2, value: '健身', cName: '健身', chkicon: faTimes, color: 'text-black' },
-        { id: 3, value: '健身333333333', cName: '健身333333333', chkicon: faTimes, color: 'text-black' },
-        { id: 4, value: '健身4', cName: '健身4', chkicon: faTimes, color: 'text-black' },
-        { id: 5, value: '健身55555', cName: '健身55555', chkicon: faTimes, color: 'text-black' }],
+        sportList: [{ id: 1, value: 'yoga', cName: '瑜珈', chkicon: faTimes, color: 'text-balck' },
+        { id: 2, value: 'workout', cName: '健身', chkicon: faTimes, color: 'text-black' },
+        { id: 3, value: 'workout3', cName: '健身3', chkicon: faTimes, color: 'text-black' },
+        { id: 4, value: 'workout4', cName: '健身4', chkicon: faTimes, color: 'text-black' },
+        { id: 5, value: 'workout5', cName: '健身5', chkicon: faTimes, color: 'text-black' }],
 
         priceList: [{ key: 0, checked: false, price: '$0 ~ $500', className: 'd-none text-success' },
         { key: 1, checked: false, price: '$501 ~ $1000', className: 'd-none text-success' },
@@ -25,8 +25,8 @@ class SearchCoachPage extends Component {
         { key: 3, checked: false, price: '$2001 ~ $3000', className: 'd-none text-success' },
         { key: 4, checked: false, price: '$3001 ~ 以上', className: 'd-none text-success' }],
 
-        peopleList: [{ key: 0, checked: false, value: '一對一', className: 'd-none text-success' },
-        { key: 1, checked: false, value: '一對多', className: 'd-none text-success' }],
+        peopleList: [{ key: 0, checked: false, value: '一對一課程', className: 'd-none text-success' },
+        { key: 1, checked: false, value: '團體課程', className: 'd-none text-success' }],
 
         weekList: [{ key: 1, id: 'mon', value: '星期一', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 2, id: 'tues', value: '星期二', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
@@ -69,12 +69,10 @@ class SearchCoachPage extends Component {
 
     // 取結果
     searchResult = async () => {
-        // action='http://localhost/spost/searchDemo.php'
         let resdata = [];
         var fd = new FormData(document.querySelector("form"));
         await Axios.post("http://localhost/spost/searchDemo.php", fd )
         .then( (response) => {
-            //   console.log(typeof(response.data));
             resdata = response.data;
         });
         // console.log(resdata);
@@ -88,6 +86,7 @@ class SearchCoachPage extends Component {
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
         this.setState({});
+        this.searchResult();
     }
 
     // 清除星期
@@ -323,7 +322,7 @@ class SearchCoachPage extends Component {
                                     return (
                                         <>
                                             <label style={this.inputBoxStyle} name='people' className="w-100 shadow rounded text-center mt-1">
-                                                <input onClick={this.setPeople} key={elm.key} value={elm.value} type="radio" name='people' className='d-none' checked={elm.checked} />
+                                                <input onClick={this.setPeople} key={elm.key} value={elm.value} type="radio" name='mode' className='d-none' checked={elm.checked} />
                                                 <span><FontAwesomeIcon className={elm.className} icon={faCheck} />&nbsp;</span>{elm.value}</label><br />
                                         </>
                                     )

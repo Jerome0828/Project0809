@@ -30,6 +30,7 @@ class Citys extends Component {
             case '花蓮縣' :districtList = cityDistrict[23].AreaList;break;
         }
         let district = document.getElementById('district');
+        district.innerHTML = `<option value="">縣市</option>`;
         districtList.map((val,idx) => {
             // console.log(val, idx)
             district.innerHTML += `<option key=${idx} value=${val.AreaName}>${val.AreaName}</option>`
@@ -59,7 +60,9 @@ class Citys extends Component {
                         <option key={idx} value={val.CityName}>{val.CityName}</option>
                         )}
                 </select >
-                <select name="district" style={inputBoxStyle} className='shadow mt-2 form-control' id="district" required={required}></select>
+                <select name="district" style={inputBoxStyle} className='shadow mt-2 form-control' id="district" required={required}>
+                    
+                </select>
             </>
 
         )
