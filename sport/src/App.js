@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './scss/all.scss';
-import NavBarOK from './components/navBarOK.jsx';
-// import NavBarContent from './components/navBarContent.jsx';
+import NavBarOK from './BenComponents/navBarOK.jsx';
+// import NavBarContent from './BenComponents/navBarContent.jsx';
 import {HashRouter} from 'react-router-dom'
 
 class App extends Component {

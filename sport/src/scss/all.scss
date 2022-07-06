@@ -24,9 +24,23 @@
 @import './components/cartButtom';
 @import './components/messageButton';
 
+
+// 東佑CSS
+@import './DongCSS/search';
+
+// 冠穎CSS
+@import './JeromeCSS/course';
+@import './JeromeCSS/login';
+@import "./JeromeCSS/venues";
+
 //外部套件區
 // aos.js
-
+// npm i --save @fortawesome/fontawesome-svg-core
+// npm install --save @fortawesome/free-solid-svg-icons
+// npm install --save @fortawesome/react-fontawesome
+// npm install @mui/material @emotion/react @emotion/styled
+// npm remove react-calendar
+// npm install animate.css --save
 
 // 新增自訂義屬性 ->scss ->bootstrap ->_variables.scss-> $theme-colors: 
 // 自訂義"test":#FFDF65 ,套用所有text-test、bg-test、btn-test 所有色系,以已達成一次修改主色需求
