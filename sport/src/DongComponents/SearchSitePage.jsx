@@ -64,13 +64,13 @@ class SearchSitePage extends Component {
 
     // 課程預設
     async componentDidMount() {        
-        var url = `http://localhost/spost/site.php`;
+        var url = `http://localhost/spost/DongPHP/site.php`;
         var result = await Axios.get(url);
         // console.log(result.data);
         this.state.data = result.data;        
         this.setState({});
         // console.log(this.state.data);
-        var url1 = `http://localhost/spost/sportType.php`;
+        var url1 = `http://localhost/spost/DongPHP/sportType.php`;
         var result1 = await Axios.get(url1);
         this.state.sportType = result1.data;
         let sportType = this.state.sportType;
@@ -87,7 +87,7 @@ class SearchSitePage extends Component {
     searchResult = async () => {
         let resdata = [];
         var fd = new FormData(document.querySelector("form"));
-        await Axios.post("http://localhost/spost/searchPlace.php", fd )
+        await Axios.post("http://localhost/spost/DongPHP/searchPlace.php", fd )
         .then( (response) => {
             resdata = response.data;
         });

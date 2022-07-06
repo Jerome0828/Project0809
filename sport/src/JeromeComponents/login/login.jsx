@@ -5,7 +5,7 @@ import axios from 'axios';
 
 class Login extends Component {
   state = {
-    opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-50vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
+    opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-70vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
     // 載入特效, 文字提示顏色,  背景變換
     class: "", fontcolor: "red", nameA: "asd",
 
@@ -35,10 +35,10 @@ class Login extends Component {
         passwordCheck: ['',''], pas: ['', true]})
     }
     else if ( this.state.opacity[2] == 1 ) { 
-      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-20vw', '30vw', '0'], 
+      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-70vw', '30vw', '0'], 
         visibility: ['hidden','','hidden','hidden'], className: "", addressOrEmail: ['', false, ''], password: ['', false]})
     }else {
-      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-50vw', '30vw', '0'], 
+      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-70vw', '30vw', '0'], 
         visibility: ['hidden','','hidden','hidden'], className: "", addressOrEmail: ['', false, ''], password: ['', false]})
     }
   }
@@ -422,206 +422,175 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="loginA row" id='all' >
-        {/* -- Forgot password -- */}
-        <div className='login text-center ' 
-          style={{ opacity: this.state.opacity[0], marginLeft: this.state.marginLeft[0], visibility: this.state.visibility[0],
-            }}>
-          <h2 className='mt-4 text-center' > 忘記密碼 </h2>
-          <span className='text-center w-100 my-0' style={{color: 'red'}}>
-             {this.state.aeh} &nbsp; {this.state.vec} &nbsp; 
-          </span>
-          <form className='text-center mt-0' id='fgF' style={{width: "125%"}} >
-            <div>
-              <ul className="list-group list-group-horizontal" >
-                <li className={`list-group-item w-100 ${this.state.className}`}>
+      <div id='allA'>
+        <div className="loginA row" id='all' >
+          {/* -- Forgot password -- */}
+          <div className='login text-center ' 
+            style={{ opacity: this.state.opacity[0], marginLeft: this.state.marginLeft[0], visibility: this.state.visibility[0],
+              }}>
+            <h2 className='mt-4 text-center' > 忘記密碼 </h2>
+            <span className='text-center w-100 my-0' style={{color: 'red'}}>
+              {this.state.aeh} &nbsp; {this.state.vec} &nbsp; 
+            </span>
+            <form className='text-center mt-3' id='fgF' style={{width: "75%"}} >
+              <div className='row m-3'>
+                <div className={`col-lg-12 w-100 ${this.state.className}`} >
                   <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
                   <input className="input fpf" type="text" placeholder="帳號 or Email" onChange={ this.LoginCheck } 
                     required="required"/>
                   <button type='button' className='buttonL' onClick={ this.fgCheck }>發送驗證碼</button><br />
-                </li>
-              </ul>
-              <ul className="list-group list-group-horizontal ">
-                  <li className={`list-group-item w-100 ${this.state.className}`}>
-                    <img className='icon mx-3 my-1' src={require('./icon/question.png')} />
-                    <input className="input fpf" type="e-mal" placeholder="請輸入驗證碼" required="required"
-                      onChange={ this.fgCheck }/>
-                    <span>
-                      <img className='icon mx-3 my-1' src={require('./icon/checked.png')} 
-                        style={{ opacity: this.state.opacity[4]}}/>
-                    </span>
-                  </li>
-              </ul>
-              <ul className="list-group list-group-horizontal " >
-                <li className={`list-group-item w-50 ${this.state.className}`}>
+                </div>
+              </div>
+              <div className='row m-3'>
+                <div className={`col-lg-12 w-100 ${this.state.className}`} >
+                  <img className='icon mx-3 my-1' src={require('./icon/question.png')} />
+                  <input className="input fpf" type="e-mal" placeholder="請輸入驗證碼" required="required"
+                    onChange={ this.fgCheck }/>
+                  <span>
+                    <img className='icon mx-3 my-1' src={require('./icon/checked.png')} 
+                      style={{ opacity: this.state.opacity[4]}}/>
+                  </span>
+                </div>
+              </div>
+              <div className='row m-3 justify-content-center'>
+                <div className={`col-lg-4 ${this.state.className}`}>
                   <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
                   <input className="input fpf" type="password" onChange={this.registerOnCheck} placeholder="密碼" 
                     required="required"/><br />
                   <span> &nbsp; {this.state.pwa}</span>
                   <span style={{color: 'red'}}>{this.state.pwr}</span>
-                </li>
-                <li className={`list-group-item w-50 ${this.state.className}`}>
+                </div>
+                <div className={`col-lg-4 ${this.state.className}`} >
                   <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
                   <input className="input fpf" type="password" onChange={this.registerOnCheck} placeholder="再次輸入密碼" 
                     required="required"/><br />
                   <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
-                </li>
-              </ul>
-            </div>
-            <button type="button" className='button my-2 mx-3' onClick={ this.fgCheck }>確認變更</button>
-            <button type="button" className='button my-2 mx-3' onClick={ this.back }>回到登入頁面</button>
-          </form>
-        </div>
-
-        {/* -- Login -- */}
-        <div className='login text-center' 
-          style={{ opacity: this.state.opacity[1], marginLeft: this.state.marginLeft[1], visibility: this.state.visibility[1],
-            }}>
-          <div className="animate__animated animate__fadeInDown">
-            <h2 className='my-4 text-center'>Login</h2>
-            <p className='text-center w-100' style={{color: 'red'}}>
-              {this.state.aew} &nbsp; {this.state.pwr}
-            </p>
-            <div className='container'>
-              <div className="row">
-                <form className='container mt-4' >
-                  <img className='icon mx-3 my-3' src={require('./icon/profile.png')} />
-                  <input autoFocus="autofocus" className="input col-6 m-0 lof" type="text" placeholder="帳號 or Email" 
-                    required="required" onChange={ this.LoginCheck }/><br />
-                  <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
-                  <input className="input col-6 m-0 lof" type="password" placeholder="請輸入密碼" required="required"
-                    onChange={ this.LoginCheck }/><br />
-                  <div className='mt-5'>
-                    <button type="button" className='button my-2 mx-3' onClick={this.loginPost}>登入</button>
-                    <button type="button" className='button my-2 mx-3' onClick={this.next}>註冊</button>
-                  </div>
-                </form>
+                </div>
               </div>
-            </div>
-            <button type="button" className='buttonL m-3' onClick={this.back}>忘記密碼 ?</button>
+              <button type="button" className='button my-2 mx-3' onClick={ this.fgCheck }>確認變更</button>
+              <button type="button" className='button my-2 mx-3' onClick={ this.back }>回到登入頁面</button>
+            </form>
           </div>
-        </div>
 
-        {/* -- Sign up -- */}
-        <div className='login text-center' 
-            style={{ opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2],
+          {/* -- Login -- */}
+          <div className='login text-center' 
+            style={{ opacity: this.state.opacity[1], marginLeft: this.state.marginLeft[1], visibility: this.state.visibility[1],
               }}>
-          <div className="row w-100 my-0">
-            <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('./icon/left.png')} /></button>
-            <h2 className='col-10 text-center'>註冊</h2>
-            <span style={{color: 'red'}}>{this.state.adr}</span>
-          </div >
-          <form className='' style={{width: "125%"}}>
-              <ul className="list-group list-group-horizontal">
-                <li className={`list-group-item w-100 ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
-                      <input className="input isu" type="text" placeholder="帳號" required="required"
-                        onChange={ this.registerOnCheck} /><br />
-                      <span> &nbsp; {this.state.ada}</span>
+            <div className="animate__animated animate__fadeInDown">
+              <h2 className='my-4 text-center'>Login</h2>
+              <p className='text-center w-100' style={{color: 'red'}}>
+                {this.state.aew} &nbsp; {this.state.pwr}
+              </p>
+              <div className='container'>
+                <div className="row">
+                  <form className='container mt-4' >
+                    <img className='icon mx-3 my-3' src={require('./icon/profile.png')} />
+                    <input autoFocus="autofocus" className="input col-6 m-0 lof" type="text" placeholder="帳號 or Email" 
+                      required="required" onChange={ this.LoginCheck }/><br />
+                    <img className='icon mx-3 my-3' src={require('./icon/password.png')} />
+                    <input className="input col-6 m-0 lof" type="password" placeholder="請輸入密碼" required="required"
+                      onChange={ this.LoginCheck }/><br />
+                    <div className='mt-5'>
+                      <button type="button" className='button my-2 mx-3' onClick={this.loginPost}>登入</button>
+                      <button type="button" className='button my-2 mx-3' onClick={this.next}>註冊</button>
                     </div>
-                  </div>
-                </li>
-                <li className={`list-group-item w-100 ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/email.png')} />
-                      <input className="input isu" type="e-mail" placeholder="Email" required="required"
-                        onChange={ this.registerOnCheck} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br />
-                      <span> &nbsp; {this.state.emr}</span> 
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul className="list-group list-group-horizontal " >
-                <li class={`list-group-item w-100 ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
-                      <input className="input isu" type="password" onChange={ this.registerOnCheck } placeholder="密碼" required="required"
-                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"/><br />
-                      <span > {this.state.pwa} </span>
-                      <span style={{color: 'red'}}>{this.state.pwr}</span>
-                    </div>
-                  </div>
-                </li>
-                <li className={`list-group-item w-100 ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
-                      <input className="input isu" type="password" onChange={ this.registerOnCheck } placeholder="再次輸入密碼" required="required"
-                        /><br />
-                      <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul className="list-group list-group-horizontal" >
-                <li className={`list-group-item w-100 ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/account.png')}/>
-                      <input className="input isu" type="text" placeholder="真實姓名" required="required"
-                        onChange={ this.registerOnCheck }/><br />
-                      <span style={{color: 'red'}}> &nbsp; {this.state.naa}</span>
-                    </div>
-                  </div>
-                </li>
-                <li className={`list-group-item w-100  ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/mobile-app.png')} />
-                      <input className="input isu" type="text" placeholder="連絡電話" required="required" maxLength="10"
-                        onChange={ this.registerOnCheck } pattern="^[0][9][0-9]{8}$" /><br />
-                        <span style={{color: 'red'}}> &nbsp; {this.state.cel}</span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <ul className="list-group list-group-horizontal" >
-                <li className={`list-group-item w-100 ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/identity-card.png')} />
-                      <input className="input" type="text" placeholder="暱稱 (選填)"
-                        onChange={ (e) => { this.setState({ nna: e.target.value })} }/><br />
-                    </div>
-                  </div>
-                </li>
-                <li className={`list-group-item w-100 ${this.state.className}`}>
-                  <div className='row'>
-                    <div className='col-12'>
-                      <img className='icon mx-3 my-1' src={require('./icon/sex.png')} />
-                      <select className='input text-center' onChange={ (e) => { this.setState({ gen: e.target.value })} }>
-                            <option value="Male">男</option>
-                            <option value="Female">女</option>
-                            <option value="secret">秘密</option>
-                      </select>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <button type="button" className='button' onClick={this.registerPost} value="singUp">確認註冊</button> 
-          </form>
-        </div>
-
-        {/* -- Email 驗證 -- */}
-        <div className="login text-center"
-            style={{ opacity: this.state.opacity[3], marginLeft: this.state.marginLeft[3], visibility: this.state.visibility[3]}}>
-          <div className="row my-4">
-            <h2>Email 已送出</h2>
-          </div >
-          <div className="container animate__animated animate__lightSpeedInRight">
-              <p className='m-5' >已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證 </p>
-              <p className='mt-5'>沒收到驗證信 ?</p>
-              <button type="submit" className='buttonL mb-4'>再寄送一次</button>
+                  </form>
+                </div>
+              </div>
+              <button type="button" className='buttonL m-3' onClick={this.back}>忘記密碼 ?</button>
+            </div>
           </div>
-          <div className='mt-3'>
-              <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>回到登入頁面</button>
+
+          {/* -- Sign up -- */}
+          <div className='login text-center' 
+              style={{ opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2],
+                }}>
+            <div className="row w-50 my-0">
+              <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('./icon/left.png')} /></button>
+              <h2 className='col-10 text-center my-4'>註冊</h2>
+              <span style={{color: 'red'}}>{this.state.adr}</span>
+            </div >
+            <form className='' style={{width: "75%"}}>
+              <div className='row justify-content-center my-3'>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
+                  <input className="input isu" type="text" placeholder="帳號" required="required"
+                    onChange={ this.registerOnCheck} /><br />
+                  <span> &nbsp; {this.state.ada}</span>
+                </div>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/email.png')} />
+                  <input className="input isu" type="e-mail" placeholder="Email" required="required"
+                    onChange={ this.registerOnCheck} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br />
+                  <span> &nbsp; {this.state.emr}</span> 
+                </div>
+              </div>
+              <div className='row justify-content-center my-3'>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
+                  <input className="input isu" type="password" onChange={ this.registerOnCheck } placeholder="密碼" required="required"
+                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"/><br />
+                  <span > {this.state.pwa} </span>
+                  <span style={{color: 'red'}}>{this.state.pwr}</span>
+                </div>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/password.png')} />
+                  <input className="input isu" type="password" onChange={ this.registerOnCheck } placeholder="再次輸入密碼" required="required"
+                    /><br />
+                  <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
+                </div>
+              </div>
+              <div className='row justify-content-center my-3'>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/account.png')}/>
+                  <input className="input isu" type="text" placeholder="真實姓名" required="required"
+                    onChange={ this.registerOnCheck }/><br />
+                  <span style={{color: 'red'}}> &nbsp; {this.state.naa}</span>
+                </div>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/mobile-app.png')} />
+                  <input className="input isu" type="text" placeholder="連絡電話" required="required" maxLength="10"
+                    onChange={ this.registerOnCheck } pattern="^[0][9][0-9]{8}$" /><br />
+                    <span style={{color: 'red'}}> &nbsp; {this.state.cel}</span>
+                </div>
+              </div>
+              <div className='row justify-content-center my-3'>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/identity-card.png')} />
+                  <input className="input" type="text" placeholder="暱稱 (選填)"
+                    onChange={ (e) => { this.setState({ nna: e.target.value })} }/><br />
+                </div>
+                <div className={`col-lg-4 ${this.state.className}`}>
+                  <img className='icon mx-3 my-1' src={require('./icon/sex.png')} />
+                  <select className='input text-center' onChange={ (e) => { this.setState({ gen: e.target.value })} }>
+                        <option value="Male">男</option>
+                        <option value="Female">女</option>
+                        <option value="secret">秘密</option>
+                  </select>
+                </div>
+              </div>
+              <button type="button" className='button' onClick={this.registerPost} value="singUp">確認註冊</button> 
+            </form>
+          </div>
+
+          {/* -- Email 驗證 -- */}
+          <div className="login text-center"
+              style={{ opacity: this.state.opacity[3], marginLeft: this.state.marginLeft[3], visibility: this.state.visibility[3]}}>
+            <div className="row my-4">
+              <h2>Email 已送出</h2>
+            </div >
+            <div className="container animate__animated animate__lightSpeedInRight">
+                <p className='m-5' >已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證 </p>
+                <p className='mt-5'>沒收到驗證信 ?</p>
+                <button type="submit" className='buttonL mb-4'>再寄送一次</button>
+            </div>
+            <div className='mt-3'>
+                <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>回到登入頁面</button>
+            </div>
           </div>
         </div>
       </div>
+      
     )
   }
 }
