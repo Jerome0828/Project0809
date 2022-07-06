@@ -44,15 +44,12 @@ class Login extends Component {
   }
   next = () => {
     if ( this.state.opacity[1] == 1 ) {
-      this.setState({ opacity: [0, 0, 1, 0], marginLeft: ['-20vw', '-50vw', '-80vw', '10vw'], visibility: ['hidden','hidden','','hidden'],
-        className: "animate__animated "})
+      this.setState({ opacity: [0, 0, 1, 0], marginLeft: ['-20vw', '-50vw', '-80vw', '-40vw'], visibility: ['hidden','hidden','','hidden'], className: "animate__animated "})
     }
     else if ( this.state.opacity[2] == 1 ) {
-      this.setState({ opacity: [0, 0, 0, 1], marginLeft: ['0', '-60vw', '-30vw', '0'], visibility: ['hidden','hidden','hidden',''],
-        className: ""})}
-        
+      this.setState({ opacity: [0, 0, 0, 1], marginLeft: ['0', '-50vw', '-250vw', '-80vw'], visibility: ['hidden','hidden','hidden',''], className: ""})}
     else { 
-      this.setState({ opacity: [0, 1, 0, 0],  marginLeft: ['0', '-20vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
+      this.setState({ opacity: [0, 1, 0, 0],  marginLeft: ['0', '-70vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
         className: "", adr: ''}) 
     }
   }
@@ -281,7 +278,7 @@ class Login extends Component {
           newPassWorld: ''
         })
       }
-      axios.post("http://localhost:80/sport/Forgotpassword.php", fgCheck )
+      axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", fgCheck )
         // .then( (response) => {
           // if ( response.data != 1) {
 
@@ -310,7 +307,7 @@ class Login extends Component {
             newPassWorld: ''
           })
         }
-        axios.post("http://localhost:80/sport/Forgotpassword.php", verificationCodes )
+        axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", verificationCodes )
           // .then( (response) => {
           //   if ( response.data != 1) {
           //     this.state.vec = '驗證碼錯誤';
@@ -345,7 +342,7 @@ class Login extends Component {
           newPassWorld: this.state.pas[0]
         })
       }
-      axios.post("http://localhost:80/sport/Forgotpassword.php", changePassword )
+      axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", changePassword )
         // .then( (response) => {
         //   if ( response.data != 1) {
 
@@ -376,7 +373,7 @@ class Login extends Component {
           singInPassword: this.state.password[0]
         })
       }
-      axios.post("http://localhost:80/sport/login.php", singIn )
+      axios.post("http://localhost:80/spost/JerpmePHP/login.php", singIn )
         .then( (response) => {
           if ( response.data != 1) {
             this.state.aew = '帳號或信箱錯誤';
@@ -405,7 +402,7 @@ class Login extends Component {
         nickname: this.state.nna,
         gender: this.state.gen
       });
-      axios.post("http://localhost:80/sport/register.php", register )
+      axios.post("http://localhost:80/spost/JerpmePHP/register.php", register )
         .then( ( response ) => {
           if ( response.data != 1 ) {
             this.state.adr = '帳號或信箱已註冊';

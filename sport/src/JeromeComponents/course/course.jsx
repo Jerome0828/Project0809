@@ -27,7 +27,7 @@ function Courses() {
     useEffect( () => {
         const Qs = require("qs")
         async function post() {
-            await axios.post("http://localhost:80/sport/course.php", Qs.stringify({ pid: state }))
+            await axios.post("http://localhost:80/spost/JerpmePHP/course.php", Qs.stringify({ pid: state }))
             .then( response => {
                 setNews(response.data)
             })
