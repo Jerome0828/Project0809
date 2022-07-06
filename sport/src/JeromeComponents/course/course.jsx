@@ -14,12 +14,13 @@ import axios from 'axios';
 
 AOS.init();
 
-function Courses() {
+function Courses(props) {
     const [state, setState] = useState('')
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        let test = Math.floor(Math.random() * 40)
+        console.log(props.match.params.pid)
+        let test = props.match.params.pid;
         setState(test)
     }, [])
 
@@ -27,7 +28,7 @@ function Courses() {
     useEffect( () => {
         const Qs = require("qs")
         async function post() {
-            await axios.post("http://localhost:80/sport/course.php", Qs.stringify({ pid: state }))
+            await axios.post("http://localhost/spost/JerpmePHP/course.php", Qs.stringify({ pid: state }))
             .then( response => {
                 setNews(response.data)
             })

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";  // npm remove react-calendar
 import "react-calendar/dist/Calendar.css";
+import '../../../scss/all.css';
 
 import axios from 'axios';
 
@@ -30,7 +31,7 @@ function Monthly(props) {
 
     const Qs = require("qs")
     async function post() {
-      await axios.post("http://localhost:80/sport/monthlyButton.php", Qs.stringify({ pid: `${props.pid && props.pid}` }))
+      await axios.post("http://localhost/sport/JerpmePHP/monthlyButton.php", Qs.stringify({ pid: `${props.pid && props.pid}` }))
       .then( response => {
         if ( typeof response.data == "object" ) {
           // 預設

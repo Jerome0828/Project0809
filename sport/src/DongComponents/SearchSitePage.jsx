@@ -245,6 +245,17 @@ class SearchSitePage extends Component {
         this.setState({});
     }
 
+    // 點選連結
+    cardOnClick=(e)=>{
+        // let mypid = Location.href;
+        
+        console.log(this.props.match.params.id);
+        // await Axios.post("http://localhost/spost/DongPHP/singleLesson.php", )
+        // .then( (response) => {
+        //     resdata = response.data;
+        // });
+    }
+
     render() {
 
         return (
@@ -353,7 +364,7 @@ class SearchSitePage extends Component {
                             <NavLink className='col-6 shadow btn bg-black text-white' to={"/site"}>找場地</NavLink>
                         </div>
                         <div className='row mt-5 justify-content-center'>
-                            <SiteCard dataList={this.state.data}/>
+                            <SiteCard cardOnClick={(e)=>this.cardOnClick(e)} dataList={this.state.data}/>
                         </div>
                     </div>
                 </div>
