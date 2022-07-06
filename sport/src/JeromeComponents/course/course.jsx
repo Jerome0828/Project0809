@@ -14,12 +14,12 @@ import axios from 'axios';
 
 AOS.init();
 
-function Courses() {
+function Courses () {
     const [state, setState] = useState('')
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        let test = Math.floor(Math.random() * 40)
+        let test = this.props.match.params.id;
         setState(test)
     }, [])
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
+import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 class RentPlace extends Component {
@@ -19,7 +20,7 @@ class RentPlace extends Component {
         { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },],
 
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
-        
+        src: [pic, pic, pic],
 
         weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd:'monEnd'},
         { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd:'tuesEnd' },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";  // npm remove react-calendar
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
+import '../../../scss/all.css';
 
 import axios from 'axios';
 

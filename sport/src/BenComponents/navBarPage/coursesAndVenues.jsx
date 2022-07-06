@@ -150,7 +150,7 @@ class CoursesAndVenues extends Component {
                 
                 {/* {this.state.place.map((e,index)=>{return  <Link to={`/coursesAndVenues/${e.id}`}><Card id={e.id} key={index} value={e.value}/>
                 </Link>})}  */}
-                {/* 
+               
                 {this.state.place.map((e,index)=>{return <Card id={e.id} key={index} 
                 value={e.value} 
                 title={e.Title}
@@ -160,7 +160,7 @@ class CoursesAndVenues extends Component {
                 src={e.Img}
                 onClick={this.addShoppingCartCount}
                 
-                />})} */}
+                />})}
                 {/* <button onClick={this.chk}>測試中</button> */}
                 {/* {this.state.lessonList.map((e,index)=>{return <Card id={e.id} key={index} 
                 title={e.title}

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import { Link } from "react-router-dom";
 // npm i react-animated-css
 // npm install aos
 class SiteCard extends Component {
@@ -21,6 +22,8 @@ class SiteCard extends Component {
         type: "拳擊格鬥;混合健身;有氧訓練;重量訓練"*/
     render() {
         let dataList = this.props.dataList;
+        console.log(dataList);
+
         return (
             <>
                 {
@@ -29,6 +32,7 @@ class SiteCard extends Component {
                             <div data-aos="zoom-in" className="border-0 col-xl-3 col-lg-5 col-md-5 card m-3">
                                     <div className="border rounded shadow card h-100">
                                         <div className="h-100">
+                                        <Link to={`/shoppingCart/${elm.pid}`} >
                                             <img style={{
                                                 height: '18em',
                                                 width: '100%',
@@ -36,10 +40,13 @@ class SiteCard extends Component {
                                                 objectFit: 'cover',
                                                 objectPosition: '50% 50%'
                                             }} src={`data:image/jpeg;base64,${elm.img1}`} className="card-img-top" />
+                                        </Link>
                                         </div>
                                         <div className="card-body row ">
                                             <div className="col-12">
+                                            <Link to={`/shoppingCart/${elm.pid}`} >
                                                 <p className="card-title text-nowrap text-truncate">{elm.title}</p>
+                                            </Link>
                                             </div>
 
                                             <p className="card-text text-nowrap text-truncate"><small className="text-muted">{elm.addr}</small></p>

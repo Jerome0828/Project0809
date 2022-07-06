@@ -9,72 +9,54 @@ import Card from "../siteSearch/Card.jsx"
 
 class ShoppingCart extends Component {
     state = { 
-        commodityValue:[
-            localStorage.getItem("place"),
-            // JSON.parse(localStorage.getItem("place",JSON.stringify(this.props.place)))
-        ],
-        place:[
+        // commodityValue:[
+        //     localStorage.getItem("place"),
+        //     // JSON.parse(localStorage.getItem("place",JSON.stringify(this.props.place)))
+        // ],
+        placeData:[
             {pid:null,titles:"",addrs:"",infos:"",sun:"",mon:"",tue:"",wed:"",thu:"",fri:"",sat:"",prices:""}
-        ]
+        ],
+        placeData1:this.props.value,
+
+        
+
         
     }
 
-    // async componentDidMount(){
-    //     await Axios.get(`http://localhost:3000/#/coursesAndVenues${this.props.id}`).then(response =>{
-    //         var coursesAndVenues = response.data;
-    //         console.log(typeof(coursesAndVenues));
-    //         // $("#test").val(coursesAndVenues);
+    async componentDidMount(){
+        await Axios.get(`http://localhost:80/spost/Benphp/lessonGet.php`).then(response =>{
+            var coursesAndVenue = response.data;
+            this.setState({coursesAndVenue});
+            // var coursesAndVenues =coursesAndVenue.map((function(){
+            //     return(<div>
+            //         <li>123</li>
+            //         <li>123</li>
+            //         <li>123</li>
+            //     </div>
+            //     )
+            // }))
+            // this.setState({})
+            // console.log(typeof(coursesAndVenues));
+            // console.log(coursesAndVenues);
+            // $("#test").text(coursesAndVenue);
+            $("#test").html(coursesAndVenue);
+            // $("#test").val(coursesAndVenues);
+            // $("#test").on('Click',function(){
+            //     alert('OK');
+            // })
+    })}
 
-    //         // 點擊加入購物車取得商品localStorage資料 
-    //         var retrievedObject =localStorage.getItem('place');
-    //         var retrievedObjectA = JSON.parse(retrievedObject);
-    //         // console.log(retrievedObjectA[0].id)
-    //         var a = retrievedObjectA[0].id;
-    //         $("#test").text(a);
-
-        
-    //     })
-    // }
+            addShoppingCartCount =()=>{
+            var a= localStorage.setItem("place",JSON.stringify(this.state.place));
+                // var a= localStorage.setItem("place",this.state.place);
+                // localStorage.setItem("Test",JSON.stringify(this.state.commodity));
+                // localStorage.setItem("Test",this.state.commodity);
+            this.setState({selectedProduct:a}) 
+            }
     
     render() { 
-
-        // var a =[];
-        // a = localStorage.getItem("place");
-        // this.setState({commodityValue:a.map((e) => <li>{e.id}</li>)})
-        // this.setState({a})
-        // var b = this.state.commodityValue.map((e) => <li>{e.id}</li>);
-        // console.log(a);
-        // console.log(b);
-
-        // 點擊加入購物車取得商品localStorage資料 
-        // var retrievedObject = JSON.parse(localStorage.getItem('place'));
-        // var retrievedObject =localStorage.getItem('place');
-        // var retrievedObjectA = JSON.parse(retrievedObject);
-        // console.log(retrievedObjectA[0].id)
-        // var a = retrievedObjectA[0].id;
-        // $("#test").val(a);
-    
-        // console.log(typeof(retrievedObject));
-        // console.log(retrievedObject[0].id);
-        // var pid = retrievedObject[0].id;
-        // console.log(retrievedObject[1].id);
-
-        // $("#test").text(retrievedObject[0].id);
-        // $("#test").val(retrievedObject[0].id);
-        // $("#test").html(retrievedObject[0].id);
-
-        // console.log('place:', JSON.parse(retrievedObject));
-        // console.log(typeof(retrievedObject));
-
-        // var retrievedObject = localStorage.getItem('name');
-        // var test2 = retrievedObject.forEach();
-
-        // var localId = localStorage.id = this.props.id;
-        // localStorage.title = this.props.title   ;
-
-        // $('#test2').on('click',function(){
-        //     alert("OK");
-        // });
+        let dataList = this.props.dataList;
+       
 
 
 
@@ -82,16 +64,13 @@ class ShoppingCart extends Component {
             <>
                 測試購物車頁面
                 <hr />
-                {/* {this.state.commodityValue} */}
-                {/* <input type="text" value={localStorage.getItem("place")} /> */}
-                {/* {this.state.commodityValue.map((e,index)=>{
-                    return {e}
+                {/* {dataList.map(elm =>{
+                    return (
+                        <div>{elm.title}</div>
+                    )
                 })} */}
 
-                {/* {this.props.value}   */}
-
-
-                {/* {localStorage.place} */}
+                {console.log(this.props.match.params.id)}
                 <hr/>
                 {/* {localStorage.key(this.id)} */}
                 {/* {localStorage.key(this.localId)} */}
@@ -99,7 +78,11 @@ class ShoppingCart extends Component {
                 {/* {JSON.parse(retrievedObject)} */}
                 {/* {localStorage.key(localStorage.title.data)} */}
                 {/* {test2} */}
-                <div id="test">123</div>
+
+
+                {/* 撈取php資料顯示 */}
+                {/* <div id="test">123</div>
+                 */}
                 <button id="test2" onClick={()=>{ return alert("OK")}} >測試按鈕</button>
                 {/* {retrievedObjectA.id} */}
                 {/* {this.state.commodityValue} */}

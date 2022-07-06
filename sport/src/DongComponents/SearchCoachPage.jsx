@@ -57,6 +57,7 @@ class SearchCoachPage extends Component {
         var url = `http://localhost/spost/lesson.php`;
         var result = await Axios.get(url);
         this.state.data = result.data;
+        // console.log(this.state.data);
 
         var url1 = `http://localhost/spost/sportType.php`;
         var result1 = await Axios.get(url1);
@@ -340,6 +341,10 @@ class SearchCoachPage extends Component {
                         </div>
                         <div className='row mt-5 justify-content-center'>
                             <LessonCard dataList={this.state.data} />
+                            {/* {this.state.data.map((e,index)=>{
+                                <LessonCard key={index} id={e.lid}  />
+                            })} */}
+
                         </div>
                     </div>
                 </div>
