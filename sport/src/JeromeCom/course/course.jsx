@@ -20,8 +20,8 @@ function Courses() {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        let a = Math.floor(Math.random() * 40)
-        setState(a)
+        let test = Math.floor(Math.random() * 40)
+        setState(test)
     }, [])
 
 
