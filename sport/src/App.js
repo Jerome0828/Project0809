@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import{BrowserRouter, Switch, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MySearchPage from "./components/MySearchPage";
@@ -26,3 +27,24 @@ class App extends Component {
   }
 }
 export default App;
+=======
+import './scss/all.scss';
+import NavBarOK from './BenComponents/navBarOK.jsx';
+// import NavBarContent from './BenComponents/navBarContent.jsx';
+import {HashRouter} from 'react-router-dom'
+
+class App extends Component {
+    state = { 
+  
+     } 
+    render() { 
+      return (
+        <HashRouter>
+          <NavBarOK/>
+        </HashRouter>
+      );
+    }
+  }
+   
+  export default App;
+>>>>>>> b64177d0da9ba42680a5273853b55aadf9e24306
