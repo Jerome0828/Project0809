@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 
-import Card from './Card';
-
-
 function Footer() {
     const [news, setNews] = useState(undefined);
 

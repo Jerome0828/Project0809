@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.css';
+
+import Footer from '../footer';
 import Evaluation from '../Evaluation';
 import Teachers from '../teachers';
-import Card from '../Card';
-import Carousels from './carousels';
 import './venues.css'
 
 class Venues extends Component {
@@ -154,23 +154,7 @@ class Venues extends Component {
                 </div>
 
                 <div className='row mx-5'>
-                    <h3 id='title' className='col-lg-12 mt-3'>關聯課程</h3>
-                    <div className='container-fluid col-lg-11'>
-                        <div className='row mt-4'>
-                            <Carousel activeIndex={this.state.index} onSelect={this.handleSelect} interval={3000}>
-                                <Carousel.Item>
-                                    <div className='row justify-content-center'>
-                                        <Card /><Card /><Card /><Card /><Card />
-                                    </div>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                        <div className='row justify-content-center'>
-                                            <Card /><Card /><Card /><Card /><Card />
-                                        </div>
-                                </Carousel.Item>
-                            </Carousel>
-                        </div>
-                    </div>
+                   <Footer />
                 </div>
             </div>
         );
