@@ -95,10 +95,10 @@ class CoursesAndVenues extends Component {
 
 
         async componentDidMount() {
-            var url = `http://localhost/lessonGet.php`;
-            var result = await Axios.get(url);
-            this.state.lessonList = result.data;
-            this.setState({});
+            // var url = `http://localhost/lessonGet.php`;
+            // var result = await Axios.get(url);
+            // this.state.lessonList = result.data;
+            // this.setState({});
         }
         
         
