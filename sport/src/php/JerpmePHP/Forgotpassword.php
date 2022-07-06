@@ -15,6 +15,8 @@
     $row = $results->fetch_array();
 
     if ( strlen($fgCheckVerificationCode) == 0 && strlen($fgCheckNewPassWorld) == 0 ) {
+        mail('stemgh1999@yahoo.com', "SPOST + 忘記密碼驗證信", 'FFFF');
+        echo "a";
         // $row['email']
         // 發送驗證信
     }else if ( strlen($fgCheckNewPassWorld) == 0 ) {

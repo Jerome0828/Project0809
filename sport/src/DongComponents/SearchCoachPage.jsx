@@ -54,11 +54,11 @@ class SearchCoachPage extends Component {
     }
     // 課程預設
     async componentDidMount() {
-        var url = `http://localhost/spost/lesson.php`;
+        var url = `http://localhost/spost/DongPHP/lesson.php`;
         var result = await Axios.get(url);
         this.state.data = result.data;
 
-        var url1 = `http://localhost/spost/sportType.php`;
+        var url1 = `http://localhost/spost/DongPHP/sportType.php`;
         var result1 = await Axios.get(url1);
         this.state.sportType = result1.data;
         let sportType = this.state.sportType;
@@ -74,13 +74,12 @@ class SearchCoachPage extends Component {
     searchResult = async () => {
         let resdata = [];
         var fd = new FormData(document.querySelector("form"));
-        await Axios.post("http://localhost/spost/searchLesson.php", fd )
+        await Axios.post("http://localhost/spost/DongPHP/searchLesson.php", fd )
         .then( (response) => {
             resdata = response.data;
         });
         this.state.data = resdata;
-        this.setState({});
-        
+        this.setState({});        
     }
 
     // 清除縣市
@@ -99,6 +98,7 @@ class SearchCoachPage extends Component {
             elm.color = 'text-black';
         })
         this.setState({});
+        this.searchResult();
     }
     // weeklistonchange
     weekListOnclick = (e) => {
@@ -123,6 +123,7 @@ class SearchCoachPage extends Component {
         document.getElementsByName('weekBegin')[0].value = '';
         document.getElementsByName('weekEnd')[0].value = '';
         this.setState({});
+        this.searchResult();
     }
 
     // 清除所選價格
@@ -132,6 +133,7 @@ class SearchCoachPage extends Component {
             elm.className = 'd-none text-success';
         })
         this.setState({});
+        this.searchResult();
     }
 
     // 點選價格更改樣式
@@ -174,6 +176,7 @@ class SearchCoachPage extends Component {
             elm.className = 'text-black';
         })
         this.setState({});
+        this.searchResult();
     }
 
 
@@ -184,6 +187,7 @@ class SearchCoachPage extends Component {
             elm.className = 'd-none text-success';
         })
         this.setState({});
+        this.searchResult();
     }
 
     setPeople = (e) => {
@@ -209,6 +213,7 @@ class SearchCoachPage extends Component {
         this.clearSportType();
         this.clearTime();
         this.clearWeek();
+        this.searchResult();
     }
 
     // 清除所選時間範圍
@@ -227,6 +232,15 @@ class SearchCoachPage extends Component {
         this.state.timeValue[1] = `${Math.floor((24 * (e.target.value[1] / 100)))} : 00`;
         this.setState({});
     }
+
+    // 點選連結
+    // cardOnClick=(e)=>{
+    //     console.log(e);
+    //     // await Axios.post("http://localhost/spost/DongPHP/singleLesson.php", )
+    //     // .then( (response) => {
+    //     //     resdata = response.data;
+    //     // });
+    // }
 
     render() {
 
@@ -339,7 +353,7 @@ class SearchCoachPage extends Component {
                             <Link className='col-6 shadow btn' to={"/site"}>找場地</Link>
                         </div>
                         <div className='row mt-5 justify-content-center'>
-                            <LessonCard dataList={this.state.data} />
+                            <LessonCard onClick={this.cardOnClick} dataList={this.state.data} />
                         </div>
                     </div>
                 </div>

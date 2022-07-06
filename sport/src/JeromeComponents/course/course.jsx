@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../../scss/all.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+// import '../../../scss/all.css';
 
 
 import Head from './components/head';
@@ -14,7 +15,7 @@ import axios from 'axios';
 
 AOS.init();
 
-function Courses() {
+function Courses(props) {
     const [state, setState] = useState('')
     const [news, setNews] = useState(undefined)
 

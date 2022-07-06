@@ -267,78 +267,40 @@ class Login extends Component {
         fgCheck = Qs.stringify({
           fgCheckAccount: this.state.addressOrEmail[0],
           fgCheckEmail: '',
-          verificationCode: '',
           newPassWorld: ''
         })
       }else {
         fgCheck = Qs.stringify({
           fgCheckAccount: '',
           fgCheckEmail: this.state.addressOrEmail[0],
-          verificationCode: '',
           newPassWorld: ''
         })
       }
       axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", fgCheck )
-        // .then( (response) => {
-          // if ( response.data != 1) {
-
-          // }else {
-          //   alert("ok")
-          // }
-        // })
+        .then( (response) => {
+          
+          console.log(response.data)
+        })
     }
 
     // 驗證碼核對
     if ( e.target.placeholder == "請輸入驗證碼" ) {
-      if ( e.target.value.length > 100 ) {   ///--------------
-        let verificationCodes = '';
-        if ( this.state.addressOrEmail[2] == 'address' ){
-          verificationCodes = Qs.stringify({
-            fgCheckAccount: this.state.addressOrEmail[0],
-            fgCheckEmail: '',
-            verificationCode: e.target.value,
-            newPassWorld: ''
-          })
-        }else {
-          verificationCodes = Qs.stringify({
-            fgCheckAccount: '',
-            fgCheckEmail: this.state.addressOrEmail[0],
-            verificationCode: e.target.value,
-            newPassWorld: ''
-          })
-        }
-        axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", verificationCodes )
-          // .then( (response) => {
-          //   if ( response.data != 1) {
-          //     this.state.vec = '驗證碼錯誤';
-          //     this.setState({})
-          //   }else {
-          //     this.state.verificationCode[1] = true;
-          //     this.state.opacity[4] = 1;
-          //     this.setState({})
-          //   }
-          // })
-      }else {
-        this.state.opacity[4] = 0;
-        this.setState({})
-      }
+      
     }
 
     // 表單送出 
-    if ( this.state.addressOrEmail[1] == true && this.state.verificationCode == true && this.state.pas[1] == true ) {
+    if ( this.state.addressOrEmail[1] == true && this.state.pas[1] == true ) {
       let changePassword = '';
       if ( this.state.addressOrEmail[2] == 'address' ){
         changePassword = Qs.stringify({
           fgCheckAccount: this.state.addressOrEmail[0],
           fgCheckEmail: '',
-          verificationCode: '',
           newPassWorld: this.state.pas[0]
         })
       }else {
         changePassword = Qs.stringify({
           fgCheckAccount: '',
           fgCheckEmail: this.state.addressOrEmail[0],
-          verificationCode: '',
           newPassWorld: this.state.pas[0]
         })
       }
@@ -505,7 +467,7 @@ class Login extends Component {
             <div className="row w-50 my-0">
               <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('./icon/left.png')} /></button>
               <h2 className='col-10 text-center my-4'>註冊</h2>
-              <span style={{color: 'red'}}>{this.state.adr}</span>
+              <span style={{color: 'red'}}>&nbsp;{this.state.adr}</span>
             </div >
             <form className='' style={{width: "75%"}}>
               <div className='row justify-content-center my-3'>

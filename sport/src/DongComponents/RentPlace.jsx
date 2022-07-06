@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
+import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 class RentPlace extends Component {
     state = {
-        sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 2, value: '重量訓練', cName: '重量訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 3, value: '有氧訓練', cName: '有氧訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 4, value: '高強度間歇訓練', cName: '高強度間歇訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 5, value: '混合健身', cName: '混合健身', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 6, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 7, value: '皮拉提斯', cName: '皮拉提斯', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 8, value: '懸吊運動', cName: '懸吊運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 9, value: '舞蹈', cName: '舞蹈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 10, value: '拳擊格鬥', cName: '拳擊格鬥', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 11, value: '球類運動', cName: '球類運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },
-        { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2' },],
+        sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 2, value: '重量訓練', cName: '重量訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 3, value: '有氧訓練', cName: '有氧訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 4, value: '高強度間歇訓練', cName: '高強度間歇訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 5, value: '混合健身', cName: '混合健身', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 6, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 7, value: '皮拉提斯', cName: '皮拉提斯', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 8, value: '懸吊運動', cName: '懸吊運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 9, value: '舞蹈', cName: '舞蹈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 10, value: '拳擊格鬥', cName: '拳擊格鬥', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 11, value: '球類運動', cName: '球類運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
+        { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },],
 
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
-        
 
-        weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd:'monEnd'},
-        { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd:'tuesEnd' },
-        { eName: 'wedTime', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd:'wedEnd' },
-        { eName: 'thurTime', cName: '週四', required: false, timeBegin: 'thurBegin', timeEnd:'thurEnd' },
-        { eName: 'friTime', cName: '週五', required: false, timeBegin: 'friBegin', timeEnd:'friEnd' },
-        { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd:'satEnd' },
-        { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd:'sunEnd' }],
+
+        weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd: 'monEnd' },
+        { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd: 'tuesEnd' },
+        { eName: 'wedTime', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd: 'wedEnd' },
+        { eName: 'thurTime', cName: '週四', required: false, timeBegin: 'thurBegin', timeEnd: 'thurEnd' },
+        { eName: 'friTime', cName: '週五', required: false, timeBegin: 'friBegin', timeEnd: 'friEnd' },
+        { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd: 'satEnd' },
+        { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd: 'sunEnd' }],
+        src: [pic, pic, pic],
 
 
     }
@@ -80,50 +82,72 @@ class RentPlace extends Component {
     }
 
     // 價格預覽
-    spanPrice = (e) =>{
+    spanPrice = (e) => {
         // console.log(e.target.value);
         document.getElementById('spanPrice').innerHTML = `${e.target.value}`;
         // console.log(document.getElementsByName('moneyPerTimes')[0]);
     }
-    spanTimes = (e) =>{
+    spanTimes = (e) => {
         document.getElementById('spanTimes').innerHTML = e.target.value;
     }
 
     // 圖片預覽
+    // fileInput = () => {
+    //     const file = document.getElementById('imgInput').files;
+    //     for (var i = 0; i < file.length; i++) {
+    //         if (file[i]) {
+    //             this.state.src[i] = URL.createObjectURL(file[i]);
+    //             this.setState({});
+    //         }
+    //     }
+    // }
+
+    // 圖片預覽
     fileInput = () => {
-        const file = document.getElementById('imgInput').files;
-        for (var i = 0; i < file.length; i++) {
-            if (file[i]) {
-                this.state.src[i] = URL.createObjectURL(file[i]);
-                this.setState({});
-            }
+
+        const file1 = document.getElementById('imgInput1').files;
+        const file2 = document.getElementById('imgInput2').files;
+        const file3 = document.getElementById('imgInput3').files;
+        // console.log(file3);
+        
+        if (file1) {
+            this.state.src[0] = URL.createObjectURL(file1[0]);
+            this.setState({});
+        }
+        if (file2) {
+            this.state.src[1] = URL.createObjectURL(file2[0]);
+            this.setState({});
+        }
+        if (file3) {
+            this.state.src[2] = URL.createObjectURL(file3[0]);
+            this.setState({});
         }
     }
-        
+
     // 星期+時間
     weekTimeChange = (e) => {
-        // console.log(e.target.checked);
-        // var changeId = e.target.id;
-        // console.log(document.querySelectorAll(`input[name=${changeId}]`)[0].value);
         if (e.target.checked) {
-            e.target.parentElement.parentElement.childNodes[1].required = true;
-            e.target.parentElement.parentElement.childNodes[3].required = true;
+            e.target.parentElement.parentElement.childNodes[1].className = 'mt-3';
+            e.target.parentElement.parentElement.childNodes[1].children[0].required = true;
+            e.target.parentElement.parentElement.childNodes[1].children[2].required = true;
         } else {
-            e.target.parentElement.parentElement.childNodes[1].required = false;
-            e.target.parentElement.parentElement.childNodes[3].required = false;
-            e.target.parentElement.parentElement.childNodes[1].value = '';
-            e.target.parentElement.parentElement.childNodes[3].value = '';
+            e.target.parentElement.parentElement.childNodes[1].className = 'mt-2 d-none';
+            e.target.parentElement.parentElement.childNodes[1].children[0].required = false;
+            e.target.parentElement.parentElement.childNodes[1].children[2].required = false;
+            e.target.parentElement.parentElement.childNodes[1].children[0].value = '';
+            e.target.parentElement.parentElement.childNodes[1].children[2].value = '';
         }
     }
 
     render() {
         let selectedOptionId = '';
         return (
+
             <div className="container mt-6">
                 <h3>上傳場地</h3>
                 <hr />
                 <form id='rentPlace' className="was-validated form-group" enctype="multipart/form-data"
-                action = "http://localhost/spost/form.php" method='POST'>
+                    action="http://localhost/spost/form.php" method='POST'>
 
                     {/* 上傳圖片 */}
                     <ul className="list-group list-group-flush">
@@ -134,25 +158,35 @@ class RentPlace extends Component {
                             </ul>
                         </li>
                     </ul>
-                    <div className="mb-3 w-50">
-                        <input name='img' id='imgInput' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required multiple />
+                    <div className="row">
+                        <div className="col-3 mb-3 d-flex">
+                            <input name='img1' id='imgInput1' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required />
+                        </div>
+                        <div className="col-3 mb-3 d-flex">
+                            <input name='img2' id='imgInput2' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required />
+                        </div>
+                        <div className="col-3 mb-3 d-flex">
+                            <input name='img3' id='imgInput3' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required />
+                        </div>
                     </div>
 
+
                     {/* 預覽圖 */}
-                    <div className="d-flex">
+                    <div className="row">
                         {this.state.src.map((elm, idx) => {
                             return (
-                                <>
+                                <div className="col-3">
                                     <img style={{
                                         width: '260px',
                                         height: '280px',
                                         background: 'white',
                                         objectFit: 'contain'
                                     }} src={this.state.src[idx]} className="mt-3 mx-2" />
-                                </>
+                                </div>
                             )
                         })}
                     </div>
+
                     <hr />
 
                     {/* 場地名稱 */}
@@ -181,7 +215,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1 w-50" >
-                        <Citys required={true}/>
+                        <Citys required={true} />
                         <input name="addr" type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
                     </div>
                     <hr />
@@ -203,25 +237,27 @@ class RentPlace extends Component {
                                         <input className="form-check-input" type="checkbox" id={elm.eName} onChange={this.weekTimeChange} />
                                         <label className="form-check-label" htmlFor={elm.eName}>{elm.cName}</label>
                                     </div>
-                                    <select name={elm.timeBegin} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
-                                        <option value=''></option>
-                                        <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
-                                        <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
-                                        <option value='08:00'>08:00</option><option value='09:00'>09:00</option><option value='10:00'>10:00</option><option value='11:00'>11:00</option>
-                                        <option value='12:00'>12:00</option><option value='13:00'>13:00</option><option value='14:00'>14:00</option><option value='15:00'>15:00</option>
-                                        <option value='16:00'>16:00</option><option value='17:00'>17:00</option><option value='18:00'>18:00</option><option value='19:00'>19:00</option>
-                                        <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
-                                    </select>
-                                    <p className="mt-2 mb-2">至</p>
-                                    <select name={elm.timeEnd} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
-                                        <option value=''></option>
-                                        <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
-                                        <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
-                                        <option value='08:00'>08:00</option><option value='09:00'>09:00</option><option value='10:00'>10:00</option><option value='11:00'>11:00</option>
-                                        <option value='12:00'>12:00</option><option value='13:00'>13:00</option><option value='14:00'>14:00</option><option value='15:00'>15:00</option>
-                                        <option value='16:00'>16:00</option><option value='17:00'>17:00</option><option value='18:00'>18:00</option><option value='19:00'>19:00</option>
-                                        <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
-                                    </select>
+                                    <div name={elm.eName} className="mt-2 d-none">
+                                        <select name={elm.timeBegin} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                            <option value=''></option>
+                                            <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
+                                            <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
+                                            <option value='08:00'>08:00</option><option value='09:00'>09:00</option><option value='10:00'>10:00</option><option value='11:00'>11:00</option>
+                                            <option value='12:00'>12:00</option><option value='13:00'>13:00</option><option value='14:00'>14:00</option><option value='15:00'>15:00</option>
+                                            <option value='16:00'>16:00</option><option value='17:00'>17:00</option><option value='18:00'>18:00</option><option value='19:00'>19:00</option>
+                                            <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
+                                        </select>
+                                        <p className="mt-2 mb-2">至</p>
+                                        <select name={elm.timeEnd} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                            <option value=''></option>
+                                            <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
+                                            <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
+                                            <option value='08:00'>08:00</option><option value='09:00'>09:00</option><option value='10:00'>10:00</option><option value='11:00'>11:00</option>
+                                            <option value='12:00'>12:00</option><option value='13:00'>13:00</option><option value='14:00'>14:00</option><option value='15:00'>15:00</option>
+                                            <option value='16:00'>16:00</option><option value='17:00'>17:00</option><option value='18:00'>18:00</option><option value='19:00'>19:00</option>
+                                            <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
+                                        </select>
+                                    </div>
                                 </div>
                             )
                         })}
@@ -289,6 +325,7 @@ class RentPlace extends Component {
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                 </form>
             </div>
+
         );
     }
 }

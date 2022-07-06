@@ -17,6 +17,9 @@ import RentPlace from '../DongComponents/RentPlace.jsx';
 // 會員登入及註冊
 import login from '../JeromeComponents/login/login.jsx';
 
+// course
+import Courses from '../JeromeComponents/course/course.jsx';
+
 // 購物車頁面
 import ShoppingCart from './navBarPage/shoppingCart.jsx';
 class NavBarOK extends Component {
@@ -37,7 +40,8 @@ class NavBarOK extends Component {
 
                     {/* 課程與場地路由,預設課程頁面 */}
                     <Route path="/coach" component={SearchCoachPage} exact></Route>
-                    <Route path="/site" component={SearchSitePage}></Route>
+                    <Route path="/site" component={SearchSitePage} exact></Route>
+                    <Route path="/site/:pid" component={Courses} exact></Route>
 
                     {/* 成為教練 */}
                     <Route path="/BeCoach" component={BeCoach} exact/>

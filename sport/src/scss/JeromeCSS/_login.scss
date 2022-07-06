@@ -12,29 +12,20 @@
     src: url(../../JeromeComponents/icon/Advertisement.ttf);
 }
 
-// body {
-//     
-//     height: 100vh;
-//     overflow: hidden;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
-
 .login {
     transition: all .6s ;
-    // background-color: white;
 }
 img {
     transition: all 1s ;
 }
 
 #allA {
+    margin-top: 9vh;
     z-index: -1;
     height: 90vh;
     display: flex;
     overflow: hidden;
-    background-image: url(../../imgs/1.jpg);
+    background-image: url(../../imgs/2.jpg);
 }
 
 
