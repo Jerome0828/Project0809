@@ -16,26 +16,25 @@ class ShoppingCart extends Component {
         place:[
             {pid:null,titles:"",addrs:"",infos:"",sun:"",mon:"",tue:"",wed:"",thu:"",fri:"",sat:"",prices:""}
         ]
+        
     }
 
-    async componentDidMount(){
-        await Axios.get(`http://localhost:3000/#/coursesAndVenues${this.props.id}`).then(response =>{
-            var coursesAndVenues = response.data;
-            console.log(typeof(coursesAndVenues));
-            // $("#test").val(coursesAndVenues);
+    // async componentDidMount(){
+    //     await Axios.get(`http://localhost:3000/#/coursesAndVenues${this.props.id}`).then(response =>{
+    //         var coursesAndVenues = response.data;
+    //         console.log(typeof(coursesAndVenues));
+    //         // $("#test").val(coursesAndVenues);
 
-
-
-            // 點擊加入購物車取得商品localStorage資料 
-            var retrievedObject =localStorage.getItem('place');
-            var retrievedObjectA = JSON.parse(retrievedObject);
-            // console.log(retrievedObjectA[0].id)
-            var a = retrievedObjectA[0].id;
-            $("#test").text(a);
+    //         // 點擊加入購物車取得商品localStorage資料 
+    //         var retrievedObject =localStorage.getItem('place');
+    //         var retrievedObjectA = JSON.parse(retrievedObject);
+    //         // console.log(retrievedObjectA[0].id)
+    //         var a = retrievedObjectA[0].id;
+    //         $("#test").text(a);
 
         
-        })
-    }
+    //     })
+    // }
     
     render() { 
 
@@ -49,15 +48,14 @@ class ShoppingCart extends Component {
 
         // 點擊加入購物車取得商品localStorage資料 
         // var retrievedObject = JSON.parse(localStorage.getItem('place'));
-        var retrievedObject =localStorage.getItem('place');
-        var retrievedObjectA = JSON.parse(retrievedObject);
-        console.log(retrievedObjectA[0].id)
-        var a = retrievedObjectA[0].id;
-        $("#test").val(a);
-        
-
-        console.log(typeof(retrievedObject));
-        console.log(retrievedObject[0].id);
+        // var retrievedObject =localStorage.getItem('place');
+        // var retrievedObjectA = JSON.parse(retrievedObject);
+        // console.log(retrievedObjectA[0].id)
+        // var a = retrievedObjectA[0].id;
+        // $("#test").val(a);
+    
+        // console.log(typeof(retrievedObject));
+        // console.log(retrievedObject[0].id);
         // var pid = retrievedObject[0].id;
         // console.log(retrievedObject[1].id);
 
@@ -74,9 +72,11 @@ class ShoppingCart extends Component {
         // var localId = localStorage.id = this.props.id;
         // localStorage.title = this.props.title   ;
 
-        $('#test2').on('click',function(){
-            alert("OK");
-        })
+        // $('#test2').on('click',function(){
+        //     alert("OK");
+        // });
+
+
 
         return (
             <>
@@ -88,6 +88,9 @@ class ShoppingCart extends Component {
                     return {e}
                 })} */}
 
+                {/* {this.props.value}   */}
+
+
                 {/* {localStorage.place} */}
                 <hr/>
                 {/* {localStorage.key(this.id)} */}
@@ -97,7 +100,7 @@ class ShoppingCart extends Component {
                 {/* {localStorage.key(localStorage.title.data)} */}
                 {/* {test2} */}
                 <div id="test">123</div>
-                <button id="test2">測試按鈕</button>
+                <button id="test2" onClick={()=>{ return alert("OK")}} >測試按鈕</button>
                 {/* {retrievedObjectA.id} */}
                 {/* {this.state.commodityValue} */}
                 {/* {JSON.parse(this.state.commodityValue)} */}

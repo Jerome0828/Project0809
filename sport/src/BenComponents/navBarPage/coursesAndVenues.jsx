@@ -161,13 +161,13 @@ class CoursesAndVenues extends Component {
                 onClick={this.addShoppingCartCount}
                 
                 />})} */}
-                <button onClick={this.chk}>測試中</button>
+                {/* <button onClick={this.chk}>測試中</button> */}
                 {/* {this.state.lessonList.map((e,index)=>{return <Card id={e.id} key={index} 
                 title={e.title}
                 />})} */}
                 </div>
 
-                {this.state.lessonList.map((e,key)=>{
+                {/* {this.state.lessonList.map((e,key)=>{
                     return  <Card lid={e.lid} title={e.title}/>
                     
                     
@@ -175,7 +175,7 @@ class CoursesAndVenues extends Component {
                     
                     
                     
-                    })}
+                    })} */}
                 
 
                 <div>
