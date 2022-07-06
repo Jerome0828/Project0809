@@ -21,7 +21,7 @@ class InesrtSportList extends Component {
                 {this.props.datas.map((elm) => {
                     return (
                         <React.Fragment>
-                            <input onChange={this.sportListOnclick} value={elm.value} className='d-none' type="checkbox" id={elm.value} name={elm.value}/>
+                            <input onChange={this.sportListOnclick} value={elm.value} className='d-none' type="checkbox" id={elm.value} name="type[]"/>
                             <label htmlFor={elm.value} className={elm.class}><span name={elm.value}><FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.cName}</label>
                         </React.Fragment>
                     )

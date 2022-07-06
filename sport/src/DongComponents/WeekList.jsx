@@ -29,7 +29,7 @@ class WeekList extends Component {
                     {this.props.datas.map((elm) => {
                         return (
                             <>
-                                <input onChange={this.weekListOnclick} value={elm.value} className='d-none' type="checkbox" id={elm.id} name={elm.id} required={false}/>
+                                <input onChange={this.weekListOnclick} value={elm.value} className='d-none' type="checkbox" id={elm.id} name="week[]" required={false}/>
                                 <label htmlFor={elm.id} style={inputBoxStyle} className='rounded shadow m-1 mx-2'><span name={elm.id}>
                                     <FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.value}</label>
                             </>

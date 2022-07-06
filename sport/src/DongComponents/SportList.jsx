@@ -32,7 +32,7 @@ class SportList extends Component {
                         <React.Fragment>
                             {/*------原版------*/}
                             <input value={elm.type} onChange={this.sportListOnclick} className='d-none' 
-                                   type="checkbox" id={elm.id} name={elm.id} required={false}/>
+                                   type="checkbox" id={elm.id} name="type[]" required={false}/>
                                    
                             <label htmlFor={elm.id} style={inputBoxStyle} className='rounded shadow m-1 mx-2'>
                                 <span name={elm.id}>
