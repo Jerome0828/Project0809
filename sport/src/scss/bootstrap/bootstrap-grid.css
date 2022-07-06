@@ -37,6 +37,7 @@
   --bs-dark: #212529;
   --bs-test: #FFDF65;
   --bs-test1: #cb11f0;
+  --bs-black: #000;
   --bs-primary-rgb: 13, 110, 253;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
@@ -47,6 +48,7 @@
   --bs-dark-rgb: 33, 37, 41;
   --bs-test-rgb: 255, 223, 101;
   --bs-test1-rgb: 203, 17, 240;
+  --bs-black-rgb: 0, 0, 0;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;

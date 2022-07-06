@@ -177,6 +177,7 @@
 // 第二層背景底色
 .twoSectionBackgroundImg {
     background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/white_wall_hash.png');
+
 }
 
 
@@ -192,11 +193,12 @@
     // background-color: aquamarine;
 }
 
+// $test:'../imgs/';
 // 底層圖片
 .threeSectionBoxBottomImg{
     padding-top:25px;
     // background-color:#d3d3d3;
-    background-image:url('../../imgs/ben1.jpg');
+    background-image:url('~../imgs/ben1.jpg');
     
     background-repeat:no-repeat;
     background-position:center top;
@@ -207,7 +209,7 @@
 .threeSectionBoxBottomImg2{
     padding-top:25px;
     // background-color:#d3d3d3;
-    background-image:url('../../imgs/ben1.jpg');
+    // background-image:url("../imgs/ben1.jpg");
     
     background-repeat:no-repeat;
     background-position:center top;
@@ -220,6 +222,10 @@
 // .threeSectionBoxText{
 //     margin: auto;
 //    background-color: aquamarine;
+// }
+
+// a:{
+//   color: aqua !important;
 // }
 
 

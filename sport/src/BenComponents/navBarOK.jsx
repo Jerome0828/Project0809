@@ -43,8 +43,9 @@ class NavBarOK extends Component {
                     <Route path="/" component={home} exact/>
 
                     {/* 課程與場地路由,預設課程頁面 */}
-                    <Route path="/coach" component={SearchCoachPage} />
+                    <Route path="/lesson" component={SearchCoachPage} exact/>
                     <Route path="/site" component={SearchSitePage} exact/>
+                    <Route path="/lesson/:pid" component={course} exact />
                     <Route path="/site/:pid" component={course} exact />
 
                     {/* 成為教練 */}

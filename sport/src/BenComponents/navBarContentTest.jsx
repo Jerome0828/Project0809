@@ -25,7 +25,7 @@ function NavBarContent1() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
 
-              <Nav.Link><NavLink className="nav-link col-lg" to="/coach" exact >課程與場地</NavLink></Nav.Link>
+              <Nav.Link><NavLink className="nav-link col-lg" to="/lesson" exact >課程與場地</NavLink></Nav.Link>
               <Nav.Link><NavLink className="nav-link col-lg " to="/BeCoach" exact >成為教練</NavLink></Nav.Link>
               <Nav.Link><NavLink className="nav-link col-lg " to="/RentPlace" exact >租場地</NavLink></Nav.Link>
               </Nav>

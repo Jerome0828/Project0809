@@ -35,7 +35,7 @@ function Head(props) {
     }, [news])
 
     return (
-        <div className='container mb-3'>
+        <div className='container mb-3 mt-6'>
             <div className='row'>
                 <div className='col-lg-12 my-3 animate__animated animate__slideInDown '>
                     <Stack>

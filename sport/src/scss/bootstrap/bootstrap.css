@@ -38,6 +38,7 @@
   --bs-dark: #212529;
   --bs-test: #FFDF65;
   --bs-test1: #cb11f0;
+  --bs-black: #000;
   --bs-primary-rgb: 13, 110, 253;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
@@ -48,6 +49,7 @@
   --bs-dark-rgb: 33, 37, 41;
   --bs-test-rgb: 255, 223, 101;
   --bs-test1-rgb: 203, 17, 240;
+  --bs-black-rgb: 0, 0, 0;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
@@ -3381,6 +3383,36 @@ textarea.form-control-lg {
   border-color: #cb11f0;
 }
 
+.btn-black {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+.btn-black:hover {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
+.btn-check:focus + .btn-black, .btn-black:focus {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+  box-shadow: 0 0 0 0.25rem rgba(38, 38, 38, 0.5);
+}
+.btn-check:checked + .btn-black, .btn-check:active + .btn-black, .btn-black:active, .btn-black.active, .show > .btn-black.dropdown-toggle {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+}
+.btn-check:checked + .btn-black:focus, .btn-check:active + .btn-black:focus, .btn-black:active:focus, .btn-black.active:focus, .show > .btn-black.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(38, 38, 38, 0.5);
+}
+.btn-black:disabled, .btn-black.disabled {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+
 .btn-outline-primary {
   color: #0d6efd;
   border-color: #0d6efd;
@@ -3628,6 +3660,31 @@ textarea.form-control-lg {
 }
 .btn-outline-test1:disabled, .btn-outline-test1.disabled {
   color: #cb11f0;
+  background-color: transparent;
+}
+
+.btn-outline-black {
+  color: #000;
+  border-color: #000;
+}
+.btn-outline-black:hover {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+.btn-check:focus + .btn-outline-black, .btn-outline-black:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5);
+}
+.btn-check:checked + .btn-outline-black, .btn-check:active + .btn-outline-black, .btn-outline-black:active, .btn-outline-black.active, .btn-outline-black.dropdown-toggle.show {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+.btn-check:checked + .btn-outline-black:focus, .btn-check:active + .btn-outline-black:focus, .btn-outline-black:active:focus, .btn-outline-black.active:focus, .btn-outline-black.dropdown-toggle.show:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5);
+}
+.btn-outline-black:disabled, .btn-outline-black.disabled {
+  color: #000;
   background-color: transparent;
 }
 
@@ -5180,6 +5237,15 @@ textarea.form-control-lg {
   color: #620873;
 }
 
+.alert-black {
+  color: black;
+  background-color: #cccccc;
+  border-color: #b3b3b3;
+}
+.alert-black .alert-link {
+  color: black;
+}
+
 @-webkit-keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
@@ -5592,6 +5658,20 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #7a0a90;
   border-color: #7a0a90;
+}
+
+.list-group-item-black {
+  color: black;
+  background-color: #cccccc;
+}
+.list-group-item-black.list-group-item-action:hover, .list-group-item-black.list-group-item-action:focus {
+  color: black;
+  background-color: #b8b8b8;
+}
+.list-group-item-black.list-group-item-action.active {
+  color: #fff;
+  background-color: black;
+  border-color: black;
 }
 
 .btn-close {
@@ -6706,6 +6786,13 @@ textarea.form-control-lg {
   color: #d541f3;
 }
 
+.link-black {
+  color: #000;
+}
+.link-black:hover, .link-black:focus {
+  color: black;
+}
+
 .ratio {
   position: relative;
   width: 100%;
@@ -7027,6 +7114,22 @@ textarea.form-control-lg {
   top: 5% !important;
 }
 
+.top-6 {
+  top: 6% !important;
+}
+
+.top-7 {
+  top: 7% !important;
+}
+
+.top-8 {
+  top: 8% !important;
+}
+
+.top-9 {
+  top: 9% !important;
+}
+
 .top-10 {
   top: 10% !important;
 }
@@ -7040,7 +7143,7 @@ textarea.form-control-lg {
 }
 
 .top-13 {
-  top: 10% !important;
+  top: 13% !important;
 }
 
 .top-14 {
@@ -7049,6 +7152,10 @@ textarea.form-control-lg {
 
 .top-15 {
   top: 15% !important;
+}
+
+.top-16 {
+  top: 16% !important;
 }
 
 .top-17 {
@@ -7073,6 +7180,70 @@ textarea.form-control-lg {
 
 .top-50 {
   top: 50% !important;
+}
+
+.top-80 {
+  top: 80% !important;
+}
+
+.top-85 {
+  top: 85% !important;
+}
+
+.top-86 {
+  top: 86% !important;
+}
+
+.top-87 {
+  top: 87% !important;
+}
+
+.top-88 {
+  top: 88% !important;
+}
+
+.top-89 {
+  top: 89% !important;
+}
+
+.top-90 {
+  top: 90% !important;
+}
+
+.top-91 {
+  top: 91% !important;
+}
+
+.top-92 {
+  top: 92% !important;
+}
+
+.top-93 {
+  top: 93% !important;
+}
+
+.top-94 {
+  top: 94% !important;
+}
+
+.top-95 {
+  top: 95% !important;
+}
+
+.top-96 {
+  top: 96% !important;
+}
+
+.top-97 {
+  top: 97% !important;
+}
+
+.top-98 {
+  top: 98% !important;
+}
+
+.top-99 {
+  top: 99% !important;
 }
 
 .top-100 {
@@ -7103,6 +7274,22 @@ textarea.form-control-lg {
   bottom: 5% !important;
 }
 
+.bottom-6 {
+  bottom: 6% !important;
+}
+
+.bottom-7 {
+  bottom: 7% !important;
+}
+
+.bottom-8 {
+  bottom: 8% !important;
+}
+
+.bottom-9 {
+  bottom: 9% !important;
+}
+
 .bottom-10 {
   bottom: 10% !important;
 }
@@ -7116,7 +7303,7 @@ textarea.form-control-lg {
 }
 
 .bottom-13 {
-  bottom: 10% !important;
+  bottom: 13% !important;
 }
 
 .bottom-14 {
@@ -7125,6 +7312,10 @@ textarea.form-control-lg {
 
 .bottom-15 {
   bottom: 15% !important;
+}
+
+.bottom-16 {
+  bottom: 16% !important;
 }
 
 .bottom-17 {
@@ -7149,6 +7340,70 @@ textarea.form-control-lg {
 
 .bottom-50 {
   bottom: 50% !important;
+}
+
+.bottom-80 {
+  bottom: 80% !important;
+}
+
+.bottom-85 {
+  bottom: 85% !important;
+}
+
+.bottom-86 {
+  bottom: 86% !important;
+}
+
+.bottom-87 {
+  bottom: 87% !important;
+}
+
+.bottom-88 {
+  bottom: 88% !important;
+}
+
+.bottom-89 {
+  bottom: 89% !important;
+}
+
+.bottom-90 {
+  bottom: 90% !important;
+}
+
+.bottom-91 {
+  bottom: 91% !important;
+}
+
+.bottom-92 {
+  bottom: 92% !important;
+}
+
+.bottom-93 {
+  bottom: 93% !important;
+}
+
+.bottom-94 {
+  bottom: 94% !important;
+}
+
+.bottom-95 {
+  bottom: 95% !important;
+}
+
+.bottom-96 {
+  bottom: 96% !important;
+}
+
+.bottom-97 {
+  bottom: 97% !important;
+}
+
+.bottom-98 {
+  bottom: 98% !important;
+}
+
+.bottom-99 {
+  bottom: 99% !important;
 }
 
 .bottom-100 {
@@ -7179,6 +7434,22 @@ textarea.form-control-lg {
   left: 5% !important;
 }
 
+.start-6 {
+  left: 6% !important;
+}
+
+.start-7 {
+  left: 7% !important;
+}
+
+.start-8 {
+  left: 8% !important;
+}
+
+.start-9 {
+  left: 9% !important;
+}
+
 .start-10 {
   left: 10% !important;
 }
@@ -7192,7 +7463,7 @@ textarea.form-control-lg {
 }
 
 .start-13 {
-  left: 10% !important;
+  left: 13% !important;
 }
 
 .start-14 {
@@ -7201,6 +7472,10 @@ textarea.form-control-lg {
 
 .start-15 {
   left: 15% !important;
+}
+
+.start-16 {
+  left: 16% !important;
 }
 
 .start-17 {
@@ -7225,6 +7500,70 @@ textarea.form-control-lg {
 
 .start-50 {
   left: 50% !important;
+}
+
+.start-80 {
+  left: 80% !important;
+}
+
+.start-85 {
+  left: 85% !important;
+}
+
+.start-86 {
+  left: 86% !important;
+}
+
+.start-87 {
+  left: 87% !important;
+}
+
+.start-88 {
+  left: 88% !important;
+}
+
+.start-89 {
+  left: 89% !important;
+}
+
+.start-90 {
+  left: 90% !important;
+}
+
+.start-91 {
+  left: 91% !important;
+}
+
+.start-92 {
+  left: 92% !important;
+}
+
+.start-93 {
+  left: 93% !important;
+}
+
+.start-94 {
+  left: 94% !important;
+}
+
+.start-95 {
+  left: 95% !important;
+}
+
+.start-96 {
+  left: 96% !important;
+}
+
+.start-97 {
+  left: 97% !important;
+}
+
+.start-98 {
+  left: 98% !important;
+}
+
+.start-99 {
+  left: 99% !important;
 }
 
 .start-100 {
@@ -7255,6 +7594,22 @@ textarea.form-control-lg {
   right: 5% !important;
 }
 
+.end-6 {
+  right: 6% !important;
+}
+
+.end-7 {
+  right: 7% !important;
+}
+
+.end-8 {
+  right: 8% !important;
+}
+
+.end-9 {
+  right: 9% !important;
+}
+
 .end-10 {
   right: 10% !important;
 }
@@ -7268,7 +7623,7 @@ textarea.form-control-lg {
 }
 
 .end-13 {
-  right: 10% !important;
+  right: 13% !important;
 }
 
 .end-14 {
@@ -7277,6 +7632,10 @@ textarea.form-control-lg {
 
 .end-15 {
   right: 15% !important;
+}
+
+.end-16 {
+  right: 16% !important;
 }
 
 .end-17 {
@@ -7301,6 +7660,70 @@ textarea.form-control-lg {
 
 .end-50 {
   right: 50% !important;
+}
+
+.end-80 {
+  right: 80% !important;
+}
+
+.end-85 {
+  right: 85% !important;
+}
+
+.end-86 {
+  right: 86% !important;
+}
+
+.end-87 {
+  right: 87% !important;
+}
+
+.end-88 {
+  right: 88% !important;
+}
+
+.end-89 {
+  right: 89% !important;
+}
+
+.end-90 {
+  right: 90% !important;
+}
+
+.end-91 {
+  right: 91% !important;
+}
+
+.end-92 {
+  right: 92% !important;
+}
+
+.end-93 {
+  right: 93% !important;
+}
+
+.end-94 {
+  right: 94% !important;
+}
+
+.end-95 {
+  right: 95% !important;
+}
+
+.end-96 {
+  right: 96% !important;
+}
+
+.end-97 {
+  right: 97% !important;
+}
+
+.end-98 {
+  right: 98% !important;
+}
+
+.end-99 {
+  right: 99% !important;
 }
 
 .end-100 {
@@ -7397,6 +7820,10 @@ textarea.form-control-lg {
 
 .border-test1 {
   border-color: #cb11f0 !important;
+}
+
+.border-black {
+  border-color: #000 !important;
 }
 
 .border-white {

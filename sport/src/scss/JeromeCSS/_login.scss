@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'font01';
     // src: url(../icon/Advertisement.ttf);
-    src: url(../../JeromeComponents/icon/Advertisement.ttf);
+    src: url(~../JeromeComponents/icon/Advertisement.ttf);
 }
 
 // body {
@@ -31,7 +31,7 @@ img {
 
 #all {
     /* background-repeat: no-repeat; */
-    background-image: url(../../imgs/1.jpg);
+    background-image: url(~../imgs/1.jpg);
     // height: 100vh;
     overflow: hidden;
     display: flex;

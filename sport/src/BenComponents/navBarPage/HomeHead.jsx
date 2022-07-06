@@ -3,6 +3,8 @@ import '../../scss/all.css';
 
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import Axios from 'axios';
+import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 // import 'bootstrap/dist/js/bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -77,7 +79,7 @@ class HomeHead extends Component {
 
         // header 左側區塊設定
         oneLeftBoxStyle:[
-            {id:1,title:"這是一段標題1",value:"介紹內容",BottomText:"加入會員1",src1:leftImg,to:"/coursesAndVenues"},
+            {id:1,title:"開啟你的運動旅程",value:"彈指間找到附近的課程、教練、訓練空間",BottomText:"立即加入",src1:leftImg,to:"/login"},
         ],
         // header 右側區塊設定
         oneRightBoxStyle:[
@@ -85,7 +87,8 @@ class HomeHead extends Component {
             {id:2,value:"這是一段標題2",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/coursesAndVenues"},
             {id:3,value:"這是一段標題3",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/coursesAndVenues"},
             {id:4,value:"這是一段標題4",src:rightImg3,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/coursesAndVenues"},
-        ]
+        ],
+        data:[]
 
     } 
 
@@ -98,9 +101,35 @@ class HomeHead extends Component {
         });
       }
 
-    render() { 
+              
+    async componentDidMount() {
+        var url = `http://localhost/spost/DongPHP/lesson.php`;
+        var result = await Axios.get(url);
+        this.state.data = result.data;
+        console.log(this.state.data)
+
+        // var url1 = `http://localhost/spost/DongPHP/sportType.php`;
+        // var result1 = await Axios.get(url1);
+        // this.state.sportType = result1.data;
+        // let sportType = this.state.sportType;
+        // sportType.map((elm,idx)=>{
+        //     elm.className = 'text-black';
+        //     elm.chkicon = faTimes;
+        //     elm.id = `type${idx}`;
+        // })
+        // this.setState({});
+    }
+
+
+    render() {
+        
+
+        
+
         return (
         <div>
+
+
 
 
 
@@ -118,6 +147,10 @@ class HomeHead extends Component {
                         to={e.to} BottomText={e.BottomText}
                         
                 />  })}
+{/* 
+                {this.state.data.map((elm,index)=>{
+                    return  <IndexLeftBox  id={elm.pid} title={elm.title}/>
+                })} */}
                 
 
             {/* header第一段右邊圖片牆 */}

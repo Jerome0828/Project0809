@@ -3,7 +3,6 @@ import Axios from 'axios';
 import pic from '../imgs/user1.png';
 import brad from '../imgs/user.png';
 import { toHtml } from "@fortawesome/fontawesome-svg-core";
-
 class Card extends Component {
     state = {
         src: [pic, brad, pic]
@@ -21,7 +20,6 @@ class Card extends Component {
                                 <div className="border-0 col-xl-3 col-lg-5 col-md-5 card m-3">
                                     <div className="border rounded shadow card h-100">
                                         <div className="h-100">
-                                            
                                             <img style={{
                                                 height: '18em',
                                                 width: '100%',
