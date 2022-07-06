@@ -22,6 +22,7 @@ class WeekList extends Component {
     }
     render() {
         let inputBoxStyle = this.props.style;
+        //{ key: 1, id: 'mon', value: '星期一', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         return (
             <>
                 <div className='d-flex justify-content-between mt-3'><span>星期</span><span onClick={this.clearWeek} className='btn text-secondary'>清除</span></div>
@@ -29,7 +30,7 @@ class WeekList extends Component {
                     {this.props.datas.map((elm) => {
                         return (
                             <>
-                                <input onChange={this.weekListOnclick} value={elm.value} className='d-none' type="checkbox" id={elm.id} name={elm.id} required={false}/>
+                                <input onChange={this.weekListOnclick} value={elm.value} className='d-none' type="checkbox" id={elm.id} name='week[]' required={false}/>
                                 <label htmlFor={elm.id} style={inputBoxStyle} className='rounded shadow m-1 mx-2'><span name={elm.id}>
                                     <FontAwesomeIcon className={elm.color} icon={elm.chkicon} />&nbsp;</span>{elm.value}</label>
                             </>

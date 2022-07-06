@@ -1,23 +1,36 @@
 import { Component } from "react";
 import Axios from 'axios';
-import pic from '../imgs/user1.png';
-import brad from '../imgs/Brad.png';
 import { toHtml } from "@fortawesome/fontawesome-svg-core";
-class Card extends Component {
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+// npm i react-animated-css
+// npm install aos
+class LessonCard extends Component {
     state = {
-        src: [pic, brad, pic]
     };
+    componentDidMount() {
+        // or simply just AOS.init();
+        AOS.init({
+          // initialise with other settings
+          duration : 1000
+        });
+      }
     render() {
         // this.getData();
         let dataList = this.props.dataList;
         // console.log(dataList);
+
+        // <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+        //     <div>
+        //         hello world ;)
+        //     </div>
+        // </Animated>
         return (
             <>
                 {
                     dataList.map(elm => {
                         return (
-                            <>
-                                <div className="border-0 col-xl-3 col-lg-5 col-md-5 card m-3">
+                            <div data-aos="zoom-in" className="border-0 col-xl-3 col-lg-5 col-md-5 card m-3">
                                     <div className="border rounded shadow card h-100">
                                         <div className="h-100">
                                             <img style={{
@@ -49,8 +62,7 @@ class Card extends Component {
                                             <span>${elm.price}</span>
                                         </div>
                                     </div>
-                                </div>
-                            </>
+                            </div>
                         );
                     })
                 }
@@ -60,4 +72,4 @@ class Card extends Component {
 
 }
 
-export default Card;
+export default LessonCard;

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import{BrowserRouter, Switch, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import MySearchPage from "./components/MySearchPage";
 import BeCoach from "./components/BeCoach";
 import RentPlace from "./components/RentPlace";
 import SearchCoachPage from './components/SearchCoachPage';
 import SearchSitePage from './components/SearchSitePage';
-import Card from './components/Card';
 
 class App extends Component {
   state = {}
@@ -21,7 +19,6 @@ class App extends Component {
           <Route path="/rent" component={RentPlace}></Route>
           <Route path="/coach" component={SearchCoachPage}></Route>
           <Route path="/site" component={SearchSitePage}></Route>
-          <Route path="/card" component={Card}></Route>
         </Switch>
       </BrowserRouter>
 
