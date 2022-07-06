@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import Card from './Card';
+import LessonCard from './LessonCard';
 import Citys from './Citys';
 import SportList from './SportList'
 import WeekList from './WeekList';
@@ -54,7 +54,7 @@ class SearchCoachPage extends Component {
     }
     // 課程預設
     async componentDidMount() {
-        var url = `http://localhost/spost/coach.php`;
+        var url = `http://localhost/spost/lesson.php`;
         var result = await Axios.get(url);
         this.state.data = result.data;
 
@@ -74,7 +74,7 @@ class SearchCoachPage extends Component {
     searchResult = async () => {
         let resdata = [];
         var fd = new FormData(document.querySelector("form"));
-        await Axios.post("http://localhost/spost/searchDemo.php", fd )
+        await Axios.post("http://localhost/spost/searchLesson.php", fd )
         .then( (response) => {
             resdata = response.data;
         });
@@ -339,7 +339,7 @@ class SearchCoachPage extends Component {
                             <Link className='col-6 shadow btn' to={"/site"}>找場地</Link>
                         </div>
                         <div className='row mt-5 justify-content-center'>
-                            <Card dataList={this.state.data} />
+                            <LessonCard dataList={this.state.data} />
                         </div>
                     </div>
                 </div>
