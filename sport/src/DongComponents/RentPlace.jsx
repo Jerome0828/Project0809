@@ -20,15 +20,15 @@ class RentPlace extends Component {
         { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },],
 
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
-        
 
-        weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd:'monEnd'},
-        { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd:'tuesEnd' },
-        { eName: 'wedTime', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd:'wedEnd' },
-        { eName: 'thurTime', cName: '週四', required: false, timeBegin: 'thurBegin', timeEnd:'thurEnd' },
-        { eName: 'friTime', cName: '週五', required: false, timeBegin: 'friBegin', timeEnd:'friEnd' },
-        { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd:'satEnd' },
-        { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd:'sunEnd' }],
+
+        weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd: 'monEnd' },
+        { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd: 'tuesEnd' },
+        { eName: 'wedTime', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd: 'wedEnd' },
+        { eName: 'thurTime', cName: '週四', required: false, timeBegin: 'thurBegin', timeEnd: 'thurEnd' },
+        { eName: 'friTime', cName: '週五', required: false, timeBegin: 'friBegin', timeEnd: 'friEnd' },
+        { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd: 'satEnd' },
+        { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd: 'sunEnd' }],
         src: [pic, pic, pic],
 
 
@@ -82,12 +82,12 @@ class RentPlace extends Component {
     }
 
     // 價格預覽
-    spanPrice = (e) =>{
+    spanPrice = (e) => {
         // console.log(e.target.value);
         document.getElementById('spanPrice').innerHTML = `${e.target.value}`;
         // console.log(document.getElementsByName('moneyPerTimes')[0]);
     }
-    spanTimes = (e) =>{
+    spanTimes = (e) => {
         document.getElementById('spanTimes').innerHTML = e.target.value;
     }
 
@@ -104,11 +104,12 @@ class RentPlace extends Component {
 
     // 圖片預覽
     fileInput = () => {
-        
+
         const file1 = document.getElementById('imgInput1').files;
         const file2 = document.getElementById('imgInput2').files;
         const file3 = document.getElementById('imgInput3').files;
-        console.log(file3);
+        // console.log(file3);
+        
         if (file1) {
             this.state.src[0] = URL.createObjectURL(file1[0]);
             this.setState({});
@@ -121,9 +122,8 @@ class RentPlace extends Component {
             this.state.src[2] = URL.createObjectURL(file3[0]);
             this.setState({});
         }
-        
     }
-        
+
     // 星期+時間
     weekTimeChange = (e) => {
         if (e.target.checked) {
@@ -142,11 +142,12 @@ class RentPlace extends Component {
     render() {
         let selectedOptionId = '';
         return (
+
             <div className="container mt-6">
                 <h3>上傳場地</h3>
                 <hr />
                 <form id='rentPlace' className="was-validated form-group" enctype="multipart/form-data"
-                action = "http://localhost/spost/form.php" method='POST'>
+                    action="http://localhost/spost/form.php" method='POST'>
 
                     {/* 上傳圖片 */}
                     <ul className="list-group list-group-flush">
@@ -214,7 +215,7 @@ class RentPlace extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1 w-50" >
-                        <Citys required={true}/>
+                        <Citys required={true} />
                         <input name="addr" type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
                     </div>
                     <hr />
@@ -324,6 +325,7 @@ class RentPlace extends Component {
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                 </form>
             </div>
+
         );
     }
 }
