@@ -194,7 +194,7 @@ class BeCoach extends Component {
                                         height: '280px',
                                         background: 'white',
                                         objectFit: 'contain'
-                                    }} src={this.state.src[idx]} className="mt-3 mx-2" />
+                                    }} src={~this.state.src[idx]} className="mt-3 mx-2" />
                                 </div>
                             )
                         })}
