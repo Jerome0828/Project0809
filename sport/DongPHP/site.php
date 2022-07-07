@@ -1,7 +1,7 @@
 <?php
     include('sql.php');
     header("Access-Control-Allow-Origin:*");
-    $sql = "SELECT pid,title,addr,img1,`type`,price,pricepertime FROM `place`";
+    $sql = "SELECT pid,title,addr,img1,`type`,price,pricepertime FROM `place` ORDER BY RAND()";
     $result = $mysqli->query($sql);
     $i=0;
     $myJSON=[];
