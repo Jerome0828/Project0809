@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../../scss/all.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-// import '../../../scss/all.css';
-
 
 import Head from './components/head';
 import Scroll from './components/scroll';
@@ -21,8 +19,10 @@ function Courses(props) {
 
     useEffect( () => {
         let test = Math.floor(Math.random() * 40)
-        setState(test)
+        setState(props.match.params.pid)
     }, [])
+
+    
 
 
     useEffect( () => {
@@ -38,7 +38,7 @@ function Courses(props) {
 
 
     return (
-        <div>
+        <div style={{marginTop: '9vh'}}>
             <Head all={news && news}/>
             <Scroll />
             <Body all={news && news}/>

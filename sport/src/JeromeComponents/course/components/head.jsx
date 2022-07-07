@@ -40,12 +40,10 @@ function Head(props) {
                 <div className='col-lg-12 my-3 animate__animated animate__slideInDown '>
                     <Stack>
                         <Breadcrumbs separator="›" aria-label="breadcrumb">
-                            <Link underline="hover" key="1" color="inherit" onClick={handleClick} href="/">
+                            <Link underline="hover" key="1" color="inherit" href="/">
                                 首頁
                             </Link>
-                            <Link
-                                underline="hover" key="2" color="inherit" onClick={handleClick}
-                                href="/material-ui/getting-started/installation/" >
+                            <Link underline="hover" key="2" color="inherit" href="/#/site">
                                 探索
                             </Link>
                             <Typography key="3" color="text.primary">

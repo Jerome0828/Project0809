@@ -56,10 +56,11 @@ class SearchCoachPage extends Component {
     async componentDidMount() {
         var url = `http://localhost/spost/DongPHP/lesson.php`;
         var result = await Axios.get(url);
+        console.log(result.data)
         this.state.data = result.data;
 
         var url1 = `http://localhost/spost/DongPHP/sportType.php`;
-        var result1 = await Axios.get(url1);
+        var result1 = await Axios.get(url1)
         this.state.sportType = result1.data;
         let sportType = this.state.sportType;
         sportType.map((elm,idx)=>{
