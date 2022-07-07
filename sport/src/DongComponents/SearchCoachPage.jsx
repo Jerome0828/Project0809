@@ -56,7 +56,7 @@ class SearchCoachPage extends Component {
     async componentDidMount() {
         var url = `http://localhost/spost/DongPHP/lesson.php`;
         var result = await Axios.get(url);
-        console.log(result.data)
+        // console.log(result.data)
         this.state.data = result.data;
 
         var url1 = `http://localhost/spost/DongPHP/sportType.php`;

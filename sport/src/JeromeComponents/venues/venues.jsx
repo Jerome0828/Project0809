@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Evaluation from '../Evaluation';
 import Teachers from '../teachers';
-import Card from '../Card';
 import '../../scss/all.css';
 
-class Venues extends Component {
-    state = { activeIndex : 0 } ;
+// import Head from './components/head';
 
-    handleSelect = (selectedIndex, e) => {
-        this.setState({index: selectedIndex})
-    };
+class Venues extends Component {
+    state = {  } ;
+
 
     render() { 
         return (
@@ -155,18 +153,7 @@ class Venues extends Component {
                     <h3 id='title' className='col-lg-12 mt-3'>關聯課程</h3>
                     <div className='container-fluid col-lg-11'>
                         <div className='row mt-4'>
-                            <Carousel activeIndex={this.state.index} onSelect={this.handleSelect} interval={3000}>
-                                <Carousel.Item>
-                                    <div className='row justify-content-center'>
-                                        <Card /><Card /><Card /><Card /><Card />
-                                    </div>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                        <div className='row justify-content-center'>
-                                            <Card /><Card /><Card /><Card /><Card />
-                                        </div>
-                                </Carousel.Item>
-                            </Carousel>
+
                         </div>
                     </div>
                 </div>

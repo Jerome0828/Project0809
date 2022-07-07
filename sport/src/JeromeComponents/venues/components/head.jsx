@@ -19,20 +19,20 @@ function Head(props) {
     const [city, setCity] = useState()
 
     // 傳入news ( news: 資料庫(place)資訊 )
-    useEffect( () => {
-        setNews(props.all)
-    }, [props])
+    // useEffect( () => {
+    //     setNews(props.all)
+    // }, [props])
 
     // 地址拆分 (市 & 區)
-    useEffect( () => {
-        if ( typeof news == 'object' ) {
-            if (  news.addr.indexOf("區") != -1 ) {
-                setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, news.addr.indexOf("區")+1)])
-            }else {
-                setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, 6)])
-            }
-        }
-    }, [news])
+    // useEffect( () => {
+    //     if ( typeof news == 'object' ) {
+    //         if (  news.addr.indexOf("區") != -1 ) {
+    //             setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, news.addr.indexOf("區")+1)])
+    //         }else {
+    //             setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, 6)])
+    //         }
+    //     }
+    // }, [news])
 
     return (
         <div className='container mb-3'>
@@ -43,7 +43,7 @@ function Head(props) {
                             <Link underline="hover" key="1" color="inherit" href="/">
                                 首頁
                             </Link>
-                            <Link underline="hover" key="2" color="inherit" href="/site">
+                            <Link underline="hover" key="2" color="inherit" href="/#/lesson">
                                 探索
                             </Link>
                             <Typography key="3" color="text.primary">
@@ -56,7 +56,7 @@ function Head(props) {
             <div className='row'>
                 <div className='col-lg-8' >
                     <div className='w-100 border' >
-                        <Carousels  gif={news && [news.img1, news.img2, news.img3]}/>
+                        {/* <Carousels  gif={news && [news.img1, news.img2, news.img3]}/> */}
                     </div>
                 </div>
                 <div className='col-lg-3'>
@@ -83,7 +83,7 @@ function Head(props) {
                 </div>
 
                 <div className='row mt-3 animate__animated animate__slideInDown'>
-                    <p className='text-center my-1' id='title'><h1>{news && news.title}</h1></p>
+                    <p className='text-center my-1' id='title'><h1>{news && news.title}dddddd</h1></p>
                 </div>
                 <div className='row mt-3 align-items-center justify-content-center'>
                     <div className='col-lg-8' style={{ zIndex: '2'}}>
@@ -92,15 +92,15 @@ function Head(props) {
                                 <div>
                                     <p>台灣 / {city && city[0]} / {city && city[1]} </p>
                                     <h5 className='container text-star'>
-                                        <img src={require('./icon/location.png')} style={{height: '3vh'}}/>
-                                        &nbsp; {news && news.addr} 
+                                        {/* <img src={require('./icon/location.png')} style={{height: '3vh'}}/>
+                                        &nbsp; {news && news.addr}  */}
                                     </h5>
                                 </div>
                                 <br />
                                 <div className='my-1'>
                                     <h5 className='container text-star' >
-                                        <img src={require('./icon/time.png')} style={{height: '3vh'}}/>
-                                        &nbsp; $ {news && news.price} / {news && news.pricepertime} 
+                                        {/* <img src={require('./icon/time.png')} style={{height: '3vh'}}/>
+                                        &nbsp; $ {news && news.price} / {news && news.pricepertime}  */}
                                     </h5>
                                 </div>
                             </div>
