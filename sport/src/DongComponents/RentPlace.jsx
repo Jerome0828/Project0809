@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
+import '../scss/all.css';
 import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';

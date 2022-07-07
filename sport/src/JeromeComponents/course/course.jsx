@@ -20,8 +20,7 @@ function Courses(props) {
 
     useEffect( () => {
         // console.log(props.match.params.pid)
-        let test = props.match.params.pid;
-        setState(test)
+        setState(props.match.params.pid)
     }, [])
 
 
