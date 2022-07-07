@@ -56,25 +56,25 @@ class HomeHead extends Component {
             borderRadius: 10
         },
         commodityV1:[
-            {id:1,value:"這是一段標題V1",src:rightImg1},
-            {id:2,value:"這是一段標題V1",src:rightImg2},
-            {id:3,value:"這是一段標題V1",src:rightImg3},
-            {id:4,value:"這是一段標題V1",src:rightImg4},
-            {id:5,value:"這是一段標題V1",src:rightImg5},
+            {id:1,value:"這是一段標題V1",src:rightImg1,to:"/lesson"},
+            {id:2,value:"這是一段標題V1",src:rightImg2,to:"/lesson"},
+            {id:3,value:"這是一段標題V1",src:rightImg3,to:"/lesson"},
+            {id:4,value:"這是一段標題V1",src:rightImg4,to:"/lesson"},
+            {id:5,value:"這是一段標題V1",src:rightImg5,to:"/lesson"},
         ],
         commodityV2:[
-            {id:1,value:"這是一段標題V2",src:sectionCarouselImg1},
-            {id:2,value:"這是一段標題V2",src:sectionCarouselImg2},
-            {id:3,value:"這是一段標題V2",src:sectionCarouselImg3},
-            {id:4,value:"這是一段標題V2",src:sectionCarouselImg4},
-            {id:5,value:"這是一段標題V2",src:sectionCarouselImg5},
+            {id:1,value:"這是一段標題V2",src:sectionCarouselImg1,to:"/lesson"},
+            {id:2,value:"這是一段標題V2",src:sectionCarouselImg2,to:"/lesson"},
+            {id:3,value:"這是一段標題V2",src:sectionCarouselImg3,to:"/lesson"},
+            {id:4,value:"這是一段標題V2",src:sectionCarouselImg4,to:"/lesson"},
+            {id:5,value:"這是一段標題V2",src:sectionCarouselImg5,to:"/lesson"},
         ],
         commodityV3:[
-            {id:1,value:"這是一段標題V3",src:sectionCarouselImg6},
-            {id:2,value:"這是一段標題V3",src:sectionCarouselImg7},
-            {id:3,value:"這是一段標題V3",src:sectionCarouselImg8},
-            {id:4,value:"這是一段標題V3",src:sectionCarouselImg9},
-            {id:5,value:"這是一段標題V3",src:sectionCarouselImg10},
+            {id:1,value:"這是一段標題V3",src:sectionCarouselImg6,to:"/lesson"},
+            {id:2,value:"這是一段標題V3",src:sectionCarouselImg7,to:"/lesson"},
+            {id:3,value:"這是一段標題V3",src:sectionCarouselImg8,to:"/lesson"},
+            {id:4,value:"這是一段標題V3",src:sectionCarouselImg9,to:"/lesson"},
+            {id:5,value:"這是一段標題V3",src:sectionCarouselImg10,to:"/lesson"},
         ],
 
         // header 左側區塊設定
@@ -83,10 +83,10 @@ class HomeHead extends Component {
         ],
         // header 右側區塊設定
         oneRightBoxStyle:[
-            {id:1,value:"這是一段標題1",src:rightImg,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/coursesAndVenues"},
-            {id:2,value:"這是一段標題2",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/coursesAndVenues"},
-            {id:3,value:"這是一段標題3",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/coursesAndVenues"},
-            {id:4,value:"這是一段標題4",src:rightImg3,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/coursesAndVenues"},
+            {id:1,value:"多功能訓練",value1:"一對一課程",src:rightImg,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
+            {id:2,value:"基礎重量訓練",value1:"團體課程",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
+            {id:3,value:"間歇訓練",value1:"團體課程",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
+            {id:4,value:"基礎瑜珈",value1:"皮拉提斯",src:rightImg3,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
         ],
         data:[]
 
@@ -120,6 +120,17 @@ class HomeHead extends Component {
         // this.setState({});
     }
 
+        // 點選連結
+        cardOnClick=(e)=>{
+            // let mypid = Location.href;
+            
+            // console.log(this.props.match.params.id);
+            // await Axios.post("http://localhost/spost/DongPHP/singleLesson.php", )
+            // .then( (response) => {
+            //     resdata = response.data;
+            // });
+        }
+
 
     render() {
         
@@ -134,7 +145,7 @@ class HomeHead extends Component {
 
 
 {/* 第一層header */}
-        <header>
+        <header className=''>
             {/* header第一段左邊 */}
             <div className='HomeHeadBoxStyle row container m-auto'                                                             
 
@@ -158,7 +169,10 @@ class HomeHead extends Component {
                     <div className='HomeHeadBoxRightImgBox'>
                         <div className='HomeHeadBoxRightText row-cols-4 ' >  
                         {this.state.oneRightBoxStyle.map((e,index)=>{return <IndexRightBox 
-                        id={e.id} key={index} value={e.value} src={e.src}
+                        id={e.id} key={index} 
+                        value={e.value} 
+                        value1={e.value1}
+                        src={e.src}
                         imgAlign={e.imgAlign}  
                         textAlign={e.TextAlign}
                         to={e.to
@@ -187,7 +201,7 @@ class HomeHead extends Component {
                         <h1 className='container text-center mt-4 text-white'>30,000+</h1>
                         <h4 className='container text-center text-white'>運動愛好者</h4>
                             <div className='oneSectionBoxButton'>
-                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
+                            <NavLink to="/login" className="container btn bg-white w-50 mt-3" activeStyle={{color:'red'}}>
                                 立即加入
                             </NavLink>
                             </div>
@@ -204,8 +218,8 @@ class HomeHead extends Component {
                         <h1 className='container text-center mt-4 text-white'>1000+</h1>
                         <h4 className='container text-center text-white'>專業教練老師</h4>
                             <div className='oneSectionBoxButton'>
-                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
-                                立即加入
+                            <NavLink to="/lesson" className="container btn bg-white w-50 mt-3">
+                                前往探索
                             </NavLink>
                             </div>
                         </div>
@@ -221,8 +235,8 @@ class HomeHead extends Component {
                         <h1 className='container text-center mt-4 text-white'>1,600+</h1>
                         <h4 className='container text-center text-white'>實體/線上課程</h4>
                             <div className='oneSectionBoxButton'>
-                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
-                                立即加入
+                            <NavLink to="/lesson" className="container btn bg-white w-50 mt-3">
+                                前往探索
                             </NavLink>
                             </div>
                         </div>
@@ -238,8 +252,8 @@ class HomeHead extends Component {
                         <h1 className='container text-center mt-4 text-white'>100+</h1>
                         <h4 className='container text-center text-white'>運動訓練空間</h4>
                             <div className='oneSectionBoxButton'>
-                            <NavLink to="/coursesAndVenues" className="container btn bg-white w-50 mt-3">
-                                立即加入
+                            <NavLink to="/site" className="container btn bg-white w-50 mt-3">
+                                前往探索    
                             </NavLink>
                             </div>
                         </div>
@@ -253,24 +267,30 @@ class HomeHead extends Component {
         <section>
             <div className='mt-6 m-5 h-100'
             data-aos="fade-up"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
             >
                 
 
                 <div
                 className='carouselBoxBigText container mb-3' 
                 data-aos="fade-up"
+                data-aos-easing="linear"
+                data-aos-duration="1500"
+
                 >
                     <h1>全台超過1000位專業教練</h1>
                     <a>健身、重訓、瑜珈、有氧、皮拉提斯、舞蹈都有</a>
                 </div>
             
 
-            <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
+            <Carousel interval={null} indicators={false} nextLabel={false} prevLabel={false} fade
             pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
 
             {/* 第一頁輪播 */}
                 <Carousel.Item className='w-100 d-flex'>
-                {this.state.commodityV3.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+                    {/* {<CarouselCard cardOnClick={(e)=>this.cardOnClick(e)} lessonDate={this.state.data}/>} */}
+                {this.state.commodityV2.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
                 </Carousel.Item>
 
             {/* 第二頁輪播 */}
@@ -289,6 +309,9 @@ class HomeHead extends Component {
             <div
                 className='carouselBoxBottomText' 
                 data-aos="fade-up"
+                data-aos-easing="linear"
+                data-aos-duration="1500"
+                
                 >   
                     <div className='carouselBoxBottomTextV1 mt-3'>
                         <div className='carouselBoxBottomTextV1Right'>
@@ -313,13 +336,17 @@ class HomeHead extends Component {
 {/* 第三層section(輪播Carousel設定) */}
         <section>
             <div className=' m-5 h-100 row-sm-12'
-            data-aos="fade-up"
+                            data-aos="fade-up"
+                            data-aos-easing="linear"
+                            data-aos-duration="1500"
             >
                 
 
                 <div
                 className='carouselBoxBigText container mb-3' 
                 data-aos="fade-up"
+                data-aos-easing="linear"
+                data-aos-duration="1500"
 
                 >
                     <h1>各類運動訓練空間</h1>

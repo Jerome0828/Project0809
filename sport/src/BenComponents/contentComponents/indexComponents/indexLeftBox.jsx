@@ -16,7 +16,7 @@ class IndexLeftBox extends Component {
                                 <h1 className='rounded-top'>{this.props.title}</h1>
                                 <p className='rounded-bottom'>{this.props.value}</p>
                                 <div className="btnRegister rounded-bottom">
-                                    <NavLink className="nav-link" to={this.props.to} exact >{this.props.BottomText}</NavLink>
+                                    <NavLink className="nav-link" to="/login" exact >{this.props.BottomText}</NavLink>
                                 </div>
                             </div>
                         </div>

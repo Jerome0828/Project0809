@@ -103,6 +103,17 @@
   // justify-content:center;
 }
 
+.HomeHeadBoxText {
+  a{
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  }
+  a:hover{
+  color: white;
+  }
+  
+}
+
 .HomeHeadBoxText h1{
   color: rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.79);
@@ -134,12 +145,12 @@
 // 左邊加入會員的按鈕設定
 .btnRegister {
   height: auto;
-  background-color: crimson;
+  background-color: #FF0000;
   // border-radius:15px 30px;
 }
 
 .btnRegister:hover {
-  background-color: rgb(237, 101, 151);
+  background-color: #db8d8d;
 }
 
 // 右側區塊滿版設定
@@ -172,9 +183,12 @@
   height: 100%;
   // background: rgb(249, 0, 0);
   border: 1px solid black;
+  a{
+    color: white;
+  }
 }
 
-// 右邊每列中的文字容器,分top跟bottom
+// 右邊每列中的文字容器,分top跟bottom,設定區塊顏色
 .rightBoxBottomText{
   position: absolute;
   display: flex;
@@ -184,28 +198,47 @@
   width: 100%;
   height: 35%;
   border-top: 1px solid black ;
-  background: rgb(165, 165, 165);
+  background: rgb(68, 68, 68);
+  h1{
+    margin: auto;
+  }
 }
 
 // 右邊每列中的文字設定,分top跟bottom
 .rightBoxBottomTextV1{
   align-content: center;
   justify-content:center;
-  width: auto;
-  height: auto;
   margin: auto;
-  padding: auto;
+  left: 0;
+  // width: auto;
+  // height: auto;
+  // margin: auto;
+  // padding: auto;
   // background-color: azure;
 }
 
 // 右邊每列中的文字 RWD設定
-.rightBoxBottomTextV1 h1 {
+.rightBoxBottomTextV1 {
+  h1 {
   font-size: calc(0.8rem);
+  }
+  h1:hover{
+    color: #FF0000;
+  }
+  p{
+    font-size: calc(0.8rem);
+    color:#000000;
+  }
 }
 
 @media (min-width: 1200px) {
-  .rightBoxBottomTextV1 h1{
-    font-size: 1.5rem;
+  .rightBoxBottomTextV1 {
+    h1{
+    font-size: 1.8rem;
+    }
+    p{
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -219,7 +252,10 @@
   width: 100%;
   height:35%;
   border-bottom: 1px solid black;
-  background: rgb(165, 165, 165);
+  background: rgb(68, 68, 68);
+  h1{
+    margin: auto;
+  }
 }
 
 // 右邊區塊用來存放長方照片用的容器設定 
