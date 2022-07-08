@@ -38,11 +38,15 @@ function Courses(props) {
 
 
     return (
-        <div style={{marginTop: '9vh'}}>
-            <Head all={news && news}/>
-            <Scroll />
-            <Body all={news && news}/>
-            <Footer />
+        <div style={{marginTop: '9vh'}} >
+            <div id='course'>
+                <Head all={news && news}/>
+                <Scroll />
+            </div>
+            <div id='course2'>
+                <Body all={news && news}/>
+                <Footer />
+            </div>
         </div>
     )
 }
