@@ -22,9 +22,6 @@ function Courses(props) {
         setState(props.match.params.pid)
     }, [])
 
-    
-
-
     useEffect( () => {
         const Qs = require("qs")
         async function post() {
