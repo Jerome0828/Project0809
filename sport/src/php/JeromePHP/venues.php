@@ -1,19 +1,18 @@
 <?php
     include('sql.php');
 
-    // card
+    // 場地介紹頁
+    $lid = $materialPost["lid"];
 
-
-
-    $sql = " SELECT addr, img1, title, price, pricepertime FROM place ORDER BY RAND() limit 3";
+    $sql = " SELECT * FROM lesson WHERE lid = $lid ";
     $result = $sportSql->query($sql);
 
-    $i = 0;
     $myJSON=[];
     while ($date = $result->fetch_object()) {
         $date->img1 = base64_encode($date->img1);
-        $myJSON[$i] = $date;
-        $i++;
+        $date->img2 = base64_encode($date->img2);
+        $date->img3 = base64_encode($date->img3);
+        $myJSON = $date;
     }
     $MaterialToClient = json_encode($myJSON);
     echo $MaterialToClient;

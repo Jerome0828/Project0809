@@ -3,7 +3,7 @@
 
     // 註冊頁
     $account  = $materialPost["account"];
-    $password = $materialPost["password"];
+    $password = hash('sha256', $materialPost["password"]);
     $email    = $materialPost["email"];
     $phone    = $materialPost["phone"];
     $realname = $materialPost["realname"];
@@ -13,6 +13,9 @@
     $insert = "INSERT INTO register (account, `password`, email, phone, realname, nickname, gender) VALUES (?,?,?,?,?,?,?)";
     $sportIn = $sportSql->prepare($insert);
     $sportIn->bind_param('sssssss', $account, $password, $email, $phone, $realname, $nickname, $gender);
-    $sportIn->execute();
+    if ($sportIn->execute()) {
+        echo true;
+    }
+    
 
 ?>
