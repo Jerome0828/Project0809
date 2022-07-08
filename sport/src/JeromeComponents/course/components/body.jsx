@@ -31,9 +31,9 @@ function Body(props) {
                             </p>
                         </div>
                     </div>
+                     {/* "立即租借" 連結 */}
+                     <div  id='reserve'></div>
                     <hr />
-                    {/* "立即租借" 連結 */}
-                    <div  id='reserve'></div>
                     {/* 開放時段 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>開放時段</p>

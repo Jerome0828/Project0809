@@ -13221,7 +13221,6 @@ body {
   background-position: center center;
   background-size: cover;
   line-height: 28px;
-  background-image: url(~../JeromeComponents/course/components/icon/1.jpg);
 }
 
 :root {
@@ -13237,24 +13236,28 @@ body {
 }
 .login {
   transition: all 0.6s;
-  background-color: rgb(227, 60, 60);
 }
 
 img {
   transition: all 1s;
 }
 
-#all {
-  /* background-repeat: no-repeat; */
-  background-image: url(~../imgs/1.jpg);
-  overflow: hidden;
+#allA {
+  margin-top: 76px;
+  z-index: -1;
+  height: 90vh;
   display: flex;
-  justify-content: center;
+  overflow: hidden;
+  background-image: url(~../imgs/2.jpg);
+}
+
+#all {
+  margin-top: 5vh;
   align-items: center;
+  justify-content: center;
   background: linear-gradient(to top left, transparent, white 35%);
   transition: all 1.5s;
   opacity: 1;
-  height: 80vh;
   width: 100vw;
 }
 
@@ -13280,6 +13283,10 @@ input[type=number]::-webkit-inner-spin-button {
   transform: translate(-50%, 0);
   width: 30px;
   height: auto;
+}
+
+#fgF {
+  background: transparent;
 }
 
 #bti {
@@ -13322,7 +13329,6 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .login {
-  border-radius: 5%;
   letter-spacing: 1.3px;
   font-family: "font01", sans-serif;
   transform: translate(-50%, 0);
@@ -13331,7 +13337,6 @@ input[type=number]::-webkit-inner-spin-button {
   width: 50vw;
   display: flex;
   flex-direction: column;
-  margin-top: 3vh;
   align-items: center;
 }
 

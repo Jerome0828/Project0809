@@ -8,8 +8,7 @@
 
 @font-face {
     font-family: 'font01';
-    // src: url(../icon/Advertisement.ttf);
-    src: url(../../JeromeComponents/icon/Advertisement.ttf);
+    src: url(~../JeromeComponents/icon/Advertisement.ttf);
 }
 
 .login {
@@ -25,9 +24,8 @@ img {
     height: 90vh;
     display: flex;
     overflow: hidden;
-    background-image: url(../../imgs/2.jpg);
+    background-image: url(~../imgs/2.jpg);
 }
-
 
 #all {
     margin-top: 5vh;

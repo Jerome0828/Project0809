@@ -83,7 +83,7 @@ function Head(props) {
                 </div>
 
                 <div className='row mt-3 animate__animated animate__slideInDown'>
-                    <p className='text-center my-1' id='title'><h1>{news && news.title}</h1></p>
+                    <span className='text-center my-1' id='title'><h1>{news && news.title}</h1></span>
                 </div>
                 <div className='row mt-3 align-items-center justify-content-center'>
                     <div className='col-lg-8' style={{ zIndex: '2'}}>

@@ -11,8 +11,7 @@ import home from './navBarPage/home.jsx';
 import SearchCoachPage from '../DongComponents/SearchCoachPage.jsx';
 import SearchSitePage from '../DongComponents/SearchSitePage.jsx';
 import course from '../JeromeComponents/course/course.jsx';
-// import Venues from '../JeromeComponents/venues/venues';
-import Venues from '../JeromeComponents/venues/test.jsx';
+import Venues from '../JeromeComponents/venues/venues.jsx';
 
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
@@ -45,7 +44,7 @@ class NavBarOK extends Component {
                     {/* 課程與場地路由,預設課程頁面 */}
                     <Route path="/lesson" component={SearchCoachPage} exact/>
                     <Route path="/site" component={SearchSitePage} exact/>
-                    <Route path="/lesson/:pid" component={Venues} exact />
+                    <Route path="/lesson/:lid" component={Venues} />
                     <Route path="/site/:pid" component={course}/>
 
                     {/* 成為教練 */}

@@ -22,7 +22,7 @@ class Login extends Component {
     // 帳號or信箱不存在, 驗證碼錯誤, 兩次密碼不相同
     aeh: '', vec: '',  pwd: '',
     // 帳號or信箱錯誤, 密碼錯誤
-    aew: '',  pwr: '',  
+    aew: '',  pwr: '', cok: '', 
     // 帳號或信箱已註冊,  電話提示, 帳號提示, 密碼提示, 姓名提示
     adr: '',  cel: '', ada: '6位數，且使用一個英文字母和數字', pwa: '6位數，且使用一個英文字母和數字', naa: ''
   }
@@ -35,7 +35,7 @@ class Login extends Component {
         passwordCheck: ['',''], pas: ['', true]})
     }
     else if ( this.state.opacity[2] == 1 ) { 
-      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-70vw', '30vw', '0'], 
+      this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-70vw', '30vw', '0'], awe: '',
         visibility: ['hidden','','hidden','hidden'], className: "", addressOrEmail: ['', false, ''], password: ['', false]})
     }else {
       this.setState({ opacity: [0, 1, 0, 0, 0], marginLeft: ['0', '-70vw', '30vw', '0'], 
@@ -44,12 +44,12 @@ class Login extends Component {
   }
   next = () => {
     if ( this.state.opacity[1] == 1 ) {
-      this.setState({ opacity: [0, 0, 1, 0], marginLeft: ['-20vw', '-50vw', '-80vw', '-40vw'], visibility: ['hidden','hidden','','hidden'], className: "animate__animated "})
+      this.setState({ opacity: [0, 0, 1, 0, 0], marginLeft: ['-20vw', '-50vw', '-80vw', '-300vw'], visibility: ['hidden','hidden','','hidden'], className: "animate__animated "})
     }
     else if ( this.state.opacity[2] == 1 ) {
-      this.setState({ opacity: [0, 0, 0, 1], marginLeft: ['0', '-50vw', '-250vw', '-80vw'], visibility: ['hidden','hidden','hidden',''], className: ""})}
+      this.setState({ opacity: [0, 0, 0, 1, 0], marginLeft: ['0', '-50vw', '-50vw', '-250vw'], visibility: ['hidden','hidden','hidden',''], className: ""})}
     else { 
-      this.setState({ opacity: [0, 1, 0, 0],  marginLeft: ['0', '-70vw', '30vw', '0'], visibility: ['hidden','','hidden','hidden'],
+      this.setState({ opacity: [0, 1, 0, 0, 0],  marginLeft: ['0', '-70vw', '30vw', '-400vw'], visibility: ['hidden','','hidden','hidden'],
         className: "", adr: ''}) 
     }
   }
@@ -60,6 +60,7 @@ class Login extends Component {
   LoginCheck = (e) => {
     // 帳號 or Email 
     if ( e.target.placeholder == "帳號 or Email" ) {
+      this.setState({ cok: '' })
       let add = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
       let eml = new RegExp(/^[a-za-z0-9_-]+@[a-za-z0-9_-]+(\.[a-za-z0-9_-]+)+$/);
       if ( e.target.value.length >= 6 ) {
@@ -278,18 +279,28 @@ class Login extends Component {
       }
       axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", fgCheck )
         .then( (response) => {
-          
-          console.log(response.data)
+          this.state.verificationCode[0] = response.data;
+          this.setState({})
         })
+      console.log(this.state.verificationCode)
     }
 
+  
     // 驗證碼核對
     if ( e.target.placeholder == "請輸入驗證碼" ) {
-      
+      if (e.target.value.length == 4 && e.target.value  == this.state.verificationCode[0]) {
+        this.state.opacity[4] = 1;
+        this.state.verificationCode[1] = true;
+        this.setState({})
+      }else {
+        this.state.opacity[4] = 0;
+        this.state.verificationCode[1] = false;
+        this.setState({})
+      }
+      console.log(this.state.verificationCode)
     }
-
     // 表單送出 
-    if ( this.state.addressOrEmail[1] == true && this.state.pas[1] == true ) {
+    if ( e.target.type == "button" && this.state.pas[1] == true && this.state.verificationCode[1] == true) {
       let changePassword = '';
       if ( this.state.addressOrEmail[2] == 'address' ){
         changePassword = Qs.stringify({
@@ -305,14 +316,17 @@ class Login extends Component {
         })
       }
       axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", changePassword )
-        // .then( (response) => {
-        //   if ( response.data != 1) {
-
-        //   }else {
-        //     alert("ok")
-        //   }
-        // })
-      // this.back();
+        .then( (response) => {
+          if ( response.data != 1) {
+            console.log("xx")
+          }else {
+            this.state.cok = '密碼變更成功'
+            this.state.verificationCode = ['', false];
+            this.state.opacity[4] = 0;
+            this.setState({});
+            this.back();
+          }
+        })
     }
   }
   
@@ -374,9 +388,6 @@ class Login extends Component {
           }
         })
     }
-
-    // axios.get("http://localhost/sport/form.php")
-    //   .then( res => {console.log(res)})
   }
 
   render() {
@@ -403,7 +414,7 @@ class Login extends Component {
               <div className='row m-3'>
                 <div className={`col-lg-12 w-100 ${this.state.className}`} >
                   <img className='icon mx-3 my-1' src={require('./icon/question.png')} />
-                  <input className="input fpf" type="e-mal" placeholder="請輸入驗證碼" required="required"
+                  <input className="input fpf" type="text" placeholder="請輸入驗證碼" required="required"
                     onChange={ this.fgCheck }/>
                   <span>
                     <img className='icon mx-3 my-1' src={require('./icon/checked.png')} 
@@ -426,7 +437,7 @@ class Login extends Component {
                   <span style={{color: 'red'}}> &nbsp; {this.state.pwd}</span>
                 </div>
               </div>
-              <button type="button" className='button my-2 mx-3' onClick={ this.fgCheck }>確認變更</button>
+              <button type="button" className='button my-2 mx-3' onClick={ this.fgCheck } >確認變更</button>
               <button type="button" className='button my-2 mx-3' onClick={ this.back }>回到登入頁面</button>
             </form>
           </div>
@@ -438,7 +449,7 @@ class Login extends Component {
             <div className="animate__animated animate__fadeInDown">
               <h2 className='my-4 text-center'>Login</h2>
               <p className='text-center w-100' style={{color: 'red'}}>
-                {this.state.aew} &nbsp; {this.state.pwr}
+                {this.state.aew} &nbsp; {this.state.pwr} <span style={{color: 'green'}}>{this.state.cok}</span>
               </p>
               <div className='container'>
                 <div className="row">
@@ -528,8 +539,9 @@ class Login extends Component {
                   </select>
                 </div>
               </div>
-              <button type="button" className='button' onClick={this.registerPost} value="singUp">確認註冊</button> 
+              <button type="button" className='button' onClick={this.next} value="singUp">確認註冊</button> 
             </form>
+            {/* registerPost */}
           </div>
 
           {/* -- Email 驗證 -- */}
@@ -539,12 +551,16 @@ class Login extends Component {
               <h2>Email 已送出</h2>
             </div >
             <div className="container animate__animated animate__lightSpeedInRight">
-                <p className='m-5' >已向您的信箱 xxx 送出驗證信，請至您的信箱查收並完成驗證 </p>
-                <p className='mt-5'>沒收到驗證信 ?</p>
-                <button type="submit" className='buttonL mb-4'>再寄送一次</button>
+                <p className='m-5' >已向您的信箱 {this.state.ema} 送出驗證信，請至您的信箱查收並完成驗證 </p>
+                <input className="input fpf" type="text" placeholder="請輸入驗證碼" required="required"
+                  onChange={ this.fgCheck }/>
+                <img className='icon mx-3 my-1' src={require('./icon/checked.png')} 
+                  style={{ opacity: this.state.opacity[4]}}/>
+                <p className='mt-4'>沒收到驗證信 ?<button type="submit" className='buttonL'> 再寄送一次</button></p>
+                
             </div>
-            <div className='mt-3'>
-                <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>回到登入頁面</button>
+            <div >
+                <button type="submit" className='button my-5 mx-3' id='buts' onClick={this.next}>驗證</button>
             </div>
           </div>
         </div>
