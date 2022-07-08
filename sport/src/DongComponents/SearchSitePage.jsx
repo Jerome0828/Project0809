@@ -360,7 +360,7 @@ class SearchSitePage extends Component {
                     </div>
                     <div className='col-9 border-end border-start'>
                         <div className='row text-center'>
-                            <NavLink className='col-6 shadow btn ' to={"/coach"}>找課程</NavLink>
+                            <NavLink className='col-6 shadow btn ' to={"/lesson"}>找課程</NavLink>
                             <NavLink className='col-6 shadow btn bg-black text-white' to={"/site"}>找場地</NavLink>
                         </div>
                         <div className='row mt-5 justify-content-center'>
