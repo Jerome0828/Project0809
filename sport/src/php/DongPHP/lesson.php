@@ -1,7 +1,7 @@
 <?php
     include('sql.php');
     header("Access-Control-Allow-Origin:*");
-    $sql = "SELECT img1,type,title,addr,price,cname,mode FROM `lesson` INNER JOIN coach ON lesson.cid = coach.cid";
+    $sql = "SELECT lid,img1,type,title,addr,price,cname,mode FROM `lesson` INNER JOIN coach ON lesson.cid = coach.cid ORDER BY RAND()";
     $result = $mysqli->query($sql);
     $i=0;
     $myJSON=[];
