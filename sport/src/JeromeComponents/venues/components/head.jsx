@@ -43,7 +43,7 @@ function Head(props) {
                             <Link underline="hover" key="1" color="inherit" href="/">
                                 首頁
                             </Link>
-                            <Link underline="hover" key="2" color="inherit" href="/site">
+                            <Link underline="hover" key="2" color="inherit" href="/#/lesson">
                                 探索
                             </Link>
                             <Typography key="3" color="text.primary">
@@ -76,7 +76,7 @@ function Head(props) {
                         </div>
                         <div className='col-lg-12' style={{transform: 'translate(10%, 0)'}}>
                             <div className='w-100 py-2 px-3 my-3'>
-                                <Labels types={news && news.type} />
+                                <Labels types={news && news.type} mode={news && news.mode}/>
                             </div> 
                         </div>
                     </div>
@@ -109,7 +109,7 @@ function Head(props) {
                     </div>
                     <div className='col-lg-4'>
                         <div className='row justify-content-center animate__animated animate__slideInDown '>
-                            <a href="#reserve" className='col-lg-12 btn px-3 bg-black w-75' id='linkA'><h3>立即租借</h3></a>
+                            <a href="#reserve" className='col-lg-12 btn px-3 bg-black w-75' id='linkA'><h3>立即購課</h3></a>
                         </div>
                     </div>
                 </div>

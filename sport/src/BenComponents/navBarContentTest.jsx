@@ -16,7 +16,7 @@ function NavBarContent1() {
       <div >
 
         <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" fixed="top"  
- 
+          
         >
           <Container>
              {/* 更換LOGO圖片 */}
@@ -25,12 +25,18 @@ function NavBarContent1() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
 
-              <Nav.Link><NavLink className="nav-link col-lg" to="/coach" exact >課程與場地</NavLink></Nav.Link>
+              <Nav.Link><NavLink className="nav-link col-lg" to="/lesson" exact >課程與場地</NavLink></Nav.Link>
               <Nav.Link><NavLink className="nav-link col-lg " to="/BeCoach" exact >成為教練</NavLink></Nav.Link>
               <Nav.Link><NavLink className="nav-link col-lg " to="/RentPlace" exact >租場地</NavLink></Nav.Link>
+
+              {/* 0709 DONG新增 */}
+              <Nav.Link><NavLink className="nav-link col-lg " to="/member" exact >會員頁</NavLink></Nav.Link>
+
               </Nav>
               <Nav>
               <Nav.Link> <NavLink className="nav-link col-lg" to="/login" exact >登入/註冊</NavLink></Nav.Link>
+              <Nav.Link> <NavLink className="nav-link col-lg" to="/shoppingCartPage" exact >購物車頁面二</NavLink></Nav.Link>
+
               </Nav>
             </Navbar.Collapse>
           </Container>

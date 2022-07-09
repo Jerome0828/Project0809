@@ -17,6 +17,7 @@ class IndexRightBox extends Component {
             <div className={this.props.textAlign} >
                 <div className='rightBoxBottomTextV1'>
                     <NavLink to={this.props.to}><h1>{this.props.value}</h1></NavLink>
+                    <NavLink to={this.props.to}><p>{this.props.value1}</p></NavLink>
                 </div>
             </div>
         </div>

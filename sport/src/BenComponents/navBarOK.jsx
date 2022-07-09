@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import '../scss/all.css';
 
@@ -10,6 +10,11 @@ import home from './navBarPage/home.jsx';
 // 課程與場地(預設教練頁)
 import SearchCoachPage from '../DongComponents/SearchCoachPage.jsx';
 import SearchSitePage from '../DongComponents/SearchSitePage.jsx';
+import course from '../JeromeComponents/course/course.jsx';
+
+// 會員頁 0709 DONG新增
+import MemberPage from '../DongComponents/MemberPage.jsx';
+
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
 // 租場地
@@ -17,11 +22,11 @@ import RentPlace from '../DongComponents/RentPlace.jsx';
 // 會員登入及註冊
 import login from '../JeromeComponents/login/login.jsx';
 
-// course
-import Courses from '../JeromeComponents/course/course.jsx';
-
 // 購物車頁面
 import ShoppingCart from './navBarPage/shoppingCart.jsx';
+
+// 購物車測試頁面
+import shoppingCartPage from './navBarPage/shoppingCartPage.jsx'
 class NavBarOK extends Component {
     state = { 
 
@@ -29,7 +34,7 @@ class NavBarOK extends Component {
 
     render() { 
         return (
-            <HashRouter>
+            <BrowserRouter>
             <div >
 
             <NavBarContent1 />
@@ -39,9 +44,9 @@ class NavBarOK extends Component {
                     <Route path="/" component={home} exact/>
 
                     {/* 課程與場地路由,預設課程頁面 */}
-                    <Route path="/coach" component={SearchCoachPage} exact></Route>
-                    <Route path="/site" component={SearchSitePage} exact></Route>
-                    <Route path="/site/:pid" component={Courses} exact></Route>
+                    <Route path="/lesson" component={SearchCoachPage} exact/>
+                    <Route path="/site" component={SearchSitePage} exact/>
+                    <Route path="/site/:pid" component={course} exact />
 
                     {/* 成為教練 */}
                     <Route path="/BeCoach" component={BeCoach} exact/>
@@ -53,7 +58,14 @@ class NavBarOK extends Component {
                     <Route path="/login" component={login} exact/>
 
                     {/* 購物車 */}
-                    <Route path="/shoppingCart" component={ShoppingCart} exact/>
+                    <Route path="/shoppingCart/:id" component={ShoppingCart}/>
+
+                    {/* 測試購物車二頁面 */}
+                    <Route path="/shoppingCartPage" component={shoppingCartPage} exact/>
+
+                    {/* 會員頁 0709 DONG新增 */}
+                    <Route path="/member" component={MemberPage} exact/>
+
                 </Switch>
                 <div/>
 
@@ -136,7 +148,7 @@ class NavBarOK extends Component {
 
                  
             </div>
-            </HashRouter>
+            </BrowserRouter>
         );
     }
 }

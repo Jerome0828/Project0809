@@ -30,7 +30,7 @@ function Monthly(props) {
 
     const Qs = require("qs")
     async function post() {
-      await axios.post("http://localhost:80/spost/JerpmePHP/monthlyButton.php", Qs.stringify({ pid: `${props.pid && props.pid}` }))
+      await axios.post("http://localhost:80/spost/JerpmePHP/monthlyButton_v.php", Qs.stringify({ lid: `${props.lid && props.lid}` }))
       .then( response => {
         if ( typeof response.data == "object" ) {
           // 預設
@@ -75,7 +75,7 @@ function Monthly(props) {
             b.forEach( (c) => {
               setBtnData( x => ([...x, c]))
             })
-          }else { setTest("暫停開放") }
+          }else { setTest("此時段無課程") }
         }
       })
     }
@@ -112,7 +112,7 @@ function Monthly(props) {
     })
     setTotal([Number(news.price) * Number(a.length), Number(a.length)])
 
-    console.log(e)
+    // console.log(e)
   }
 
 

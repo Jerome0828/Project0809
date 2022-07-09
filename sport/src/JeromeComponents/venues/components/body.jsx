@@ -24,55 +24,60 @@ function Body(props) {
                 <div className='col-lg-8'>
                     {/* 場地簡介 */}
                     <div className='container' data-aos="fade-up">
-                        <p id='title' className='container'>場地簡介</p>
+                        <p id='title' className='container'>課程介紹</p>
                         <div className='container'>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 {news && news.info}
                             </p>
                         </div>
                     </div>
-                     {/* "立即租借" 連結 */}
-                     <div  id='reserve'></div>
                     <hr />
+                    {/* "立即租借" 連結 */}
+                    <div  id='reserve'></div>
                     {/* 開放時段 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>開放時段</p>
                         <div className='container'>
-                            <table className="table" data-toggle="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="row" className='bg-info'>週一</th>
-                                        <td>{news && news.mon}</td>
-                                        <th scope="row" className='bg-info'>週二</th>
-                                        <td>{news && news.tue}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" className='bg-info'>週三</th>
-                                        <td>{news && news.wed}</td>
-                                        <th scope="row" className='bg-info'>週四</th>
-                                        <td>{news && news.thu}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" className='bg-info'>週五</th>
-                                        <td>{news && news.fri}</td>
-                                        <th scope="row" className='bg-info'>週六</th>
-                                        <td>{news && news.sat}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row" className='bg-info'>週日</th>
-                                        <td>{news && news.sun}</td>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                            </table>
+                        <table className="table" data-toggle="table">
+                            <thead className='text-center align-middle'>
+                                <tr>
+                                    <th scope="row" className='bg-info text-center'>週一</th>
+                                    <td>{news && news.mon}</td>
+                                    <td rowspan="7"><p>$ {news && news.price}</p></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" className='bg-info text-center'>週二</th>
+                                    <td>{news && news.tue}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" className='bg-info text-center'>週三</th>
+                                    <td>{news && news.wed}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" className='bg-info text-center'>週四</th>
+                                    <td>{news && news.thu}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" className='bg-info text-center'>週五</th>
+                                    <td>{news && news.fri}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" className='bg-info text-center'>週六</th>
+                                    <td>{news && news.sat}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" className='bg-info text-center'>週日</th>
+                                    <td>{news && news.sun}</td>
+                                </tr>
+                            </thead>
+                        </table>
                         </div>
                     </div>
                     <hr />
                     {/* 預約狀況 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>預約狀況</p>
-                        <Monthly news={news && news} pid={news && news.pid}/>
+                        <Monthly news={news && news} lid={news && news.lid}/>
                     </div>
                     <hr />
                     {/* 授課師資 */}
@@ -97,7 +102,7 @@ function Body(props) {
                                 <p id='title' className='container'>取消政策</p>
                                 <div className='container '>
                                     <h5 className='col-lg-5 p-3 w-100'>
-                                        <img src={require('./icon/check2.png')} style={{height: '3vh'}}/>
+                                        <img src={require('./icon/check.png')} style={{height: '3vh'}}/>
                                         <span className='mx-3'>課程開始1小時前</span>
                                         
                                         <span style={{fontSize: '15px'}}> (可全額退款100%) </span>
