@@ -14,6 +14,8 @@ import course from '../JeromeComponents/course/course.jsx';
 
 // 會員頁 0709 DONG新增
 import MemberPage from '../DongComponents/MemberPage.jsx';
+import MemberInfo from '../DongComponents/MemberInfo';
+import MemberPost from '../DongComponents/MemberPost';
 
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
@@ -65,6 +67,8 @@ class NavBarOK extends Component {
 
                     {/* 會員頁 0709 DONG新增 */}
                     <Route path="/member" component={MemberPage} exact/>
+                    <Route path="/member/info" component={MemberInfo} exact/>
+                    <Route path="/member/post" component={MemberPost} exact/>
 
                 </Switch>
                 <div/>
