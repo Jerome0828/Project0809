@@ -23,14 +23,14 @@ class MemberPage extends Component {
     onClick = (e) => {
         e.target.parentElement.children[0].style.opacity = 1;
     }
-    
+
     render() {
         return (
             <>
                 <NavLink to="/member/info" className="text-decoration-none text-dark">
                     <div className="d-flex">
                         <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
-                        <p id='info' data-flag={false} onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
+                        <p id='info' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
                             className='h5'>會員資料</p>
                     </div>
                 </NavLink>
@@ -38,7 +38,7 @@ class MemberPage extends Component {
                 <NavLink to="/member/post" className="text-decoration-none text-dark">
                     <div className="mt-3 d-flex">
                         <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
-                        <p id='post' data-flag={false} onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
+                        <p id='post' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
                             className='h5'>課程與場地</p>
                     </div>
                 </NavLink>
@@ -46,7 +46,7 @@ class MemberPage extends Component {
                 <NavLink to="/member/plan" className="text-decoration-none text-dark">
                     <div className="mt-3 d-flex">
                         <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
-                        <p id='plan' data-flag={false} onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
+                        <p id='plan' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
                             className='h5'>行程</p>
                     </div>
                 </NavLink>
