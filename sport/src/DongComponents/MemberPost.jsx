@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import MemberPage from '../DongComponents/MemberPage.jsx';
-import rightarrow from '../imgs/rightArrow.png';
 class MemberPost extends Component {
     state = {}
     render() {
