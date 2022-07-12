@@ -7,7 +7,7 @@ import axios from 'axios';
 function Monthly(props) {
   const day = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // 月曆(星期幾)與資料庫對應
 
-  const [total, setTotal] = useState([0, 0]); // 金額加總
+  const [oder, setOder] = useState([0, 0]); // 訂單資訊
   const [btnData, setBtnData] = useState([]); // 按鈕value
   const [test, setTest] = useState([]); // 場地無開放提示
   const [news, setNews] = useState(undefined);// news: 資料庫(place)資訊
@@ -110,9 +110,19 @@ function Monthly(props) {
         a.push( btn[val].value )  
       }
     })
-    setTotal([Number(news.price) * Number(a.length), Number(a.length)])
 
-    // console.log(e)
+    // v1
+    a.map( (val) => {
+      setOder( () => [news.title, news.price])
+      oder.push(val)
+    })
+    // v2
+    // setOder( () => [news.title, news.price, a])
+
+    // title 價錢 時間
+    if ( e.target.value == '加入購物車') {
+      console.log(oder)
+    }
   }
 
 
@@ -132,8 +142,7 @@ function Monthly(props) {
               <h4>收費方式</h4>
               <br />
               <p> 正常時段：$ {news && news.price} / {news && news.pricepertime}</p>
-              <p>總金額 : {total && total[0]}</p>
-              <button className="btn w-75 mt-3 bg-info" onClick={btnCheck}>加入購物車</button>
+              <button className="btn w-75 mt-3 bg-info" onClick={btnCheck} value='加入購物車'>加入購物車</button>
           </div>
         </div>
       </div>
