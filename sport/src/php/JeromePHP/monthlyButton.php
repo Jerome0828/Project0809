@@ -13,7 +13,4 @@
     }
     $DateToClient = json_encode($myJSON);
     echo $DateToClient;
-
-    
-
 ?>
