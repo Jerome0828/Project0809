@@ -30,7 +30,7 @@ function Monthly(props) {
 
     const Qs = require("qs")
     async function post() {
-      await axios.post("http://localhost:80/spost/JerpmePHP/monthlyButton.php", Qs.stringify({ pid: `${props.pid && props.pid}` }))
+      await axios.post("http://localhost:80/spost/JeromePHP/monthlyButton.php", Qs.stringify({ pid: `${props.pid && props.pid}` }))
       .then( response => {
         if ( typeof response.data == "object" ) {
           // 預設

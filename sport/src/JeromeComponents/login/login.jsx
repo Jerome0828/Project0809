@@ -269,7 +269,7 @@ class Login extends Component {
     }else {
       var emails = Qs.stringify({ emails: email});
     }
-    await axios.post("http://localhost:80/spost/JerpmePHP/verificationCode.php", emails)
+    await axios.post("http://localhost:80/spost/JeromePHP/verificationCode.php", emails)
       .then( (response) => {
         this.state.verificationCode[0] = response.data;
         this.setState({})
@@ -296,7 +296,7 @@ class Login extends Component {
           newPassWorld: ''
         })
       }
-      axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", fgCheck )
+      axios.post("http://localhost:80/spost/JeromePHP/Forgotpassword.php", fgCheck )
         .then( (response) => {
           if ( response.data.indexOf("null") != '-1' ) {
             // 未註冊帳號
@@ -371,7 +371,7 @@ class Login extends Component {
           singInPassword: this.state.password[0]
         })
       }
-      axios.post("http://localhost:80/spost/JerpmePHP/login.php", singIn )
+      axios.post("http://localhost:80/spost/JeromePHP/login.php", singIn )
         .then( (response) => {
           if ( response.data != 1) {
             this.state.aew = '帳號或信箱錯誤';
@@ -395,7 +395,7 @@ class Login extends Component {
         account: this.state.add[0],
         email: this.state.ema[0],
       });
-      axios.post("http://localhost:80/spost/JerpmePHP/register.php", register )
+      axios.post("http://localhost:80/spost/JeromePHP/register.php", register )
       .then( ( response ) => {
         if ( response.data == 1 ) {
           this.next();
