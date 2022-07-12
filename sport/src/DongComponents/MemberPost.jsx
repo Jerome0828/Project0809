@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import MemberPage from '../DongComponents/MemberPage.jsx';
+import rightarrow from '../imgs/rightArrow.png';
 class MemberPost extends Component {
-    state = {  } 
-    render() { 
+    state = {}
+    render() {
         return (
             <div className='container'>
                 <br /><br /><br />
                 <div className='row'>
-                    <div className='col-3'>
-                        <NavLink to="info"><h3>MemberInfo</h3></NavLink>
-                        <NavLink to="post"><h3>MemberPost</h3></NavLink>
-                    </div>
-                    <div className='col-9'>
-                        <h2>post test..</h2>
+                    <div className='col-2 mt-5 border-end'>
+                        <MemberPage />
                     </div>
                 </div>
             </div>
         );
     }
 }
- 
+
 export default MemberPost;

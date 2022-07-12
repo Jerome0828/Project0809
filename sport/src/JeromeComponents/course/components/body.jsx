@@ -3,9 +3,13 @@ import Teachers from '../../teachers';
 import Evaluation from '../../Evaluation';
 import Monthly from './monthly';
 
+import Rating from '@mui/material/Rating';
+
 
 function Body(props) {
-    const [news, setNews] = useState(undefined)
+    const [news, setNews] = useState(undefined);
+    const [value, setValue] = useState(5);
+    const [test, setTest] = useState();
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
@@ -15,6 +19,10 @@ function Body(props) {
     // 更新google地圖
     let address = () => {
         return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB09_GtwzgJdeUBYhUL91I60stBPgC_i4U&q=${news && news.addr}`
+    }
+
+    let commentChange = () => {
+        console.log(test)
     }
 
 
@@ -117,7 +125,40 @@ function Body(props) {
                                 </h5>
                             </div>
                         </div>
-                        
+                    </div>
+                    <hr />
+                    {/* 填寫評論 */}
+                    <div className='container'>
+                        <p id='title' className='container'>評論填寫</p>
+                        <div className='row justify-content-center'>
+                            <div className='col-lg-8 container mt-3'>
+                                <div className='row'>
+                                    {/* 會員資訊 */}
+                                    <div className='col-lg-6'>
+                                        <span className='mx-3'>fffff</span>
+                                    </div>
+                                    <div className='col-lg-6'>
+                                        <Rating
+                                            name="simple-controlled"
+                                            value={value}
+                                            onChange={(e, newValue) => {
+                                                setValue(newValue);
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='row justify-content-center'>
+                                <div className='col-lg-8 container mt-3'>
+                                    <form onChange={(e) => { setTest(e.target.value) }}>
+                                        <textarea className='w-100' rows='5'  />
+                                    </form>                                   
+                                </div>
+                                <div className='col-lg-3 border'>
+                                <button className='position-absolute bottom-0 translate-middle-x' onClick={commentChange}>上傳評論</button> 
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {/* 課後評價 */}

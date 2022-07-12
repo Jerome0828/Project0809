@@ -21,7 +21,7 @@ function Venues(props) {
     useEffect( () => {
         const Qs = require("qs")
         async function post() {
-            await axios.post("http://localhost:80/spost/JerpmePHP/venues.php", Qs.stringify({ lid: state }))
+            await axios.post("http://localhost:80/spost/JeromePHP/venues.php", Qs.stringify({ lid: state }))
             .then( response => {
                 setNews(response.data)
             })

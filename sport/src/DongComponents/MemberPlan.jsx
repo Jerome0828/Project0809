@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import MemberPage from '../DongComponents/MemberPage.jsx';
-import rightarrow from '../imgs/rightArrow.png';
-class MemberInfo extends Component {
+
+class MemberPlan extends Component {
     state = {}
     render() {
         return (
@@ -18,4 +19,4 @@ class MemberInfo extends Component {
     }
 }
 
-export default MemberInfo;
+export default MemberPlan;
