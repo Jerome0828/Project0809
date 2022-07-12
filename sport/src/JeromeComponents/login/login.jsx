@@ -336,7 +336,7 @@ class Login extends Component {
           newPassWorld: this.state.pas[0]
         })
       }
-      axios.post("http://localhost:80/spost/JerpmePHP/Forgotpassword.php", changePassword )
+      axios.post("http://localhost:80/spost/JeromePHP/Forgotpassword.php", changePassword )
         .then( (response) => {
           if ( response.data != 1) {
             console.log("xx")
@@ -435,7 +435,7 @@ class Login extends Component {
         nickname: this.state.nna,
         gender: this.state.gen
       });
-      axios.post("http://localhost:80/spost/JerpmePHP/email.php", register )
+      axios.post("http://localhost:80/spost/JeromePHP/email.php", register )
         .then( ( response ) => {
           if ( response.data == 1) {
             this.state.cok = '請重新登錄'
