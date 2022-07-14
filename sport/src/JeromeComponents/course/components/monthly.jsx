@@ -135,6 +135,8 @@ function Monthly(props) {
     })
     // v2
     // setOder( () => [news.title, news.price, dateDay])
+
+    // carId(ai) oid(pid/lid) id(會員) title 2022/07/04 時間(11:00~12:00) 單價
   }
 
 
