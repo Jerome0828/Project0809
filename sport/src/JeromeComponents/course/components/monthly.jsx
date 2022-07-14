@@ -7,7 +7,7 @@ import axios from 'axios';
 function Monthly(props) {
   const day = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // 月曆(星期幾)與資料庫對應
 
-  const [oder, setOder] = useState([]); // 訂單資訊
+  const [oder, setOder] = useState(''); // 購物車加入成功
   const [dateDay, setDateDay] = useState([]); // 單日
   const [btnData, setBtnData] = useState([]); // 按鈕value
   const [test, setTest] = useState([]); // 場地無開放提示
@@ -110,16 +110,8 @@ function Monthly(props) {
     })
   }
 
-  // 加入購物車
-  let shoppingCar = () => {
-    dateDay.map( (val) => {
-      setOder( (old) => [...old, val])
-    })
-    shoppingCarIn()
-  }
-
   // 寫入購物車 (資料庫)
-  let shoppingCarIn = () => {
+  let shoppingCar = () => {
     const Qs = require("qs")
     dateDay.map( (times) => {
       async function post() {
@@ -132,9 +124,11 @@ function Monthly(props) {
             time: times,
             price: news.price
           }))
-        // .then( response => {
-        //     setNews(response.data)
-        // })
+        .then( response => {
+            if (response.data == 1) {
+              setOder("購物車加入成功")
+            }
+        })
       }
       post()
     })
@@ -156,19 +150,23 @@ function Monthly(props) {
           <div className="row text-center mt-2">
               <h4 className="col-lg-4">收費方式</h4>
               <span className="col-lg-8 my-1">正常時段：$ {news && news.price} / {news && news.pricepertime}</span>
-              <div className="col-lg-12 text-end bg-info">
-                <h4 className="my-1">{`${checkDay[1]} / ${checkDay[2]}`}</h4>
+              <div className="col-lg-12 text-end">
+                <h4 className="my-1">{`${checkDay[0]} / ${checkDay[1]} / ${checkDay[2]}`}</h4>
+              </div>
+              <div className='col-lg-12'>
+                <button className="btn w-100 bg-info m-2" onClick={shoppingCar} value='加入購物車'>加入購物車</button>
+                <span className="text-center text-success">&nbsp; {oder}</span>
               </div>
           </div>
-          <div className="row h-75 border">
-            <div className="col-lg-12 ">
-              {dateDay.map( (day) => { return ( <p>{day}</p> ) })}
-            </div>
-            <div className='border h-25'>
-                <button className="btn w-100 bg-info" onClick={shoppingCar} value='加入購物車'>加入購物車</button>
-            </div>
+          <div className="row mt-2">
+              {dateDay.map( (day) => {
+                return (
+                  <div className="col-lg-6 text-center">
+                    <span>{day}</span>
+                  </div>
+                )
+              })}
           </div>
- 
         </div>
       </div>
       <div className='row justify-content-start mt-3'>
