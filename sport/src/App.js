@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './scss/all.scss';
 import NavBarOK from './BenComponents/navBarOK.jsx';
 // import NavBarContent from './BenComponents/navBarContent.jsx';
-import {BrowserRouter} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 
 class App extends Component {
     state = { 
@@ -10,9 +10,9 @@ class App extends Component {
      } 
     render() { 
       return (
-        <BrowserRouter>
+        <HashRouter>
           <NavBarOK/>
-        </BrowserRouter>
+        </HashRouter>
       );
     }
   }

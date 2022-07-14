@@ -28,6 +28,10 @@ function NavBarContent1() {
               <Nav.Link><NavLink className="nav-link col-lg" to="/lesson" exact >課程與場地</NavLink></Nav.Link>
               <Nav.Link><NavLink className="nav-link col-lg " to="/BeCoach" exact >成為教練</NavLink></Nav.Link>
               <Nav.Link><NavLink className="nav-link col-lg " to="/RentPlace" exact >租場地</NavLink></Nav.Link>
+
+              {/* 0709 DONG新增 */}
+              <Nav.Link><NavLink className="nav-link col-lg " to="/member" exact >會員頁</NavLink></Nav.Link>
+
               </Nav>
               <Nav>
               <Nav.Link> <NavLink className="nav-link col-lg" to="/login" exact >登入/註冊</NavLink></Nav.Link>

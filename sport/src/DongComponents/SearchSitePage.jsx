@@ -30,9 +30,9 @@ class SearchSitePage extends Component {
         { key: 1, checked: false, value: '團體', className: 'd-none text-success' }],
 
         weekList: [{ key: 1, id: 'mon', value: '星期一', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
-        { key: 2, id: 'tues', value: '星期二', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
+        { key: 2, id: 'tue', value: '星期二', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 3, id: 'wed', value: '星期三', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
-        { key: 4, id: 'thur', value: '星期四', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
+        { key: 4, id: 'thu', value: '星期四', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 5, id: 'fri', value: '星期五', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 6, id: 'sat', value: '星期六', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 7, id: 'sun', value: '星期日', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' }],
@@ -98,7 +98,7 @@ class SearchSitePage extends Component {
 
     // 清除縣市
     clearCity = () => {
-        console.log(this.state.data);
+        // console.log(this.state.data);
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
         this.setState({});

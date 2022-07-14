@@ -23,9 +23,9 @@ class SearchCoachPage extends Component {
         { key: 1, checked: false, value: '團體課程', className: 'd-none text-success' }],
 
         weekList: [{ key: 1, id: 'mon', value: '星期一', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
-        { key: 2, id: 'tues', value: '星期二', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
+        { key: 2, id: 'tue', value: '星期二', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 3, id: 'wed', value: '星期三', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
-        { key: 4, id: 'thur', value: '星期四', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
+        { key: 4, id: 'thu', value: '星期四', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 5, id: 'fri', value: '星期五', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 6, id: 'sat', value: '星期六', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' },
         { key: 7, id: 'sun', value: '星期日', className: 'd-none text-success', chkicon: faTimes, color: 'text-black' }],
@@ -78,6 +78,7 @@ class SearchCoachPage extends Component {
         .then( (response) => {
             resdata = response.data;
         });
+        // console.log(resdata);
         this.state.data = resdata;
         this.setState({});        
     }
@@ -86,8 +87,8 @@ class SearchCoachPage extends Component {
     clearCity = () => {
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
-        this.setState({});
         this.searchResult();
+        this.setState({});
     }
 
     // 清除星期
@@ -97,8 +98,8 @@ class SearchCoachPage extends Component {
             elm.chkicon = faTimes;
             elm.color = 'text-black';
         })
-        this.setState({});
         this.searchResult();
+        this.setState({});
     }
     // weeklistonchange
     weekListOnclick = (e) => {
@@ -122,8 +123,8 @@ class SearchCoachPage extends Component {
     clearTime = () => {
         document.getElementsByName('weekBegin')[0].value = '';
         document.getElementsByName('weekEnd')[0].value = '';
-        this.setState({});
         this.searchResult();
+        this.setState({});
     }
 
     // 清除所選價格
@@ -132,8 +133,8 @@ class SearchCoachPage extends Component {
             elm.checked = false;
             elm.className = 'd-none text-success';
         })
-        this.setState({});
         this.searchResult();
+        this.setState({});
     }
 
     // 點選價格更改樣式
@@ -175,8 +176,8 @@ class SearchCoachPage extends Component {
             elm.chkicon = faTimes;
             elm.className = 'text-black';
         })
-        this.setState({});
         this.searchResult();
+        this.setState({});
     }
 
 
@@ -186,8 +187,8 @@ class SearchCoachPage extends Component {
             elm.checked = false;
             elm.className = 'd-none text-success';
         })
-        this.setState({});
         this.searchResult();
+        this.setState({});
     }
 
     setPeople = (e) => {
@@ -203,6 +204,7 @@ class SearchCoachPage extends Component {
         this.setState({})
     }
 
+
     // 清除總表單
     clearForm = async () => {
         this.clearCity();
@@ -214,6 +216,7 @@ class SearchCoachPage extends Component {
         this.clearTime();
         this.clearWeek();
         this.searchResult();
+        this.setState({});
     }
 
     // 清除所選時間範圍
@@ -233,14 +236,10 @@ class SearchCoachPage extends Component {
         this.setState({});
     }
 
-    // 點選連結
-    // cardOnClick=(e)=>{
-    //     console.log(e);
-    //     // await Axios.post("http://localhost/spost/DongPHP/singleLesson.php", )
-    //     // .then( (response) => {
-    //     //     resdata = response.data;
-    //     // });
-    // }
+
+    searchChange = (e) => {
+        console.log(e);
+    }
 
     render() {
 
@@ -254,7 +253,7 @@ class SearchCoachPage extends Component {
                                 <h3>篩選</h3>
                                 <span onClick={this.clearForm} className='btn text-secondary'>全部清除</span>
                             </div>
-                            <input name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
+                            <input onChange={this.searchChange} name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
 
 
                             {/* 縣市 */}
@@ -349,7 +348,7 @@ class SearchCoachPage extends Component {
                     {/* 檢視結果 */}
                     <div className='col-9 border-end border-start'>
                         <div className='row text-center'>
-                            <Link className='col-6 shadow btn bg-black text-white' to={"/lesson"}>找課程</Link>
+                            <Link className='col-6 shadow btn bg-black text-white' to={"/coach"}>找課程</Link>
                             <Link className='col-6 shadow btn' to={"/site"}>找場地</Link>
                         </div>
                         <div className='row mt-5 justify-content-center'>

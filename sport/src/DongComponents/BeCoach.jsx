@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
-import pic from '../imgs/user1.png';
 import '../scss/all.css';
+import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faCheck, faSquareRootVariable } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 class BeCoach extends Component {
     state = {
         sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
@@ -121,7 +121,7 @@ class BeCoach extends Component {
         const file1 = document.getElementById('imgInput1').files;
         const file2 = document.getElementById('imgInput2').files;
         const file3 = document.getElementById('imgInput3').files;
-        console.log(file3);
+        // console.log(file3);
         if (file1) {
             this.state.src[0] = URL.createObjectURL(file1[0]);
             this.setState({});

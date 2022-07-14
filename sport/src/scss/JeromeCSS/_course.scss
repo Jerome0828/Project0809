@@ -42,7 +42,11 @@ body {
     background-position: center center;
     background-size: cover;
     line-height: 28px;
-
-    // background-image: url(./components/icon/1.jpg);
     background-image: url(~../JeromeComponents/course/components/icon/1.jpg);
+}
+
+
+#course {
+    // background: linear-gradient(to top left, black, transparent 35%);
+    // background-color: white;
 }

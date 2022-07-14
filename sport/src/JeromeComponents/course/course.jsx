@@ -4,7 +4,6 @@ import '../../scss/all.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
 import Head from './components/head';
 import Scroll from './components/scroll';
 import Body from './components/body';
@@ -19,16 +18,14 @@ function Courses(props) {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        // console.log(props.match.params.pid)
-        let test = props.match.params.pid;
-        setState(test)
+        let test = Math.floor(Math.random() * 40)
+        setState(props.match.params.pid)
     }, [])
-
 
     useEffect( () => {
         const Qs = require("qs")
         async function post() {
-            await axios.post("http://localhost/spost/JerpmePHP/course.php", Qs.stringify({ pid: state }))
+            await axios.post("http://localhost:80/spost/JeromePHP/course.php", Qs.stringify({ pid: state }))
             .then( response => {
                 setNews(response.data)
             })
@@ -38,11 +35,15 @@ function Courses(props) {
 
 
     return (
-        <div>
-            <Head all={news && news}/>
-            <Scroll />
-            <Body all={news && news}/>
-            <Footer />
+        <div style={{marginTop: '9vh'}} >
+            <div id='course'>
+                <Head all={news && news}/>
+                <Scroll />
+            </div>
+            <div id='course2'>
+                <Body all={news && news}/>
+                <Footer />
+            </div>
         </div>
     )
 }

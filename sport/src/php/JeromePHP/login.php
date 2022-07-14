@@ -4,7 +4,7 @@
     // 登入頁
     $singInAccount  = $materialPost["singInAccount"];
     $singInEmail  = $materialPost["singInEmail"];
-    $singInPassword  = $materialPost["singInPassword"];    
+    $singInPassword  = hash('sha256', $materialPost["singInPassword"]);
 
     if ( strlen($singInAccount) == 0 ) {
         $get = "SELECT * FROM register WHERE email = '$singInEmail' ";

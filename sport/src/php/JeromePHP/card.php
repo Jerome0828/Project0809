@@ -2,8 +2,7 @@
     include('sql.php');
 
     // card
-
-    $sql = " SELECT addr, img1, title, price, pricepertime FROM place limit 3";
+    $sql = " SELECT addr, img1, title, price, pricepertime FROM place ORDER BY RAND() limit 3";
     $result = $sportSql->query($sql);
 
     $i = 0;
