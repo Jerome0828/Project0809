@@ -1,7 +1,5 @@
 <?php
-    // include 'sql.php';
-    $mysqli = new mysqli('localhost','root','','spost2',3306);
-    $mysqli->set_charset('utf8');
+    include 'sql.php';
     header("Access-Control-Allow-Origin:*");
     $clientRequest = new stdClass();
     foreach ($_POST as $key => $val){

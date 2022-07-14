@@ -1,7 +1,6 @@
 <?php
-    // include('sql.php');
-    $mysqli = new mysqli('localhost','root','','spost2',3306);
-    $mysqli->set_charset('utf8');
+    include('sql.php');
+    
     header("Access-Control-Allow-Origin:*");
     // $sql = "SELECT pid,title,addr,img1,`type`,price,pricepertime FROM `place` ORDER BY RAND()";
     $sql = "SELECT place.pid,title,addr,price,pricepertime,member.nickname,pimage.img 

@@ -1,7 +1,5 @@
 <?php
-    // include('sql.php');
-    $mysqli = new mysqli('localhost','root','','spost2',3306);
-    $mysqli->set_charset('utf8');
+    include('sql.php');
     header("Access-Control-Allow-Origin:*");
     // $sql = "SELECT lid,img1,type,title,addr,price,cname,mode FROM `lesson` INNER JOIN coach ON lesson.cid = coach.cid ORDER BY RAND()";
     $sql = "SELECT nickname ,lesson.lid , title, addr, info, mode, price, limage.img , type 
