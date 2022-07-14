@@ -10,7 +10,7 @@
     $nickname = "{$materialPost['nickname']}";
     $gender   = "{$materialPost['gender']}";
 
-    $upDate = "UPDATE register 
+    $upDate = "UPDATE member 
         SET `password` = ?, phone = ?, realname = ?, nickname = ?, gender = ?
         WHERE account = '$account'";
     $sportUp = $sportSql->prepare($upDate);

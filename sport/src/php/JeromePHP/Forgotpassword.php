@@ -6,9 +6,9 @@
     $fgCheckNewPassWorld = $materialPost["newPassWorld"];
     
     if ( strlen($fgCheckAccount) == 0  ) {
-        $get = "SELECT * FROM register WHERE email = '$fgCheckEmail' ";
+        $get = "SELECT * FROM member WHERE email = '$fgCheckEmail' ";
     }else {
-        $get = "SELECT * FROM register WHERE account = '$fgCheckAccount' ";
+        $get = "SELECT * FROM member WHERE account = '$fgCheckAccount' ";
     }
     $results =  $sportSql->query($get);
     $row = $results->fetch_array();
@@ -23,9 +23,9 @@
         // 變更密碼
         $newCheckNewPassWorld = hash('sha256', $fgCheckNewPassWorld);
         if ( strlen($fgCheckAccount) == 0 ) {
-            $get = "UPDATE register SET `password` = '$newCheckNewPassWorld' WHERE email = '$fgCheckEmail' ";
+            $get = "UPDATE member SET `password` = '$newCheckNewPassWorld' WHERE email = '$fgCheckEmail' ";
         }else {
-            $get = "UPDATE register SET `password` = '$newCheckNewPassWorld' WHERE account = '$fgCheckAccount' ";
+            $get = "UPDATE member SET `password` = '$newCheckNewPassWorld' WHERE account = '$fgCheckAccount' ";
         }
         if ( $sportSql->query($get) ) {
             echo true;

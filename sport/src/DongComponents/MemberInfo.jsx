@@ -43,6 +43,65 @@ class MemberInfo extends Component {
         this.setState({})
     }
 
+    // 表單變更(密碼)
+    passwordChange = (e) => {
+            // 密碼
+        if ( e.target.placeholder == "密碼" ) {
+            // 正規檢查
+            let password = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
+            if ( e.target.value.length < 6 ) {
+            // this.state.pwa = '6位數，且使用一個英文字母和數字';
+            // this.state.pwr = ''
+            // this.state.pas[1] = false;
+            // this.setState({})
+        }else {
+            // 正規檢查
+            if ( password.test( e.target.value ) ) {
+            // this.state.passwordCheck[0] = e.target.value
+            // this.state.pwa = '';
+            // this.state.pwr = '';
+            // this.setState({})
+            }else {
+            // this.state.pwa = '';
+            // this.state.pwr = '密碼格式錯誤';
+            // this.state.pas[1] = false;
+            // this.setState({})
+            };
+            // 重複檢查
+            if ( this.state.passwordCheck[1].length != 0 ) {
+            if ( this.state.passwordCheck[1] == e.target.value ) {
+                // this.state.pwd = '';
+                // this.state.pas = [e.target.value, true];
+                // this.setState({})
+            }else {
+                // this.state.pwd = '兩次密碼不相同';
+                // this.state.pas[1] = false;
+                // this.setState({})
+            }
+            }
+        }
+      }
+      // 再次輸入密碼
+      if ( e.target.placeholder == "再次輸入密碼" ) {
+        // 重複檢查
+        if ( this.state.passwordCheck[0].length != 0 && this.state.passwordCheck[0].length <= e.target.value.length ) {
+            if ( this.state.passwordCheck[0] == e.target.value) {
+            this.state.pwd = '';
+            this.state.pas = [e.target.value, true];
+            this.setState({})
+            }else {
+            this.state.passwordCheck[1] = e.target.value;
+            this.state.pwd = '兩次密碼不相同';
+            this.state.pas[1] = false;
+            this.setState({})
+            }
+        }else {
+            this.state.pwd = '';
+            this.setState({}) 
+        }
+      }
+    }
+
     // 表單送出
     memberUpdate = () => {
         const Qs = require("qs");
@@ -150,7 +209,7 @@ class MemberInfo extends Component {
                                             <p>修改密碼</p>
                                         </div>
                                         <div className='col-lg-6'>
-                                            <input type="text" />
+                                            <input type="text" onChange={this.passwordChange} name='password'/>
                                         </div>
                                     </div>
                                     <div className='row mt-2'>
@@ -158,7 +217,7 @@ class MemberInfo extends Component {
                                             <p>再次輸入密碼</p>
                                         </div>
                                         <div className='col-lg-6'>
-                                            <input type="text" />
+                                            <input type="text" onChange={this.passwordChange} name='passwordAgain'/>
                                         </div>
                                     </div>
                                 </div>

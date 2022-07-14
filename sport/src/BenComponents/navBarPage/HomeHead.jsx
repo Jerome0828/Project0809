@@ -106,7 +106,7 @@ class HomeHead extends Component {
         var url = `http://localhost/spost/DongPHP/lesson.php`;
         var result = await Axios.get(url);
         this.state.data = result.data;
-        console.log(this.state.data)
+        // console.log(this.state.data)
 
         // var url1 = `http://localhost/spost/DongPHP/sportType.php`;
         // var result1 = await Axios.get(url1);
@@ -158,7 +158,7 @@ class HomeHead extends Component {
                         to={e.to} BottomText={e.BottomText}
                         
                 />  })}
-{/* 
+                {/* 
                 {this.state.data.map((elm,index)=>{
                     return  <IndexLeftBox  id={elm.pid} title={elm.title}/>
                 })} */}

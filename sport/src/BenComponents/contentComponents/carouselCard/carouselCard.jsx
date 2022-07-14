@@ -26,8 +26,8 @@ class CarouselCard extends Component {
 
 
     render() { 
-        let lessonDate =this.props.lessonDate;
-        console.log(lessonDate);
+        // let lessonDate =this.props.lessonDate;
+        // console.log(lessonDate);
         return (
             <>
             {/* 首頁輪播中卡片替換 */}

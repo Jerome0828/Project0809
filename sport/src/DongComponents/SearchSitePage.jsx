@@ -249,7 +249,7 @@ class SearchSitePage extends Component {
     cardOnClick=(e)=>{
         // let mypid = Location.href;
         
-        console.log(this.props.match.params.id);
+        // console.log(this.props.match.params.id);
         // await Axios.post("http://localhost/spost/DongPHP/singleLesson.php", )
         // .then( (response) => {
         //     resdata = response.data;

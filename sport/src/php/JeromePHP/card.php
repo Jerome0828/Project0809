@@ -2,13 +2,15 @@
     include('sql.php');
 
     // card
-    $sql = " SELECT addr, img1, title, price, pricepertime FROM place ORDER BY RAND() limit 3";
+    $sql =  "SELECT addr, title, price, pricepertime, img 
+        FROM place INNER JOIN pimage ON place.pid = pimage.pid 
+        ORDER BY RAND() limit 3;";
     $result = $sportSql->query($sql);
 
     $i = 0;
     $myJSON=[];
     while ($date = $result->fetch_object()) {
-        $date->img1 = base64_encode($date->img1);
+        $date->img = base64_encode($date->img);
         $myJSON[$i] = $date;
         $i++;
     }

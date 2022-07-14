@@ -27,18 +27,7 @@ function Monthly(props) {
   // 傳入news, 取資料
   useEffect( () => {
     setNews(props.news)
-
-    const Qs = require("qs")
-    async function post() {
-      await axios.post("http://localhost:80/spost/JeromePHP/monthlyButton_v.php", Qs.stringify({ lid: `${props.lid && props.lid}` }))
-      .then( response => {
-        if ( typeof response.data == "object" ) {
-          // 預設
-          button(response.data)
-        }
-      })
-    }
-    post()
+    button(props.news)
   }, [props])
 
   // 月曆日期變動
