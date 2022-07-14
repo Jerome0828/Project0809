@@ -58,7 +58,7 @@ class NavBarOK extends Component {
                     <Route path="/login" component={login} exact/>
 
                     {/* 購物車 */}
-                    <Route path="/shoppingCart/:id" component={ShoppingCart}/>
+                    <Route path="/shoppingCart" component={ShoppingCart}/>
 
                     {/* 會員頁 0709 DONG新增 */}
                     <Route path="/member" component={MemberPlan} exact/>
