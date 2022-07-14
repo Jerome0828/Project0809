@@ -17,6 +17,7 @@ import MemberPage from '../DongComponents/MemberPage.jsx';
 import MemberInfo from '../DongComponents/MemberInfo';
 import MemberPost from '../DongComponents/MemberPost';
 import MemberPlan from '../DongComponents/MemberPlan';
+import EditLesson from '../DongComponents/EditLesson';
 
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
@@ -70,6 +71,7 @@ class NavBarOK extends Component {
                     <Route path="/member" component={MemberPlan} exact/>
                     <Route path="/member/info" component={MemberInfo} exact/>
                     <Route path="/member/post" component={MemberPost} exact/>
+                    <Route path="/member/post/:lid" component={EditLesson} exact/>
                     <Route path="/member/plan" component={MemberPlan} exact/>
 
                 </Switch>

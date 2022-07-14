@@ -33,7 +33,7 @@ class SiteCard extends Component {
                                                 background: 'white',
                                                 objectFit: 'cover',
                                                 objectPosition: '50% 50%'
-                                            }} src={`data:image/jpeg;base64,${elm.img1}`} className="card-img-top" />
+                                            }} src={`data:image/jpeg;base64,${elm.img}`} className="card-img-top" />
                                         </Link>
                                     </div>
                                     <div className="card-body row ">

@@ -1,13 +1,19 @@
 <?php
-    include('sql.php');
+    // include('sql.php');
+    $mysqli = new mysqli('localhost','root','','spost2',3306);
+    $mysqli->set_charset('utf8');
     header("Access-Control-Allow-Origin:*");
-    $sql = "SELECT pid,title,addr,img1,`type`,price,pricepertime FROM `place` ORDER BY RAND()";
+    // $sql = "SELECT pid,title,addr,img1,`type`,price,pricepertime FROM `place` ORDER BY RAND()";
+    $sql = "SELECT place.pid,title,addr,price,pricepertime,member.nickname,pimage.img 
+    FROM place INNER JOIN member ON place.id = member.id 
+    LEFT JOIN pimage ON place.pid = pimage.pid 
+    GROUP BY pimage.pid ORDER BY RAND()"; 
     $result = $mysqli->query($sql);
     $i=0;
     $myJSON=[];
     while($datas = $result->fetch_object()){
         // var_dump($datas);
-        $datas->img1 = base64_encode($datas->img1);
+        $datas->img = base64_encode($datas->img);
         $myJSON[$i] = $datas;
         $i++;
     }

@@ -237,9 +237,9 @@ class SearchCoachPage extends Component {
     }
 
 
-    searchChange = (e) => {
-        console.log(e);
-    }
+    // searchChange = (e) => {
+    //     console.log(e);
+    // }
 
     render() {
 
@@ -253,7 +253,7 @@ class SearchCoachPage extends Component {
                                 <h3>篩選</h3>
                                 <span onClick={this.clearForm} className='btn text-secondary'>全部清除</span>
                             </div>
-                            <input onChange={this.searchChange} name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
+                            <input name="search" style={this.inputBoxStyle} className='shadow form-control' type="search" placeholder="搜尋" />
 
 
                             {/* 縣市 */}
@@ -348,7 +348,7 @@ class SearchCoachPage extends Component {
                     {/* 檢視結果 */}
                     <div className='col-9 border-end border-start'>
                         <div className='row text-center'>
-                            <Link className='col-6 shadow btn bg-black text-white' to={"/coach"}>找課程</Link>
+                            <Link className='col-6 shadow btn bg-black text-white' to={"/lesson"}>找課程</Link>
                             <Link className='col-6 shadow btn' to={"/site"}>找場地</Link>
                         </div>
                         <div className='row mt-5 justify-content-center'>

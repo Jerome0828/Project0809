@@ -47,7 +47,7 @@ class MemberPage extends Component {
                     <div className="mt-3 d-flex">
                         <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
                         <p id='plan' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
-                            className='h5'>行程</p>
+                            className='h5'>行事曆</p>
                     </div>
                 </NavLink>
             </>
