@@ -31,8 +31,6 @@ class RentPlace extends Component {
         { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd: 'satEnd' },
         { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd: 'sunEnd' }],
         src: [pic, pic, pic],
-
-
     }
     agreeStyle = {
         'width': '15%'

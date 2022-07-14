@@ -18,6 +18,8 @@ import MemberInfo from '../DongComponents/MemberInfo';
 import MemberPost from '../DongComponents/MemberPost';
 import MemberPlan from '../DongComponents/MemberPlan';
 import EditLesson from '../DongComponents/EditLesson';
+import EditPlace from '../DongComponents/EditPlace';
+
 
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
@@ -68,11 +70,12 @@ class NavBarOK extends Component {
                     <Route path="/shoppingCartPage" component={shoppingCartPage} exact/>
 
                     {/* 會員頁 0709 DONG新增 */}
-                    <Route path="/member" component={MemberPlan} exact/>
-                    <Route path="/member/info" component={MemberInfo} exact/>
-                    <Route path="/member/post" component={MemberPost} exact/>
-                    <Route path="/member/post/:lid" component={EditLesson} exact/>
-                    <Route path="/member/plan" component={MemberPlan} exact/>
+                    <Route path="/member/:id" component={MemberPlan} exact/>
+                    <Route path="/member/info/:id" component={MemberInfo} exact/>
+                    <Route path="/member/post/:id" component={MemberPost} exact/>
+                    <Route path="/member/plan/:id" component={MemberPlan} exact/>
+                    <Route path="/member/editl/:lid" component={EditLesson} exact/>
+                    <Route path="/member/editp/:pid" component={EditPlace} exact/>
 
                 </Switch>
                 <div/>

@@ -44,12 +44,6 @@ class SiteCard extends Component {
                                         </Link>
 
                                         <p className="card-text text-nowrap text-truncate"><small className="text-muted">{elm.addr}</small></p>
-                                        {/* <div className="col-12">
-                                                <p><span className="p-1 rounded border border-dark fw-bold">{elm.type}</span></p>
-                                            </div>
-                                            <div className="col-12">
-                                                <p><span className="p-1 rounded border border-dark fw-bold">{elm.mode}</span></p>
-                                            </div> */}
                                     </div>
                                     <div className="d-flex bg-white card-footer ">
                                         <span>$&nbsp;{elm.price}</span><span>&nbsp;/&nbsp;</span><span>{elm.pricepertime}</span>
