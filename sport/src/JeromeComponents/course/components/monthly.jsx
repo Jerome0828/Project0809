@@ -7,7 +7,8 @@ import axios from 'axios';
 function Monthly(props) {
   const day = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // 月曆(星期幾)與資料庫對應
 
-  const [oder, setOder] = useState([0, 0]); // 訂單資訊
+  const [oder, setOder] = useState([]); // 訂單資訊
+  const [dateDay, setDateDay] = useState([]); // 單日
   const [btnData, setBtnData] = useState([]); // 按鈕value
   const [test, setTest] = useState([]); // 場地無開放提示
   const [news, setNews] = useState(undefined);// news: 資料庫(place)資訊
@@ -45,6 +46,11 @@ function Monthly(props) {
   useEffect( () => {
     button(news)
   }, [checkDay])
+
+  useEffect( () => {
+    // title 價錢 時間
+    console.log(oder)
+  }, [oder])
 
   // 按鈕value設定
   let button = (btnValue) => {
@@ -86,6 +92,14 @@ function Monthly(props) {
     setValue(e)
 
     setCheckDay( () => [e.getFullYear(), e.getMonth() + 1, e.getDate(), day[e.getDay()]] );
+
+    let btn = document.getElementsByClassName('btnDiv');
+    Object.keys(btn).map( (val) => {
+      if ( btn[val].style.backgroundColor == "green" ) {
+        btn[val].style.backgroundColor = "red";
+        btn[val].checked = false;
+      }
+    })
   };
 
   // 按鈕選取時改變
@@ -97,31 +111,30 @@ function Monthly(props) {
         e.target.style.backgroundColor="green";
         e.target.checked = true;
     }
-    btnCheck()
+    btnCheck(e)
   }
 
   // 讀取所有按鈕的值()
   let btnCheck = (e) => {
+    setDateDay([])
+
     let btn = document.getElementsByClassName('btnDiv');
-    let a = []
     Object.keys(btn).map( (val) => {
       if ( btn[val].checked === true ) {
-        a.push( btn[val].value )  
+        setDateDay( (old) => [...old, btn[val].value])
       }
     })
+  }
+
+  // 加入購物車
+  let shoppingCar = () => {
+    setOder([news.title, news.price, `${checkDay[1]}/${checkDay[2]}`])
     // v1
-    a.map( (val) => {
-      setOder( () => [news.title, news.price])
-      oder.push(val)
+    dateDay.map( (val) => {
+      setOder( (old) => [...old, val])
     })
     // v2
-    // setOder( () => [news.title, news.price, a])
-    
-
-    // title 價錢 時間
-    if ( e.target.value == '加入購物車') {
-      console.log(oder)
-    }
+    // setOder( () => [news.title, news.price, dateDay])
   }
 
 
@@ -136,12 +149,27 @@ function Monthly(props) {
             maxDate={new Date(maxDate)}
           />
         </div>
-        <div className="col-lg-6 align-self-center">
-          <div className='container text-center'>
-              <h4>收費方式</h4>
-              <br />
-              <p> 正常時段：$ {news && news.price} / {news && news.pricepertime}</p>
-              <button className="btn w-75 mt-3 bg-info" onClick={btnCheck} value='加入購物車'>加入購物車</button>
+        <div className="col-lg-6">
+          <div className="row text-center mt-2">
+              <h4 className="col-lg-4">收費方式</h4>
+              <span className="col-lg-8">正常時段：$ {news && news.price} / {news && news.pricepertime}</span>
+          </div>
+          <div className="h-75">
+            <table className="row table my-1 w-100 justify-content-center" >
+              <div className="col-lg-6">
+                <th>{`${checkDay[1]} / ${checkDay[2]}`}</th>
+                {
+                  dateDay.map( (day) => {
+                    return (
+                      <tr>{day}</tr>
+                    )
+                  })
+                }
+              </div>
+            </table>
+          </div>
+          <div className='row justify-content-center'>
+            <button className="btn w-75 bg-info " onClick={shoppingCar} value='加入購物車'>加入購物車</button>
           </div>
         </div>
       </div>

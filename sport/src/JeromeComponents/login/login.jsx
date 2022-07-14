@@ -14,7 +14,7 @@ class Login extends Component {
     // 登入頁( 帳號orEmail, 密碼)
     addressOrEmail: ['', false, ''], password: ['', false], LoginCheck: false,
     //註冊頁( 帳號, email, 密碼, 真實姓名, 電話, 暱稱, 性別 ) , 確認必填欄位
-    add: ['', false], ema: ['', false], pas: ['', false], rna: ['', false], cellphone: ['', false], nna:'', gen:'Male', 
+    add: ['', false], ema: ['', false], pas: ['', false], rna: ['', false], cellphone: ['', false], nna:'', gen:'M', 
     registerCheck: false,
     // 密碼暫存
     passwordCheck: ['',''],
@@ -82,6 +82,7 @@ class Login extends Component {
     }
     // 密碼
     if ( e.target.placeholder == "請輸入密碼" ) {
+      this.setState({ cok: '', aeh: '' })
       let password = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
       if ( e.target.value.length >= 6 ) {
         if ( password.test( e.target.value ) ) {
@@ -352,7 +353,7 @@ class Login extends Component {
     }
   }
   
-  // 登入頁 (qwe123, qwe123@qq.com)
+  // 登入頁 (JimmyAccount01, abc123)
   loginPost = () => {
     // 帳號密碼驗證
     const Qs = require("qs")
@@ -378,6 +379,7 @@ class Login extends Component {
             this.setState({})
           }else {
             alert("ok")
+            this.setState({aew: ''})
           }
         })
     }else {
@@ -589,9 +591,9 @@ class Login extends Component {
                 <div className={`col-lg-4 ${this.state.className}`}>
                   <img className='icon mx-3 my-1' src={require('./icon/sex.png')} />
                   <select className='input text-center' onChange={ (e) => { this.setState({ gen: e.target.value })} }>
-                        <option value="Male">男</option>
-                        <option value="Female">女</option>
-                        <option value="secret">秘密</option>
+                        <option value="M">男</option>
+                        <option value="F">女</option>
+                        <option value="S">秘密</option>
                   </select>
                 </div>
               </div>

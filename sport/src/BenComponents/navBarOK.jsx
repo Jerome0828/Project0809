@@ -11,7 +11,12 @@ import home from './navBarPage/home.jsx';
 import SearchCoachPage from '../DongComponents/SearchCoachPage.jsx';
 import SearchSitePage from '../DongComponents/SearchSitePage.jsx';
 import course from '../JeromeComponents/course/course.jsx';
-import Venues from '../JeromeComponents/venues/venues.jsx';
+
+// 會員頁 0709 DONG新增
+import MemberPage from '../DongComponents/MemberPage.jsx';
+import MemberInfo from '../DongComponents/MemberInfo';
+import MemberPost from '../DongComponents/MemberPost';
+import MemberPlan from '../DongComponents/MemberPlan';
 
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
@@ -44,8 +49,7 @@ class NavBarOK extends Component {
                     {/* 課程與場地路由,預設課程頁面 */}
                     <Route path="/lesson" component={SearchCoachPage} exact/>
                     <Route path="/site" component={SearchSitePage} exact/>
-                    <Route path="/lesson/:lid" component={Venues} />
-                    <Route path="/site/:pid" component={course}/>
+                    <Route path="/site/:pid" component={course} exact />
 
                     {/* 成為教練 */}
                     <Route path="/BeCoach" component={BeCoach} exact/>
@@ -61,6 +65,12 @@ class NavBarOK extends Component {
 
                     {/* 測試購物車二頁面 */}
                     <Route path="/shoppingCartPage" component={shoppingCartPage} exact/>
+
+                    {/* 會員頁 0709 DONG新增 */}
+                    <Route path="/member" component={MemberPlan} exact/>
+                    <Route path="/member/info" component={MemberInfo} exact/>
+                    <Route path="/member/post" component={MemberPost} exact/>
+                    <Route path="/member/plan" component={MemberPlan} exact/>
 
                 </Switch>
                 <div/>

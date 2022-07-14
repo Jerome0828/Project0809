@@ -154,8 +154,10 @@ function Body(props) {
                                         <textarea className='w-100' rows='5'  />
                                     </form>                                   
                                 </div>
-                                <div className='col-lg-3 border'>
-                                <button className='position-absolute bottom-0 translate-middle-x' onClick={commentChange}>上傳評論</button> 
+                                <div className='col-lg-3'>
+                                    <div className='row justify-content-center align-items-end h-100'>
+                                        <button className='col-lg-10' onClick={commentChange}>上傳評論</button> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
