@@ -20,9 +20,9 @@ class MemberInfo extends Component {
 
     // 載入會員資料
     componentDidMount = () => {
-        this.state.accountId = '1';
+        this.state.accountId = this.props.match.params.id;
+        this.memberInfo(this.props.match.params.id);
         this.setState({})
-        this.memberInfo('1');
     }
 
     // memberInfo

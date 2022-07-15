@@ -18,7 +18,6 @@ function Courses(props) {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        // setState('p27')
         setState(props.match.params.pid)
     }, [])
 
