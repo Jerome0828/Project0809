@@ -45,30 +45,6 @@ class EditLesson extends Component {
         'width': '15%'
     }
     async componentDidMount() {
-
-        /*
-        
-        addr: "臺北市大安區光復南路240巷5號2F"
-        id: "5"
-        img: "/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEA
-        info: "以生活中基本動作調整肌肉運動模式及肌力鍛鍊為主，輔以深層核心訓練與協調感練習，達到核心及肌力訓練。"
-        lid: "l05"
-        mode: "團體課程"
-        price: "700"
-        pricepertime: "30分鐘"
-        sun: ""
-        mon: ""
-        tue: ""
-        wed: ""
-        thu: "08:00 ～ 09:00"
-        fri: "14:00 ～ 15:00"
-        sat: "10:00 ～ 12:00"
-        timelength: "30分鐘"
-        title: "墊上核心"
-        type: "皮拉提斯"
-        
-        */
-
         // 資料回傳
         let resdata = [];
         let week = [];
@@ -106,17 +82,18 @@ class EditLesson extends Component {
                 document.querySelectorAll(`select[name='${Object.keys(elm)[0]}End']`)[0].value = timetemp.split('～')[1]
             }
         })
+
+        // 預設模式
         let modetemp = this.state.data[0] && this.state.data[0].mode
-        // console.log(modetemp)
         this.state.peopleList.map(elm => {
             if (elm.value == modetemp) {
-                // console.log(document.querySelectorAll(`input[value=${elm.value}]`)[0]);
                 elm.checked = true;
                 elm.className = 'text-success';
                 elm.labelClass = 'w-100 p-1 shadow rounded border border-success text-center mt-1';
             }
         })
 
+        // 預設類別
         let typetemp = this.state.data[0] && this.state.data[0].type
         this.state.sportList.map(elm => {
             if (elm.value == typetemp) {
@@ -126,32 +103,9 @@ class EditLesson extends Component {
                 elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
             }
         })
-
-
         this.setState({});
-
     }
-    // 運動類別變更
-    // sportListOnclick = (e) => {
-    //     let sportList = this.state.sportList
-    //     sportList.map(elm => {
-    //         if (e.target.id == elm.value) {
-    //             // 若icon為 XX
-    //             if (e.target.checked == true) {
-    //                 elm.chkicon = faCheck;
-    //                 elm.color = 'text-success';
-    //                 elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
-    //             }// 若icon為 vv
-    //             else if (e.target.checked == false) {
-    //                 elm.chkicon = faTimes;
-    //                 elm.color = 'text-danger';
-    //                 elm.class = 'rounded border border-danger shadow p-1 mx-2 mt-2';
-    //             }
-    //             this.setState({});
-    //         }
-    //     })
-    // }
-
+    
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
         sportList.map(elm => {
