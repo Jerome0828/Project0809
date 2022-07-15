@@ -28,15 +28,15 @@ class EditLesson extends Component {
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
         src: [pic, pic, pic],
 
-        weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd: 'monEnd' },
-        { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd: 'tuesEnd' },
-        { eName: 'wedTime', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd: 'wedEnd' },
-        { eName: 'thurTime', cName: '週四', required: false, timeBegin: 'thurBegin', timeEnd: 'thurEnd' },
-        { eName: 'friTime', cName: '週五', required: false, timeBegin: 'friBegin', timeEnd: 'friEnd' },
-        { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd: 'satEnd' },
-        { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd: 'sunEnd' }],
+        weekTime: [{ eName: 'mon', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd: 'monEnd' },
+        { eName: 'tue', cName: '週二', required: false, timeBegin: 'tueBegin', timeEnd: 'tueEnd' },
+        { eName: 'wed', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd: 'wedEnd' },
+        { eName: 'thu', cName: '週四', required: false, timeBegin: 'thuBegin', timeEnd: 'thuEnd' },
+        { eName: 'fri', cName: '週五', required: false, timeBegin: 'friBegin', timeEnd: 'friEnd' },
+        { eName: 'sat', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd: 'satEnd' },
+        { eName: 'sun', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd: 'sunEnd' }],
 
-        data:[],addr:[]
+        data: [], addr: [], week: [{ sun: '' }, { mon: '' }, { tue: '' }, { wed: '' }, { thu: '' }, { fri: '' }, { sat: '' }]
     }
     style = {
         'width': '15%'
@@ -45,37 +45,128 @@ class EditLesson extends Component {
         'width': '15%'
     }
     async componentDidMount() {
+
+        /*
+        
+        addr: "臺北市大安區光復南路240巷5號2F"
+        id: "5"
+        img: "/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEA
+        info: "以生活中基本動作調整肌肉運動模式及肌力鍛鍊為主，輔以深層核心訓練與協調感練習，達到核心及肌力訓練。"
+        lid: "l05"
+        mode: "團體課程"
+        price: "700"
+        pricepertime: "30分鐘"
+        sun: ""
+        mon: ""
+        tue: ""
+        wed: ""
+        thu: "08:00 ～ 09:00"
+        fri: "14:00 ～ 15:00"
+        sat: "10:00 ～ 12:00"
+        timelength: "30分鐘"
+        title: "墊上核心"
+        type: "皮拉提斯"
+        
+        */
+
+        // 資料回傳
         let resdata = [];
-        await Axios.post("http://localhost/spost/DongPHP/editLesson.php", this.props.match.params.lid )
-        .then( (response) => {
-            resdata = response.data;
-        });
+        let week = [];
+        await Axios.post("http://localhost/spost/DongPHP/editLesson.php", this.props.match.params.lid)
+            .then((response) => {
+                resdata = response.data;
+            });
         // console.log(resdata);
         this.state.data = resdata;
-        
 
+        // 預設價格
+        this.state.data[0].pricepertime = this.state.data[0].pricepertime.replace(' ', '');
+        document.getElementsByName('pricePerTime')[0].value = this.state.data[0].pricepertime;
+
+        // 預設時間
+        this.state.data[0].timelength = this.state.data[0].timelength.replace(' ', '');
+        document.getElementsByName('timeLength')[0].value = this.state.data[0].timelength;
+
+        // 預設地址
         this.state.addr = this.state.data[0] && this.state.data[0].addr;
+
+        // 預設星期
+        this.state.week[0].sun = this.state.data[0] && this.state.data[0].sun; this.state.week[1].mon = this.state.data[0] && this.state.data[0].mon;
+        this.state.week[2].tue = this.state.data[0] && this.state.data[0].tue; this.state.week[3].wed = this.state.data[0] && this.state.data[0].wed;
+        this.state.week[4].thu = this.state.data[0] && this.state.data[0].thu; this.state.week[5].fri = this.state.data[0] && this.state.data[0].fri;
+        this.state.week[6].sat = this.state.data[0] && this.state.data[0].sat;
+
+        this.state.week.map((elm, idx) => {
+            if (Object.values(elm)[0] !== '') {
+                document.getElementById(Object.keys(elm)[0]).checked = true;
+                let timetemp = '';
+                timetemp = Object.values(elm)[0].replace(' ', '').replace(' ', '');
+                document.querySelectorAll(`div[name=${Object.keys(elm)[0]}]`)[0].className = 'mt-2';
+                document.querySelectorAll(`select[name='${Object.keys(elm)[0]}Begin']`)[0].value = timetemp.split('～')[0]
+                document.querySelectorAll(`select[name='${Object.keys(elm)[0]}End']`)[0].value = timetemp.split('～')[1]
+            }
+        })
+        let modetemp = this.state.data[0] && this.state.data[0].mode
+        // console.log(modetemp)
+        this.state.peopleList.map(elm => {
+            if (elm.value == modetemp) {
+                // console.log(document.querySelectorAll(`input[value=${elm.value}]`)[0]);
+                elm.checked = true;
+                elm.className = 'text-success';
+                elm.labelClass = 'w-100 p-1 shadow rounded border border-success text-center mt-1';
+            }
+        })
+
+        let typetemp = this.state.data[0] && this.state.data[0].type
+        this.state.sportList.map(elm => {
+            if (elm.value == typetemp) {
+                document.querySelectorAll(`input[value=${elm.value}]`)[0].checked = true;
+                elm.chkicon = faCheck;
+                elm.color = 'text-success';
+                elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
+            }
+        })
+
+
         this.setState({});
+
     }
     // 運動類別變更
+    // sportListOnclick = (e) => {
+    //     let sportList = this.state.sportList
+    //     sportList.map(elm => {
+    //         if (e.target.id == elm.value) {
+    //             // 若icon為 XX
+    //             if (e.target.checked == true) {
+    //                 elm.chkicon = faCheck;
+    //                 elm.color = 'text-success';
+    //                 elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
+    //             }// 若icon為 vv
+    //             else if (e.target.checked == false) {
+    //                 elm.chkicon = faTimes;
+    //                 elm.color = 'text-danger';
+    //                 elm.class = 'rounded border border-danger shadow p-1 mx-2 mt-2';
+    //             }
+    //             this.setState({});
+    //         }
+    //     })
+    // }
+
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
         sportList.map(elm => {
             if (e.target.id == elm.value) {
                 // 若icon為 XX
-                if (e.target.checked == true) {
-                    elm.chkicon = faCheck;
-                    elm.color = 'text-success';
-                    elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
-                }// 若icon為 vv
-                else if (e.target.checked == false) {
-                    elm.chkicon = faTimes;
-                    elm.color = 'text-danger';
-                    elm.class = 'rounded border border-danger shadow p-1 mx-2 mt-2';
-                }
-                this.setState({});
+                elm.chkicon = faCheck;
+                elm.color = 'text-success';
+                elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
+            } else {
+                elm.chkicon = faTimes;
+                elm.color = 'text-danger';
+                elm.class = 'rounded border border-danger shadow p-1 mx-2 mt-2';
             }
         })
+        this.setState({});
     }
 
     // 人數更動
@@ -105,11 +196,11 @@ class EditLesson extends Component {
 
     // 圖片預覽
     fileInput = () => {
-        
+
         const file1 = document.getElementById('imgInput1').files;
         const file2 = document.getElementById('imgInput2').files;
         const file3 = document.getElementById('imgInput3').files;
-        // console.log(file3);
+
         if (file1) {
             this.state.src[0] = URL.createObjectURL(file1[0]);
             this.setState({});
@@ -122,7 +213,7 @@ class EditLesson extends Component {
             this.state.src[2] = URL.createObjectURL(file3[0]);
             this.setState({});
         }
-        
+
     }
 
     // 星期+時間
@@ -140,6 +231,42 @@ class EditLesson extends Component {
         }
     }
 
+    editImage = (e) => {
+        if (e.target.files[0]) {
+            e.target.parentElement.childNodes[0].src = URL.createObjectURL(e.target.files[0]);
+            // this.setState({});
+        }
+    }
+
+    addImage = (e) => {
+        var i = 0;
+        document.getElementById('imageGroup').childNodes.forEach((node, idx) => {
+            if (node.className == 'col-3') {
+                i++
+            }
+        })
+        if (i == 0) {
+            document.getElementById('imageGroup').childNodes[0].children[1].id = 'imgInput1'
+            document.getElementById('imageGroup').childNodes[0].children[1].name = 'img1'
+            document.getElementById('imageGroup').childNodes[0].className = 'col-3';
+        }
+
+        if (i == 1) {
+            document.getElementById('imageGroup').childNodes[1].children[1].id = 'imgInput2'
+            document.getElementById('imageGroup').childNodes[1].children[1].name = 'img2'
+            document.getElementById('imageGroup').childNodes[1].className = 'col-3';
+        }
+
+        if (i == 2) {
+            document.getElementById('imageGroup').childNodes[2].children[1].id = 'imgInput3'
+            document.getElementById('imageGroup').childNodes[2].children[1].name = 'img3'
+            document.getElementById('imageGroup').childNodes[2].className = 'col-3';
+        }
+    }
+
+    deleteImage = (e) => {
+        e.target.parentElement.childNodes[0].src = pic
+    }
 
     render() {
         let selectedOptionId = '';
@@ -150,43 +277,75 @@ class EditLesson extends Component {
                 <form id='beCoach' className="was-validated form-group" enctype="multipart/form-data"
                     action="http://localhost/spost/form.php" method='POST'>
 
-
-                    {/* 上傳圖片 */}
+                    {/* 編輯圖片 */}
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>上傳圖片 :</b>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">
-                                </li>
-                            </ul>
+                        <li className="list-group-item"><b>編輯圖片 :</b>
+                            <span className="mx-3 btn btn-outline-success" onClick={this.addImage}>新增</span>
                         </li>
                     </ul>
-                    <div className="row">
-                        <div className="col-3 mb-3 d-flex">
-                            <input name='img1' id='imgInput1' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required />
-                        </div>
-                        <div className="col-3 mb-3 d-flex">
-                            <input name='img2' id='imgInput2' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control"/>
-                        </div>
-                        <div className="col-3 mb-3 d-flex">
-                            <input name='img3' id='imgInput3' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control"/>
-                        </div>
-                    </div>
-
-
-                    {/* 預覽圖 */}
-                    <div className="row">
+                    <div id='imageGroup' className="row">
                         {this.state.data.map((elm, idx) => {
                             return (
-                                <div className="col-3">
-                                    <img style={{
-                                        width: '260px',
-                                        height: '280px',
-                                        background: 'white',
-                                        objectFit: 'contain'
-                                    }} src={`data:image/jpeg;base64,${elm.img}`} className="mt-3 mx-2" />
-                                </div>
+                                <>
+                                    <div className="col-3">
+                                        <img style={{
+                                            width: '260px',
+                                            height: '280px',
+                                            background: 'white',
+                                            objectFit: 'contain'
+                                        }} src={`data:image/jpeg;base64,${elm.img}`} className="mt-3 mx-2" />
+                                        <input name={`img${idx+1}`} id={`imgInput${idx+1}`}
+                                            accept="image/gif, image/jpeg, image/png"
+                                            type="file" onChange={this.editImage} className="mt-3 rounded shadow form-control" />
+                                        <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                                    </div>
+                                </>
                             )
                         })}
+                        <div className="col-3 d-none">
+                            <img style={{
+                                width: '260px',
+                                height: '280px',
+                                background: 'white',
+                                objectFit: 'contain'
+                            }} src={pic} className="mt-3 mx-2" />
+                            <input name='img2' id='imgInput2'
+                                accept="image/gif, image/jpeg, image/png"
+                                type="file" onChange={this.editImage}
+                                className="mt-3 rounded shadow form-control" />
+                            <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                        </div>
+
+                        <div className="col-3 d-none">
+                            <img style={{
+                                width: '260px',
+                                height: '280px',
+                                background: 'white',
+                                objectFit: 'contain'
+                            }} src={pic} className="mt-3 mx-2" />
+
+                            <input name='img3' id='imgInput3'
+                                accept="image/gif, image/jpeg, image/png"
+                                type="file" onChange={this.editImage}
+                                className="mt-3 rounded shadow form-control" />
+                            <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                        </div>
+
+                        <div className="col-3 d-none">
+                            <img style={{
+                                width: '260px',
+                                height: '280px',
+                                background: 'white',
+                                objectFit: 'contain'
+                            }} src={pic} className="mt-3 mx-2" />
+
+                            <input name='img3' id='imgInput3'
+                                accept="image/gif, image/jpeg, image/png"
+                                type="file" onChange={this.editImage}
+                                className="mt-3 rounded shadow form-control" />
+                            <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                        </div>
+
                     </div>
 
                     <hr />
@@ -263,19 +422,6 @@ class EditLesson extends Component {
 
                             )
                         })}
-                        {/* <div className="mb-3 mx-1">
-                            <div className="mx-3 form-check form-switch">
-                                <input className="form-check-input" type="checkbox" id="monTime" onChange={this.weekTimeChange} />
-                                <label className="form-check-label" htmlFor="monTime">週一</label>
-                            </div>
-                            <label className='mt-2'>
-                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
-                            </label>
-                            <p className="mt-2 mb-2">至</p>
-                            <label>
-                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
-                            </label>
-                        </div>*/}
                     </div>
                     <hr />
 
@@ -302,10 +448,10 @@ class EditLesson extends Component {
                         <label>
                             <select className="custom-select rounded shadow form-control" name="timeLength" required>
                                 <option value="" className='d-none'>請選擇課程長度</option>
-                                <option value="30">30</option>
-                                <option value="60">60</option>
-                                <option value="90">90</option>
-                                <option value="120">120</option>
+                                <option value="30分鐘">30</option>
+                                <option value="60分鐘">60</option>
+                                <option value="90分鐘">90</option>
+                                <option value="120分鐘">120</option>
                             </select>
                         </label>
                         <p className='text-muted mt-2'>(分鐘)</p>
@@ -317,6 +463,9 @@ class EditLesson extends Component {
                         <li className="list-group-item"><b>模式 :</b>
                         </li>
                     </ul>
+                    {/* { key: 1, checked: false, value: '團體課程', 
+                    className: 'd-none text-success', 
+                    labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' } */}
                     {this.state.peopleList.map(elm => {
                         return (
                             <div style={this.style}>
@@ -330,19 +479,22 @@ class EditLesson extends Component {
 
 
                     {/* 價錢 */}
+
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item"><b>價錢 :</b>
                         </li>
                     </ul>
                     <div className="mb-3 mt-1">
                         <label>
-                            <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control" placeholder="請輸入價錢" required />
-                            <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue={selectedOptionId} required>
+                            <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control" defaultValue={this.state.data[0] && this.state.data[0].price} placeholder="請輸入價錢" required />
+                            <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue='' required>
                                 <option name="" value=""></option>
                                 <option name="perTimes" value="1次">1次</option>
                                 <option name="perMin" value="1分鐘">1分鐘</option>
                                 <option name="perThirtyMin" value="30分鐘">30分鐘</option>
                                 <option name="perHour" value="60分鐘">60分鐘</option>
+                                <option name="nintymin" value="90分鐘">90分鐘</option>
+                                <option name="perTwoHours" value="120分鐘">120分鐘</option>
                             </select>
                         </label>
                         <p className='text-muted mt-2'>$ <span id='spanPrice'> </span> / <span id='spanTimes'></span></p>
