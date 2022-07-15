@@ -111,6 +111,11 @@ class EditLesson extends Component {
         sportList.map(elm => {
             if (e.target.id == elm.value) {
                 // 若icon為 XX
+                let inputLength = document.querySelectorAll('input[name="type[]"]').length;
+                for(var j=0; j < inputLength; j++) {
+                    document.querySelectorAll('input[name="type[]"]')[j].checked=false
+                }
+                e.target.checked = true;
                 elm.chkicon = faCheck;
                 elm.color = 'text-success';
                 elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
