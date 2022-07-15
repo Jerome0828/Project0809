@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
 import '../scss/all.css';
 import pic from '../imgs/user1.png';
@@ -47,7 +46,6 @@ class EditLesson extends Component {
     async componentDidMount() {
         // 資料回傳
         let resdata = [];
-        let week = [];
         await Axios.post("http://localhost/spost/DongPHP/editLesson.php", this.props.match.params.lid)
             .then((response) => {
                 resdata = response.data;
@@ -58,6 +56,8 @@ class EditLesson extends Component {
         // 預設價格
         this.state.data[0].pricepertime = this.state.data[0].pricepertime.replace(' ', '');
         document.getElementsByName('pricePerTime')[0].value = this.state.data[0].pricepertime;
+        document.getElementById('spanPrice').innerHTML = this.state.data[0].price;
+        document.getElementById('spanTimes').innerHTML = this.state.data[0].pricepertime.replace(' ', '');
 
         // 預設時間
         this.state.data[0].timelength = this.state.data[0].timelength.replace(' ', '');
@@ -66,7 +66,7 @@ class EditLesson extends Component {
         // 預設地址
         this.state.addr = this.state.data[0] && this.state.data[0].addr;
 
-        // 預設星期
+        // 預設星期+時間
         this.state.week[0].sun = this.state.data[0] && this.state.data[0].sun; this.state.week[1].mon = this.state.data[0] && this.state.data[0].mon;
         this.state.week[2].tue = this.state.data[0] && this.state.data[0].tue; this.state.week[3].wed = this.state.data[0] && this.state.data[0].wed;
         this.state.week[4].thu = this.state.data[0] && this.state.data[0].thu; this.state.week[5].fri = this.state.data[0] && this.state.data[0].fri;
