@@ -18,7 +18,6 @@ function Courses(props) {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        let test = Math.floor(Math.random() * 40)
         setState(props.match.params.pid)
     }, [])
 
@@ -33,17 +32,12 @@ function Courses(props) {
         post()
     }, [state])
 
-
     return (
         <div style={{marginTop: '9vh'}} >
-            <div id='course'>
-                <Head all={news && news}/>
-                <Scroll />
-            </div>
-            <div id='course2'>
-                <Body all={news && news}/>
-                <Footer />
-            </div>
+            <Head all={news && news}/>
+            <Scroll />
+            <Body all={news && news}/>
+            <Footer />
         </div>
     )
 }

@@ -9,7 +9,9 @@ function Body(props) {
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
-        setNews(props.all)
+        if ( typeof props.all == 'object') {
+            setNews(props.all[0])
+        }
     }, [props])
 
     // 更新google地圖

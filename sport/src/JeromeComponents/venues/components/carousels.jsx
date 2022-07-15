@@ -11,6 +11,7 @@ function Carousels(props) {
   };
 
   useEffect( () => {
+    setImg([])
     if ( typeof props.gif == 'object' ) {
       setImg(props.gif)
     }
@@ -18,14 +19,15 @@ function Carousels(props) {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} interval={1500} style={{ height: style[0] }} >
-      {img && Object.keys(img).map( (val) => {
+      {img && img.map( (val) => {
         return (
           <Carousel.Item>
-            <img
-              className="w-100"
-              src={`data:image/jpeg;base64,${img[val]}`}
-              style={{ height: style[0]}}
-            />
+            <div className="d-flex w-100 justify-content-center">
+              <img
+                src={`data:image/jpeg;base64,${val.img}`}
+                style={{ height: style[0]}}
+              />
+            </div>
           </Carousel.Item>
         )
       })}

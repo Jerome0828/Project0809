@@ -9,7 +9,7 @@ function Footer() {
 
     useEffect( () => {
         async function get() {
-            await axios.get("http://localhost:80/spost/JerpmePHP/card.php")
+            await axios.get("http://localhost:80/spost/JeromePHP/card.php")
             .then( response => {
                 setNews(response.data)
             })
