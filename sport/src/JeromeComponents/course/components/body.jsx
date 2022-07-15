@@ -13,7 +13,9 @@ function Body(props) {
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
-        setNews(props.all)
+        if ( typeof props.all == 'object') {
+            setNews(props.all[0])
+        }
     }, [props])
 
     // 更新google地圖
@@ -152,7 +154,7 @@ function Body(props) {
                                 <div className='col-lg-8 container mt-3'>
                                     <form onChange={(e) => { setTest(e.target.value) }}>
                                         <textarea className='w-100' rows='5'  />
-                                    </form>                                   
+                                    </form>                        
                                 </div>
                                 <div className='col-lg-3'>
                                     <div className='row justify-content-center align-items-end h-100'>

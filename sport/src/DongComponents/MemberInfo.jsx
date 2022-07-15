@@ -1,36 +1,57 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import MemberPage from '../DongComponents/MemberPage.jsx';
+import axios from 'axios';
 
 
 class MemberInfo extends Component {
     state = {
-        // 會員帳號
-        account: '',
+        // 會員帳號Id, 會員帳號
+        accountId: '', account: '',
         // 頭像, 真實姓名, 暱稱, email, 生日, 手機號碼, 性別   
         img: '', realName: '', nickname: '', email: '', birthday: '', phone: '', gender: '',
+        // 密碼提示, 密碼格式錯誤, 密碼檢查
+        pwa: '6位數，且使用一個英文字母和數字', pwr: '', pas: ['', false], 
         // 密碼, 再次輸入密碼
-        password: '', passwordAgain: ''
+        password: '', passwordAgain: '',
+        // 更改成功
+        changOK: ''
     }
 
     // 載入會員資料
     componentDidMount = () => {
-        this.memberInfo();
+        this.state.accountId = '1';
+        this.setState({})
+        this.memberInfo('1');
     }
 
     // memberInfo
-    memberInfo = async() => {
+    memberInfo = async(memberId) => {
         const Qs = require("qs");
-        // await axios.post("http://localhost:80/spost/JeromePHP/memberInfo.php", Qs.stringify({ account:   }))
-        // .then( response => {
-            
-        // })
+        await axios.post("http://localhost:80/spost/JeromePHP/memberInfo.php", Qs.stringify({ id: memberId }))
+        .then( response => {
+            this.state.img = response.data.img;
+            this.state.realName = response.data.realname;
+            this.state.nickname = response.data.nickname;
+            this.state.account = response.data.account;
+            this.state.email = response.data.email;
+            this.state.birthday = response.data.birthday;
+            this.state.phone = response.data.phone;
+            this.state.gender = response.data.gender;
+            this.setState({})
+        })
+        let genderArray = ['M', 'F', 'S'];
+        document.getElementsByTagName('option')[genderArray.indexOf(this.state.gender)].setAttribute("selected", "1")
     }
 
     // 頭像預覽
     fileInput = (e) => {
-        this.state.img = URL.createObjectURL(e.target.files[0]);
-        this.setState({})
+        const reader = new FileReader()
+        reader.readAsDataURL(e.target.files[0])
+        reader.onload = (event) => {
+            this.state.img = event.target.result;
+            this.setState({})
+        };
     }
 
     // 表單變更
@@ -45,76 +66,88 @@ class MemberInfo extends Component {
 
     // 表單變更(密碼)
     passwordChange = (e) => {
-            // 密碼
-        if ( e.target.placeholder == "密碼" ) {
-            // 正規檢查
+    // 密碼
+        if ( e.target.name == "password" ) {
+        // 正規檢查
             let password = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/);
             if ( e.target.value.length < 6 ) {
-            // this.state.pwa = '6位數，且使用一個英文字母和數字';
-            // this.state.pwr = ''
-            // this.state.pas[1] = false;
-            // this.setState({})
-        }else {
-            // 正規檢查
-            if ( password.test( e.target.value ) ) {
-            // this.state.passwordCheck[0] = e.target.value
-            // this.state.pwa = '';
-            // this.state.pwr = '';
-            // this.setState({})
+                this.state.pwa = '6位數，且使用一個英文字母和數字';
+                this.state.pwr = ''
+                this.state.pas = ['', false];
             }else {
-            // this.state.pwa = '';
-            // this.state.pwr = '密碼格式錯誤';
-            // this.state.pas[1] = false;
-            // this.setState({})
-            };
-            // 重複檢查
-            if ( this.state.passwordCheck[1].length != 0 ) {
-            if ( this.state.passwordCheck[1] == e.target.value ) {
-                // this.state.pwd = '';
-                // this.state.pas = [e.target.value, true];
-                // this.setState({})
-            }else {
-                // this.state.pwd = '兩次密碼不相同';
-                // this.state.pas[1] = false;
-                // this.setState({})
+                if ( password.test( e.target.value ) ) {
+                    this.state.password = e.target.value
+                    this.state.pwa = '';
+                    this.state.pwr = '';
+                    // 重複檢查
+                    if ( this.state.passwordAgain.length != 0 ) {
+                        if ( this.state.passwordAgain == e.target.value ) {
+                            this.state.pwr = '';
+                            this.state.pas = [e.target.value, true];
+                        }else if ( this.state.passwordAgain.length != 0){
+                            this.state.pwr = '兩次密碼不相同';
+                            this.state.pas = [e.target.value ,false];
+                        }
+                    }else {
+                        this.state.pwr = '';
+                        this.state.pas = [e.target.value ,false];
+                    }
+                }else {
+                    this.state.pwa = '';
+                    this.state.pwr = '密碼格式錯誤';
+                    this.state.pas[1] = false;
+                };
             }
-            }
+            this.setState({})
         }
-      }
-      // 再次輸入密碼
-      if ( e.target.placeholder == "再次輸入密碼" ) {
+      
+    // 再次輸入密碼
+        if ( e.target.name == "passwordAgain" ) {
         // 重複檢查
-        if ( this.state.passwordCheck[0].length != 0 && this.state.passwordCheck[0].length <= e.target.value.length ) {
-            if ( this.state.passwordCheck[0] == e.target.value) {
-            this.state.pwd = '';
-            this.state.pas = [e.target.value, true];
-            this.setState({})
+            if ( this.state.password.length != 0 && this.state.password.length <= e.target.value.length ) {
+                if ( this.state.password == e.target.value) {
+                    this.state.pwr = '';
+                    this.state.pas = [e.target.value, true];
+                }else {
+                    this.state.passwordAgain = e.target.value;
+                    this.state.pwr = '兩次密碼不相同';
+                    this.state.pas[1] = false;
+                }
             }else {
-            this.state.passwordCheck[1] = e.target.value;
-            this.state.pwd = '兩次密碼不相同';
-            this.state.pas[1] = false;
-            this.setState({})
+                this.state.passwordAgain = ''
+                this.state.pwr = '';
+                this.state.pas[1] = false;
             }
-        }else {
-            this.state.pwd = '';
-            this.setState({}) 
+            this.setState({})
         }
-      }
     }
 
     // 表單送出
-    memberUpdate = () => {
+    memberUpdate = async() => {
         const Qs = require("qs");
-        // await axios.post("http://localhost:80/spost/JeromePHP/memberUpdate.php", Qs.stringify({ account:   }))
-        // .then( response => {
-            
-        // })
+        await axios.post("http://localhost:80/spost/JeromePHP/memberUpdate.php", Qs.stringify({
+            id: this.state.accountId,
+            img: this.state.img,
+            realname: this.state.realName,
+            nickname: this.state.nickname,
+            email: this.state.email,
+            birthday: this.state.birthday,
+            phone: this.state.phone,
+            gender: this.state.gender,
+            password:  this.state.pas[0]
+        }))
+        .then( response => {
+            if ( response.data == '1') {
+                this.state.changOK = '資料更改成功'
+                this.setState({})
+            }
+        })
     }
 
     render() {
         return (
             <div className='container'>
-                <br /><br /><br />
+                <br />
                 <div className='row'>
                     <div className='col-2 mt-5 border-end'>
                         <MemberPage />
@@ -123,13 +156,14 @@ class MemberInfo extends Component {
                     <div className='col-lg-9'>
                         <form>
                             <div className='row'>
-                                <div className='col-lg-7'>
+                                <h3 className='col-lg-9 text-center text-success'>&emsp; {this.state.changOK}</h3>
+                                <div className='col-lg-7 mt-3'>
                                     <div className='row'>
                                         <div className='col-lg-4'>
                                             <p>帳號</p>
                                         </div>
                                         <div className='col-lg-6'>
-                                            <p></p>
+                                            <p>{this.state.account && this.state.account}</p>
                                         </div>
                                     </div>
                                     <div className='row mt-2'>
@@ -137,7 +171,7 @@ class MemberInfo extends Component {
                                             <p>上傳頭貼</p>
                                         </div>
                                         <div className='col-lg-6'>
-                                            <input type="file" accept="image/gif, image/jpeg, image/png" onChange={this.fileInput} className="rounded shadow form-control"/>
+                                            <input type="file" accept="image/gif, image/jpeg, image/png" onChange={this.fileInput} className="rounded shadow form-control" />
                                         </div>
                                     </div>
                                     <div className='row mt-2'>
@@ -190,9 +224,9 @@ class MemberInfo extends Component {
                                         </div>
                                         <div className='col-lg-6'>
                                             <select className='text-center' onChange={this.formChange} name='gender'>
-                                                <option value='M'>男</option>
-                                                <option value='F'>女</option>
-                                                <option value='S'>秘密</option>
+                                                <option value='M' >男</option>
+                                                <option value='F' >女</option>
+                                                <option value='S' >秘密</option>
                                             </select>
                                         </div>
                                     </div>
@@ -203,6 +237,10 @@ class MemberInfo extends Component {
                             </div>
                             <hr />
                             <div className='row'>
+                                <span className='text-center'>
+                                    &emsp; {this.state.pwa}
+                                    <span className='text-danger'>{this.state.pwr}</span>
+                                </span>
                                 <div className='col-lg-7'>
                                     <div className='row mt-2'>
                                         <div className='col-lg-4'>

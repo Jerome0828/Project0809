@@ -18,14 +18,14 @@ function Monthly(props) {
     new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), day[new Date().getDay()]
   ]); // 月曆點選日期(預設今天)
 
-  // 設定月曆最大期限
+  // 設定月曆最大期限(+1個月)
   useEffect( () => {
     let month = new Date().getMonth() + 2;
     let tod = new Date().getFullYear() + "-" + month + "-" + new Date().getDate();
     setMaxDate(tod);
   }, [])
 
-  // 傳入news, 取資料
+  // 傳入news, 設定button
   useEffect( () => {
     setNews(props.news)
     button(props.news)

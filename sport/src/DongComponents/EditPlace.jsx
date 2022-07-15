@@ -5,7 +5,7 @@ import '../scss/all.css';
 import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
-class RentPlace extends Component {
+class EditPlace extends Component {
     state = {
         sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
         { id: 2, value: '重量訓練', cName: '重量訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
@@ -31,6 +31,8 @@ class RentPlace extends Component {
         { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd: 'satEnd' },
         { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd: 'sunEnd' }],
         src: [pic, pic, pic],
+
+
     }
     agreeStyle = {
         'width': '15%'
@@ -305,28 +307,14 @@ class RentPlace extends Component {
                     </div>
                     <hr />
 
-                    {/* 我同意 */}
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item"><b>是否同意 :</b>
-                        </li>
-                    </ul>
-
-                    <div className=" mb-2" style={this.agreeStyle}>
-                        <input onChange={this.agreeOnclick} className='form-control d-none' type="checkbox" id="myCheck" required />
-                        <label htmlFor='myCheck' className={this.state.agreeBox[0].labelClass}>
-                            <FontAwesomeIcon className={this.state.agreeBox[0].iconClass} icon={faCheck} /><span className={this.state.agreeBox[0].spanClass}>我同意</span></label><br />
-                    </div>
-                    <p className={this.state.agreeBox[0].pClass} id='myCheckText'>Check this checkbox to continue.</p>
-                    <hr />
-
-
                     <button type="submit" onClick={this.submitOnClick} className="btn btn-outline-success">送出</button>
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                 </form>
+                <br /><br /><br /><br /><br /><br /><br />
             </div>
 
         );
     }
 }
 
-export default RentPlace;
+export default EditPlace;

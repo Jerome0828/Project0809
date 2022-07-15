@@ -17,10 +17,17 @@ function handleClick(event) {
 function Head(props) {
     const [news, setNews] = useState(undefined)
     const [city, setCity] = useState()
+    const [img, setImg] = useState();
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
-        setNews(props.all)
+        if ( typeof props.all == 'object') {
+            setNews(props.all[0])
+            setImg([])
+            for (let i = 1 ; i < props.all.length ; i++ ) {
+                setImg( (old) => [...old, props.all[i]])
+            }
+        }
     }, [props])
 
     // 地址拆分 (市 & 區)
@@ -56,7 +63,7 @@ function Head(props) {
             <div className='row'>
                 <div className='col-lg-8' >
                     <div className='w-100 border' >
-                        <Carousels  gif={news && [news.img1, news.img2, news.img3]}/>
+                        <Carousels  gif={img && img}/>
                     </div>
                 </div>
                 <div className='col-lg-3'>

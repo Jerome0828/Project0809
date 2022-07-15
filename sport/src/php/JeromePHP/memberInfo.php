@@ -1,10 +1,10 @@
 <?php
     include('sql.php');
 
-    $account = "{$materialPost['account']}";
+    $id = "{$materialPost['id']}";
 
     // 會員資料
-    $sql = " SELECT * FROM member WHERE account = '$account' ";
+    $sql = " SELECT * FROM member WHERE id = '$id' ";
     $result = $sportSql->query($sql);
 
     $myJSON=[];
