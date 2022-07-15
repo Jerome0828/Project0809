@@ -18,7 +18,6 @@ function Courses(props) {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        let test = Math.floor(Math.random() * 40)
         setState(props.match.params.pid)
     }, [])
 

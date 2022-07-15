@@ -25,7 +25,7 @@ function Head(props) {
 
     // 地址拆分 (市 & 區)
     useEffect( () => {
-        if ( typeof news == 'object' ) {
+        if ( typeof news == 'object' && `${news && news.addr}` && news.addr != undefined) {
             if (  news.addr.indexOf("區") != -1 ) {
                 setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, news.addr.indexOf("區")+1)])
             }else {

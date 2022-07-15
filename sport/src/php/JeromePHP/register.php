@@ -5,7 +5,7 @@
     $account  = $materialPost["account"];
     $email    = $materialPost["email"];
 
-    $insert = "INSERT INTO register (account, email) VALUES (?, ?)";
+    $insert = "INSERT INTO member (account, email) VALUES (?, ?)";
     $sportIn = $sportSql->prepare($insert);
     $sportIn->bind_param('ss', $account, $email);
 

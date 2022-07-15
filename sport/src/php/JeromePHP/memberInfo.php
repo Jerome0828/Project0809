@@ -1,10 +1,10 @@
 <?php
     include('sql.php');
 
-    // 日期按鈕
-    $pid = $materialPost["pid"];
+    $account = "{$materialPost['account']}";
 
-    $sql = "SELECT mon, tue, wed, thu, fri, sat, sun FROM place WHERE pid = $pid";
+    // 會員資料
+    $sql = " SELECT * FROM member WHERE account = '$account' ";
     $result = $sportSql->query($sql);
 
     $myJSON=[];
@@ -13,4 +13,3 @@
     }
     $DateToClient = json_encode($myJSON);
     echo $DateToClient;
-?>

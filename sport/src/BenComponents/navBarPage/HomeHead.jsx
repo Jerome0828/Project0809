@@ -88,7 +88,8 @@ class HomeHead extends Component {
             {id:3,value:"間歇訓練",value1:"團體課程",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
             {id:4,value:"基礎瑜珈",value1:"皮拉提斯",src:rightImg3,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
         ],
-        data:[]
+        lessonData:[],
+        placeData:[],
 
     } 
 
@@ -103,10 +104,19 @@ class HomeHead extends Component {
 
               
     async componentDidMount() {
-        var url = `http://localhost/spost/DongPHP/lesson.php`;
+        // 取得課程lesson
+        var url = `http://localhost:80/spost/BenPHP/lessonGet.php`;
         var result = await Axios.get(url);
-        this.state.data = result.data;
-        console.log(this.state.data)
+        this.state.lessonData = result.data;
+        console.log(this.state.lessonData)
+
+        // 取得場地place
+        var url = `http://localhost:80/spost/BenPHP/placeGet.php`;
+        var result = await Axios.get(url);
+        this.state.placeData = result.data;
+        console.log(this.state.placeData)
+
+        this.setState({});
 
         // var url1 = `http://localhost/spost/DongPHP/sportType.php`;
         // var result1 = await Axios.get(url1);
@@ -133,17 +143,8 @@ class HomeHead extends Component {
 
 
     render() {
-        
-
-        
-
         return (
         <div>
-
-
-
-
-
 {/* 第一層header */}
         <header className=''>
             {/* header第一段左邊 */}
@@ -169,6 +170,7 @@ class HomeHead extends Component {
                     <div className='HomeHeadBoxRightImgBox'>
                         <div className='HomeHeadBoxRightText row-cols-4 ' >  
                         {this.state.oneRightBoxStyle.map((e,index)=>{return <IndexRightBox 
+                        
                         id={e.id} key={index} 
                         value={e.value} 
                         value1={e.value1}
@@ -284,7 +286,7 @@ class HomeHead extends Component {
                 </div>
             
 
-            <Carousel interval={null} indicators={false} nextLabel={false} prevLabel={false} fade
+            <Carousel interval={5000} indicators={false} nextLabel={false} prevLabel={false} fade
             pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
 
             {/* 第一頁輪播 */}
@@ -354,7 +356,7 @@ class HomeHead extends Component {
                 </div>
             
 
-            <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
+            <Carousel interval={5000} indicators={false} nextLabel={false} prevLabel={false} fade
             pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
 
             {/* 第一頁輪播 */}

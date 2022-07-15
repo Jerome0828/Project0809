@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 
-
 import Head from './components/head';
 import Scroll from './components/scroll';
 import Body from './components/body';
@@ -13,9 +12,7 @@ function Venues(props) {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        // props.match.params.lid
-        let test = Math.floor(Math.random() * 20);
-        setState(test)
+        setState(props.match.params.lid)
     }, [props])
 
     useEffect( () => {
