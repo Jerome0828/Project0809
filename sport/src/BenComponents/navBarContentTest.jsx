@@ -30,7 +30,7 @@ function NavBarContent1() {
               <Nav.Link><NavLink className="nav-link col-lg " to="/RentPlace" exact >租場地</NavLink></Nav.Link>
 
               {/* 0709 DONG新增 */}
-              <Nav.Link><NavLink className="nav-link col-lg " to="/member" exact >會員頁</NavLink></Nav.Link>
+              <Nav.Link><NavLink className="nav-link col-lg " to="/member/5" exact >會員頁</NavLink></Nav.Link>
 
               </Nav>
               <Nav>

@@ -158,7 +158,7 @@ class HomeHead extends Component {
                         to={e.to} BottomText={e.BottomText}
                         
                 />  })}
-                {/* 
+{/* 
                 {this.state.data.map((elm,index)=>{
                     return  <IndexLeftBox  id={elm.pid} title={elm.title}/>
                 })} */}

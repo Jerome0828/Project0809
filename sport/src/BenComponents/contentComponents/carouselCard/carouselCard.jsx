@@ -26,7 +26,7 @@ class CarouselCard extends Component {
 
 
     render() { 
-        // let lessonDate =this.props.lessonDate;
+        let lessonDate =this.props.lessonDate;
         // console.log(lessonDate);
         return (
             <>
