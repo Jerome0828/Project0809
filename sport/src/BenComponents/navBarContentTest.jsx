@@ -35,8 +35,6 @@ function NavBarContent1() {
               </Nav>
               <Nav>
               <Nav.Link> <NavLink className="nav-link col-lg" to="/login" exact >登入/註冊</NavLink></Nav.Link>
-              <Nav.Link> <NavLink className="nav-link col-lg" to="/shoppingCartPage" exact >購物車頁面二</NavLink></Nav.Link>
-
               </Nav>
             </Navbar.Collapse>
           </Container>

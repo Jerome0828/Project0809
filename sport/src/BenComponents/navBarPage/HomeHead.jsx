@@ -148,7 +148,7 @@ class HomeHead extends Component {
 {/* 第一層header */}
         <header className=''>
             {/* header第一段左邊 */}
-            <div className='HomeHeadBoxStyle row container m-auto'                                                             
+            <div className='HomeHeadBoxStyle row m-auto'                                                             
 
                 data-aos="fade-down"
                 data-aos-easing="linear"
