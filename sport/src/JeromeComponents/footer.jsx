@@ -28,11 +28,10 @@ function Footer() {
                                 <div style={{width:'100%'}}>
                                     <div class="card h-100">
                                         <div className=''>
-                                            <img  className="card-img-top" src={`data:image/jpeg;base64,${news[val].img1}`}
+                                            <img  className="card-img-top" src={`data:image/jpeg;base64,${news[val].img}`}
                                             style={{
                                                 width:'100%',
                                                 height: '18em',
-                                                // maxHeight:'50%',
                                                 objectFit: 'cover',
                                                 objectPosition:'50% 50%'
                                             }} />
