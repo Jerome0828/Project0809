@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import '../scss/all.css';
+import axios from 'axios';
 
 // 導覽列物件
 import NavBarContent1 from './navBarContentTest';
@@ -21,16 +22,29 @@ import MemberPlan from '../DongComponents/MemberPlan';
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
 // 租場地
-import RentPlace from '../DongComponents/RentPlace.jsx';
+import RentPlace from '../DongComponents/RentPlace.jsx';                     
 // 會員登入及註冊
 import login from '../JeromeComponents/login/login.jsx';
 // 購物車頁面
 import ShoppingCart from './navBarPage/shoppingCart.jsx';
+// 購物車結帳頁面 0718 BEN新增
+import checkoutPage from './navBarPage/checkoutPage.jsx'
+
 
 class NavBarOK extends Component {
     state = { 
-
+        carData:[],
+        sumPrice:[],
     } 
+
+    // 取得購物車商品數量
+    async componentDidMount() {
+        var url = `http://localhost:80/spost/BenPHP/shoppingCartGet.php`;
+        var result = await axios.get(url);
+        this.state.carData = result.data;
+        // console.log(this.state.carData.le)
+        this.setState({});
+    };
 
     render() { 
         return (
@@ -41,6 +55,7 @@ class NavBarOK extends Component {
             </div>
                 <div>
                 <Switch>
+                    {/* 首頁 */}
                     <Route path="/" component={home} exact/>
 
                     {/* 課程與場地路由,預設課程頁面 */}
@@ -60,6 +75,9 @@ class NavBarOK extends Component {
                     {/* 購物車 */}
                     <Route path="/shoppingCart" component={ShoppingCart}/>
 
+                    {/* 購物車結帳頁面 0718 BEN新增 */}
+                    <Route path="/checkoutPage" component={checkoutPage}/>
+
                     {/* 會員頁 0709 DONG新增 */}
                     <Route path="/member" component={MemberPlan} exact/>
                     <Route path="/member/info" component={MemberInfo} exact/>
@@ -75,7 +93,7 @@ class NavBarOK extends Component {
 
                         <div className='homeRightFixedBoxV1 container '>
 
-                            {/* 聊天按鈕 */}
+                            {/* 聊天按鈕
                             <div className='mt-2 homeRightFixedBoxV2 rounded-circle container '>
                                 <div className='homeRightFixedBoxText mt-2 mb-2 '>
                                     <NavLink to="/rentSpace">
@@ -84,13 +102,11 @@ class NavBarOK extends Component {
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">+99 <span class="visually-hidden">unread messages</span></span>
                                     </svg>
 
-                                    
-                                   
                                     </NavLink>
                                     
                                 </div>
 
-                            </div>
+                            </div> */}
 
                             {/* 購物車按鈕 */}
                             <div className='mt-2 homeRightFixedBoxV2 rounded-circle container '>
@@ -102,8 +118,7 @@ class NavBarOK extends Component {
 
                                     </svg>
 
-                                    <span class="position-absolute top-15 start-90 translate-middle badge rounded-pill bg-secondary">+99</span>
-                                    
+                                    <span class="position-absolute top-15 start-60 translate-middle badge rounded-pill bg-danger">{this.state.carData.length}</span>
                                     
                                     </NavLink>
                                     
