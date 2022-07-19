@@ -27,8 +27,7 @@ import RentPlace from '../DongComponents/RentPlace.jsx';
 import login from '../JeromeComponents/login/login.jsx';
 // 購物車頁面
 import ShoppingCart from './navBarPage/shoppingCart1.jsx';
-// 購物車結帳頁面 0718 BEN新增
-import checkoutPage from './navBarPage/checkoutPage.jsx'
+
 // 購物車結帳信用卡支付 0719 BEN新增
 import CreditCardPaymentPage from './navBarPage/creditCardPaymentPage.jsx'
 
@@ -76,8 +75,6 @@ class NavBarOK extends Component {
                     {/* 購物車 */}
                     <Route path="/shoppingCart" component={ShoppingCart}/>
 
-                    {/* 購物車結帳頁面 0718 BEN新增 */}
-                    <Route path="/checkoutPage" component={checkoutPage}/>
                     {/* 購物車結帳信用卡支付 0719 BEN新增 */}
                     <Route path="/CreditCardPaymentPage" component={CreditCardPaymentPage}></Route>
 
