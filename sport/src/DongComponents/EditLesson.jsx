@@ -46,12 +46,22 @@ class EditLesson extends Component {
     async componentDidMount() {
         // 資料回傳
         let resdata = [];
-        await Axios.post("http://localhost/spost/DongPHP/editLesson.php", this.props.match.params.lid)
+        let checkInfo  = '';
+        checkInfo = this.props.match.params.lid+',';
+        checkInfo += this.props.match.params.id+',';
+        checkInfo += window.localStorage.info;
+        await Axios.post("http://localhost/spost/DongPHP/editLesson.php", checkInfo)
             .then((response) => {
                 resdata = response.data;
             });
-        // console.log(resdata);
-        this.state.data = resdata;
+        if(resdata == 1){
+            localStorage.clear();
+            window.location = '/login';
+        }else{
+            this.state.data = resdata;
+            this.setState({});
+        }    
+        
 
         // 預設價格
         this.state.data[0].pricepertime = this.state.data[0].pricepertime.replace(' ', '');
@@ -461,7 +471,7 @@ class EditLesson extends Component {
                     <hr />
 
                     {/* 送出表單 */}
-                    <button type="submit" className="btn btn-outline-success">送出</button>
+                    <button type="submit" name='lid' value={this.props.match.params.lid} className="btn btn-outline-success">送出</button>
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                 </form>
                 <br /><br /><br /><br /><br /><br /><br />

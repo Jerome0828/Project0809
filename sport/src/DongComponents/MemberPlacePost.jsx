@@ -10,7 +10,6 @@ class MemberPlacePost extends Component {
 
     render() {
         let data = this.props.dataList;
-        // console.log(data);
         return (
             <>
                 {data.map(elm => {
@@ -42,7 +41,7 @@ class MemberPlacePost extends Component {
                             </div>
                             <div className="mx-2 mt-3 d-flex justify-content-between bg-white">
                                 <Button variant="outlined" color="success">
-                                    <NavLink className='text-decoration-none text-success' to={`/member/editp/${elm.pid}`}>修改</NavLink>
+                                    <NavLink className='text-decoration-none text-success' to={`/member/editp/${elm.id}/${elm.pid}`}>修改</NavLink>
                                 </Button>
                                 <AlertDialog />
                             </div>

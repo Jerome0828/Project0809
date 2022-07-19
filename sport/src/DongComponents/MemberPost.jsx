@@ -11,13 +11,9 @@ class MemberPost extends Component {
         let resdata = [];
         let resPlaceData=[];
         console.log(window.localStorage);
-        let checkInfo  = '';// window.localStorage.id +','+ window.localStorage.info;
+        let checkInfo  = '';
         checkInfo = this.props.match.params.id+',';
         checkInfo += window.localStorage.info;
-        // await Axios.post("http://localhost/spost/DongPHP/lessonTest.php", checkInfo )
-        // .then( (response) => {
-        //     resdata = response.data;
-        // });
         await Axios.post("http://localhost/spost/DongPHP/memberLessonPost.php", checkInfo )
         .then( (response) => {
             resdata = response.data;
@@ -31,10 +27,10 @@ class MemberPost extends Component {
             localStorage.clear();
             window.location = '/login';
         }else{
-            this.state.lesson = resdata;
-            this.state.place = resPlaceData;
-            this.setState({});
         }        
+        this.state.lesson = resdata;
+        this.state.place = resPlaceData;
+        this.setState({});
     }
     render() {
         return (
