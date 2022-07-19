@@ -328,7 +328,7 @@ class RentPlace extends Component {
                     <hr />
 
 
-                    <button type="submit" className="btn btn-outline-success" >送出</button>
+                    <button type="submit" name='id' value={window.localStorage.id} className="btn btn-outline-success" >送出</button>
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                     <NavLink to='/login' id='danger' className="btn btn-lg btn-outline-danger mx-3">請先登入</NavLink>
                 </form>

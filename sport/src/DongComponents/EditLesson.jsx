@@ -244,7 +244,7 @@ class EditLesson extends Component {
                 <h3>編輯課程</h3>
                 <hr />
                 <form id='beCoach' className="was-validated form-group" enctype="multipart/form-data"
-                    action="http://localhost/spost/form.php" method='POST'>
+                    action="http://localhost/spost/DongPHP/form.php" method='POST'>
 
                     {/* 編輯圖片 */}
                     <ul className="list-group list-group-flush">
