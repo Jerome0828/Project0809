@@ -8,7 +8,7 @@ header("Access-Control-Allow-Origin:*");
 
 // 取得place(場地表格)內容
 // $sql = "SELECT pid,title,type,img1 from `place` ";
-$sql = "SELECT * FROM place INNER JOIN pimage ON place.pid = pimage.pid" ;
+$sql = "SELECT * FROM place INNER JOIN pimage ON place.pid = pimage.pid ORDER BY RAND() limit 15" ;
 $result = $mysqli->query($sql); // 使用query連接mysqli資料庫後下sql指令
 // var_dump($result);  // dump是個object物件
 // var_dump($result->fetch_object()); //取出是個object物件

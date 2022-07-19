@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import creditCardIcon from '../../imgs/creditCardIcon.png'
+import Axios from 'axios'
 
 class CreditCardPaymentPage extends Component {
     state = {  } 
-    render() { 
+
+    async componentDidMount(){
+        let getUrl = "postgate-stage.ecpay.com.tw";
+        let result = await Axios.get(getUrl)
+        console.log(result.data)
+    }
+    render() {  
         return (
             <>
             <div className='container mt-6 p-0'>
-            <form class="row g-2 mt-6 " method='' action="">
-                <h1>信用卡付款</h1> 
+            <form class="row g-2 mt-6 " method="POST" action="ECPay.php">
+                <h3>信用卡付款</h3> 
                 <hr />
                 <div style={{color:"#4f8aa8"}}>
                 <h4>※ 信用卡交易資訊 Credit Card Transaction Information</h4>
