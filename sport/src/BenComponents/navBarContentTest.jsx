@@ -23,6 +23,7 @@ function NavBarContent1() {
     localStorage.clear();
     window.location.href='/';
   }
+  
     return (
       <div >
 
@@ -45,12 +46,15 @@ function NavBarContent1() {
 
               </Nav>
               <Nav>
-              <Nav.Link> <NavLink className={window.localStorage.length == 0 ? 'nav-link col-lg' : 'nav-link col-lg d-none'} to="/login" exact >登入/註冊</NavLink></Nav.Link>
-              <Nav.Link><NavLink className={window.localStorage.length == 0 ? 'nav-link col-lg d-none' : 'nav-link col-lg'} to={`/member/${window.localStorage.id}`} exact >會員頁</NavLink></Nav.Link>
-              <Nav.Link><NavLink onClick={logOut} className={window.localStorage.length == 0 ? 'nav-link col-lg d-none' : 'nav-link col-lg'} to='' exact >登出</NavLink></Nav.Link>
-              {/* <Nav.Link> <NavLink className="nav-link col-lg" to="/login" exact >登入/註冊</NavLink></Nav.Link> */}
-              {/* <Nav.Link> <NavLink className="nav-link col-lg" to="/shoppingCartPage" exact >購物車頁面二</NavLink></Nav.Link> */}
-
+              <Nav.Link>
+                <NavLink className={window.localStorage.length == 0 ? 'nav-link col-lg' : 'nav-link col-lg d-none'} to="/login" exact >登入/註冊</NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink className={window.localStorage.length == 0 ? 'nav-link col-lg d-none' : 'nav-link col-lg'} to={`/member/${window.localStorage.id}`} exact >會員頁</NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink onClick={logOut} className={window.localStorage.length == 0 ? 'nav-link col-lg d-none' : 'nav-link col-lg'} to='' exact >登出</NavLink>
+              </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

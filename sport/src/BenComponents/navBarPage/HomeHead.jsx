@@ -9,7 +9,12 @@ import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 // import 'bootstrap/dist/js/bootstrap';
 import { NavLink } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
+
+// 輪播課程卡片
 import CarouselCard from '../contentComponents/carouselCard/carouselCard.jsx'
+
+// 7/18 BEN 新增輪播場地卡片 
+import CarouselPlaceCard from '../contentComponents/carouselCard/carouselPlaceCard.jsx'
 
 import leftImg from '../../imgs/ben01.jpg';
 
@@ -56,25 +61,25 @@ class HomeHead extends Component {
             borderRadius: 10
         },
         commodityV1:[
-            {id:1,value:"這是一段標題V1",src:rightImg1,to:"/lesson"},
-            {id:2,value:"這是一段標題V1",src:rightImg2,to:"/lesson"},
-            {id:3,value:"這是一段標題V1",src:rightImg3,to:"/lesson"},
-            {id:4,value:"這是一段標題V1",src:rightImg4,to:"/lesson"},
-            {id:5,value:"這是一段標題V1",src:rightImg5,to:"/lesson"},
+            {id:1,value:"健身房包場租借",src:rightImg1,to:"/lesson"},
+            {id:2,value:"TrainwithRoy 1on1",src:rightImg2,to:"/lesson"},
+            {id:3,value:"一對一重訓課程",src:rightImg3,to:"/lesson"},
+            {id:4,value:"重量訓練、徒手訓練",src:rightImg4,to:"/lesson"},
+            {id:5,value:"棒球專項肌力及體能訓練",src:rightImg5,to:"/lesson"},
         ],
         commodityV2:[
-            {id:1,value:"這是一段標題V2",src:sectionCarouselImg1,to:"/lesson"},
-            {id:2,value:"這是一段標題V2",src:sectionCarouselImg2,to:"/lesson"},
-            {id:3,value:"這是一段標題V2",src:sectionCarouselImg3,to:"/lesson"},
-            {id:4,value:"這是一段標題V2",src:sectionCarouselImg4,to:"/lesson"},
-            {id:5,value:"這是一段標題V2",src:sectionCarouselImg5,to:"/lesson"},
+            {id:1,value:"新手入門瘦身指南",src:sectionCarouselImg1,to:"/lesson"},
+            {id:2,value:"TrainwithRoy 1on1",src:sectionCarouselImg2,to:"/lesson"},
+            {id:3,value:"一對一重訓課程",src:sectionCarouselImg3,to:"/lesson"},
+            {id:4,value:"重量訓練、徒手訓練",src:sectionCarouselImg4,to:"/lesson"},
+            {id:5,value:"棒球專項肌力及體能訓練",src:sectionCarouselImg5,to:"/lesson"},
         ],
         commodityV3:[
-            {id:1,value:"這是一段標題V3",src:sectionCarouselImg6,to:"/lesson"},
-            {id:2,value:"這是一段標題V3",src:sectionCarouselImg7,to:"/lesson"},
-            {id:3,value:"這是一段標題V3",src:sectionCarouselImg8,to:"/lesson"},
-            {id:4,value:"這是一段標題V3",src:sectionCarouselImg9,to:"/lesson"},
-            {id:5,value:"這是一段標題V3",src:sectionCarouselImg10,to:"/lesson"},
+            {id:1,value:"健身達人運動工廠",src:sectionCarouselImg6,to:"/lesson"},
+            {id:2,value:"忠•初我健身教室",src:sectionCarouselImg7,to:"/lesson"},
+            {id:3,value:"好時良身｜自在（個案室）",src:sectionCarouselImg8,to:"/lesson"},
+            {id:4,value:"Camp訓練營地",src:sectionCarouselImg9,to:"/lesson"},
+            {id:5,value:"中力健身中心東英館",src:sectionCarouselImg10,to:"/lesson"},
         ],
 
         // header 左側區塊設定
@@ -88,7 +93,12 @@ class HomeHead extends Component {
             {id:3,value:"間歇訓練",value1:"團體課程",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
             {id:4,value:"基礎瑜珈",value1:"皮拉提斯",src:rightImg3,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
         ],
-        data:[]
+        lessonData:[],
+        placeData:[],
+        lessonV1:[],
+        lessonV2:[],
+        lessonV3:[],
+        placeV1:[],
 
     } 
 
@@ -103,10 +113,43 @@ class HomeHead extends Component {
 
               
     async componentDidMount() {
-        var url = `http://localhost/spost/DongPHP/lesson.php`;
+        // 取得課程lesson
+        var url = `http://localhost:80/spost/BenPHP/lessonGet.php`;
         var result = await Axios.get(url);
-        this.state.data = result.data;
-        // console.log(this.state.data)
+        this.state.lessonData = result.data;
+        // console.log(this.state.lessonData)
+
+
+        // 各取5筆資料
+        // this.state.lessonV1 = this.state.lessonData.filter((value,index)=>{
+        //     return index < 5;
+        // })
+        // console.log(this.state.lessonV1)
+        
+        // this.state.lessonV2 = this.state.lessonData.filter((value,index)=> index  < 5)
+        // console.log(this.state.lessonV2)
+
+        // this.state.lessonV3 = this.state.lessonData.filter((value,index)=>{
+        //     return index < 5;
+        // })
+        // console.log(this.state.lessonV3)
+
+    
+        
+    
+        // 取得場地place
+        var url = `http://localhost:80/spost/BenPHP/placeGet.php`;
+        var result = await Axios.get(url);
+        this.state.placeData = result.data;
+        // console.log(this.state.placeData)
+
+        // 取得場地5筆
+        // this.state.placeV1 = this.state.placeData.filter((value,index)=>{
+        //     return index <15;
+        // })
+        // console.log(this.state.placeV1)
+
+        this.setState({});
 
         // var url1 = `http://localhost/spost/DongPHP/sportType.php`;
         // var result1 = await Axios.get(url1);
@@ -133,21 +176,12 @@ class HomeHead extends Component {
 
 
     render() {
-        
-
-        
-
         return (
         <div>
-
-
-
-
-
 {/* 第一層header */}
         <header className=''>
             {/* header第一段左邊 */}
-            <div className='HomeHeadBoxStyle row container m-auto'                                                             
+            <div className='HomeHeadBoxStyle row m-auto'                                                             
 
                 data-aos="fade-down"
                 data-aos-easing="linear"
@@ -158,7 +192,7 @@ class HomeHead extends Component {
                         to={e.to} BottomText={e.BottomText}
                         
                 />  })}
-{/* 
+                {/* 
                 {this.state.data.map((elm,index)=>{
                     return  <IndexLeftBox  id={elm.pid} title={elm.title}/>
                 })} */}
@@ -169,6 +203,7 @@ class HomeHead extends Component {
                     <div className='HomeHeadBoxRightImgBox'>
                         <div className='HomeHeadBoxRightText row-cols-4 ' >  
                         {this.state.oneRightBoxStyle.map((e,index)=>{return <IndexRightBox 
+                        
                         id={e.id} key={index} 
                         value={e.value} 
                         value1={e.value1}
@@ -263,7 +298,7 @@ class HomeHead extends Component {
                 </div>
             </section>
 
-{/* 第二層section(輪播Carousel設定) */}
+{/* 第二層section(輪播Carousel設定) 課程頁面*/}
         <section>
             <div className='mt-6 m-5 h-100'
             data-aos="fade-up"
@@ -290,24 +325,29 @@ class HomeHead extends Component {
             {/* 第一頁輪播 */}
                 <Carousel.Item className='w-100 d-flex'>
                     {/* {<CarouselCard cardOnClick={(e)=>this.cardOnClick(e)} lessonDate={this.state.data}/>} */}
-                {this.state.commodityV2.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+                {this.state.lessonData.map((e,index,array)=>{return <CarouselCard data-lid={e.lid} dataList={array} lid={e.lid} key={index} title={e.title} img={e.img} />  
+                })}
+                {/* {this.state.lessonData.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })} */}
+                {/* <CarouselCard data={this.state.lessonData}/> */}
                 </Carousel.Item>
 
             {/* 第二頁輪播 */}
             <Carousel.Item className='w-100 d-flex'>
-                {this.state.commodityV2.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+            {this.state.lessonData.map((e,index,array)=>{return <CarouselCard dataList={e.array} lid={e.lid} key={index} title={e.title} img={e.img} />  
+                })}
                 </Carousel.Item>
 
             {/* 第三頁輪播 */}  
             <Carousel.Item className='w-100 d-flex'>
-                {this.state.commodityV1.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+            {this.state.lessonData.map((e,index,array)=>{return <CarouselCard dataList={e.array} lid={e.lid} key={index} title={e.title} img={e.img} />  
+                })}
                 </Carousel.Item>
 
             </Carousel>
 
 
             <div
-                className='carouselBoxBottomText' 
+                className='carouselBoxBottomText container' 
                 data-aos="fade-up"
                 data-aos-easing="linear"
                 data-aos-duration="1500"
@@ -333,7 +373,7 @@ class HomeHead extends Component {
             </div>
         </section>
         
-{/* 第三層section(輪播Carousel設定) */}
+{/* 第三層section(輪播Carousel設定) 場地頁面 */}
         <section>
             <div className=' m-5 h-100 row-sm-12'
                             data-aos="fade-up"
@@ -354,23 +394,45 @@ class HomeHead extends Component {
                 </div>
             
 
-            <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
+            <Carousel interval={null} indicators={false} nextLabel={false} prevLabel={false} fade
             pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
 
             {/* 第一頁輪播 */}
             <Carousel.Item className='w-100 d-flex '>
-                {this.state.commodityV2.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+               
+                {this.state.placeData.map((value,index,array)=>{
+                    // let Vx = [];
+                    // let V2 = [];
+                    // let V3 = [];
+                    // for(let i=0 ; i<3 ; i++){
+                    //     Vx.push(array[i])
+                    //     Vx.map()
+                    //     for (let j=1 ; j<5 ; j++ ) {
+                    //         // console.log(`${i} : ${j}`)
+                    //         // console.log(array[j])
+
+                    //     }
+                    // }
+                    // // console.log(V1)
+                    // console.log(Vx)
+                    // // console.log(value)
+                    
+
+                    return  <CarouselPlaceCard id={value.id} pid={value.pid} key={index} title={value.title} img={value.img} /> 
+                 })}
                 </Carousel.Item>
                 
             {/* 第二頁輪播 */}  
                 <Carousel.Item className='w-100 d-flex'>
-                {this.state.commodityV1.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+                {this.state.placeData.map((value,index)=>{return  <CarouselPlaceCard id={value.id} pid={value.pid} key={index} title={value.title} img={value.img} />
+                 })}
                 </Carousel.Item>
 
 
             {/* 第三頁輪播 */}
                 <Carousel.Item className='w-100 d-flex'>
-                {this.state.commodityV3.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })}
+                {this.state.placeV1.map((e,index)=>{return <CarouselPlaceCard  id={e.id} pid={e.pid} key={index} title={e.title} img={e.img} /> 
+                 })}
                 </Carousel.Item>
 
 
@@ -380,7 +442,7 @@ class HomeHead extends Component {
 
 
             <div
-                className='carouselBoxBottomText cont' 
+                className='carouselBoxBottomText cont container' 
                 data-aos="fade-up"
 
                 >   

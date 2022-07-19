@@ -28,20 +28,29 @@ class MemberInfo extends Component {
     // memberInfo
     memberInfo = async(memberId) => {
         const Qs = require("qs");
-        await axios.post("http://localhost:80/spost/JeromePHP/memberInfo.php", Qs.stringify({ id: memberId }))
+        await axios.post("http://localhost:80/spost/JeromePHP/memberInfo.php", Qs.stringify({ 
+            id: memberId,
+            info: window.localStorage.info
+        }))
         .then( response => {
-            this.state.img = response.data.img;
-            this.state.realName = response.data.realname;
-            this.state.nickname = response.data.nickname;
-            this.state.account = response.data.account;
-            this.state.email = response.data.email;
-            this.state.birthday = response.data.birthday;
-            this.state.phone = response.data.phone;
-            this.state.gender = response.data.gender;
-            this.setState({})
+            if ( response.data == 1 ) {
+                localStorage.clear();
+                window.location = '/login';
+            }else {
+                this.state.img = response.data.img;
+                this.state.realName = response.data.realname;
+                this.state.nickname = response.data.nickname;
+                this.state.account = response.data.account;
+                this.state.email = response.data.email;
+                this.state.birthday = response.data.birthday;
+                this.state.phone = response.data.phone;
+                this.state.gender = response.data.gender;
+                let genderArray = ['M', 'F', 'S'];
+                document.getElementsByTagName('option')[genderArray.indexOf(this.state.gender)].setAttribute("selected", "1")
+                this.setState({})
+            }
         })
-        let genderArray = ['M', 'F', 'S'];
-        document.getElementsByTagName('option')[genderArray.indexOf(this.state.gender)].setAttribute("selected", "1")
+
     }
 
     // 頭像預覽

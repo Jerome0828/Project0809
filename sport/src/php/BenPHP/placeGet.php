@@ -6,8 +6,9 @@ header("Access-Control-Allow-Origin:*");
 // 測試inner join關聯資料庫內容
 // $sql = "SELECT lid,title,addr,info,mode,type from `lesson` inner join `coach` where lesson.cid = coach.cid";
 
-// 取得lesson(課程表格)內容
-$sql = "SELECT * FROM lesson INNER JOIN limage ON lesson.lid = limage.lid";
+// 取得place(場地表格)內容
+// $sql = "SELECT pid,title,type,img1 from `place` ";
+$sql = "SELECT * FROM place INNER JOIN pimage ON place.pid = pimage.pid" ;
 $result = $mysqli->query($sql); // 使用query連接mysqli資料庫後下sql指令
 // var_dump($result);  // dump是個object物件
 // var_dump($result->fetch_object()); //取出是個object物件
@@ -67,6 +68,7 @@ echo($myOderJson);
 //     }
 // }   
 
+ 
 // ==========新增資料用
 // $lid = 121 ;$title = '測試中';   $addr = '台中市';    $info ="歐北來";
 // $sql = "INSERT INTO lesson(lid,title,addr,info) VALUE(?,?,?,?)";
@@ -76,6 +78,7 @@ echo($myOderJson);
 // $stmt->bind_param('isss',$lid,$title,$addr,$info);
 // // 執行
 // $stmt->execute();
+
 
 
 

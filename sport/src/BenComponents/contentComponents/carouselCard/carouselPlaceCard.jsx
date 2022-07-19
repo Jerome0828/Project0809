@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { NavLink,Link } from 'react-router-dom';
 import '../../../scss/all.css';
 
-// 首頁輪播課程卡片
-class CarouselCard extends Component {
+
+class CarouselPlaceCard extends Component {
     state = { 
         cardImage: {
             objectFit: 'cover',
@@ -38,15 +38,13 @@ class CarouselCard extends Component {
         // let lessonData = this.props.lessonData;
         // console.log(this.props.data)
 
-        
-
 
         return (
             <>
             {/* 首頁輪播中卡片替換 */}
     
             <div className="cardBox" style={this.state.cardBoxText}>
-            <NavLink to={`/lesson/${this.props.lid}`}>
+            <NavLink to={`/site/${this.props.pid}`}>
                     <img
                     style={this.state.cardImage}
                     className="carouselImgTest card"
@@ -61,8 +59,8 @@ class CarouselCard extends Component {
                     <button className='cardBoxText rounded-3'
                     onClick={this.setLocalStorage}>
                         {/* 設定連接網址 */}
-            
-                    <span className='d-block'>{this.props.title}{this.props.lid}</span>
+                    {/* <span className='d-block'><NavLink to="/coursesAndVenues">{this.lessonDate}</NavLink></span> */}
+                    <span className=''>{this.props.title}{this.props.pid}</span>
                     </button>
                     </div>
             </NavLink>
@@ -74,4 +72,4 @@ class CarouselCard extends Component {
     }
 }
  
-export default CarouselCard;
+export default CarouselPlaceCard;

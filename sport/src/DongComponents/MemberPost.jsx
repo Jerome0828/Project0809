@@ -10,7 +10,7 @@ class MemberPost extends Component {
     async componentDidMount() {
         let resdata = [];
         let resPlaceData=[];
-        console.log(window.localStorage);
+        // console.log(window.localStorage);
         let checkInfo  = '';// window.localStorage.id +','+ window.localStorage.info;
         checkInfo = this.props.match.params.id+',';
         checkInfo += window.localStorage.info;
