@@ -24,6 +24,11 @@ class ShoppingCart extends Component {
         }
         this.setState({});
 
+        // var test1 =document.getElementsByClassName('creditCard')
+        // // console.log(document.getAttribute('creditCard'))
+        // // var test2 = test1.getAttribute(value);
+        // console.log(test1)
+
     }
     deleCar= async (e)=>{
         // 取得點擊商品的value.carid的數字
@@ -63,25 +68,40 @@ class ShoppingCart extends Component {
     checkOKAlert=()=>{
         // alert("OK");
     }
+
     
     
     render() { 
 
+       
+
         return (
             <>
                 <div className='mt-6 container'>
-                        <h3>購物車:</h3>
+                        <h3>購物車</h3>
                         <hr />
-                
+                <form action="http://localhost:80/spost/BenPHP/ECPay.php" method="post">
 
                 {this.state.carData.map((value,index)=>{
                     return(
                         <>
                         <div className='container border-bottom' >
+                        {/* 送購物車訂單號 */}
+                        <input class="" name="MerchantTradeNo" type="hidden" value={value.carid} />
+                        {/* 送當前下單時間 */}
+                        <input class="form-control" name="MerchantTradeDate" type="hidden" value={new Date()} />
+                        {/* 送結帳總金額 */}
+                        <input class="form-control" name="TotalAmount" type="hidden" value={this.state.sumPrice} />
+                        {/* 送商品描述 */}
+                        <input class="form-control" name="TradeDesc" type="hidden" value={value.title} />
+                        {/* 送商品資訊 */}
+                        <input class="form-control" name="ItemName" type="hidden" value={JSON.stringify(value)} />
+
+                        
                             <div className='row mt-2 '>
                                 <div className="cartitle col">
                                     <h5>{value.title}</h5>
-
+                            
                                 </div>
                                 <div className="cardata col " style={{lineHeight:"0.3"}}>
                                 <p >{value.date}</p>
@@ -114,22 +134,34 @@ class ShoppingCart extends Component {
  
                     <div className='col-12'>
                         <a>選擇付款方式:</a>
-                        <select>
-                            <option value="creditCard">信用卡付款</option>
-                            <option value="moneyTransfer">銀行轉帳</option>
+                        <select className='ChoosePayment'>
+                            {/* 選擇付款方式 */}
+                            {/* 綠界提供下列付款方式，請於建立訂單時傳送過來:
+                                Credit:信用卡及銀聯卡
+                                UnionPay:銀聯卡(需申請開通)
+                                WebATM:網路ATM
+                                ATM:自動櫃員機
+                                CVS:超商代碼
+                                BARCODE:超商條碼
+                                ALL:不指定付款方式，由綠界顯示付款方式選擇頁面。 */}
+                            <option name="ChoosePayment" value="Credit">信用卡付款</option>
+                            <option name="ChoosePayment" value="ATM">銀行轉帳</option>
                         </select>
                     </div>
                 </div>
 
-                <div className='mt-3 d-md-flex justify-content-md-end d-flex '>
-                    <NavLink to="/" className="">
-                        <div className=' me-md-2 blockquote-content' onClick={this.checkOKAlert}>購買更多</div>
-                    </NavLink>
-                    {/* <NavLink to="/checkoutPage" className=""> */}
-                    <NavLink to="/CreditCardPaymentPage" className="">
-                        <button className='btn btn-outline-dark me-md-2' onClick={this.checkOKAlert}>結帳</button>
-                    </NavLink>
+                <div className='mt-3 d-md-flex justify-content-md-end'>
+                    <div className='m-2 d-flex align-items-center'>
+                    <a href="javascript:history.back()">選擇更多</a>
                     </div>
+                    {/* <NavLink to="/checkoutPage" className=""> */}
+                    {/* <NavLink to="/CreditCardPaymentPage" className="">
+                    </NavLink> */}
+                    
+                    <button className='btn btn-outline-dark me-md-2' onClick={this.checkOKAlert} type="submit">付款</button>
+                    
+                    </div>
+                    </form>
 
 
                     
