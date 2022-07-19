@@ -121,13 +121,13 @@ class HomeHead extends Component {
 
 
         // 各取5筆資料
-        this.state.lessonV1 = this.state.lessonData.filter((value,index)=>{
-            return index < 5;
-        })
+        // this.state.lessonV1 = this.state.lessonData.filter((value,index)=>{
+        //     return index < 5;
+        // })
         // console.log(this.state.lessonV1)
         
         // this.state.lessonV2 = this.state.lessonData.filter((value,index)=> index  < 5)
-        // // console.log(this.state.lessonV2)
+        // console.log(this.state.lessonV2)
 
         // this.state.lessonV3 = this.state.lessonData.filter((value,index)=>{
         //     return index < 5;
@@ -144,9 +144,9 @@ class HomeHead extends Component {
         // console.log(this.state.placeData)
 
         // 取得場地5筆
-        this.state.placeV1 = this.state.placeData.filter((value,index)=>{
-            return index <5;
-        })
+        // this.state.placeV1 = this.state.placeData.filter((value,index)=>{
+        //     return index <15;
+        // })
         // console.log(this.state.placeV1)
 
         this.setState({});
@@ -325,7 +325,7 @@ class HomeHead extends Component {
             {/* 第一頁輪播 */}
                 <Carousel.Item className='w-100 d-flex'>
                     {/* {<CarouselCard cardOnClick={(e)=>this.cardOnClick(e)} lessonDate={this.state.data}/>} */}
-                {this.state.lessonV1.map((e,index,array)=>{return <CarouselCard data-lid={e.lid} dataList={e.array} lid={e.lid} key={index} title={e.title} img={e.img} />  
+                {this.state.lessonData.map((e,index,array)=>{return <CarouselCard data-lid={e.lid} dataList={array} lid={e.lid} key={index} title={e.title} img={e.img} />  
                 })}
                 {/* {this.state.lessonData.map((e,index)=>{return <CarouselCard  id={e.id} key={index} value={e.value} src={e.src} />  })} */}
                 {/* <CarouselCard data={this.state.lessonData}/> */}
@@ -333,13 +333,13 @@ class HomeHead extends Component {
 
             {/* 第二頁輪播 */}
             <Carousel.Item className='w-100 d-flex'>
-            {this.state.lessonV1.map((e,index,array)=>{return <CarouselCard dataList={e.array} lid={e.lid} key={index} title={e.title} img={e.img} />  
+            {this.state.lessonData.map((e,index,array)=>{return <CarouselCard dataList={e.array} lid={e.lid} key={index} title={e.title} img={e.img} />  
                 })}
                 </Carousel.Item>
 
             {/* 第三頁輪播 */}  
             <Carousel.Item className='w-100 d-flex'>
-            {this.state.lessonV1.map((e,index,array)=>{return <CarouselCard dataList={e.array} lid={e.lid} key={index} title={e.title} img={e.img} />  
+            {this.state.lessonData.map((e,index,array)=>{return <CarouselCard dataList={e.array} lid={e.lid} key={index} title={e.title} img={e.img} />  
                 })}
                 </Carousel.Item>
 
@@ -399,13 +399,32 @@ class HomeHead extends Component {
 
             {/* 第一頁輪播 */}
             <Carousel.Item className='w-100 d-flex '>
-                {this.state.placeV1.map((e,index)=>{return <CarouselPlaceCard  id={e.id} pid={e.pid} key={index} title={e.title} img={e.img} /> 
+               
+                {this.state.placeData.map((value,index,array)=>{
+                    // let Vx = [];
+                    // let V2 = [];
+                    // let V3 = [];
+                    // for(let i=0 ; i<3 ; i++){
+                    //     Vx.push(array[i])
+                    //     Vx.map()
+                    //     for (let j=1 ; j<5 ; j++ ) {
+                    //         // console.log(`${i} : ${j}`)
+                    //         // console.log(array[j])
+
+                    //     }
+                    // }
+                    // // console.log(V1)
+                    // console.log(Vx)
+                    // // console.log(value)
+                    
+
+                    return  <CarouselPlaceCard id={value.id} pid={value.pid} key={index} title={value.title} img={value.img} /> 
                  })}
                 </Carousel.Item>
                 
             {/* 第二頁輪播 */}  
                 <Carousel.Item className='w-100 d-flex'>
-                {this.state.placeV1.map((e,index)=>{return <CarouselPlaceCard  id={e.id} pid={e.pid} key={index} title={e.title} img={e.img} /> 
+                {this.state.placeData.map((value,index)=>{return  <CarouselPlaceCard id={value.id} pid={value.pid} key={index} title={value.title} img={value.img} />
                  })}
                 </Carousel.Item>
 

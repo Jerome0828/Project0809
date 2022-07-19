@@ -38,13 +38,15 @@ class CarouselCard extends Component {
         // let lessonData = this.props.lessonData;
         // console.log(this.props.data)
 
+        
+
 
         return (
             <>
             {/* 首頁輪播中卡片替換 */}
     
             <div className="cardBox" style={this.state.cardBoxText}>
-            <NavLink to={`/lesson/${this.props.pid}`}>
+            <NavLink to={`/lesson/${this.props.lid}`}>
                     <img
                     style={this.state.cardImage}
                     className="carouselImgTest card"

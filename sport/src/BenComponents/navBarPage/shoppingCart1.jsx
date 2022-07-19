@@ -83,7 +83,7 @@ class ShoppingCart extends Component {
                                     <h5>{value.title}</h5>
 
                                 </div>
-                                <div className="cardata col" style={{lineHeight:"0.2"}}>
+                                <div className="cardata col " style={{lineHeight:"0.3"}}>
                                 <p >{value.date}</p>
                                 <a >{value.time}</a>
                                     
@@ -121,14 +121,18 @@ class ShoppingCart extends Component {
                     </div>
                 </div>
 
-                <div className='mt-3 d-md-flex justify-content-md-end'>
+                <div className='mt-3 d-md-flex justify-content-md-end d-flex '>
                     <NavLink to="/" className="">
-                        <a className='btn btn-outline-dark me-md-2' onClick={this.checkOKAlert}>購買更多</a>
+                        <div className=' me-md-2 blockquote-content' onClick={this.checkOKAlert}>購買更多</div>
                     </NavLink>
-                    <NavLink to="/checkoutPage" className="">
-                        <button className='btn btn-outline-dark me-md-2' onClick={this.checkOKAlert}>前往結帳</button>
+                    {/* <NavLink to="/checkoutPage" className=""> */}
+                    <NavLink to="/CreditCardPaymentPage" className="">
+                        <button className='btn btn-outline-dark me-md-2' onClick={this.checkOKAlert}>結帳</button>
                     </NavLink>
                     </div>
+
+
+                    
 
                 </div>
 
