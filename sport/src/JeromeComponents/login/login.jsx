@@ -531,15 +531,15 @@ class Login extends Component {
 
           {/* -- Sign up -- */}
           <div className='login text-center' 
-              style={{ opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2],
-                }}>
+              style={{ 
+                opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2] }}>
             <div className="row w-50 my-0">
               <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('./icon/left.png')} /></button>
               <h2 className='col-10 text-center my-4'>註冊</h2>
               <span style={{color: 'red'}}>&nbsp;{this.state.adr}</span>
             </div >
             <form className='' style={{width: "75%"}}>
-              <div className='row justify-content-center my-3'>
+              <div className='row justify-content-center my-'>
                 <div className={`col-lg-4 ${this.state.className}`}>
                   <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
                   <input className="input isu" type="text" placeholder="帳號" required="required"
@@ -598,6 +598,7 @@ class Login extends Component {
                 </div>
               </div>
               <button type="button" className='button' onClick={this.registerPost} value="singUp">確認註冊</button> 
+              {/* <button type="button" className='button' onClick={this.next} value="singUp">確認註冊</button>  */}
             </form>
           </div>
 

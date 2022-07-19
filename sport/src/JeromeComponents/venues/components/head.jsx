@@ -18,13 +18,15 @@ function Head(props) {
     const [news, setNews] = useState(undefined)
     const [city, setCity] = useState()
     const [img, setImg] = useState();
+    const [headerImg, setHeaderImg] = useState();
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
         if ( typeof props.all == 'object') {
             setNews(props.all[0])
+            setHeaderImg(props.all[1])
             setImg([])
-            for (let i = 1 ; i < props.all.length ; i++ ) {
+            for (let i = 2 ; i < props.all.length ; i++ ) {
                 setImg( (old) => [...old, props.all[i]])
             }
         }
@@ -40,6 +42,20 @@ function Head(props) {
             }
         }
     }, [news])
+
+    let imgChange = () => {
+        if ( typeof headerImg == 'string' ) {
+            return (
+                <img src={headerImg && headerImg}
+                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+            )
+        }else {
+            return (
+                <img src='https://img.onl/1WWQ9e'
+                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+            )
+        }
+    }
 
     return (
         <div className='container mb-3'>
@@ -71,8 +87,7 @@ function Head(props) {
                         <div className='col-lg-12' >
                             <div className='row position-fixed"'>
                                 <div className='col-lg-5 mt-3 mb-3'>
-                                    <img src="https://dummyimage.com/1000/000/fff" 
-                                        className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+                                    {imgChange()}
                                 </div>
                                 <div className='col-lg-6 mt-5'>
                                     <Stack spacing={1} className='w-100' >

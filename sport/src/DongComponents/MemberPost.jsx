@@ -26,15 +26,14 @@ class MemberPost extends Component {
     render() {
         return (
             <div className='container'>
-                <br /><br /><br />
-                <div className='row mt-5'>
-                    <div className='col-2 border-end'>
+                <div className='row'>
+                    <div className='col-2 border-end mt-5'>
                         <MemberPage />
                     </div>
                     <div className='col-1'>
                     </div>
                     {/* 已上傳Card */}
-                    <div className='col-9'>
+                    <div className='col-9 mt-5'>
                         <div className='row'>
                             <MemberLessonPost dataList={this.state.lesson}/>
                             <MemberPlacePost dataList={this.state.place}/>

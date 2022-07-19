@@ -20,7 +20,6 @@ class MemberPlan extends Component {
     render() {
         return (
             <div className='container'>
-                <br /><br /><br />
                 <div className='row'>
                     <div className='col-2 mt-5 border-end'>
                         <MemberPage />
