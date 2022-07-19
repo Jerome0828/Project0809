@@ -18,13 +18,15 @@ function Head(props) {
     const [news, setNews] = useState(undefined);
     const [city, setCity] = useState();
     const [img, setImg] = useState();
+    const [headerImg, setHeaderImg] = useState();
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
         if ( typeof props.all == 'object') {
             setNews(props.all[0])
+            setHeaderImg(props.all[1])
             setImg([])
-            for (let i = 1 ; i < props.all.length ; i++ ) {
+            for (let i = 2 ; i < props.all.length ; i++ ) {
                 setImg( (old) => [...old, props.all[i]])
             }
         }
@@ -40,6 +42,20 @@ function Head(props) {
             }
         }
     }, [news])
+
+    let imgChange = () => {
+        if ( typeof headerImg == 'string' ) {
+            return (
+                <img src={headerImg && headerImg}
+                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+            )
+        }else {
+            return (
+                <img src='https://img.onl/1WWQ9e'
+                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+            )
+        }
+    }
 
     return (
         <div className='container mb-3'>
@@ -67,21 +83,20 @@ function Head(props) {
                     </div>
                 </div>
                 <div className='col-lg-3'>
-                    <div className='row'  >
+                    <div className='row'  style={{transform: 'translate(10%, 0)'}}>
                         <div className='col-lg-12' >
                             <div className='row position-fixed"'>
                                 <div className='col-lg-5 mt-3 mb-3'>
-                                    <img src="https://dummyimage.com/1000/000/fff" 
-                                        className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+                                    {imgChange()}
                                 </div>
-                                <div className='col-lg-6 mt-5'>
-                                    <Stack spacing={1} className='w-100' >
-                                        <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
+                                <div className='col-lg-6 mt-5'>{}
+                                    <Stack className='w-100' >
+                                        <Rating name="half-rating-read" defaultValue={news && news.plimit} precision={0.5} readOnly />
                                     </Stack>
                                 </div>
                             </div>
                         </div>
-                        <div className='col-lg-12' style={{transform: 'translate(10%, 0)'}}>
+                        <div className='col-lg-12' >
                             <div className='w-100 py-2 px-3 my-3'>
                                 <Labels types={news && news.type} />
                             </div> 

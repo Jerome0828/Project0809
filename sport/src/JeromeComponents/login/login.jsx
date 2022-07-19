@@ -374,12 +374,15 @@ class Login extends Component {
       }
       axios.post("http://localhost:80/spost/JeromePHP/login.php", singIn )
         .then( (response) => {
-          if ( response.data != 1) {
-            this.state.aew = '帳號或信箱錯誤';
-            this.setState({})
+          // console.log(typeof response.data)
+          // console.log(response.data[0])
+          if ( typeof(response.data[0]) == 'string' ) {
+            localStorage.setItem('id', `${response.data[0]}`);
+            localStorage.setItem('info', `${response.data[1]}`);
+            window.location.href = '/';
           }else {
-            alert("ok")
-            this.setState({aew: ''})
+            this.state.pwr = '帳號、信箱或密碼錯誤'
+            this.setState({})
           }
         })
     }else {
@@ -531,15 +534,15 @@ class Login extends Component {
 
           {/* -- Sign up -- */}
           <div className='login text-center' 
-              style={{ opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2],
-                }}>
+              style={{ 
+                opacity: this.state.opacity[2], marginLeft: this.state.marginLeft[2], visibility: this.state.visibility[2] }}>
             <div className="row w-50 my-0">
               <button id='bti' className='col-1' onClick={this.back}><img id='icon1' src={require('./icon/left.png')} /></button>
               <h2 className='col-10 text-center my-4'>註冊</h2>
               <span style={{color: 'red'}}>&nbsp;{this.state.adr}</span>
             </div >
             <form className='' style={{width: "75%"}}>
-              <div className='row justify-content-center my-3'>
+              <div className='row justify-content-center my-'>
                 <div className={`col-lg-4 ${this.state.className}`}>
                   <img className='icon mx-3 my-1' src={require('./icon/profile.png')} />
                   <input className="input isu" type="text" placeholder="帳號" required="required"
@@ -598,6 +601,7 @@ class Login extends Component {
                 </div>
               </div>
               <button type="button" className='button' onClick={this.registerPost} value="singUp">確認註冊</button> 
+              {/* <button type="button" className='button' onClick={this.next} value="singUp">確認註冊</button>  */}
             </form>
           </div>
 

@@ -43,32 +43,32 @@ function Body(props) {
                         <table className="table" data-toggle="table">
                             <thead className='text-center align-middle'>
                                 <tr>
-                                    <th scope="row" className='bg-info text-center'>週一</th>
+                                    <th scope="row" className='bg-black text-white text-center'>週一</th>
                                     <td>{news && news.mon}</td>
                                     <td rowspan="7"><p>$ {news && news.price}</p></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" className='bg-info text-center'>週二</th>
+                                    <th scope="row" className='bg-black text-white text-center'>週二</th>
                                     <td>{news && news.tue}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" className='bg-info text-center'>週三</th>
+                                    <th scope="row" className='bg-black text-white text-center'>週三</th>
                                     <td>{news && news.wed}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" className='bg-info text-center'>週四</th>
+                                    <th scope="row" className='bg-black text-white text-center'>週四</th>
                                     <td>{news && news.thu}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" className='bg-info text-center'>週五</th>
+                                    <th scope="row" className='bg-black text-white text-center'>週五</th>
                                     <td>{news && news.fri}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" className='bg-info text-center'>週六</th>
+                                    <th scope="row" className='bg-black text-white text-center'>週六</th>
                                     <td>{news && news.sat}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" className='bg-info text-center'>週日</th>
+                                    <th scope="row" className='bg-black text-white text-center'>週日</th>
                                     <td>{news && news.sun}</td>
                                 </tr>
                             </thead>

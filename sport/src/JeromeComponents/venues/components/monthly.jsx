@@ -88,12 +88,12 @@ function Monthly(props) {
 
   // 按鈕選取時改變
   let btnColor = (e) => {
-    if ( e.target.style.backgroundColor == "green" ) {
-        e.target.style.backgroundColor="red";
-        e.target.checked = false;
+    if ( e.target.style.backgroundColor == "white") {
+      e.target.style.backgroundColor= "#40a070"; //rgb(64, 160, 112)
+      e.target.checked = true;
     }else {
-        e.target.style.backgroundColor="green";
-        e.target.checked = true;
+      e.target.style.backgroundColor= "white";
+      e.target.checked = false;
     }
     btnCheck()
   }
@@ -175,7 +175,7 @@ function Monthly(props) {
                 return (
                   <div  className='col-lg-4 my-1' key={idx}>
                     <button className="btn w-100 p-1 btnDiv" onClick={btnColor} checked={false} value={values}
-                      style={{backgroundColor: "red", border: "black solid 3px"}} >
+                      style={{backgroundColor: "white", border: "black solid 3px"}} >
                     {values}</button>
                   </div>
                 )

@@ -1,4 +1,5 @@
-import React  from 'react';
+
+import React,{useState, useEffect}  from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,6 +13,16 @@ import { NavLink } from 'react-router-dom';
 import logo from "../imgs/logo/logo.png";
 
 function NavBarContent1() {
+  const [mylocalStorage, setMylocalStorage] = useState('');
+  useEffect(()=>{
+    setMylocalStorage(window.localStorage);
+    // console.log(window.localStorage.id);
+  },[])
+  
+  let logOut=()=>{
+    localStorage.clear();
+    window.location.href='/';
+  }
     return (
       <div >
 
@@ -30,12 +41,15 @@ function NavBarContent1() {
               <Nav.Link><NavLink className="nav-link col-lg " to="/RentPlace" exact >租場地</NavLink></Nav.Link>
 
               {/* 0709 DONG新增 */}
-              <Nav.Link><NavLink className="nav-link col-lg " to="/member/5" exact >會員頁</NavLink></Nav.Link>
+              {/* <Nav.Link><NavLink className="nav-link col-lg" to="/member/5" exact >會員頁</NavLink></Nav.Link> */}
 
               </Nav>
               <Nav>
-              <Nav.Link> <NavLink className="nav-link col-lg" to="/login" exact >登入/註冊</NavLink></Nav.Link>
-              <Nav.Link> <NavLink className="nav-link col-lg" to="/shoppingCartPage" exact >購物車頁面二</NavLink></Nav.Link>
+              <Nav.Link> <NavLink className={window.localStorage.length == 0 ? 'nav-link col-lg' : 'nav-link col-lg d-none'} to="/login" exact >登入/註冊</NavLink></Nav.Link>
+              <Nav.Link><NavLink className={window.localStorage.length == 0 ? 'nav-link col-lg d-none' : 'nav-link col-lg'} to={`/member/${window.localStorage.id}`} exact >會員頁</NavLink></Nav.Link>
+              <Nav.Link><NavLink onClick={logOut} className={window.localStorage.length == 0 ? 'nav-link col-lg d-none' : 'nav-link col-lg'} to='' exact >登出</NavLink></Nav.Link>
+              {/* <Nav.Link> <NavLink className="nav-link col-lg" to="/login" exact >登入/註冊</NavLink></Nav.Link> */}
+              {/* <Nav.Link> <NavLink className="nav-link col-lg" to="/shoppingCartPage" exact >購物車頁面二</NavLink></Nav.Link> */}
 
               </Nav>
             </Navbar.Collapse>

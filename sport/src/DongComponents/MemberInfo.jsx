@@ -147,7 +147,6 @@ class MemberInfo extends Component {
     render() {
         return (
             <div className='container'>
-                <br />
                 <div className='row'>
                     <div className='col-2 mt-5 border-end'>
                         <MemberPage />

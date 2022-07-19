@@ -51,26 +51,26 @@ function Body(props) {
                             <table className="table" data-toggle="table">
                                 <thead>
                                     <tr>
-                                        <th scope="row" className='bg-info'>週一</th>
-                                        <td>{news && news.mon}</td>
-                                        <th scope="row" className='bg-info'>週二</th>
-                                        <td>{news && news.tue}</td>
+                                        <th scope="row" className='bg-black text-white'>週一</th>
+                                        <td>&nbsp;{news && news.mon}</td>
+                                        <th scope="row" className='bg-black text-white'>週二</th>
+                                        <td>&nbsp;{news && news.tue}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row" className='bg-info'>週三</th>
-                                        <td>{news && news.wed}</td>
-                                        <th scope="row" className='bg-info'>週四</th>
-                                        <td>{news && news.thu}</td>
+                                        <th scope="row" className='bg-black text-white'>週三</th>
+                                        <td>&nbsp;{news && news.wed}</td>
+                                        <th scope="row" className='bg-black text-white'>週四</th>
+                                        <td>&nbsp;{news && news.thu}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row" className='bg-info'>週五</th>
-                                        <td>{news && news.fri}</td>
-                                        <th scope="row" className='bg-info'>週六</th>
-                                        <td>{news && news.sat}</td>
+                                        <th scope="row" className='bg-black text-white'>週五</th>
+                                        <td>&nbsp;{news && news.fri}</td>
+                                        <th scope="row" className='bg-black text-white'>週六</th>
+                                        <td>&nbsp;{news && news.sat}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row" className='bg-info'>週日</th>
-                                        <td>{news && news.sun}</td>
+                                        <th scope="row" className='bg-black text-white'>週日</th>
+                                        <td>&nbsp;{news && news.sun}</td>
                                         <th scope="row"></th>
                                         <td></td>
                                     </tr>
@@ -167,7 +167,7 @@ function Body(props) {
                 </div>
                 {/* 課後評價 */}
                 <div className='col-lg-3 bg-black'>
-                    <h3 className='container text-end m-1'>課後評價</h3>
+                    <h3 className='container text-end m-1 text-white'>課後評價</h3>
                     <div style={{transform: 'translate(10%, 0)'}}>
                         <Evaluation />
                         <Evaluation />
