@@ -69,13 +69,13 @@ class RentPlace extends Component {
             agreeBox.pClass = 'text-success';
             agreeBox.iconClass = 'text-success';
             agreeBox.labelClass = 'text-center shadow rounded border border-success w-100 p-1';
-            text.innerHTML = '可以'
+            text.innerHTML = '本人已閱讀及同意遵守上述條款及細則'
         } else {
             agreeBox.spanClass = 'mx-1';
             agreeBox.pClass = 'text-danger';
             agreeBox.iconClass = 'd-none';
             agreeBox.labelClass = 'text-center shadow rounded border border-danger w-100 p-1';
-            text.innerHTML = 'Check this checkbox to continue.'
+            text.innerHTML = '本人已閱讀及同意遵守上述條款及細則'
         }
         this.setState({});
     }
@@ -316,7 +316,7 @@ class RentPlace extends Component {
                         <label htmlFor='myCheck' className={this.state.agreeBox[0].labelClass}>
                             <FontAwesomeIcon className={this.state.agreeBox[0].iconClass} icon={faCheck} /><span className={this.state.agreeBox[0].spanClass}>我同意</span></label><br />
                     </div>
-                    <p className={this.state.agreeBox[0].pClass} id='myCheckText'>Check this checkbox to continue.</p>
+                    <p className={this.state.agreeBox[0].pClass} id='myCheckText'>本人已閱讀及同意遵守上述條款及細則</p>
                     <hr />
 
 

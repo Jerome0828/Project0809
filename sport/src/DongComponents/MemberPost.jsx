@@ -10,18 +10,31 @@ class MemberPost extends Component {
     async componentDidMount() {
         let resdata = [];
         let resPlaceData=[];
-        await Axios.post("http://localhost/spost/DongPHP/memberLessonPost.php", this.props.match.params.id )
+        console.log(window.localStorage);
+        let checkInfo  = '';// window.localStorage.id +','+ window.localStorage.info;
+        checkInfo = this.props.match.params.id+',';
+        checkInfo += window.localStorage.info;
+        // await Axios.post("http://localhost/spost/DongPHP/lessonTest.php", checkInfo )
+        // .then( (response) => {
+        //     resdata = response.data;
+        // });
+        await Axios.post("http://localhost/spost/DongPHP/memberLessonPost.php", checkInfo )
         .then( (response) => {
             resdata = response.data;
         });
-        await Axios.post("http://localhost/spost/DongPHP/memberPlacePost.php", this.props.match.params.id )
+        console.log(resdata);
+        await Axios.post("http://localhost/spost/DongPHP/memberPlacePost.php", checkInfo )
         .then( (response) => {
             resPlaceData = response.data;
         });
-        // console.log(resdata);
-        this.state.lesson = resdata;
-        this.state.place = resPlaceData;
-        this.setState({});
+        if(resdata == 1 || resPlaceData==1){
+            localStorage.clear();
+            window.location = '/login';
+        }else{
+            this.state.lesson = resdata;
+            this.state.place = resPlaceData;
+            this.setState({});
+        }        
     }
     render() {
         return (

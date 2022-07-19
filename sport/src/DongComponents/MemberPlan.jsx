@@ -11,15 +11,9 @@ import "./calender.css"
 
 class MemberPlan extends Component {
     state = {}
-    componentDidMount() {
-
-    }
-    eclick=()=>{
-
-    }
     render() {
         return (
-            <div className='container'>
+            <div className='container'>                
                 <div className='row'>
                     <div className='col-2 mt-5 border-end'>
                         <MemberPage />
@@ -38,10 +32,10 @@ class MemberPlan extends Component {
                                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
                             }}
                             events={[
-                                { id:'1',title: 'event',start: '2022-07-16T06:00:00',end: '2022-07-16T08:00:00',
+                                { id:'5',title: '一對一教練課',start: '2022-07-18T19:00:00',end: '2022-07-18T21:00:00',
                                 url: `http://localhost/spost/DongPHP/test.php?id=5`,backgroundColor:'#2C3E50',borderColor:'#2C3E50',textColor:'#ffffff' },
-                                { id:'1',title: 'event',start: '2022-07-17T06:00:00',end: '2022-07-17T08:00:00',
-                                backgroundColor:'#2C3E50',borderColor:'#2C3E50',textColor:'#ffffff' }
+                                { id:'5',title: '一對一教練課',start: '2022-07-19T19:00:00',end: '2022-07-19T21:00:00',
+                                url: `http://localhost/spost/DongPHP/test.php?id=5`,backgroundColor:'#2C3E50',borderColor:'#2C3E50',textColor:'#ffffff' }
                             ]}
                         />
                     </div>

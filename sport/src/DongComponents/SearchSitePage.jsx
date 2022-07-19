@@ -101,6 +101,7 @@ class SearchSitePage extends Component {
         // console.log(this.state.data);
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
+        this.searchResult();
         this.setState({});
     }
 
@@ -111,6 +112,7 @@ class SearchSitePage extends Component {
             elm.chkicon = faTimes;
             elm.color = 'text-black';
         })
+        this.searchResult();
         this.setState({});
     }
     // weeklistonchange
@@ -136,6 +138,7 @@ class SearchSitePage extends Component {
     clearTime = () => {
         document.getElementsByName('weekBegin')[0].value = '';
         document.getElementsByName('weekEnd')[0].value = '';
+        this.searchResult();
         this.setState({});
     }
 
@@ -145,6 +148,7 @@ class SearchSitePage extends Component {
             elm.checked = false;
             elm.className = 'd-none text-success';
         })
+        this.searchResult();
         this.setState({});
     }
 
@@ -187,6 +191,7 @@ class SearchSitePage extends Component {
             elm.chkicon = faTimes;
             elm.className = 'text-black';
         })
+        this.searchResult();
         this.setState({});
     }
 
@@ -197,6 +202,7 @@ class SearchSitePage extends Component {
             elm.checked = false;
             elm.className = 'd-none text-success';
         })
+        this.searchResult();
         this.setState({});
     }
 
@@ -224,6 +230,7 @@ class SearchSitePage extends Component {
         this.clearSportType();
         this.clearTime();
         this.clearWeek();
+        this.searchResult();
     }
 
     // 清除所選時間範圍
@@ -232,6 +239,7 @@ class SearchSitePage extends Component {
         this.state.rangeValue[1] = 100;
         this.state.timeValue[0] = '00 : 00';
         this.state.timeValue[1] = '24 : 00';
+        this.searchResult();
         this.setState({});
     }
 
@@ -257,7 +265,6 @@ class SearchSitePage extends Component {
     }
 
     render() {
-
         return (
             <div className='container mt-6'>
                 <span>場地</span><span> / </span><span className='text-danger'>探索</span>

@@ -66,7 +66,7 @@ function Head(props) {
                             <Link underline="hover" key="1" color="inherit" href="/">
                                 首頁
                             </Link>
-                            <Link underline="hover" key="2" color="inherit" href="/#/lesson">
+                            <Link underline="hover" key="2" color="inherit" href="/lesson">
                                 探索
                             </Link>
                             <Typography key="3" color="text.primary">

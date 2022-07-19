@@ -6,7 +6,7 @@ class MemberPage extends Component {
     state = { path:'' }
 
     componentDidMount() {
-        this.state.path = window.location.pathname.replace('/member/','');
+        this.state.path = window.location.pathname.replace('/member/','').substring(0,4);
     }
 
     mouseOver = (e) => {
@@ -27,7 +27,8 @@ class MemberPage extends Component {
     render() {
         return (
             <>
-                <NavLink to="/member/info/5" className="text-decoration-none text-dark">
+            {/* {`/member/plan/${window.localStorage.id}`} */}
+                <NavLink to={`/member/info/${window.localStorage.id}`} className="text-decoration-none text-dark">
                     <div className="d-flex">
                         <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
                         <p id='info' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
@@ -35,7 +36,7 @@ class MemberPage extends Component {
                     </div>
                 </NavLink>
 
-                <NavLink to="/member/post/5" className="text-decoration-none text-dark">
+                <NavLink to={`/member/post/${window.localStorage.id}`} className="text-decoration-none text-dark">
                     <div className="mt-3 d-flex">
                         <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
                         <p id='post' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
@@ -43,7 +44,7 @@ class MemberPage extends Component {
                     </div>
                 </NavLink>
 
-                <NavLink to="/member/plan/5" className="text-decoration-none text-dark">
+                <NavLink to={`/member/plan/${window.localStorage.id}`} className="text-decoration-none text-dark">
                     <div className="mt-3 d-flex">
                         <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
                         <p id='plan' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
