@@ -2,8 +2,7 @@
     include('sql.php');
 
     // card
-    $sql =  "SELECT addr, title, price, pricepertime, img 
-        FROM place INNER JOIN pimage ON place.pid = pimage.pid 
+    $sql =  "SELECT addr, title, price, pricepertime, img FROM place INNER JOIN pimage ON place.pid = pimage.pid 
         ORDER BY RAND() limit 3;";
     $result = $sportSql->query($sql);
 

@@ -16,6 +16,6 @@
     $row = $results->fetch_array();
 
     if ( $row['password'] == $singInPassword ) {
-        echo true;
+        echo $row['id'];
     }
 ?>
