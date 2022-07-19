@@ -374,12 +374,13 @@ class Login extends Component {
       }
       axios.post("http://localhost:80/spost/JeromePHP/login.php", singIn )
         .then( (response) => {
-          if ( response.data != 1) {
-            this.state.aew = '帳號或信箱錯誤';
-            this.setState({})
+          console.log(typeof response.data)
+          if ( typeof(response.data) == 'number' ) {
+            localStorage.setItem('id', `${response.data}`);
+            this.props.history.push(`/`);
           }else {
-            alert("ok")
-            this.setState({aew: ''})
+            this.state.pwr = '帳號、信箱或密碼錯誤'
+            this.setState({})
           }
         })
     }else {
