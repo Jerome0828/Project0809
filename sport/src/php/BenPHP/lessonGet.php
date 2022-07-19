@@ -7,7 +7,7 @@ header("Access-Control-Allow-Origin:*");
 // $sql = "SELECT lid,title,addr,info,mode,type from `lesson` inner join `coach` where lesson.cid = coach.cid";
 
 // 取得lesson(課程表格)內容
-$sql = "SELECT * FROM lesson INNER JOIN limage ON lesson.lid = limage.lid";
+$sql = "SELECT * FROM lesson INNER JOIN limage ON lesson.lid = limage.lid ORDER BY RAND() limit 15";
 $result = $mysqli->query($sql); // 使用query連接mysqli資料庫後下sql指令
 // var_dump($result);  // dump是個object物件
 // var_dump($result->fetch_object()); //取出是個object物件
@@ -45,27 +45,6 @@ while($data = $result->fetch_object()){
 $myOderJson = json_encode($oder);
 echo($myOderJson);
 
-// foreach($result as $k => $v){
-//     echo "{$k}:{$v}<br/>";
-//     foreach($v as $h){
-//         echo "{$h}";
-//     }
-// }
-
-// foreach ($result as $k => $v){ 
-//     // 如果$v資料姓名型態是array才另外處理
-//     if (gettype($v) == 'array'){
-//         // 印出$key
-//         // echo $k . '<br/>';
-//         // 因為是array所以可以使用foreach將[]數字取出
-//         foreach($v as $h){
-//             echo "{$h} <br/>";
-//             // $v=key取出來等於是勾選哪個興趣方塊順序;
-//         }
-//     }else{
-//         // echo "{$k} : {$v} <br />" ;
-//     }
-// }   
 
 // ==========新增資料用
 // $lid = 121 ;$title = '測試中';   $addr = '台中市';    $info ="歐北來";
