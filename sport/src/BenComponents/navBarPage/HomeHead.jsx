@@ -99,8 +99,6 @@ class HomeHead extends Component {
         lessonV2:[],
         lessonV3:[],
         placeV1:[],
-
-        lessonLength: []
     } 
 
     componentDidMount() {
@@ -116,12 +114,12 @@ class HomeHead extends Component {
         var url = `http://localhost:80/spost/BenPHP/lessonGet.php`;
         var result = await Axios.get(url);
         this.state.lessonData = [];
-        let date = [];
+        let dateLesson = [];
         Object.keys(result.data).map( (values)=> {
-            date.push(result.data[values])
-            if ( date.length == 5 ) {
-                this.state.lessonData.push(date)
-                date = []
+            dateLesson.push(result.data[values])
+            if ( dateLesson.length == 5 ) {
+                this.state.lessonData.push(dateLesson)
+                dateLesson = []
             }
         })
         // this.state.lessonData = result.data;
@@ -148,7 +146,16 @@ class HomeHead extends Component {
         // 取得場地place
         var url = `http://localhost:80/spost/BenPHP/placeGet.php`;
         var result = await Axios.get(url);
-        this.state.placeData = result.data;
+        this.state.placeData = [];
+        let datePlace = [];
+        Object.keys(result.data).map( (values)=> {
+            datePlace.push(result.data[values])
+            if ( datePlace.length == 5 ) {
+                this.state.placeData.push(datePlace)
+                datePlace = []
+            }
+        })
+        // this.state.placeData = result.data;
         // console.log(this.state.placeData)
 
         // 取得場地5筆
@@ -327,14 +334,14 @@ class HomeHead extends Component {
                 </div>
             
 
-            <Carousel interval={1000} indicators={false} nextLabel={false} prevLabel={false} fade
+            <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
             pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
 
             {/* 0719 Jerome //////////////////////////// */}
-            {this.state.lessonData.map( (value, index) => {
+            {this.state.lessonData.map( (value) => {
                 return (
                     <Carousel.Item className='w-100 d-flex'>
-                        {value.map( (values, index, array) => {
+                        {value.map( (values, index) => {
                             return (
                                 <CarouselCard 
                                     key={index}
@@ -422,50 +429,45 @@ class HomeHead extends Component {
                 </div>
             
 
-            <Carousel interval={null} indicators={false} nextLabel={false} prevLabel={false} fade
+            <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
             pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
+            
+            {/* 0720 Jerome /////////////////// */}
+            {this.state.placeData.map( (value) => {
+                return (
+                    <Carousel.Item className='w-100 d-flex'>
+                        {value.map( (values, index) => {
+                            return (
+                                <CarouselPlaceCard 
+                                    key={index}
+                                    pid={values.pid}
+                                    title={values.title} 
+                                    img={values.img} />
+                            )
+                        })}
+                    </Carousel.Item>
+                )
+            })}
 
             {/* 第一頁輪播 */}
-            <Carousel.Item className='w-100 d-flex '>
-               
-                {this.state.placeData.map((value,index,array)=>{
-                    // let Vx = [];
-                    // let V2 = [];
-                    // let V3 = [];
-                    // for(let i=0 ; i<3 ; i++){
-                    //     Vx.push(array[i])
-                    //     Vx.map()
-                    //     for (let j=1 ; j<5 ; j++ ) {
-                    //         // console.log(`${i} : ${j}`)
-                    //         // console.log(array[j])
-
-                    //     }
-                    // }
-                    // // console.log(V1)
-                    // console.log(Vx)
-                    // // console.log(value)
-                    
-
-                    return  <CarouselPlaceCard id={value.id} pid={value.pid} key={index} title={value.title} img={value.img} /> 
-                 })}
-                </Carousel.Item>
+            {/* <Carousel.Item className='w-100 d-flex '>
+            {this.state.placeData.map((value,index,array)=>{
+                return  <CarouselPlaceCard id={value.id} pid={value.pid} key={index} title={value.title} img={value.img} /> 
+                })}
+            </Carousel.Item> */}
                 
             {/* 第二頁輪播 */}  
-                <Carousel.Item className='w-100 d-flex'>
+                {/* <Carousel.Item className='w-100 d-flex'>
                 {this.state.placeData.map((value,index)=>{return  <CarouselPlaceCard id={value.id} pid={value.pid} key={index} title={value.title} img={value.img} />
                  })}
-                </Carousel.Item>
+                </Carousel.Item> */}
 
 
             {/* 第三頁輪播 */}
-                <Carousel.Item className='w-100 d-flex'>
+                {/* <Carousel.Item className='w-100 d-flex'>
                 {this.state.placeV1.map((e,index)=>{return <CarouselPlaceCard  id={e.id} pid={e.pid} key={index} title={e.title} img={e.img} /> 
                  })}
-                </Carousel.Item>
-
-
-
-
+                </Carousel.Item> */}
             </Carousel>
 
 
