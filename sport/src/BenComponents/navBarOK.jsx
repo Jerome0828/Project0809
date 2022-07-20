@@ -34,6 +34,9 @@ import ShoppingCart from './navBarPage/shoppingCart.jsx';
 
 // 購物車測試頁面
 import shoppingCartPage from './navBarPage/shoppingCartPage.jsx'
+
+// chat
+import chat from '../DongComponents/chat/Chat.jsx'
 class NavBarOK extends Component {
     state = { 
 
@@ -78,6 +81,9 @@ class NavBarOK extends Component {
                     <Route path="/member/plan/:id" component={MemberPlan} exact/>
                     <Route path="/member/editl/:id/:lid" component={EditLesson} exact/>
                     <Route path="/member/editp/:id/:pid" component={EditPlace} exact/>
+
+                    {/* Chat */}
+                    <Route path="/chat" component={chat} exact/>
 
                 </Switch>
                 <div/>
