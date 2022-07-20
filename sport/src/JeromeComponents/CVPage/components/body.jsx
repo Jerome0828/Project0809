@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Teachers from '../../teachers';
-import Evaluation from '../../Evaluation';
+import Teachers from './teachers';
+import Evaluation from './Evaluation';
 import Monthly from './monthly';
 
 import Rating from '@mui/material/Rating';
-
 
 function Body(props) {
     const [id, setId] = useState();

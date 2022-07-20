@@ -8,7 +8,7 @@ import axios from 'axios';
 import Head from './components/head';
 import Scroll from './components/scroll';
 import Body from './components/body';
-import Footer from '../footer';
+import Footer from './components/footer';
 
 function CVPage(props) {
     const [id, setId] = useState();
