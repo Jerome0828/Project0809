@@ -21,10 +21,10 @@ function Carousels(props) {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} interval={1500} style={{ height: style[0] }} >
-      {img && img.map( (val) => {
+      {img && img.map( (val, idx) => {
         return (
-          <Carousel.Item>
-            <div className='d-flex w-100 justify-content-center'>
+          <Carousel.Item key={idx}>
+            <div className='d-flex w-100 justify-content-center' >
               <img
                 className="w-100"
                 src={`data:image/jpeg;base64,${val.img}`}

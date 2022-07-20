@@ -12077,17 +12077,9 @@ select {
   width: 100%;
 }
 
-@font-face {
-  font-family: "font01";
-  src: url(~../JeromeComponents/img/Advertisement.ttf);
-}
-* {
-  z-index: 2;
-}
-
 #title {
   font-size: 30px;
-  background-color: rgba(211, 211, 211, 0.4);
+  background-color: rgb(211, 211, 211);
 }
 
 #linkA {

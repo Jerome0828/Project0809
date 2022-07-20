@@ -10,6 +10,8 @@ import Scroll from './components/scroll';
 import Body from './components/body';
 import Footer from './components/footer';
 
+// AOS();
+
 function CVPage(props) {
     const [id, setId] = useState();
     const [news, setNews] = useState(undefined);

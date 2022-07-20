@@ -179,9 +179,9 @@ function Monthly(props) {
               </div>
           </div>
           <div className="row mt-2">
-              {dateDay.map( (day) => {
+              {dateDay.map( (day, idx) => {
                 return (
-                  <div className="col-lg-6 text-center">
+                  <div className="col-lg-6 text-center" key={idx}>
                     <span>{day}</span>
                   </div>
                 )

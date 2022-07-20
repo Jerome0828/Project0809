@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import {  BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
 import '../scss/all.css';
 import axios from 'axios';
 
