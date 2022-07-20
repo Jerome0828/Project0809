@@ -6,11 +6,15 @@ function Labels(props) {
     const [font, setFont] = useState([])
 
     useEffect( () => {
-        if ( typeof props.types == 'string') {
-            if ( props.types.split(';').length <= 7) {
-                setFont(props.types.split(';'))
+        if ( props.id != undefined ) {
+            if ( props.id[1] ) {
+                if ( props.types.split(';').length <= 7) {
+                    setFont(props.types.split(';'))
+                }else {
+                    setFont(props.types.split(';').slice(0, 7))
+                }
             }else {
-                setFont(props.types.split(';').slice(0, 7))
+                setFont([props.mode, props.types])
             }
         }
     }, [props])

@@ -7,7 +7,9 @@ import axios from 'axios';
 function Monthly(props) {
   const day = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // 月曆(星期幾)與資料庫對應
 
+  const [id, setId] = useState(); // id資訊[pid/lid]
   const [oder, setOder] = useState(''); // 購物車加入成功
+  const [oders, setOders] = useState(''); // 購物車未加入會員
   const [dateDay, setDateDay] = useState([]); // 單日
   const [btnData, setBtnData] = useState([]); // 按鈕value
   const [test, setTest] = useState([]); // 場地無開放提示
@@ -27,8 +29,15 @@ function Monthly(props) {
 
   // 傳入news, 設定button
   useEffect( () => {
-    setNews(props.news)
-    button(props.news)
+    if ( props.news != undefined && props.id != undefined ) {
+      if ( props.id[1] ) {
+        setId(props.id)
+      }else {
+        setId(props.id)
+      }
+      setNews(props.news)
+      button(props.news)
+    }
   }, [props])
 
   // 月曆日期變動
@@ -79,11 +88,14 @@ function Monthly(props) {
 
     let btn = document.getElementsByClassName('btnDiv');
     Object.keys(btn).map( (val) => {
-      if ( btn[val].style.backgroundColor == "green" ) {
-        btn[val].style.backgroundColor = "red";
+      if ( btn[val].style.backgroundColor == "rgb(64, 160, 112)" ) {
+        btn[val].style.backgroundColor = "white";
         btn[val].checked = false;
       }
     })
+    setOder("")
+    setOders("")
+    setDateDay([])
   };
 
   // 按鈕選取時改變
@@ -95,6 +107,8 @@ function Monthly(props) {
       e.target.style.backgroundColor= "white";
       e.target.checked = false;
     }
+    setOder("")
+    setOders("")
     btnCheck(e)
   }
 
@@ -113,25 +127,30 @@ function Monthly(props) {
   // 寫入購物車 (資料庫)
   let shoppingCar = () => {
     const Qs = require("qs")
-    dateDay.map( (times) => {
-      async function post() {
-        await axios.post("http://localhost:80/spost/JeromePHP/shoppingcar.php", 
-          Qs.stringify({
-            oid: news.pid,
-            id: '1',
-            title: news.title,
-            date: `${checkDay[0]}-${checkDay[1]}-${checkDay[2]}`,
-            time: times,
-            price: news.price
-          }))
-        .then( response => {
-            if (response.data == 1) {
-              setOder("購物車加入成功")
-            }
-        })
-      }
-      post()
-    })
+    if ( window.localStorage.length == 0 ) {
+      setOders("請先加入會員")
+    }else {
+      dateDay.map( (times) => {
+        async function post() {
+          await axios.post("http://localhost:80/spost/JeromePHP/shoppingcar.php", 
+            Qs.stringify({
+              oid: id[0],
+              id: window.localStorage.id,
+              title: news.title,
+              date: `${checkDay[0]}-${checkDay[1]}-${checkDay[2]}`,
+              time: times,
+              price: news.price
+            }))
+          .then( response => {
+              if (response.data == 1) {
+                setOder("購物車加入成功")
+              }
+          })
+        }
+        post()
+      })
+    }
+
   }
 
 
@@ -156,6 +175,7 @@ function Monthly(props) {
               <div className='col-lg-12'>
                 <button className="btn w-100 bg-info m-2" onClick={shoppingCar} value='加入購物車'>加入購物車</button>
                 <span className="text-center text-success">&nbsp; {oder}</span>
+                <span className="text-center text-danger">{oders}</span>
               </div>
           </div>
           <div className="row mt-2">

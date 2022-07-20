@@ -15,6 +15,7 @@ function handleClick(event) {
 }
 
 function Head(props) {
+    const [id, setId] = useState();
     const [news, setNews] = useState(undefined);
     const [city, setCity] = useState();
     const [img, setImg] = useState();
@@ -22,7 +23,8 @@ function Head(props) {
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
-        if ( typeof props.all == 'object') {
+        if ( props.id != undefined && props.all != undefined ) {
+            setId(props.id)
             setNews(props.all[0])
             setHeaderImg(props.all[1])
             setImg([])
@@ -56,6 +58,16 @@ function Head(props) {
             )
         }
     }
+
+    let labelsChange = () => {
+        if ( id != undefined ) {
+            if ( id[1] ) {
+                return <Labels types={news && news.type} id={id && id}/>
+            }else {
+                return <Labels types={news && news.type} mode={news && news.mode} id={id && id}/>
+            }
+        }
+    } 
 
     return (
         <div className='container mb-3'>
@@ -98,7 +110,7 @@ function Head(props) {
                         </div>
                         <div className='col-lg-12' >
                             <div className='w-100 py-2 px-3 my-3'>
-                                <Labels types={news && news.type} />
+                                {labelsChange()}
                             </div> 
                         </div>
                     </div>
@@ -139,6 +151,4 @@ function Head(props) {
         </div>
     );
 }
-
- 
 export default Head;

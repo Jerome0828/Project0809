@@ -1,9 +1,10 @@
-* {
-    z-index: 2;
+@font-face {
+    font-family: 'font01';
+    src: url(~../JeromeComponents/icon/Advertisement.ttf);
 }
 
-body {
-    overflow-x: hidden;
+* {
+    z-index: 2;
 }
 
 #title {
@@ -31,8 +32,7 @@ body {
     color: red;
 }
 
-
-#aaa {
+#scroll {
     width: 100%;
     margin: 0 auto;
     height: 35vh;
@@ -42,11 +42,5 @@ body {
     background-position: center center;
     background-size: cover;
     line-height: 28px;
-    background-image: url(~../JeromeComponents/course/components/icon/1.jpg);
-}
-
-
-#course {
-    // background: linear-gradient(to top left, black, transparent 35%);
-    // background-color: white;
+    background-image: url(~../JeromeComponents/icon/run.jpg);
 }
