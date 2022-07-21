@@ -7,7 +7,6 @@ function Footer(props) {
     const [link, setLink] = useState({});
     
     useEffect( () => {
-        // console.log(performance.getEntriesByType("navigation")[0])
         if ( props.id !== undefined ) {
             get(props.id)
         }

@@ -15,11 +15,11 @@ function handleClick(event) {
 }
 
 function Head(props) {
-    const [id, setId] = useState();
+    const [id, setId] = useState({});
     const [news, setNews] = useState(undefined);
-    const [city, setCity] = useState();
-    const [img, setImg] = useState();
-    const [headerImg, setHeaderImg] = useState();
+    const [city, setCity] = useState({});
+    const [img, setImg] = useState({});
+    const [headerImg, setHeaderImg] = useState({});
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {

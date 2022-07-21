@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import '../../scss/all.css';
+import 'bootstrap/dist/css/bootstrap.css';
+// import './login.css'
 import axios from 'axios';
 
 class Login extends Component {

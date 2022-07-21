@@ -116,7 +116,7 @@ function Body(props) {
                     {/* 預約狀況 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>預約狀況</p>
-                        <Monthly news={news} id={id && id}/>
+                        <Monthly news={news} id={id}/>
                     </div>
                     <hr />
                     {/* 授課師資 */}
