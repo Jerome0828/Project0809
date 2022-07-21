@@ -19,7 +19,7 @@ class MemberPlan extends Component {
                         <MemberPage />
                     </div>
                     <div className='col-1'></div>
-                    <div className='col-9 mt-5 shadow '>
+                    <div className='col-9 mt-5 border shadow '>
                         <FullCalendar
                             initialView="dayGridMonth"
                             plugins={[dayGridPlugin, timeGridPlugin]}

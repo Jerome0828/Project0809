@@ -51,6 +51,13 @@ class MemberPage extends Component {
                             className='h5'>行事曆</p>
                     </div>
                 </NavLink>
+                <NavLink to={`/member/eval/${window.localStorage.id}`} className="text-decoration-none text-dark">
+                    <div className="mt-3 d-flex">
+                        <img style={{ width: '30px', opacity: 0 }} src={rightarrow} />
+                        <p id='eval' onClick={this.onClick} onMouseOut={this.onMouseOut} onMouseOver={this.mouseOver}
+                            className='h5'>評價</p>
+                    </div>
+                </NavLink>
             </>
         );
     }

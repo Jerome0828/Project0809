@@ -18,6 +18,7 @@ import CVPage from '../JeromeComponents/CVPage/CVPage';
 import MemberInfo from '../DongComponents/MemberInfo';
 import MemberPost from '../DongComponents/MemberPost';
 import MemberPlan from '../DongComponents/MemberPlan';
+import MemberEval from '../DongComponents/MemberEval';
 import EditLesson from '../DongComponents/EditLesson';
 import EditPlace from '../DongComponents/EditPlace';
 
@@ -79,6 +80,7 @@ class NavBarOK extends Component {
                         <Route path="/member/info/:id" component={MemberInfo} exact />
                         <Route path="/member/post/:id" component={MemberPost} exact />
                         <Route path="/member/plan/:id" component={MemberPlan} exact />
+                        <Route path="/member/eval/:id" component={MemberEval} exact />
                         <Route path="/member/editl/:id/:lid" component={EditLesson} exact />
                         <Route path="/member/editp/:id/:pid" component={EditPlace} exact />
 
