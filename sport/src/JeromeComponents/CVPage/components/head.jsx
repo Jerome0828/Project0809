@@ -15,8 +15,8 @@ function handleClick(event) {
 }
 
 function Head(props) {
-    const [id, setId] = useState({});
-    const [news, setNews] = useState(undefined);
+    const [id, setId] = useState();
+    const [news, setNews] = useState();
     const [city, setCity] = useState({});
     const [img, setImg] = useState({});
     const [headerImg, setHeaderImg] = useState({});
@@ -36,7 +36,7 @@ function Head(props) {
 
     // 地址拆分 (市 & 區)   
     useEffect( () => {
-        if ( typeof news == 'object' && `${news && news.addr}` && news.addr != undefined) {
+        if ( news != undefined ) {
             if (  news.addr.indexOf("區") != -1 ) {
                 setCity([news.addr.split(' ')[0].slice(0, 3), news.addr.split(' ')[0].slice(3, news.addr.indexOf("區")+1)])
             }else {
@@ -110,7 +110,9 @@ function Head(props) {
                         </div>
                         <div className='col-lg-12' >
                             <div className='w-100 py-2 px-3 my-3'>
-                                {labelsChange()}
+                                {id && id[1] ? <Labels types={news && news.type} id={id && id}/> : 
+                                    <Labels types={news && news.type} mode={news && news.mode} id={id && id}/>}
+                                {/* {labelsChange()} */}
                             </div> 
                         </div>
                     </div>

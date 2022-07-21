@@ -14,8 +14,8 @@ import Footer from './components/footer';
 AOS.init()
 
 function CVPage(props) {
-    const [id, setId] = useState({});
-    const [news, setNews] = useState(undefined);
+    const [id, setId] = useState();
+    const [news, setNews] = useState();
 
     useEffect( () => {
         if ( props.match.params.pid ) {
@@ -46,7 +46,7 @@ function CVPage(props) {
 
     return (
         <div style={{marginTop: '9vh'}}>
-            <Head id={id && id} all={news && news}/>
+            <Head id={id} all={news && news}/>
             <Scroll />
             <Body id={id && id} all={news && news[0]}/>
             <Footer id={id && id}/>
