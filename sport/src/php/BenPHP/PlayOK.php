@@ -1,12 +1,13 @@
 <?php
+
 require('ECPay.Payment.Integration.php');
- 
+header("Access-Control-Allow-Origin:*");
     try {
         // 收到綠界科技的付款結果訊息，並判斷檢查碼是否相符
         $AL = new ECPay_AllInOne();
-        $AL->MerchantID = '2000132';
-        $AL->HashKey = '5294y06JbISpM5x9';
-        $AL->HashIV = 'v77hoKGq4kWxNNIS';
+        $AL->MerchantID = '3002607';
+        $AL->HashKey = 'pwFHCqoQZGmho4w6';
+        $AL->HashIV = 'EkRm7iFT261dpevs';
         // $AL->EncryptType = ECPay_EncryptType::ENC_MD5;  // MD5
         $AL->EncryptType = ECPay_EncryptType::ENC_SHA256; // SHA256
         $feedback = $AL->CheckOutFeedback();

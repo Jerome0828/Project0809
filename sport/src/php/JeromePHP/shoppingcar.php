@@ -10,6 +10,8 @@
     $insert = "INSERT INTO shoppingcar (`oid`, id, title, `date`, `time`, price) VALUES (?, ?, ?, ?, ?, ?)";
     $sportIn = $sportSql->prepare($insert);
     $sportIn->bind_param('ssssss', $oid, $id, $title, $date, $time, $price);
-    $sportIn->execute()
 
+    if ($sportIn->execute()) {
+        echo true;
+    }
 ?>

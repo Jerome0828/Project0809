@@ -10,6 +10,8 @@ class ShoppingCart extends Component {
         carData:[],
         carid:[],
         sumPrice:0,
+        ChoosePayment:"",
+        carDataTitle:[],
      } 
 
     async componentDidMount() {
@@ -22,12 +24,21 @@ class ShoppingCart extends Component {
         for(var i=0;i<this.state.carData.length;i++){
             this.state.sumPrice += Number(this.state.carData[i].price);
         }
+
+        // this.state.ChoosePayment = document.getElementById('ChoosePaymentSelect').value;
+        // // this.state.ChoosePayment.addEnter()
+        // console.log(this.state.ChoosePayment)
+
         this.setState({});
+
+        // console.log(typeof(this.state.carData)); //物件
+        // console.log(this.state.carData);
 
         // var test1 =document.getElementsByClassName('creditCard')
         // // console.log(document.getAttribute('creditCard'))
         // // var test2 = test1.getAttribute(value);
         // console.log(test1)
+        
 
     }
     deleCar= async (e)=>{
@@ -72,7 +83,8 @@ class ShoppingCart extends Component {
     
     
     render() { 
-
+        // let test1 = document.getElementById('test1');
+        // console.log(test1.value)
        
 
         return (
@@ -80,9 +92,9 @@ class ShoppingCart extends Component {
                 <div className='mt-6 container'>
                         <h3>購物車</h3>
                         <hr />
-                <form action="http://localhost:80/spost/BenPHP/ECPay.php" method="post">
+                <form action="http://localhost:80/spost/BenPHP/ECPay.php" method="post" enctype="application/x-www-form-urlencoded" name="cartData" >
 
-                {this.state.carData.map((value,index)=>{
+                {this.state.carData.map((value,index,array)=>{
                     return(
                         <>
                         <div className='container border-bottom' >
@@ -93,11 +105,13 @@ class ShoppingCart extends Component {
                         {/* 送結帳總金額 */}
                         <input class="form-control" name="TotalAmount" type="hidden" value={this.state.sumPrice} />
                         {/* 送商品描述 */}
-                        <input class="form-control" name="TradeDesc" type="hidden" value={value.title} />
+                        <input class="form-control" name="TradeDesc" type="hidden" value={"Spost+專屬商品"} />
                         {/* 送商品資訊 */}
-                        <input class="form-control" name="ItemName" type="hidden" value={JSON.stringify(value)} />
+                        <input class="form-control" name="ItemName[]" type="hidden" value={JSON.stringify(this.state.carData)} />
+                        {/* <input class="form-control" name="ItemName[]" type="hidden" value={this.state.carData} /> */}
+                        {/* 商品單價 */}
+                        <input class="form-control" name="ItemPrice" type="hidden" value={value.price} />
 
-                        
                             <div className='row mt-2 '>
                                 <div className="cartitle col">
                                     <h5>{value.title}</h5>
@@ -134,7 +148,16 @@ class ShoppingCart extends Component {
  
                     <div className='col-12'>
                         <a>選擇付款方式:</a>
-                        <select className='ChoosePayment'>
+                        <select className='' id="ChoosePaymentSelect" onChange={(e)=>{
+                            // console.log(e.target.value)
+                            this.state.ChoosePayment = e.target.value
+                            this.setState({});
+                            console.log(this.state.ChoosePayment)
+                        }}>
+                    {/* 送出交易方式 */}
+                    <input name="ChoosePayment" type="hidden" value={this.state.ChoosePayment} />
+
+        
                             {/* 選擇付款方式 */}
                             {/* 綠界提供下列付款方式，請於建立訂單時傳送過來:
                                 Credit:信用卡及銀聯卡
@@ -144,8 +167,11 @@ class ShoppingCart extends Component {
                                 CVS:超商代碼
                                 BARCODE:超商條碼
                                 ALL:不指定付款方式，由綠界顯示付款方式選擇頁面。 */}
-                            <option name="ChoosePayment" value="Credit">信用卡付款</option>
-                            <option name="ChoosePayment" value="ATM">銀行轉帳</option>
+                            <option name="" type="text" value="" selected="selected" >請選擇支付方式</option>
+                            <option name="" type="text" value="Credit">信用卡付款</option>
+                            <option name="" type="text" value="ATM">銀行轉帳</option>
+                            <option name="" type="text" value="CVS">超商代碼</option>
+                            
                         </select>
                     </div>
                 </div>
@@ -162,6 +188,8 @@ class ShoppingCart extends Component {
                     
                     </div>
                     </form>
+
+
 
 
                     

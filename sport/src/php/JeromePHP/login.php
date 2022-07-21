@@ -16,6 +16,11 @@
     $row = $results->fetch_array();
 
     if ( $row['password'] == $singInPassword ) {
-        echo true;
+        $check = [];
+        $check[0] = $row['id'];
+        $check[1] = hash('sha256', $row['id'].'spost');
     }
+    $checkA = json_encode($check);
+    echo $checkA;
+
 ?>
