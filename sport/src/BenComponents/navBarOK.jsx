@@ -20,7 +20,6 @@ import MemberPlan from '../DongComponents/MemberPlan';
 import EditLesson from '../DongComponents/EditLesson';
 import EditPlace from '../DongComponents/EditPlace';
 
-
 // 成為教練
 import BeCoach from '../DongComponents/BeCoach.jsx';
 // 租場地
@@ -86,8 +85,8 @@ class NavBarOK extends Component {
                     <Route path="/member/info/:id" component={MemberInfo} exact/>
                     <Route path="/member/post/:id" component={MemberPost} exact/>
                     <Route path="/member/plan/:id" component={MemberPlan} exact/>
-                    <Route path="/member/editl/:lid" component={EditLesson} exact/>
-                    <Route path="/member/editp/:pid" component={EditPlace} exact/>
+                    <Route path="/member/editl/:id/:lid" component={EditLesson} exact/>
+                    <Route path="/member/editp/:id/:pid" component={EditPlace} exact/>
 
                     {/* Chat */}
                     {/* <Route path="/chat" component={chat} exact /> */}
