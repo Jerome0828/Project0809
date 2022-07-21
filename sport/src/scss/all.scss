@@ -8,7 +8,7 @@
 // 在scss中引用url時務必加上~開頭,否則會報錯讀取不了
 
 // 來自bootstrap原始檔下載後,將裡面的scss改名後放入scss資料夾內
-// @import "bootstrap/bootstrap";
+@import "bootstrap/bootstrap";
 // 依照頁功能進行修改_index就好,本頁用於合併其他scss屬性,放後面是因為後蓋前
 
 // 全站設定

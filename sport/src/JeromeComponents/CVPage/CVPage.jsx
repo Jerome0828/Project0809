@@ -47,7 +47,7 @@ function CVPage(props) {
         <div style={{marginTop: '9vh'}}>
             <Head id={id && id} all={news && news}/>
             <Scroll />
-            <Body id={id && id} all={news && news}/>
+            <Body id={id && id} all={news && news[0]}/>
             <Footer id={id && id}/>
         </div>
     )

@@ -6,20 +6,20 @@ import Monthly from './monthly';
 import Rating from '@mui/material/Rating';
 
 function Body(props) {
-    const [id, setId] = useState();
-    const [news, setNews] = useState(undefined);
+    const [id, setId] = useState({});
+    const [news, setNews] = useState({});
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
         if ( props.id != undefined && props.all != undefined ) {
             setId(props.id)
-            setNews(props.all[0])
+            setNews(props.all)
         }
     }, [props])
 
     // 更新google地圖
     let address = () => {
-        return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB09_GtwzgJdeUBYhUL91I60stBPgC_i4U&q=${news && news.addr}`
+        return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB09_GtwzgJdeUBYhUL91I60stBPgC_i4U&q=${news.addr}`
     }
 
     // table
@@ -30,25 +30,25 @@ function Body(props) {
                     <thead>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週一</th>
-                            <td>&nbsp;{news && news.mon}</td>
+                            <td>&nbsp;{news.mon}</td>
                             <th scope="row" className='bg-black text-white'>週二</th>
-                            <td>&nbsp;{news && news.tue}</td>
+                            <td>&nbsp;{news.tue}</td>
                         </tr>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週三</th>
-                            <td>&nbsp;{news && news.wed}</td>
+                            <td>&nbsp;{news.wed}</td>
                             <th scope="row" className='bg-black text-white'>週四</th>
-                            <td>&nbsp;{news && news.thu}</td>
+                            <td>&nbsp;{news.thu}</td>
                         </tr>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週五</th>
-                            <td>&nbsp;{news && news.fri}</td>
+                            <td>&nbsp;{news.fri}</td>
                             <th scope="row" className='bg-black text-white'>週六</th>
-                            <td>&nbsp;{news && news.sat}</td>
+                            <td>&nbsp;{news.sat}</td>
                         </tr>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週日</th>
-                            <td>&nbsp;{news && news.sun}</td>
+                            <td>&nbsp;{news.sun}</td>
                             <th scope="row"></th>
                             <td></td>
                         </tr>
@@ -59,25 +59,25 @@ function Body(props) {
                     <thead>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週一</th>
-                            <td>&nbsp;{news && news.mon}</td>
+                            <td>&nbsp;{news.mon}</td>
                             <th scope="row" className='bg-black text-white'>週二</th>
-                            <td>&nbsp;{news && news.tue}</td>
+                            <td>&nbsp;{news.tue}</td>
                         </tr>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週三</th>
-                            <td>&nbsp;{news && news.wed}</td>
+                            <td>&nbsp;{news.wed}</td>
                             <th scope="row" className='bg-black text-white'>週四</th>
-                            <td>&nbsp;{news && news.thu}</td>
+                            <td>&nbsp;{news.thu}</td>
                         </tr>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週五</th>
-                            <td>&nbsp;{news && news.fri}</td>
+                            <td>&nbsp;{news.fri}</td>
                             <th scope="row" className='bg-black text-white'>週六</th>
-                            <td>&nbsp;{news && news.sat}</td>
+                            <td>&nbsp;{news.sat}</td>
                         </tr>
                         <tr>
                             <th scope="row" className='bg-black text-white'>週日</th>
-                            <td>&nbsp;{news && news.sun}</td>
+                            <td>&nbsp;{news.sun}</td>
                             <th scope="row"></th>
                             <td></td>
                         </tr>
@@ -96,7 +96,7 @@ function Body(props) {
                         <p id='title' className='container'>場地簡介</p>
                         <div className='container'>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {news && news.info}
+                                {news.info}
                             </p>
                         </div>
                     </div>
@@ -116,7 +116,7 @@ function Body(props) {
                     {/* 預約狀況 */}
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>預約狀況</p>
-                        <Monthly news={news && news} id={id && id}/>
+                        <Monthly news={news} id={id && id}/>
                     </div>
                     <hr />
                     {/* 授課師資 */}
@@ -129,7 +129,7 @@ function Body(props) {
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>地址</p>
                         <div className='row align-items-center m-2'>
-                            <h4 className='text-center m-1'>{news && news.addr}</h4>
+                            <h4 className='text-center m-1'>{news.addr}</h4>
                             <iframe src={address()} frameBorder="0" className='col-lg-12 mt-3' height='400vh'></iframe>
                         </div>
                     </div>
@@ -172,7 +172,6 @@ function Body(props) {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
