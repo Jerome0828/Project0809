@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {  BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
+import {  HashRouter as Router, Route, Switch, NavLink} from 'react-router-dom';
 import '../scss/all.css';
 import axios from 'axios';
+
 
 // 導覽列物件
 import NavBarContent1 from './navBarContentTest';
@@ -52,7 +53,7 @@ class NavBarOK extends Component {
 
     render() { 
         return (
-            <BrowserRouter>
+            <Router >
             <div >
 
             <NavBarContent1 />
@@ -63,9 +64,9 @@ class NavBarOK extends Component {
 
                     {/* 課程與場地路由,預設課程頁面 */}
                     <Route path="/lesson" component={SearchCoachPage} exact/>
-                    <Route path="/lesson/:lid" component={CVPage} exact />
+                    <Route path="/lesson/:lid" component={CVPage} exact/>
                     <Route path="/site" component={SearchSitePage} exact/>
-                    <Route path="/site/:pid" component={CVPage} exact />
+                    <Route path="/site/:pid" component={CVPage} exact/>
 
                     {/* 成為教練 */}
                     <Route path="/BeCoach" component={BeCoach} exact/>
@@ -82,7 +83,7 @@ class NavBarOK extends Component {
                     {/* 購物車結帳頁面 0718 BEN新增 */}
                     <Route path="/checkoutPage" component={checkoutPage}/>
                     {/* 購物車結帳信用卡支付 0719 BEN新增 */}
-                    <Route path="/CreditCardPaymentPage" component={CreditCardPaymentPage}></Route>
+                    <Route path="/CreditCardPaymentPage" component={CreditCardPaymentPage} />
 
                     {/* 會員頁 0709 DONG新增 */}
                     <Route path="/member/:id" component={MemberPlan} exact/>
@@ -97,7 +98,6 @@ class NavBarOK extends Component {
 
                 {/* 設定視窗定位按鈕 */}
                 <div className='homeRightFixedBox d-flex '>
-
 
                         <div className='homeRightFixedBoxV1 container '>
                             {/* 購物車按鈕 */}
@@ -118,7 +118,7 @@ class NavBarOK extends Component {
                          </div>
                 </div>
             </div>
-            </BrowserRouter>
+            </Router>
         );
     }
 }

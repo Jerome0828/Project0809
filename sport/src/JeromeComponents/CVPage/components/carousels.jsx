@@ -26,7 +26,6 @@ function Carousels(props) {
           <Carousel.Item key={idx}>
             <div className='d-flex w-100 justify-content-center' >
               <img
-                className="w-100"
                 src={`data:image/jpeg;base64,${val.img}`}
                 style={{ height: style[0]}}
               />

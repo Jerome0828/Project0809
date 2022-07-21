@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
 import '../scss/all.css';
@@ -35,7 +36,14 @@ class RentPlace extends Component {
     agreeStyle = {
         'width': '15%'
     }
-
+    componentDidMount(){
+        if(window.localStorage.id){
+            document.getElementById('danger').className = 'd-none';
+        }else{
+            document.querySelectorAll('button[type=submit]')[0].className = 'd-none'
+            document.querySelectorAll('button[type=submit]')[1].className = 'd-none'
+        }
+    }
     // 運動類別更動
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
@@ -320,8 +328,9 @@ class RentPlace extends Component {
                     <hr />
 
 
-                    <button type="submit" onClick={this.submitOnClick} className="btn btn-outline-success">送出</button>
+                    <button type="submit" name='id' value={window.localStorage.id} className="btn btn-outline-success" >送出</button>
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
+                    <NavLink to='/login' id='danger' className="btn btn-lg btn-outline-danger mx-3">請先登入</NavLink>
                 </form>
             </div>
 

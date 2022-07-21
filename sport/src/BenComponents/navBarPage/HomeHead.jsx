@@ -112,16 +112,18 @@ class HomeHead extends Component {
     async componentDidMount() {
         // 取得課程lesson
         var url = `http://localhost:80/spost/BenPHP/lessonGet.php`;
-        var result = await Axios.get(url);
-        this.state.lessonData = [];
-        let dateLesson = [];
-        Object.keys(result.data).map( (values)=> {
-            dateLesson.push(result.data[values])
-            if ( dateLesson.length == 5 ) {
-                this.state.lessonData.push(dateLesson)
-                dateLesson = []
-            }
+        await Axios.get(url).then( result => {
+            this.state.lessonData = [];
+            let dateLesson = [];
+            Object.keys(result.data).map( (values)=> {
+                dateLesson.push(result.data[values])
+                if ( dateLesson.length == 5 ) {
+                    this.state.lessonData.push(dateLesson)
+                    dateLesson = []
+                }
+            })
         })
+
         // this.state.lessonData = result.data;
         // console.log(this.state.lessonData)
 
@@ -145,16 +147,18 @@ class HomeHead extends Component {
     
         // 取得場地place
         var url = `http://localhost:80/spost/BenPHP/placeGet.php`;
-        var result = await Axios.get(url);
-        this.state.placeData = [];
-        let datePlace = [];
-        Object.keys(result.data).map( (values)=> {
-            datePlace.push(result.data[values])
-            if ( datePlace.length == 5 ) {
-                this.state.placeData.push(datePlace)
-                datePlace = []
-            }
+        await Axios.get(url).then( result => {
+            this.state.placeData = [];
+            let datePlace = [];
+            Object.keys(result.data).map( (values)=> {
+                datePlace.push(result.data[values])
+                if ( datePlace.length == 5 ) {
+                    this.state.placeData.push(datePlace)
+                    datePlace = []
+                }
+            })
         })
+
         // this.state.placeData = result.data;
         // console.log(this.state.placeData)
 

@@ -66,7 +66,7 @@ class MemberLessonPost extends Component {
                             </div>
                             <div className="mx-2 mt-3 d-flex justify-content-between bg-white">
                                 <Button variant="outlined" color="success">
-                                    <NavLink className='text-decoration-none text-success' to={`/member/editl/${elm.lid}`}>修改</NavLink>
+                                    <NavLink className='text-decoration-none text-success' to={`/member/editl/${elm.id}/${elm.lid}`}>修改</NavLink>
                                 </Button>
                                 <AlertDialog />
                             </div>

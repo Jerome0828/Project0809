@@ -46,12 +46,22 @@ class EditLesson extends Component {
     async componentDidMount() {
         // 資料回傳
         let resdata = [];
-        await Axios.post("http://localhost/spost/DongPHP/editLesson.php", this.props.match.params.lid)
+        let checkInfo  = '';
+        checkInfo = this.props.match.params.lid+',';
+        checkInfo += this.props.match.params.id+',';
+        checkInfo += window.localStorage.info;
+        await Axios.post("http://localhost/spost/DongPHP/editLesson.php", checkInfo)
             .then((response) => {
                 resdata = response.data;
             });
-        // console.log(resdata);
-        this.state.data = resdata;
+        if(resdata == 1){
+            localStorage.clear();
+            window.location = '/login';
+        }else{
+            this.state.data = resdata;
+            this.setState({});
+        }    
+        
 
         // 預設價格
         this.state.data[0].pricepertime = this.state.data[0].pricepertime.replace(' ', '');
@@ -193,8 +203,9 @@ class EditLesson extends Component {
     editImage = (e) => {
         if (e.target.files[0]) {
             e.target.parentElement.childNodes[0].src = URL.createObjectURL(e.target.files[0]);
-            // this.setState({});
         }
+        let flagNum = e.target.name.replace('img','');
+        document.getElementById(`imgFlag${flagNum}`).value = true;
     }
 
     addImage = (e) => {
@@ -224,7 +235,8 @@ class EditLesson extends Component {
     }
 
     deleteImage = (e) => {
-        e.target.parentElement.childNodes[0].src = pic
+        e.target.parentElement.childNodes[0].src = pic;
+        e.target.parentElement.childNodes[3].value=false;
     }
 
     render() {
@@ -234,7 +246,7 @@ class EditLesson extends Component {
                 <h3>編輯課程</h3>
                 <hr />
                 <form id='beCoach' className="was-validated form-group" enctype="multipart/form-data"
-                    action="http://localhost/spost/form.php" method='POST'>
+                    action="http://localhost/spost/DongPHP/form.php" method='POST'>
 
                     {/* 編輯圖片 */}
                     <ul className="list-group list-group-flush">
@@ -253,10 +265,11 @@ class EditLesson extends Component {
                                             background: 'white',
                                             objectFit: 'contain'
                                         }} src={`data:image/jpeg;base64,${elm.img}`} className="mt-3 mx-2" />
-                                        <input name={`img${idx+1}`} id={`imgInput${idx+1}`}
+                                        <input name={`img${idx+1}`} id={`imgInput${idx+1}`} 
                                             accept="image/gif, image/jpeg, image/png"
                                             type="file" onChange={this.editImage} className="mt-3 rounded shadow form-control" />
                                         <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                                        <input type="hidden" name={`imgFlag${idx+1}`} id={`imgFlag${idx+1}`} value={false}/>
                                     </div>
                                 </>
                             )
@@ -273,6 +286,7 @@ class EditLesson extends Component {
                                 type="file" onChange={this.editImage}
                                 className="mt-3 rounded shadow form-control" />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                            <input type="hidden" name="imgflag2" id="imgFlag2" value={false}/>
                         </div>
 
                         <div className="col-3 d-none">
@@ -286,23 +300,10 @@ class EditLesson extends Component {
                             <input name='img3' id='imgInput3'
                                 accept="image/gif, image/jpeg, image/png"
                                 type="file" onChange={this.editImage}
-                                className="mt-3 rounded shadow form-control" />
+                                className="mt-3 rounded shadow form-control" 
+                                />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
-                        </div>
-
-                        <div className="col-3 d-none">
-                            <img style={{
-                                width: '260px',
-                                height: '280px',
-                                background: 'white',
-                                objectFit: 'contain'
-                            }} src={pic} className="mt-3 mx-2" />
-
-                            <input name='img3' id='imgInput3'
-                                accept="image/gif, image/jpeg, image/png"
-                                type="file" onChange={this.editImage}
-                                className="mt-3 rounded shadow form-control" />
-                            <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                            <input type="hidden" name="imgflag3" id="imgFlag3" value={false}/>
                         </div>
 
                     </div>
@@ -461,7 +462,7 @@ class EditLesson extends Component {
                     <hr />
 
                     {/* 送出表單 */}
-                    <button type="submit" className="btn btn-outline-success">送出</button>
+                    <button type="submit" name='lid' value={this.props.match.params.lid} className="btn btn-outline-success">送出</button>
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                 </form>
                 <br /><br /><br /><br /><br /><br /><br />

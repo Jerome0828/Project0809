@@ -27,7 +27,7 @@ class LessonCard extends Component {
                                     <div className="h-100">
                                         <Link to={`/lesson/${elm.lid}`}>
                                             <img style={{
-                                                height: '18em',
+                                                height: '14em',
                                                 width: '100%',
                                                 background: 'white',
                                                 objectFit: 'cover',

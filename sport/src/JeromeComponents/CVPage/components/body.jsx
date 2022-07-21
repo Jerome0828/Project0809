@@ -168,11 +168,7 @@ function Body(props) {
                     <h3 className='container text-end m-1 text-white'>課後評價</h3>
                     <div style={{transform: 'translate(10%, 0)'}}>
                         <Evaluation />
-                        <Evaluation />
-                        <Evaluation />
-                        <Evaluation />
-                        <Evaluation />
-                        <Evaluation />
+                        {/* //6// */}
                     </div>
                 </div>
             </div>

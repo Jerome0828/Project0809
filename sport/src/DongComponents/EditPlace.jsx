@@ -40,12 +40,23 @@ class EditPlace extends Component {
 
     async componentDidMount() {
         let resdata = [];
-        await Axios.post("http://localhost/spost/DongPHP/editPlace.php", this.props.match.params.pid)
+        let checkInfo  = '';
+        // console.log(this.props.match.params.pid);
+        checkInfo = this.props.match.params.pid+',';
+        checkInfo += this.props.match.params.id+',';
+        checkInfo += window.localStorage.info;
+        await Axios.post("http://localhost/spost/DongPHP/editPlace.php", checkInfo)
             .then((response) => {
                 resdata = response.data;
             });
-        // console.log(resdata);
-        this.state.data = resdata;
+            console.log(resdata);
+            if(resdata == 1){
+                localStorage.clear();
+                window.location = '/login';
+            }else{
+                this.state.data = resdata;
+                this.setState({});
+            }
         // 原場地名稱
         document.querySelectorAll('input[name="title"]')[0].value = this.state.data[0].title;
         // 原場地資訊
