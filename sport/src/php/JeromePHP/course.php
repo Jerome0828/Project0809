@@ -4,7 +4,7 @@
     // 場地介紹頁
     $pid = $materialPost["pid"];
 
-    $sql = " SELECT * FROM place WHERE place.pid = '$pid'; ";
+    $sql = " SELECT * FROM place WHERE pid = '$pid'; ";
     $result = $sportSql->query($sql);
 
     $img = " SELECT img FROM place INNER JOIN pimage ON place.pid = pimage.pid WHERE place.pid = '$pid'; ";
