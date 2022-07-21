@@ -10,9 +10,9 @@ import home from './navBarPage/home.jsx';
 // 課程與場地(預設教練頁)
 import SearchCoachPage from '../DongComponents/SearchCoachPage.jsx';
 import SearchSitePage from '../DongComponents/SearchSitePage.jsx';
-import Venues from '../JeromeComponents/venues/venues';
-import Course from '../JeromeComponents/course/course.jsx';
-// import CVPage from '../JeromeComponents/CVPage/CVPage';
+// import Venues from '../JeromeComponents/venues/venues';
+// import Course from '../JeromeComponents/course/course.jsx';
+import CVPage from '../JeromeComponents/CVPage/CVPage';
 
 // 會員頁 0709 DONG新增
 import MemberInfo from '../DongComponents/MemberInfo';
@@ -55,9 +55,9 @@ class NavBarOK extends Component {
 
                         {/* 課程與場地路由,預設課程頁面 */}
                         <Route path="/lesson" component={SearchCoachPage} exact />
-                        <Route path="/lesson/:lid" component={Venues} exact />
+                        <Route path="/lesson/:lid" component={CVPage} exact />
                         <Route path="/site" component={SearchSitePage} exact />
-                        <Route path="/site/:pid" component={Course} exact />
+                        <Route path="/site/:pid" component={CVPage} exact />
 
                         {/* 成為教練 */}
                         <Route path="/BeCoach" component={BeCoach} exact />

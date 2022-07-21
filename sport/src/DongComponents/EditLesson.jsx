@@ -205,7 +205,9 @@ class EditLesson extends Component {
             e.target.parentElement.childNodes[0].src = URL.createObjectURL(e.target.files[0]);
         }
         let flagNum = e.target.name.replace('img','');
+        // console.log(flagNum);
         document.getElementById(`imgFlag${flagNum}`).value = true;
+        console.log(document.getElementById(`imgFlag3`).value);
     }
 
     addImage = (e) => {
@@ -214,30 +216,36 @@ class EditLesson extends Component {
             if (node.className == 'col-3') {
                 i++
             }
-        })
-        if (i == 0) {
-            document.getElementById('imageGroup').childNodes[0].children[1].id = 'imgInput1'
-            document.getElementById('imageGroup').childNodes[0].children[1].name = 'img1'
-            document.getElementById('imageGroup').childNodes[0].className = 'col-3';
-        }
-
+        })        
         if (i == 1) {
+            document.getElementById('imageGroup').childNodes[1].children[3].id='imgFlag2'
+            document.getElementById('imageGroup').childNodes[1].children[3].name='imgFlag2'
             document.getElementById('imageGroup').childNodes[1].children[1].id = 'imgInput2'
             document.getElementById('imageGroup').childNodes[1].children[1].name = 'img2'
             document.getElementById('imageGroup').childNodes[1].className = 'col-3';
         }
-
+        
         if (i == 2) {
+            document.getElementById('imageGroup').childNodes[2].children[3].id='imgFlag3'
+            document.getElementById('imageGroup').childNodes[2].children[3].name='imgFlag3'
             document.getElementById('imageGroup').childNodes[2].children[1].id = 'imgInput3'
             document.getElementById('imageGroup').childNodes[2].children[1].name = 'img3'
             document.getElementById('imageGroup').childNodes[2].className = 'col-3';
         }
+        // if (i == 0) {
+        //     document.getElementById('imageGroup').childNodes[0].children[3].id='imgFlag1'
+        //     document.getElementById('imageGroup').childNodes[0].children[3].name='imgFlag1'
+        //     document.getElementById('imageGroup').childNodes[0].children[1].id = 'imgInput1'
+        //     document.getElementById('imageGroup').childNodes[0].children[1].name = 'img1'
+        //     document.getElementById('imageGroup').childNodes[0].className = 'col-3';
+        // }
     }
 
     deleteImage = (e) => {
         e.target.parentElement.childNodes[0].src = pic;
-        e.target.parentElement.childNodes[3].value=false;
         e.target.parentElement.childNodes[1].value='';
+        e.target.parentElement.childNodes[3].value=false;
+        // console.log(e.target.parentElement.childNodes[3]);
     }
 
     render() {
@@ -287,7 +295,7 @@ class EditLesson extends Component {
                                 type="file" onChange={this.editImage}
                                 className="mt-3 rounded shadow form-control" />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
-                            <input type="hidden" name="imgflag2" id="imgFlag2" value={false}/>
+                            <input type="hidden" name="imgFlag2" id="imgFlag2" value={false}/>
                         </div>
 
                         <div className="col-3 d-none">
@@ -304,7 +312,7 @@ class EditLesson extends Component {
                                 className="mt-3 rounded shadow form-control" 
                                 />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
-                            <input type="hidden" name="imgflag3" id="imgFlag3" value={false}/>
+                            <input type="hidden" name="imgFlag3" id="imgFlag3" value={false}/>
                         </div>
 
                     </div>

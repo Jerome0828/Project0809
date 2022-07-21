@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../../scss/all.css';
 
-import 'aos/dist/aos.css';
-import AOS from 'aos';
+// import 'aos/dist/aos.css';
+// import AOS from 'aos';
 import Axios from 'axios';
-import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+// import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 // import 'bootstrap/dist/js/bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -118,7 +118,6 @@ class HomeHead extends Component {
         //     elm.id = `type${idx}`;
         // })
         // this.setState({});
-        AOS.init({ duration : 1000 });
     }
 
         // 點選連結
@@ -150,9 +149,7 @@ class HomeHead extends Component {
             {/* header第一段左邊 */}
             <div className='HomeHeadBoxStyle row container m-auto'                                                             
 
-                data-aos="fade-down"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
+                
             >
                 {this.state.oneLeftBoxStyle.map((e,index)=>{return <IndexLeftBox 
                         id={e.id} key={index} title={e.title} value={e.value} src={e.src1}
@@ -193,10 +190,6 @@ class HomeHead extends Component {
                     <div className='row container m-auto'>
                         <div className='col-3 oneSectionBoxCol'
 
-                        data-aos="fade-zoom-in"
-                        data-aos-easing="ease-in-back"
-                        data-aos-delay="300"
-                        data-aos-offset="0"
 
                         >
                         <h1 className='container text-center mt-4 text-white'>30,000+</h1>
@@ -210,11 +203,7 @@ class HomeHead extends Component {
 
                         <div className='col-3 oneSectionBoxCol'
                         
-                        data-aos="fade-zoom-in"
-                        data-aos-easing="ease-in-back"
-                        data-aos-delay="300"
-                        data-aos-offset="0"
-                        
+                  
                         >
                         <h1 className='container text-center mt-4 text-white'>1000+</h1>
                         <h4 className='container text-center text-white'>專業教練老師</h4>
@@ -226,12 +215,7 @@ class HomeHead extends Component {
                         </div>
 
                         <div className='col-3 oneSectionBoxCol'
-                        
-                        data-aos="fade-zoom-in"
-                        data-aos-easing="ease-in-back"
-                        data-aos-delay="300"
-                        data-aos-offset="0"
-                        
+
                         >
                         <h1 className='container text-center mt-4 text-white'>1,600+</h1>
                         <h4 className='container text-center text-white'>實體/線上課程</h4>
@@ -243,11 +227,7 @@ class HomeHead extends Component {
                         </div>
 
                         <div className='col-3 oneSectionBoxCol'
-                        
-                        data-aos="fade-zoom-in"
-                        data-aos-easing="ease-in-back"
-                        data-aos-delay="300"
-                        data-aos-offset="0"
+            
                         
                         >
                         <h1 className='container text-center mt-4 text-white'>100+</h1>
@@ -267,18 +247,12 @@ class HomeHead extends Component {
 {/* 第二層section(輪播Carousel設定) */}
         <section>
             <div className='mt-6 m-5 h-100'
-            data-aos="fade-up"
-            data-aos-easing="linear"
-            data-aos-duration="1500"
             >
                 
 
                 <div
                 className='carouselBoxBigText container mb-3' 
-                data-aos="fade-up"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
-
+              
                 >
                     <h1>全台超過1000位專業教練</h1>
                     <a>健身、重訓、瑜珈、有氧、皮拉提斯、舞蹈都有</a>
@@ -309,9 +283,6 @@ class HomeHead extends Component {
 
             <div
                 className='carouselBoxBottomText' 
-                data-aos="fade-up"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
                 
                 >   
                     <div className='carouselBoxBottomTextV1 mt-3'>
@@ -337,17 +308,13 @@ class HomeHead extends Component {
 {/* 第三層section(輪播Carousel設定) */}
         <section>
             <div className=' m-5 h-100 row-sm-12'
-                            data-aos="fade-up"
-                            data-aos-easing="linear"
-                            data-aos-duration="1500"
+                            
             >
                 
 
                 <div
                 className='carouselBoxBigText container mb-3' 
-                data-aos="fade-up"
-                data-aos-easing="linear"
-                data-aos-duration="1500"
+          
 
                 >
                     <h1>各類運動訓練空間</h1>
@@ -382,7 +349,7 @@ class HomeHead extends Component {
 
             <div
                 className='carouselBoxBottomText cont' 
-                data-aos="fade-up"
+                
 
                 >   
                     <div className='carouselBoxBottomTextV1 mt-3'>
