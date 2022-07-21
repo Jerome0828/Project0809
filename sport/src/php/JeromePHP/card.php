@@ -1,9 +1,16 @@
 <?php
     include('sql.php');
 
+    $id = "{$materialPost['id']}";
+
     // card
-    $sql =  "SELECT addr, title, price, pricepertime, img FROM place INNER JOIN pimage ON place.pid = pimage.pid 
-        ORDER BY RAND() limit 3;";
+    if ( $id == 'true' ) {
+        $sql =  "SELECT place.pid, addr, title, price, pricepertime, img FROM place INNER JOIN pimage ON place.pid = pimage.pid 
+            ORDER BY RAND() limit 3;";
+    }else {
+        $sql =  "SELECT lesson.lid, addr, title, price, pricepertime, img FROM lesson INNER JOIN limage ON lesson.lid = limage.lid 
+            ORDER BY RAND() limit 3;";
+    }
     $result = $sportSql->query($sql);
 
     $i = 0;
