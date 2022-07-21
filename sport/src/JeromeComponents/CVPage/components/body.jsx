@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Teachers from './teachers';
 import Evaluation from './Evaluation';
 import Monthly from './monthly';
 
@@ -117,12 +116,6 @@ function Body(props) {
                     <div className='container' data-aos="fade-up">
                         <p id='title' className='container'>預約狀況</p>
                         <Monthly news={news} id={id}/>
-                    </div>
-                    <hr />
-                    {/* 授課師資 */}
-                    <div className='container' data-aos="fade-up">
-                        <p id='title' className='container'>授課師資</p>
-                        <Teachers />
                     </div>
                     <hr />
                     {/* 地址 */}

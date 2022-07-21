@@ -49,7 +49,7 @@ class EditPlace extends Component {
             .then((response) => {
                 resdata = response.data;
             });
-            console.log(resdata);
+            // console.log(resdata);
             if(resdata == 1){
                 localStorage.clear();
                 window.location = '/login';
@@ -207,8 +207,9 @@ class EditPlace extends Component {
     editImage = (e) => {
         if (e.target.files[0]) {
             e.target.parentElement.childNodes[0].src = URL.createObjectURL(e.target.files[0]);
-            // this.setState({});
         }
+        let flagNum = e.target.name.replace('img','');
+        document.getElementById(`imgFlag${flagNum}`).value = true;
     }
 
     addImage = (e) => {
@@ -217,20 +218,18 @@ class EditPlace extends Component {
             if (node.className == 'col-3') {
                 i++
             }
-        })
-        if (i == 0) {
-            document.getElementById('imageGroup').childNodes[0].children[1].id = 'imgInput1'
-            document.getElementById('imageGroup').childNodes[0].children[1].name = 'img1'
-            document.getElementById('imageGroup').childNodes[0].className = 'col-3';
-        }
-
+        })        
         if (i == 1) {
+            document.getElementById('imageGroup').childNodes[1].children[3].id='imgFlag2'
+            document.getElementById('imageGroup').childNodes[1].children[3].name='imgFlag2'
             document.getElementById('imageGroup').childNodes[1].children[1].id = 'imgInput2'
             document.getElementById('imageGroup').childNodes[1].children[1].name = 'img2'
             document.getElementById('imageGroup').childNodes[1].className = 'col-3';
         }
-
+        
         if (i == 2) {
+            document.getElementById('imageGroup').childNodes[2].children[3].id='imgFlag3'
+            document.getElementById('imageGroup').childNodes[2].children[3].name='imgFlag3'
             document.getElementById('imageGroup').childNodes[2].children[1].id = 'imgInput3'
             document.getElementById('imageGroup').childNodes[2].children[1].name = 'img3'
             document.getElementById('imageGroup').childNodes[2].className = 'col-3';
@@ -239,6 +238,8 @@ class EditPlace extends Component {
 
     deleteImage = (e) => {
         e.target.parentElement.childNodes[0].src = pic
+        e.target.parentElement.childNodes[3].value=false;
+        e.target.parentElement.childNodes[1].value='';
     }
 
     render() {
@@ -249,7 +250,7 @@ class EditPlace extends Component {
                 <h3>上傳場地</h3>
                 <hr />
                 <form id='rentPlace' className="was-validated form-group" enctype="multipart/form-data"
-                    action="http://localhost/spost/form.php" method='POST'>
+                    action="http://localhost/spost/DongPHP/form.php" method='POST'>
 
                     {/* 編輯圖片 */}
                     <ul className="list-group list-group-flush">
@@ -272,6 +273,7 @@ class EditPlace extends Component {
                                             accept="image/gif, image/jpeg, image/png"
                                             type="file" onChange={this.editImage} className="mt-3 rounded shadow form-control" />
                                         <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                                        <input type="hidden" name={`imgFlag${idx+1}`} id={`imgFlag${idx+1}`} value={false}/>
                                     </div>
                                 </>
                             )
@@ -283,11 +285,12 @@ class EditPlace extends Component {
                                 background: 'white',
                                 objectFit: 'contain'
                             }} src={pic} className="mt-3 mx-2" />
-                            <input name='img2' id='imgInput2'
+                            <input name='img0' id='imgInput0'
                                 accept="image/gif, image/jpeg, image/png"
                                 type="file" onChange={this.editImage}
                                 className="mt-3 rounded shadow form-control" />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                            <input type="hidden" name="imgflag0" id="imgFlag0" value={false}/>
                         </div>
 
                         <div className="col-3 d-none">
@@ -298,26 +301,12 @@ class EditPlace extends Component {
                                 objectFit: 'contain'
                             }} src={pic} className="mt-3 mx-2" />
 
-                            <input name='img3' id='imgInput3'
+                            <input name='img5' id='imgInput5'
                                 accept="image/gif, image/jpeg, image/png"
                                 type="file" onChange={this.editImage}
                                 className="mt-3 rounded shadow form-control" />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
-                        </div>
-
-                        <div className="col-3 d-none">
-                            <img style={{
-                                width: '260px',
-                                height: '280px',
-                                background: 'white',
-                                objectFit: 'contain'
-                            }} src={pic} className="mt-3 mx-2" />
-
-                            <input name='img3' id='imgInput3'
-                                accept="image/gif, image/jpeg, image/png"
-                                type="file" onChange={this.editImage}
-                                className="mt-3 rounded shadow form-control" />
-                            <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
+                            <input type="hidden" name="imgflag5" id="imgFlag5" value={false}/>
                         </div>
 
                     </div>

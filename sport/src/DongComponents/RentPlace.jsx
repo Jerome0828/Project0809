@@ -332,6 +332,7 @@ class RentPlace extends Component {
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
                     <NavLink to='/login' id='danger' className="btn btn-lg btn-outline-danger mx-3">請先登入</NavLink>
                 </form>
+                <br /><br /><br /><br /><br /><br /><br />
             </div>
 
         );
