@@ -237,6 +237,7 @@ class EditLesson extends Component {
     deleteImage = (e) => {
         e.target.parentElement.childNodes[0].src = pic;
         e.target.parentElement.childNodes[3].value=false;
+        e.target.parentElement.childNodes[1].value='';
     }
 
     render() {
@@ -449,7 +450,7 @@ class EditLesson extends Component {
                             <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control" defaultValue={this.state.data[0] && this.state.data[0].price} placeholder="請輸入價錢" required />
                             <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue='' required>
                                 <option name="" value=""></option>
-                                <option name="perTimes" value="1次">1次</option>
+                                <option name="perTimes" value="次">次</option>
                                 <option name="perMin" value="1分鐘">1分鐘</option>
                                 <option name="perThirtyMin" value="30分鐘">30分鐘</option>
                                 <option name="perHour" value="60分鐘">60分鐘</option>
