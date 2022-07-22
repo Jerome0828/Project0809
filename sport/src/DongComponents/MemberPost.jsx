@@ -10,7 +10,6 @@ class MemberPost extends Component {
     async componentDidMount() {
         let resdata = [];
         let resPlaceData=[];
-        console.log(window.localStorage);
         let checkInfo  = '';
         checkInfo = this.props.match.params.id+',';
         checkInfo += window.localStorage.info;
@@ -18,7 +17,6 @@ class MemberPost extends Component {
         .then( (response) => {
             resdata = response.data;
         });
-        console.log(resdata);
         await Axios.post("http://localhost/spost/DongPHP/memberPlacePost.php", checkInfo )
         .then( (response) => {
             resPlaceData = response.data;
