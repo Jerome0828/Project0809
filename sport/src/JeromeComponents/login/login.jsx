@@ -376,7 +376,7 @@ class Login extends Component {
       }
       axios.post("http://localhost:80/spost/JeromePHP/login.php", singIn )
         .then( (response) => {
-          if ( typeof(response.data[0]) == 'string' ) {
+          if ( typeof response.data == 'object' ) {
             localStorage.setItem('id', `${response.data[0]}`);
             localStorage.setItem('info', `${response.data[1]}`);
             window.location.href = '/';
