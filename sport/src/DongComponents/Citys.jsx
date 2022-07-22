@@ -3,6 +3,7 @@ import citycountrydata from '../data/citycountrydata.json'
 class Citys extends Component {
     state = {}
 
+
     district = (city) => {
         var cityDistrict = citycountrydata.map((val)=>(val));
         switch(city){
@@ -27,15 +28,14 @@ class Citys extends Component {
             case '金門縣' :districtList = cityDistrict[20].AreaList;break;
             case '屏東縣' :districtList = cityDistrict[21].AreaList;break;
             case '臺東縣' :districtList = cityDistrict[22].AreaList;break;
-            case '花蓮縣' :districtList = cityDistrict[23].AreaList;break;
+            case '線上視訊教學' :districtList = cityDistrict[23].AreaList;break;
+            case '花蓮縣' :districtList = cityDistrict[24].AreaList;break;
         }
         let district = document.getElementById('district');
         district.innerHTML = `<option value="">縣市</option>`;
         districtList.map((val,idx) => {
-            // console.log(val, idx)
             district.innerHTML += `<option key=${idx} value=${val.AreaName}>${val.AreaName}</option>`
         });
-        // console.log(cityDistrict);
         this.setState({});
     }
     check = (e) => {
@@ -44,18 +44,18 @@ class Citys extends Component {
             district.innerHTML = '';
         }
         this.district(e.target.value);
-        // console.log(e.target.value);
         this.setState({});
     }
     render() {
-        let selectedOptionId = '';
         let inputBoxStyle = this.props.style;
         let required = this.props.required;
-
+        let selectedOptionId = '';
         return (
             <>
-                <select name="city" style={inputBoxStyle} className='shadow form-control' id="city" defaultValue={selectedOptionId} onChange={this.check} required={required}>
+                <select name="city" style={inputBoxStyle} className='shadow form-control' id="city" 
+                defaultValue={selectedOptionId} onChange={this.check} required={required}>
                     <option value="">縣市</option>
+                    <option value="線上視訊教學">線上視訊教學</option>                    
                     {citycountrydata.map((val,idx)=>
                         <option key={idx} value={val.CityName}>{val.CityName}</option>
                         )}

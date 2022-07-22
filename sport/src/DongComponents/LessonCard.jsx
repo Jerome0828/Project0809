@@ -16,6 +16,7 @@ class LessonCard extends Component {
     }
     render() {
         let dataList = this.props.dataList;
+        // console.log(dataList);
         return (
             <>
                 {
@@ -26,12 +27,12 @@ class LessonCard extends Component {
                                     <div className="h-100">
                                         <Link to={`/lesson/${elm.lid}`}>
                                             <img style={{
-                                                height: '18em',
+                                                height: '14em',
                                                 width: '100%',
                                                 background: 'white',
                                                 objectFit: 'cover',
                                                 objectPosition: '50% 50%'
-                                            }} src={`data:image/jpeg;base64,${elm.img1}`} className="card-img-top" />
+                                            }} src={`data:image/jpeg;base64,${elm.img}`} className="card-img-top" />
                                         </Link>
                                     </div>
                                     <div className="card-body row ">
@@ -41,7 +42,7 @@ class LessonCard extends Component {
                                             </div>
                                         </Link>
                                         <div className="col-12">
-                                            <p className="card-text text-nowrap text-truncate">{elm.cname}</p>
+                                            <p className="card-text text-nowrap text-truncate">{elm.nickname}</p>
 
                                         </div>
                                         <p className="card-text text-nowrap text-truncate"><small className="text-muted">{elm.addr}</small></p>

@@ -18,13 +18,14 @@ function Courses(props) {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
+        let test = Math.floor(Math.random() * 40)
         setState(props.match.params.pid)
     }, [])
 
     useEffect( () => {
         const Qs = require("qs")
         async function post() {
-            await axios.post("http://localhost:80/spost/JeromePHP/course.php", Qs.stringify({ pid: state }))
+            await axios.post("http://localhost:80/spost/JerpmePHP/course.php", Qs.stringify({ pid: state }))
             .then( response => {
                 setNews(response.data)
             })

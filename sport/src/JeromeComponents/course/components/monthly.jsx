@@ -7,8 +7,7 @@ import axios from 'axios';
 function Monthly(props) {
   const day = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // 月曆(星期幾)與資料庫對應
 
-  const [oder, setOder] = useState(''); // 購物車加入成功
-  const [dateDay, setDateDay] = useState([]); // 單日
+  const [oder, setOder] = useState([0, 0]); // 訂單資訊
   const [btnData, setBtnData] = useState([]); // 按鈕value
   const [test, setTest] = useState([]); // 場地無開放提示
   const [news, setNews] = useState(undefined);// news: 資料庫(place)資訊
@@ -28,7 +27,18 @@ function Monthly(props) {
   // 傳入news, 取資料
   useEffect( () => {
     setNews(props.news)
-    button(props.news)
+
+    const Qs = require("qs")
+    async function post() {
+      await axios.post("http://localhost:80/spost/JerpmePHP/monthlyButton.php", Qs.stringify({ pid: `${props.pid && props.pid}` }))
+      .then( response => {
+        if ( typeof response.data == "object" ) {
+          // 預設
+          button(response.data)
+        }
+      })
+    }
+    post()
   }, [props])
 
   // 月曆日期變動
@@ -53,11 +63,11 @@ function Monthly(props) {
             let b = []
             for ( let i = numFirstHour ; i < numLastHour ; i++ ) {
               if ( numFirstHour < 10 && numFirstHour+1 < 10) {
-                  var a = `0${numFirstHour}:00 ~ 0${numFirstHour + 1}:00`
+                  var a = `0${numFirstHour} ~ 0${numFirstHour + 1}`
               }else if ( numFirstHour < 10 && numFirstHour+1 == 10 ){
-                  var a = `0${numFirstHour}:00 ~ ${numFirstHour + 1}:00`
+                  var a = `0${numFirstHour} ~ ${numFirstHour + 1}`
               }else {
-                  var a = `${numFirstHour}:00 ~ ${numFirstHour + 1}:00`
+                  var a = `${numFirstHour} ~ ${numFirstHour + 1}`
               }
               b.push(a)
               numFirstHour++
@@ -76,14 +86,6 @@ function Monthly(props) {
     setValue(e)
 
     setCheckDay( () => [e.getFullYear(), e.getMonth() + 1, e.getDate(), day[e.getDay()]] );
-
-    let btn = document.getElementsByClassName('btnDiv');
-    Object.keys(btn).map( (val) => {
-      if ( btn[val].style.backgroundColor == "green" ) {
-        btn[val].style.backgroundColor = "red";
-        btn[val].checked = false;
-      }
-    })
   };
 
   // 按鈕選取時改變
@@ -95,43 +97,31 @@ function Monthly(props) {
         e.target.style.backgroundColor="green";
         e.target.checked = true;
     }
-    btnCheck(e)
+    btnCheck()
   }
 
   // 讀取所有按鈕的值()
   let btnCheck = (e) => {
-    setDateDay([])
-
     let btn = document.getElementsByClassName('btnDiv');
+    let a = []
     Object.keys(btn).map( (val) => {
       if ( btn[val].checked === true ) {
-        setDateDay( (old) => [...old, btn[val].value])
+        a.push( btn[val].value )  
       }
     })
-  }
+    // v1
+    a.map( (val) => {
+      setOder( () => [news.title, news.price])
+      oder.push(val)
+    })
+    // v2
+    // setOder( () => [news.title, news.price, a])
+    
 
-  // 寫入購物車 (資料庫)
-  let shoppingCar = () => {
-    const Qs = require("qs")
-    dateDay.map( (times) => {
-      async function post() {
-        await axios.post("http://localhost:80/spost/JeromePHP/shoppingcar.php", 
-          Qs.stringify({
-            oid: news.pid,
-            id: '1',
-            title: news.title,
-            date: `${checkDay[0]}-${checkDay[1]}-${checkDay[2]}`,
-            time: times,
-            price: news.price
-          }))
-        .then( response => {
-            if (response.data == 1) {
-              setOder("購物車加入成功")
-            }
-        })
-      }
-      post()
-    })
+    // title 價錢 時間
+    if ( e.target.value == '加入購物車') {
+      console.log(oder)
+    }
   }
 
 
@@ -146,26 +136,12 @@ function Monthly(props) {
             maxDate={new Date(maxDate)}
           />
         </div>
-        <div className="col-lg-6">
-          <div className="row text-center mt-2">
-              <h4 className="col-lg-4">收費方式</h4>
-              <span className="col-lg-8 my-1">正常時段：$ {news && news.price} / {news && news.pricepertime}</span>
-              <div className="col-lg-12 text-end">
-                <h4 className="my-1">{`${checkDay[0]} / ${checkDay[1]} / ${checkDay[2]}`}</h4>
-              </div>
-              <div className='col-lg-12'>
-                <button className="btn w-100 bg-info m-2" onClick={shoppingCar} value='加入購物車'>加入購物車</button>
-                <span className="text-center text-success">&nbsp; {oder}</span>
-              </div>
-          </div>
-          <div className="row mt-2">
-              {dateDay.map( (day) => {
-                return (
-                  <div className="col-lg-6 text-center">
-                    <span>{day}</span>
-                  </div>
-                )
-              })}
+        <div className="col-lg-6 align-self-center">
+          <div className='container text-center'>
+              <h4>收費方式</h4>
+              <br />
+              <p> 正常時段：$ {news && news.price} / {news && news.pricepertime}</p>
+              <button className="btn w-75 mt-3 bg-info" onClick={btnCheck} value='加入購物車'>加入購物車</button>
           </div>
         </div>
       </div>

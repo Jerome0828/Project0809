@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 
+
 import Head from './components/head';
 import Scroll from './components/scroll';
 import Body from './components/body';
@@ -12,13 +13,15 @@ function Venues(props) {
     const [news, setNews] = useState(undefined)
 
     useEffect( () => {
-        setState(props.match.params.lid)
+        // props.match.params.lid
+        let test = Math.floor(Math.random() * 20);
+        setState(test)
     }, [props])
 
     useEffect( () => {
         const Qs = require("qs")
         async function post() {
-            await axios.post("http://localhost:80/spost/JeromePHP/venues.php", Qs.stringify({ lid: state }))
+            await axios.post("http://localhost:80/spost/JerpmePHP/venues.php", Qs.stringify({ lid: state }))
             .then( response => {
                 setNews(response.data)
             })

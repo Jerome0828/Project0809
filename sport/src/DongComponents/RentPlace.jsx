@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
 import '../scss/all.css';
@@ -23,7 +24,7 @@ class RentPlace extends Component {
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
 
 
-        weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd: 'monEnd' },
+        weekTime: [{ eName: 'mon', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd: 'monEnd' },
         { eName: 'tuesTime', cName: '週二', required: false, timeBegin: 'tuesBegin', timeEnd: 'tuesEnd' },
         { eName: 'wedTime', cName: '週三', required: false, timeBegin: 'wedBegin', timeEnd: 'wedEnd' },
         { eName: 'thurTime', cName: '週四', required: false, timeBegin: 'thurBegin', timeEnd: 'thurEnd' },
@@ -31,13 +32,18 @@ class RentPlace extends Component {
         { eName: 'satTime', cName: '週六', required: false, timeBegin: 'satBegin', timeEnd: 'satEnd' },
         { eName: 'sunTime', cName: '週日', required: false, timeBegin: 'sunBegin', timeEnd: 'sunEnd' }],
         src: [pic, pic, pic],
-
-
     }
     agreeStyle = {
         'width': '15%'
     }
-
+    componentDidMount(){
+        if(window.localStorage.id){
+            document.getElementById('danger').className = 'd-none';
+        }else{
+            document.querySelectorAll('button[type=submit]')[0].className = 'd-none'
+            document.querySelectorAll('button[type=submit]')[1].className = 'd-none'
+        }
+    }
     // 運動類別更動
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
@@ -71,13 +77,13 @@ class RentPlace extends Component {
             agreeBox.pClass = 'text-success';
             agreeBox.iconClass = 'text-success';
             agreeBox.labelClass = 'text-center shadow rounded border border-success w-100 p-1';
-            text.innerHTML = '可以'
+            text.innerHTML = '本人已閱讀及同意遵守上述條款及細則'
         } else {
             agreeBox.spanClass = 'mx-1';
             agreeBox.pClass = 'text-danger';
             agreeBox.iconClass = 'd-none';
             agreeBox.labelClass = 'text-center shadow rounded border border-danger w-100 p-1';
-            text.innerHTML = 'Check this checkbox to continue.'
+            text.innerHTML = '本人已閱讀及同意遵守上述條款及細則'
         }
         this.setState({});
     }
@@ -318,12 +324,13 @@ class RentPlace extends Component {
                         <label htmlFor='myCheck' className={this.state.agreeBox[0].labelClass}>
                             <FontAwesomeIcon className={this.state.agreeBox[0].iconClass} icon={faCheck} /><span className={this.state.agreeBox[0].spanClass}>我同意</span></label><br />
                     </div>
-                    <p className={this.state.agreeBox[0].pClass} id='myCheckText'>Check this checkbox to continue.</p>
+                    <p className={this.state.agreeBox[0].pClass} id='myCheckText'>本人已閱讀及同意遵守上述條款及細則</p>
                     <hr />
 
 
-                    <button type="submit" onClick={this.submitOnClick} className="btn btn-outline-success">送出</button>
+                    <button type="submit" name='id' value={window.localStorage.id} className="btn btn-outline-success" >送出</button>
                     <button type="submit" className="btn btn-outline-danger mx-3">取消</button>
+                    <NavLink to='/login' id='danger' className="btn btn-lg btn-outline-danger mx-3">請先登入</NavLink>
                 </form>
             </div>
 

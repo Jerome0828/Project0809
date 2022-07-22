@@ -7,7 +7,7 @@ import axios from 'axios';
 function Monthly(props) {
   const day = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // 月曆(星期幾)與資料庫對應
 
-  const [oder, setOder] = useState([0, 0]); // 訂單資訊
+  const [total, setTotal] = useState([0, 0]); // 金額加總
   const [btnData, setBtnData] = useState([]); // 按鈕value
   const [test, setTest] = useState([]); // 場地無開放提示
   const [news, setNews] = useState(undefined);// news: 資料庫(place)資訊
@@ -27,7 +27,18 @@ function Monthly(props) {
   // 傳入news, 取資料
   useEffect( () => {
     setNews(props.news)
-    button(props.news)
+
+    const Qs = require("qs")
+    async function post() {
+      await axios.post("http://localhost:80/spost/JerpmePHP/monthlyButton_v.php", Qs.stringify({ lid: `${props.lid && props.lid}` }))
+      .then( response => {
+        if ( typeof response.data == "object" ) {
+          // 預設
+          button(response.data)
+        }
+      })
+    }
+    post()
   }, [props])
 
   // 月曆日期變動
@@ -99,19 +110,9 @@ function Monthly(props) {
         a.push( btn[val].value )  
       }
     })
+    setTotal([Number(news.price) * Number(a.length), Number(a.length)])
 
-    // v1
-    a.map( (val) => {
-      setOder( () => [news.title, news.price])
-      oder.push(val)
-    })
-    // v2
-    // setOder( () => [news.title, news.price, a])
-
-    // title 價錢 時間
-    if ( e.target.value == '加入購物車') {
-      console.log(oder)
-    }
+    // console.log(e)
   }
 
 
@@ -131,7 +132,8 @@ function Monthly(props) {
               <h4>收費方式</h4>
               <br />
               <p> 正常時段：$ {news && news.price} / {news && news.pricepertime}</p>
-              <button className="btn w-75 mt-3 bg-info" onClick={btnCheck} value='加入購物車'>加入購物車</button>
+              <p>總金額 : {total && total[0]}</p>
+              <button className="btn w-75 mt-3 bg-info" onClick={btnCheck}>加入購物車</button>
           </div>
         </div>
       </div>
