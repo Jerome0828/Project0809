@@ -1,79 +1,60 @@
 import React, { Component } from 'react';
 import '../../scss/all.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import Axios from 'axios';
-
-// import 'bootstrap/dist/js/bootstrap';
 import { NavLink } from 'react-router-dom';
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from 'react-bootstrap/Carousel'
+
 
 // 輪播課程卡片
 import CarouselCard from '../contentComponents/carouselCard/carouselCard.jsx'
-
 // 7/18 BEN 新增輪播場地卡片 
 import CarouselPlaceCard from '../contentComponents/carouselCard/carouselPlaceCard.jsx'
 
+// 首頁左側區塊
+import IndexLeftBox from '../contentComponents/indexComponents/indexLeftBox.jsx';
+// 首頁左側區塊一張方形圖片
 import leftImg from '../../imgs/ben01.jpg';
 
+// 首頁右側區塊
 import IndexRightBox from '../contentComponents/indexComponents/indexRightBox.jsx';
-import IndexLeftBox from '../contentComponents/indexComponents/indexLeftBox.jsx';
-
-import rightImg from '../../imgs/fitness06.jpg';
-import rightImg1 from '../../imgs/fitness06.jpg';
+// 首頁右側區塊四張長型圖片
 import rightImg2 from '../../imgs/ben004.jpg';
-import rightImg3 from '../../imgs/ben003.jpg';
 import rightImg4 from '../../imgs/ben002.jpg';
-import rightImg5 from '../../imgs/ben001.jpg';
+import rightimg2 from '../img/index/072302.jpg';
+import rightimg3 from '../img/index/072303.jpg';
 
-// // 輪播第二頁圖片
-import sectionCarouselImg1 from '../../imgs/fitness01.jpg';
-import sectionCarouselImg2 from '../../imgs/fitness02.jpg';
-import sectionCarouselImg3 from '../../imgs/fitness03.jpg';
-import sectionCarouselImg4 from '../../imgs/fitness04.jpg';
-import sectionCarouselImg5 from '../../imgs/fitness05.jpg';
+// 7/25 BEN 新增下方評論區卡片
+import CommentCard from '../contentComponents/CommentCard.jsx'
 
-// // 輪播第三頁圖片
-import sectionCarouselImg6 from '../../imgs/space01.jpg';
-import sectionCarouselImg7 from '../../imgs/space02.jpg';
-import sectionCarouselImg8 from '../../imgs/space03.jpg';
-import sectionCarouselImg9 from '../../imgs/space04.jpg';
-import sectionCarouselImg10 from '../../imgs/space05.jpg';
-
+// 7/25 BEN 新增下方首頁場地卡片
+import IndexSiteCard from '../contentComponents/indexSiteCard.jsx'
 class HomeHead extends Component {
     state = {
-        commodityV1:[
-            {id:1,value:"健身房包場租借",src:rightImg1,to:"/lesson"},
-            {id:2,value:"TrainwithRoy 1on1",src:rightImg2,to:"/lesson"},
-            {id:3,value:"一對一重訓課程",src:rightImg3,to:"/lesson"},
-            {id:4,value:"重量訓練、徒手訓練",src:rightImg4,to:"/lesson"},
-            {id:5,value:"棒球專項肌力及體能訓練",src:rightImg5,to:"/lesson"},
-        ],
-        commodityV2:[
-            {id:1,value:"新手入門瘦身指南",src:sectionCarouselImg1,to:"/lesson"},
-            {id:2,value:"TrainwithRoy 1on1",src:sectionCarouselImg2,to:"/lesson"},
-            {id:3,value:"一對一重訓課程",src:sectionCarouselImg3,to:"/lesson"},
-            {id:4,value:"重量訓練、徒手訓練",src:sectionCarouselImg4,to:"/lesson"},
-            {id:5,value:"棒球專項肌力及體能訓練",src:sectionCarouselImg5,to:"/lesson"},
-        ],
-        commodityV3:[
-            {id:1,value:"健身達人運動工廠",src:sectionCarouselImg6,to:"/lesson"},
-            {id:2,value:"忠•初我健身教室",src:sectionCarouselImg7,to:"/lesson"},
-            {id:3,value:"好時良身｜自在（個案室）",src:sectionCarouselImg8,to:"/lesson"},
-            {id:4,value:"Camp訓練營地",src:sectionCarouselImg9,to:"/lesson"},
-            {id:5,value:"中力健身中心東英館",src:sectionCarouselImg10,to:"/lesson"},
-        ],
-
         // header 左側區塊設定
         oneLeftBoxStyle:[
             {id:1,title:"開啟你的運動旅程",value:"彈指間找到附近的課程、教練、訓練空間",BottomText:"立即加入",src1:leftImg,to:"/login"},
         ],
         // header 右側區塊設定
         oneRightBoxStyle:[
-            {id:1,value:"多功能訓練",value1:"一對一課程",src:rightImg,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
-            {id:2,value:"基礎重量訓練",value1:"團體課程",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
+            {id:1,value:"多功能訓練",value1:"一對一課程",src:rightimg3,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
+            {id:2,value:"多功能教室",value1:"室內運動",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
             {id:3,value:"間歇訓練",value1:"團體課程",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
-            {id:4,value:"基礎瑜珈",value1:"皮拉提斯",src:rightImg3,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
+            {id:4,value:"瑜珈空間",value1:"皮拉提斯",src:rightimg2,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
+        ],
+        CommentCard:[
+            {id:1,name:"郡婕",date:"2022/6/01",star:5,value:'親切、活潑、專業、我會想再繼續購課!初學也很適合，強度老師會分級說明',img:'https://images.unsplash.com/photo-1521227889351-bf6f5b2e4e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+            {id:2,name:"林辰翰",date:"2022/6/29",star:5,value:'推薦，有不同老師不同類型，可以訓練不同部位，很適合想每天動一下的人',img:'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+            {id:3,name:"蓋兒",date:"2022/7/22",star:5,value:'很多課程教練都很不錯，初學跟想動一動伸展及小練一下肌力的都很適合✨',img:'https://images.unsplash.com/photo-1513738817443-e91e222031fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+        ],
+        indexSiteCard:[
+            {id:1,name:"郡婕",date:"2022/6/01",star:5,value:'親切、活潑、專業、我會想再繼續購課!初學也很適合，強度老師會分級說明',img:'https://images.unsplash.com/photo-1521227889351-bf6f5b2e4e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+            {id:2,name:"林辰翰",date:"2022/6/29",star:5,value:'推薦，有不同老師不同類型，可以訓練不同部位，很適合想每天動一下的人',img:'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+            {id:3,name:"大直大教室/空瑜/瑜珈/舞蹈教室",date:"2022/7/22",star:5,value:'位於大直站3號出口步行8分鐘距離。停車方便。位於商場內，旁邊有咖啡廳、麵包店等。教室環境舒適乾淨，多功能使用。',img:'https://images.unsplash.com/photo-1513738817443-e91e222031fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+            {id:4,name:"大直大教室/空瑜/瑜珈/舞蹈教室",date:"2022/7/22",star:5,value:'位於大直站3號出口步行8分鐘距離。停車方便。位於商場內，旁邊有咖啡廳、麵包店等。教室環境舒適乾淨，多功能使用。',img:'https://images.unsplash.com/photo-1513738817443-e91e222031fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+            {id:5,name:"大直大教室/空瑜/瑜珈/舞蹈教室",date:"2022/7/22",star:5,value:'位於大直站3號出口步行8分鐘距離。停車方便。位於商場內，旁邊有咖啡廳、麵包店等。教室環境舒適乾淨，多功能使用。',img:'https://images.unsplash.com/photo-1513738817443-e91e222031fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
         ],
         lessonData:[],
         placeData:[],
@@ -93,11 +74,15 @@ class HomeHead extends Component {
             let dateLesson = [];
             Object.keys(result.data).map( (values)=> {
                 dateLesson.push(result.data[values])
+                
                 if ( dateLesson.length == 5 ) {
                     this.state.lessonData.push(dateLesson)
                     dateLesson = []
+                    
                 }
+                
             })
+            
         })
     
         // 取得場地place
@@ -107,10 +92,12 @@ class HomeHead extends Component {
             let datePlace = [];
             Object.keys(result.data).map( (values)=> {
                 datePlace.push(result.data[values])
+                this.state.placeV1 = this.state.placeData[0]
                 if ( datePlace.length == 5 ) {
                     this.state.placeData.push(datePlace)
                     datePlace = []
                 }
+                // console.log(this.state.placeV1)
             })
         })
         this.setState({});
@@ -123,7 +110,8 @@ class HomeHead extends Component {
                 <header className=''>
                     {/* header第一段左邊 */}
                     <div className='HomeHeadBoxStyle row m-auto'                                                             
-                        data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" >
+                        // data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" 
+                        >
                         {this.state.oneLeftBoxStyle.map((e,index)=>{return <IndexLeftBox 
                                 id={e.id} key={index} title={e.title} value={e.value} src={e.src1}
                                 to={e.to} BottomText={e.BottomText} />
@@ -196,13 +184,25 @@ class HomeHead extends Component {
 
                 {/* 第二層section(輪播Carousel設定) 課程頁面*/}
                 <section>
-                    <div className='mt-6 m-5 h-100' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500" >
+                    <div className='mt-3 m-5 h-100' 
+                    
+                    data-aos="fade-up" 
+                    data-aos-easing="linear" 
+                    data-aos-duration="1500" 
+                    
+                    >
                         <div className='carouselBoxBigText container mb-3' 
                             data-aos="fade-up" data-aos-easing="linear"data-aos-duration="1500" >
                             <h1>全台超過1000位專業教練</h1>
+                            <div 
+                                data-aos="fade-up" 
+                                data-aos-easing="linear" 
+                                data-aos-duration="1500" >
                             <a>健身、重訓、瑜珈、有氧、皮拉提斯、舞蹈都有</a>
+                            </div>
+                            
                         </div>
-                    <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
+                    <Carousel interval={5000} indicators={false} nextLabel={false} prevLabel={false} fade
                         pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
                         {this.state.lessonData.map( (value, idx) => {
                             return (
@@ -225,7 +225,7 @@ class HomeHead extends Component {
                         data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500" >   
                         <div className='carouselBoxBottomTextV1 mt-3'>
                             <div className='carouselBoxBottomTextV1Right'>
-                                <NavLink to="/coursesAndVenues">
+                                <NavLink to="/lesson">
                                     <a className='carouselBoxBottomTextV2'>探索更多教練
                                         <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" fill="currentColor" 
                                             class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -244,13 +244,23 @@ class HomeHead extends Component {
                 
                 {/* 第三層section(輪播Carousel設定) 場地頁面 */}
                 <section>
-                    <div className=' m-5 h-100 row-sm-12' data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500" >
+                    <div className='mt-0 m-5 row-sm-12' 
+                    data-aos="fade-up" 
+                    data-aos-easing="linear" 
+                    data-aos-duration="1500" 
+                    >
                         <div className='carouselBoxBigText container mb-3' 
                             data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
                             <h1>各類運動訓練空間</h1>
+
+                            <div 
+                                data-aos="fade-up" 
+                                data-aos-easing="linear" 
+                                data-aos-duration="1500" >
                             <a>室內運動、室內健身、戶外運動、戶外健身</a>
+                            </div>
                         </div>
-                        <Carousel interval={2000} indicators={false} nextLabel={false} prevLabel={false} fade
+                        <Carousel interval={5000} indicators={false} nextLabel={false} prevLabel={false} fade
                             pause={'hover'} slide={true} touch={true} controls={false} className="mt-5 container m-auto">
                             {this.state.placeData.map( (value, idx) => {
                                 return (
@@ -271,7 +281,7 @@ class HomeHead extends Component {
                         <div className='carouselBoxBottomText cont container' data-aos="fade-up" >   
                             <div className='carouselBoxBottomTextV1 mt-3'>
                                 <div className='carouselBoxBottomTextV1Right'>
-                                    <NavLink to="/coursesAndVenues">
+                                    <NavLink to="/site">
                                         <a className='carouselBoxBottomTextV2'>探索更多場地
                                             <svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" fill="currentColor" 
                                                 class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -290,8 +300,63 @@ class HomeHead extends Component {
                 <section className='mt-6 mb-5'>
                     <div className='threeSectionBox mt-6'>
                         <div className='threeSectionBoxBottomImg h-100 w-100'>
-                            <div>
+                            <div className='threeSectionBoxContentText'>
+                                <h2>Spost+陪你從訓練到改變!</h2>
+
                             </div>
+
+                            <div className='threeSectionBoxContentBox'>    
+                            {this.state.CommentCard.map((value,index)=>{
+                                return(
+                                    <CommentCard 
+                                    key={index} 
+                                    name={value.name}
+                                    date={value.date}
+                                    title={value.title}
+                                    star={value.star}
+                                    value={value.value}
+                                    img={value.img}/>
+                                )
+
+                            })}
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div className='threeSectionBoxV1 mt-6'>
+                        <div className='threeSectionBoxBottomImgV1 h-100 w-100'>
+                        <div className='threeSectionBoxContentTextType'>
+                                <h2>Spost+陪你從訓練到改變!</h2>
+                                </div>
+                            
+                                <div className='threeSectionBoxV1Card container '>
+
+                                
+
+                                <div className=' threeSectionBoxV1CardContent'>
+                                    
+                                    {this.state.placeV1.map((value,index)=>{
+                                return(
+                                    <IndexSiteCard 
+                                    title={value.title} 
+                                    key={index}
+                                    pid={value.pid}
+                                    addr={value.addr}
+                                    info={value.info}
+                                    img={value.img}
+                                    
+                                        />
+                                        
+                                        
+    
+                                )})}
+                   
+                                
+                                    
+                            
+                                </div>
+                                
+                                </div>
                         </div>
                     </div> 
                 </section>
@@ -306,6 +371,7 @@ class HomeHead extends Component {
                             <div className='col-sm-3 fourthSectionBoxColText'>123</div>
                         </div>
                     </div>
+                    
                 </section>
 
                 {/* 第五層section設定固定底圖 */}

@@ -16,8 +16,16 @@ class IndexRightBox extends Component {
                 {/* 修改文字區塊方向top/bottom */}
             <div className={this.props.textAlign} >
                 <div className='rightBoxBottomTextV1'>
-                    <NavLink to={this.props.to}><h1>{this.props.value}</h1></NavLink>
-                    <NavLink to={this.props.to}><p>{this.props.value1}</p></NavLink>
+                        <NavLink to={this.props.to}>
+                            <h1>{this.props.value}</h1>
+                        </NavLink>
+
+
+                        <NavLink to={this.props.to}>
+                            <p>{this.props.value1}</p>
+                        </NavLink>
+                    
+                    
                 </div>
             </div>
         </div>

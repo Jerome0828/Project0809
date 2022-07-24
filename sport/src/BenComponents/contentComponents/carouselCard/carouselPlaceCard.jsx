@@ -60,7 +60,7 @@ class CarouselPlaceCard extends Component {
                     onClick={this.setLocalStorage}>
                         {/* 設定連接網址 */}
                     {/* <span className='d-block'><NavLink to="/coursesAndVenues">{this.lessonDate}</NavLink></span> */}
-                    <span className=''>{this.props.title}{this.props.pid}</span>
+                    <span className=''>{this.props.title}</span>
                     </button>
                     </div>
             </NavLink>

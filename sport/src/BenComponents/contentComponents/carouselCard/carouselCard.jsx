@@ -62,7 +62,7 @@ class CarouselCard extends Component {
                     onClick={this.setLocalStorage}>
                         {/* 設定連接網址 */}
             
-                    <span className='d-block'>{this.props.title}{this.props.lid}</span>
+                    <span className='cardBoxTitle'>{this.props.title}</span>
                     </button>
                     </div>
             </NavLink>
