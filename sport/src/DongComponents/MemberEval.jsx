@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 
 class MemberPlan extends Component {
     state = {
+        // 會員訂單, 無訂單紀錄
+        oderListInfo: [], oderNone: '',
         // 會員帳號Id, 會員帳號
         accountId: undefined, account: '', newId: [],
         // 評論id, 評論內容, 評論星數, 
@@ -32,9 +34,37 @@ class MemberPlan extends Component {
             info: window.localStorage.info
         }))
         .then( response => {
-            // console.log(response.data)
+            this.state.oderListInfo = [];
+            this.state.oderNone = '';
+            this.setState({})
+            if ( typeof response.data == 'object' ) {
+                let lessonInfo = [];
+                let placeInfo = [];
+                if ( response.data.length != 0 ) {
+                    Object.values(response.data).map( val => {
+                        this.state.newId.push(val.oid)
+                        this.setState({})
+                        if ( val.oid.indexOf('p') ) { // -1 true / 0 false
+                            // lesson
+                            lessonInfo.push(val)
+                        }else {
+                            // place
+                            placeInfo.push(val)
+                        }
+                    })
+                    this.state.oderListInfo.push(lessonInfo, placeInfo)
+                    this.setState({})
+                }else {
+                    // 查無訂單 ( 未付款 )
+                    this.state.oderNone = '無訂單紀錄';
+                    this.setState({})
+                }
+            }
         })
     }
+
+    // 無訂單紀錄
+    oderNoneCheck = ( value ) => { if (value.length == 0) { return '無訂單紀錄' } }
 
     // 變化 Accordion 圖片
     accChange = (e) => {
@@ -80,79 +110,55 @@ class MemberPlan extends Component {
                     </div>
                     <div className='col-1'></div>
                     <div className='col-9 mt-5 shadow'>
-                        {/* 課程 */}
-                        <h3 className='text-start mt-3'>課程</h3>
-                        <Accordion>
-                            <AccordionSummary id="panel1bh-header" onClick={this.accChange}>
-                                <Typography sx={{ width: '39%', flexShrink: 0 }}> 課程 test-1 </Typography>
-                                <Typography sx={{ width: '59%', color: 'text.secondary' }}>I am an accordion</Typography>
-                                <Typography sx={{ width: '2%' }}>
-                                    <img className='w-100' src={ require('../imgs/down-arrow.png') }/>
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    <div className='row'>
-                                        <div className='col-lg-7'>
-                                            <form value='a'> 
-                                                <textarea className="w-100" rows='5' onChange={this.onChangeForm} />
-                                                <div className='row align-items-center mt-2'>
-                                                    <div className="col-lg-8" value='a' >
-                                                        <Rating value={this.state.value} onChange={this.onChangeForm} />
+                    <p className='text-center'>{this.state.oderNone}</p>
+                    {this.state.oderListInfo.map( (value, index) => {
+                        return (
+                        <div className='my-4' key={index}>
+                            <h3 className='text-start'>{index ? '場地' : '課程'}</h3>
+                            <p className='text-center'>{this.oderNoneCheck(value)}</p>
+                            {value.map( (val, idx) => {
+                                return (
+                                <div key={idx}>
+                                    <Accordion className='mt-3'>
+                                        <AccordionSummary id="panel1bh-header" onClick={this.accChange}>
+                                            <Typography sx={{ width: '53%', flexShrink: 0 }}> {val.title} </Typography>
+                                            <Typography sx={{ width: '45%', color: 'text.secondary' }}> {val.date} </Typography>
+                                            <Typography sx={{ width: '2%' }}>
+                                                <img className='w-100' src={ require('../imgs/down-arrow.png') }/>
+                                            </Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <Typography>
+                                                <div className='row'>
+                                                    <div className='col-lg-7'>
+                                                        <form value={val.oid}> 
+                                                            <textarea className="w-100" rows='5' onChange={this.onChangeForm} />
+                                                            <div className='row align-items-center mt-2'>
+                                                                <div id='val' className="col-lg-8" value={val.oid} data-val={0}>
+                                                                    <Rating value={0} onChange={this.onChangeForm} />
+                                                                </div>
+                                                                <div className='col-lg-4'>
+                                                                    <button className='btn btn-outline-info w-100' type='button'
+                                                                        onClick={this.formPost}>
+                                                                        送出評論
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                    <div className='col-lg-4'>
-                                                        <button className='btn btn-outline-info w-100' type='button'
-                                                            onClick={this.formPost}>
-                                                            送出評論
-                                                        </button>
+                                                    <div className='col-lg-5'>
+
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <div className='col-lg-5 border'>
-
-                                        </div>
-                                    </div>
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                        
-                        {/* 場地 */}
-                        <h3 className='text-start mt-5'>場地</h3>
-                        <Accordion  >
-                            <AccordionSummary id="panel1bh-header" onClick={this.accChange}>
-                                <Typography sx={{ width: '39%', flexShrink: 0 }}> 場地 test-1 </Typography>
-                                <Typography sx={{ width: '59%', color: 'text.secondary' }}>I am an accordion</Typography>
-                                <Typography sx={{ width: '2%' }}>
-                                    <img className='w-100' src={ require('../imgs/down-arrow.png') } />
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                <div className='row'>
-                                        <div className='col-lg-7'>
-                                            <form>
-                                                <textarea className='w-100' rows='5' onChange={this.onChangeForm}/>
-                                                <div className='row mt-2'>
-                                                    <div className='col-lg-8 mt-1'>
-                                                        <Rating value={this.state.value} onChange={this.onChangeForm}/>
-                                                    </div>
-                                                    <div className='col-lg-4'>
-                                                        <button className='btn btn-outline-info w-100' type='button'
-                                                            onClick={this.formPost}>
-                                                            送出評論
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div className='col-lg-5 border'>
-
-                                        </div>
-                                    </div>
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
+                                            </Typography>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                </div>
+                                )
+                            })}
+                        </div>
+                        )
+                    })}
                     </div>
                 </div>
                 <br /><br /><br />
