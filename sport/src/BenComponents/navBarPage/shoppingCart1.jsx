@@ -19,6 +19,20 @@ class ShoppingCart extends Component {
 
     async componentDidMount() {
 
+        // 07/25 BEN 新增 取時間
+        // var d,s;
+        // d = new Date();
+        // s = d.getYear() + "-";             //取年份
+        // s = s + (d.getMonth() + 1) + "-";//取月份
+        // s += d.getDate() + " ";         //取日期
+        // s += d.getHours() + ":";       //取小时
+        // s += d.getMinutes() + ":";    //取分
+        // s += d.getSeconds();         //取秒
+        // console.log(s)
+
+        // var today =new Date()
+        // alert((today.toLocaleString().replace(/年|月/g,'-')).replace(/日/g,''))
+
         // 07/22 BEN 新增
         if(localStorage.getItem('id')){
 
@@ -28,7 +42,7 @@ class ShoppingCart extends Component {
             // console.log(result.data);
             this.state.carData = result.data;
         })
-        console.log(this.state.carData);
+        // console.log(this.state.carData);
         
 
         // 07/22 BEN 新增 判斷購物車狀態碼 0 = 未結帳 , 1 = 已結帳 , 2 = 交易取消
@@ -46,6 +60,10 @@ class ShoppingCart extends Component {
         }else  {
             window.location.href = '/login'
         }
+
+
+
+       
         
         
     }
@@ -85,12 +103,35 @@ class ShoppingCart extends Component {
     };
 
     checkOKAlert=()=>{
-        // alert("OK");
+        var d,s;
+        d = new Date();
+        s = d.getYear() + "-";             //取年份
+        s = s + (d.getMonth() + 1) + "-";//取月份
+        s += d.getDate() + " ";         //取日期
+        s += d.getHours() + ":";       //取小时
+        s += d.getMinutes() + ":";    //取分
+        s += d.getSeconds();         //取秒
+        return alert(s)
     }
 
-    
+ 
+ //取当前时间，格式为,yyyy-mm-dd hh:mm:ss
+    GetDateT=()=>{
+    var d,s;
+    d = new Date();
+    s = d.getYear() + "-";             //取年份
+    s = s + (d.getMonth() + 1) + "-";//取月份
+    s += d.getDate() + " ";         //取日期
+    s += d.getHours() + ":";       //取小时
+    s += d.getMinutes() + ":";    //取分
+    s += d.getSeconds();         //取秒
+    return s;  
+    } 
+   
     
     render() { 
+
+    
         return (
             <>
                 <div className='mt-6 container'>
@@ -105,7 +146,8 @@ class ShoppingCart extends Component {
                         {/* 送購物車訂單號 */}
                         <input class="" name="MerchantTradeNo" type="hidden" value={value.carid} />
                         {/* 送當前下單時間 */}
-                        <input class="form-control" name="MerchantTradeDate" type="hidden" value={new Date()} />
+                        {/* <input class="form-control" name="MerchantTradeDate" type="text" value={new Date()} /> */}
+                        <input class="form-control" name="MerchantTradeDate" type="hidden" value={"2009/07/12 12:34:56"} />
                         {/* 送結帳總金額 */}
                         <input class="form-control" name="TotalAmount" type="hidden" value={this.state.sumPrice} />
                         {/* 送商品描述 */}
@@ -191,8 +233,8 @@ class ShoppingCart extends Component {
                     {/* <NavLink to="/CreditCardPaymentPage" className="">
                     </NavLink> */}
                     
-                    <button className='btn btn-outline-dark me-md-2' onClick={this.checkOKAlert} type="submit">付款</button>
-                    
+                    <button className='btn btn-outline-dark me-md-2'  type="submit">付款</button>
+                    {/* <button onClick={this.checkOKAlert}> test</button> */}
                     </div>
                     </form>
 

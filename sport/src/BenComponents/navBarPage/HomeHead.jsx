@@ -300,7 +300,11 @@ class HomeHead extends Component {
                 <section className='mt-6 mb-5'>
                     <div className='threeSectionBox mt-6'>
                         <div className='threeSectionBoxBottomImg h-100 w-100'>
-                            <div className='threeSectionBoxContentText'>
+                            <div className='threeSectionBoxContentText'
+                                    data-aos="fade-up" 
+                                    data-aos-easing="linear" 
+                                    data-aos-duration="1500" 
+                                    >
                                 <h2>Spost+陪你從訓練到改變!</h2>
 
                             </div>
@@ -325,9 +329,9 @@ class HomeHead extends Component {
 
                     <div className='threeSectionBoxV1 mt-6'>
                         <div className='threeSectionBoxBottomImgV1 h-100 w-100'>
-                        <div className='threeSectionBoxContentTextType'>
+                                {/* <div className='threeSectionBoxContentTextType'>
                                 <h2>Spost+陪你從訓練到改變!</h2>
-                                </div>
+                                </div> */}
                             
                                 <div className='threeSectionBoxV1Card container '>
 
@@ -362,7 +366,7 @@ class HomeHead extends Component {
                 </section>
 
                 {/* 第四層section設定固定底圖 */}
-                <section>
+                {/* <section>
                     <div className='bg-test h-100 w-100 container mt-6'>
                         <div className='fourthSectionBox d-flex row m-auto'>
                             <div className='col-sm-3 fourthSectionBoxCol'>123</div>
@@ -372,11 +376,11 @@ class HomeHead extends Component {
                         </div>
                     </div>
                     
-                </section>
+                </section> */}
 
                 {/* 第五層section設定固定底圖 */}
                 <section>
-                    <div className='bg-test h-25 w-100 mt-6'>
+                    <div className='bg-test h-25 w-100 mt-5 mb-5 container'>
                         <div className='fifthSectionBox'>
                         </div>
                     </div>
