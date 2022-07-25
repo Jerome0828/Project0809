@@ -66,6 +66,7 @@ class SearchCoachPage extends Component {
             elm.className = 'text-black';
             elm.chkicon = faTimes;
             elm.id = `type${idx}`;
+            elm.checked = false;
         })
         this.setState({});
     }
@@ -86,7 +87,7 @@ class SearchCoachPage extends Component {
     clearCity = () => {
         document.getElementById('city').value = '';
         document.getElementById('district').value = '';
-        this.searchResult();
+        
         this.setState({});
     }
 
@@ -97,7 +98,7 @@ class SearchCoachPage extends Component {
             elm.chkicon = faTimes;
             elm.color = 'text-black';
         })
-        this.searchResult();
+        
         this.setState({});
     }
     // weeklistonchange
@@ -122,7 +123,7 @@ class SearchCoachPage extends Component {
     clearTime = () => {
         document.getElementsByName('weekBegin')[0].value = '';
         document.getElementsByName('weekEnd')[0].value = '';
-        this.searchResult();
+        
         this.setState({});
     }
 
@@ -132,7 +133,7 @@ class SearchCoachPage extends Component {
             elm.checked = false;
             elm.className = 'd-none text-success';
         })
-        this.searchResult();
+        
         this.setState({});
     }
 
@@ -157,9 +158,11 @@ class SearchCoachPage extends Component {
         sportType.map(elm => {
             if(e.target.id == elm.id) {
                 if(e.target.checked){
+                    elm.checked = true;
                     elm.className = 'text-success';
                     elm.chkicon = faCheck;
                 }else{
+                    elm.checked = false;
                     elm.className = 'text-black';
                     elm.chkicon = faTimes;
                 }
@@ -174,8 +177,9 @@ class SearchCoachPage extends Component {
         sportType.map(elm => {
             elm.chkicon = faTimes;
             elm.className = 'text-black';
+            elm.checked = false;
         })
-        this.searchResult();
+        
         this.setState({});
     }
 
@@ -186,7 +190,7 @@ class SearchCoachPage extends Component {
             elm.checked = false;
             elm.className = 'd-none text-success';
         })
-        this.searchResult();
+        
         this.setState({});
     }
 
