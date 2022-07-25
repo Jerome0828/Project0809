@@ -103,7 +103,7 @@ function Head(props) {
                                 </div>
                                 <div className='col-lg-6 mt-5'>{}
                                     <Stack className='w-100' >
-                                        <Rating name="half-rating-read" defaultValue={news && news.plimit} precision={0.5} readOnly />
+                                        <Rating name="half-rating-read" defaultValue={3.5} precision={0.5} readOnly />
                                     </Stack>
                                 </div>
                             </div>
@@ -112,7 +112,6 @@ function Head(props) {
                             <div className='w-100 py-2 px-3 my-3'>
                                 {id && id[1] ? <Labels types={news && news.type} id={id && id}/> : 
                                     <Labels types={news && news.type} mode={news && news.mode} id={id && id}/>}
-                                {/* {labelsChange()} */}
                             </div> 
                         </div>
                     </div>

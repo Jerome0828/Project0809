@@ -48,6 +48,7 @@ class HomeHead extends Component {
             {id:1,name:"郡婕",date:"2022/6/01",star:5,value:'親切、活潑、專業、我會想再繼續購課!初學也很適合，強度老師會分級說明',img:'https://images.unsplash.com/photo-1521227889351-bf6f5b2e4e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
             {id:2,name:"林辰翰",date:"2022/6/29",star:5,value:'推薦，有不同老師不同類型，可以訓練不同部位，很適合想每天動一下的人',img:'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
             {id:3,name:"蓋兒",date:"2022/7/22",star:5,value:'很多課程教練都很不錯，初學跟想動一動伸展及小練一下肌力的都很適合✨',img:'https://images.unsplash.com/photo-1513738817443-e91e222031fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
+            {id:4,name:"曾千侑Sam",date:"2022/7/25",star:5,value:'課程種類豐富~ 提供的運動場地也很多，這樣就可以多邀約朋友一起運動健康!',img:'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80'},
         ],
         indexSiteCard:[
             {id:1,name:"郡婕",date:"2022/6/01",star:5,value:'親切、活潑、專業、我會想再繼續購課!初學也很適合，強度老師會分級說明',img:'https://images.unsplash.com/photo-1521227889351-bf6f5b2e4e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
@@ -300,7 +301,11 @@ class HomeHead extends Component {
                 <section className='mt-6 mb-5'>
                     <div className='threeSectionBox mt-6'>
                         <div className='threeSectionBoxBottomImg h-100 w-100'>
-                            <div className='threeSectionBoxContentText'>
+                            <div className='threeSectionBoxContentText'
+                                    data-aos="fade-up" 
+                                    data-aos-easing="linear" 
+                                    data-aos-duration="1500" 
+                                    >
                                 <h2>Spost+陪你從訓練到改變!</h2>
 
                             </div>
@@ -325,9 +330,9 @@ class HomeHead extends Component {
 
                     <div className='threeSectionBoxV1 mt-6'>
                         <div className='threeSectionBoxBottomImgV1 h-100 w-100'>
-                        <div className='threeSectionBoxContentTextType'>
+                                {/* <div className='threeSectionBoxContentTextType'>
                                 <h2>Spost+陪你從訓練到改變!</h2>
-                                </div>
+                                </div> */}
                             
                                 <div className='threeSectionBoxV1Card container '>
 
@@ -362,7 +367,7 @@ class HomeHead extends Component {
                 </section>
 
                 {/* 第四層section設定固定底圖 */}
-                <section>
+                {/* <section>
                     <div className='bg-test h-100 w-100 container mt-6'>
                         <div className='fourthSectionBox d-flex row m-auto'>
                             <div className='col-sm-3 fourthSectionBoxCol'>123</div>
@@ -372,11 +377,11 @@ class HomeHead extends Component {
                         </div>
                     </div>
                     
-                </section>
+                </section> */}
 
                 {/* 第五層section設定固定底圖 */}
                 <section>
-                    <div className='bg-test h-25 w-100 mt-6'>
+                    <div className='bg-test h-25 w-100 mt-5 mb-5 container'>
                         <div className='fifthSectionBox'>
                         </div>
                     </div>

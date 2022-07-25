@@ -1,38 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+
 function Evaluation(props) {
-    const [news, setNews] = useState({});
+    const [news, setNews] = useState([]);
 
     useEffect( () => {
         if ( props.id[0] != undefined ) { post(props.id[0]) }
     }, [props])
 
     let post = async(id) => {
+        setNews([])
         const Qs = require("qs")
-        await axios.post("http://localhost:80/spost/JeromePHP/Evaluation.php", Qs.stringify({ id: id }))
+        await axios.post("http://localhost:80/spost/JeromePHP/Evaluation.php", Qs.stringify({ oid: id }))
         .then( response => {
-            console.log(response.data)
-            setNews(response.data)
+            for (let i=0 ; i<8 ; i++ ) {
+                setNews( old => [...old, response.data[i]])
+            }
         })
     }
 
 
     return (
-        <div className="card m-3" style={{border: '2px black solid' }} data-aos="fade-left">
-            <div className='row card-body'>
-                <img src="https://dummyimage.com/1000/000/fff" className='col-5 mt-3 mx-3 rounded-circle h-100'/>
-                <div className='col-5 text-center align-self-center'>
-                    <p className='mt-3'>name</p>
-                    <span>time</span>
-                </div>
-            </div>
-            <div className="card-body border-top-0">
-                <p className='mt-3 vw-75'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                我會想再繼續租借我會想再繼續租借我會想再繼我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借我會想再繼續租借
-                </p>
-            </div>
-        </div>
+        <>
+            {news.map( (value, index) => {
+                return (
+                    <div className="card m-2" key={index} style={{border: '2px black solid' }} data-aos="fade-left">
+                        <div className='card-body text-center'>
+                            <div className='w-100 mt-3'>
+                                <p>{value.nickname}</p>
+                            </div>
+                            <div className='row text-center'>
+                                <div className='col-lg-6'>
+                                    <Stack>
+                                        <Rating defaultValue={value.rate} precision={0.5} readOnly />
+                                    </Stack>
+                                </div>
+                                <div className='col-lg-6'>
+                                    <p>{value.time}</p>
+                                </div>
+                                <div className='text-start'>
+                                    <p>{value.info}。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })}
+        </>
+
     );
 }
 
