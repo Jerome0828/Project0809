@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Evaluation(props) {
-
+    const [news, setNews] = useState({});
 
     useEffect( () => {
         if ( props.id[0] != undefined ) { post(props.id[0]) }
@@ -13,6 +13,7 @@ function Evaluation(props) {
         await axios.post("http://localhost:80/spost/JeromePHP/Evaluation.php", Qs.stringify({ id: id }))
         .then( response => {
             console.log(response.data)
+            setNews(response.data)
         })
     }
 
