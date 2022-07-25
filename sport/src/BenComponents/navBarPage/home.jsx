@@ -9,10 +9,7 @@ class home extends Component {
         topStyle:{
             marginTop:'0%'
         }
-    }
-    componentDidMount(){
-        // window.location.reload();
-    }
+    }    
     render() { 
         return (
             <div>

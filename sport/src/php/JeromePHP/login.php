@@ -19,8 +19,9 @@
         $check = [];
         $check[0] = $row['id'];
         $check[1] = hash('sha256', $row['id'].'spost');
+        $checkA = json_encode($check);
+        echo $checkA;
     }
-    $checkA = json_encode($check);
-    echo $checkA;
+
 
 ?>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../scss/all.css';
+// import './abc.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import axios from 'axios';
@@ -10,11 +11,11 @@ import Scroll from './components/scroll';
 import Body from './components/body';
 import Footer from './components/footer';
 
-// AOS();
+AOS.init()
 
 function CVPage(props) {
     const [id, setId] = useState();
-    const [news, setNews] = useState(undefined);
+    const [news, setNews] = useState();
 
     useEffect( () => {
         if ( props.match.params.pid ) {
@@ -45,7 +46,7 @@ function CVPage(props) {
 
     return (
         <div style={{marginTop: '9vh'}}>
-            <Head id={id && id} all={news && news}/>
+            <Head id={id} all={news && news}/>
             <Scroll />
             <Body id={id && id} all={news && news[0]}/>
             <Footer id={id && id}/>

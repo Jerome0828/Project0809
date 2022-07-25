@@ -7,7 +7,7 @@ import axios from 'axios';
 function Monthly(props) {
   const day = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']; // 月曆(星期幾)與資料庫對應
 
-  const [id, setId] = useState(); // id資訊[pid/lid]
+  const [id, setId] = useState(0); // id資訊[pid/lid]
   const [oder, setOder] = useState(''); // 購物車加入成功
   const [oders, setOders] = useState(''); // 購物車未加入會員
   const [dateDay, setDateDay] = useState([]); // 單日

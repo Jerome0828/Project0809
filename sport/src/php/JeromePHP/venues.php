@@ -4,10 +4,10 @@
     // 課程介紹頁
     $lid = $materialPost["lid"];
 
-    $sql = " SELECT * FROM lesson WHERE lesson.lid = '$lid';";
+    $sql = " SELECT * FROM lesson WHERE lid = '$lid';";
     $result = $sportSql->query($sql);
 
-    $img  = " SELECT img FROM lesson INNER JOIN limage ON lesson.lid = limage.lid WHERE lesson.lid = '$lid' ";
+    $img = " SELECT img FROM lesson INNER JOIN limage ON lesson.lid = limage.lid WHERE lesson.lid = '$lid' ";
     $imgInfo = $sportSql->query($img );
 
     $i = 2;

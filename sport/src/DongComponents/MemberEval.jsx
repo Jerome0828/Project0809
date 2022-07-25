@@ -1,26 +1,165 @@
 import React, { Component } from 'react';
 import MemberPage from '../DongComponents/MemberPage.jsx';
-import FullCalendar from '@fullcalendar/react' // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import timeGridPlugin from '@fullcalendar/timegrid' // a plugin!
-import "@fullcalendar/daygrid/main.css"
-import "@fullcalendar/core/locales-all"
-import "./calender.css"
-// import "@fullcalendar/core/main.css"
-// npm install --save @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/core
+import axios from 'axios';
+
+import Rating from '@mui/material/Rating';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
 
 class MemberPlan extends Component {
-    state = {}
+    state = {
+        // 會員訂單, 無訂單紀錄
+        oderListInfo: [], oderNone: '',
+        // 會員帳號Id, 會員帳號
+        accountId: undefined, account: '', newId: [],
+        // 評論id, 評論內容, 評論星數, 
+        id: '', info: '', value: '',
+
+    }
+
+    // 取得會員Id
+    componentDidMount = () => {
+        this.state.accountId = this.props.match.params.id;
+        this.MemberOrderList(this.props.match.params.id)
+        this.setState({})
+    }
+
+    // 取得會員訂單資料
+    MemberOrderList = async(memberId) => {
+        const Qs = require("qs");
+        await axios.post("http://localhost:80/spost/JeromePHP/memberOrderList.php", Qs.stringify({ 
+            id: memberId,
+            info: window.localStorage.info
+        }))
+        .then( response => {
+            this.state.oderListInfo = [];
+            this.state.oderNone = '';
+            this.state.newId = [];
+            this.setState({})
+            if ( typeof response.data == 'object' ) {
+                let lessonInfo = [];
+                let placeInfo = [];
+                if ( response.data.length != 0 ) {
+                    Object.values(response.data).map( val => {
+                        this.state.newId.push(val.oid)
+                        this.setState({})
+                        if ( val.oid.indexOf('p') ) { // -1 true / 0 false
+                            // lesson
+                            lessonInfo.push(val)
+                        }else {
+                            // place
+                            placeInfo.push(val)
+                        }
+                    })
+                    this.state.oderListInfo.push(lessonInfo, placeInfo)
+                    this.setState({})
+                }else {
+                    // 查無訂單 ( 未付款 )
+                    this.state.oderNone = '無訂單紀錄';
+                    this.setState({})
+                }
+            }
+        })
+    }
+
+    // 無訂單紀錄
+    oderNoneCheck = ( value ) => { if (value.length == 0) { return '無訂單紀錄' } }
+
+    // 變化 Accordion 圖片
+    accChange = (e) => {
+        if ( e.currentTarget.getAttribute('aria-expanded') == 'false') {
+            e.currentTarget.querySelector('img').src = require('../imgs/up-arrow.png')
+        }else {
+            e.currentTarget.querySelector('img').src = require('../imgs/down-arrow.png')
+        }
+    }
+
+    // 資料暫存 localStorage
+    onChangeForm = (e, newValue) => {
+        if ( e.target.rows ) {
+            this.state.id = e.currentTarget.parentElement.getAttribute('value')
+            this.state.info = e.target.value
+            this.setState({})
+        }else {
+            this.state.id = e.currentTarget.parentElement.parentElement.getAttribute('value')
+            this.state.value = newValue
+            this.setState({})
+        }
+        window.localStorage.setItem(this.state.id, `${this.state.info},${this.state.value}`)
+    }
+
+    // 評論寫入自料庫
+    formPost = () => {
+        
+    }
+
+    // 清除 localStorage
+    componentWillUnmount = () => {
+        this.state.newId.map( val => {
+            window.localStorage.removeItem(val)
+        })
+    }
+
     render() {
         return (
-            <div className='container'>                
-                <div className='row'>
+            <div className='container'>{console.log(this.state.newId)}  
+                <div className='row' id='ok'>
                     <div className='col-2 mt-5 border-end'>
                         <MemberPage />
                     </div>
                     <div className='col-1'></div>
-                    <div className='col-9 mt-5 shadow '>
-                        <p>test</p>
+                    <div className='col-9 mt-5 shadow'>
+                    <p className='text-center'>{this.state.oderNone}</p>
+                    {this.state.oderListInfo.map( (value, index) => {
+                        return (
+                        <div className='my-4' key={index}>
+                            <h3 className='text-start'>{index ? '場地' : '課程'}</h3>
+                            <p className='text-center'>{this.oderNoneCheck(value)}</p>
+                            {value.map( (val, idx) => {
+                                return (
+                                <div key={idx}>
+                                    <Accordion className='mt-3'>
+                                        <AccordionSummary id="panel1bh-header" onClick={this.accChange}>
+                                            <Typography sx={{ width: '53%', flexShrink: 0 }}> {val.title} </Typography>
+                                            <Typography sx={{ width: '45%', color: 'text.secondary' }}> {val.date} </Typography>
+                                            <Typography sx={{ width: '2%' }}>
+                                                <img className='w-100' src={ require('../imgs/down-arrow.png') }/>
+                                            </Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <Typography>
+                                                <div className='row'>
+                                                    <div className='col-lg-7'>
+                                                        <form value={val.oid}> 
+                                                            <textarea className="w-100" rows='5' onChange={this.onChangeForm} />
+                                                            <div className='row align-items-center mt-2'>
+                                                                <div id='val' className="col-lg-8" value={val.oid} data-val={0}>
+                                                                    <Rating value={0} onChange={this.onChangeForm} />
+                                                                </div>
+                                                                <div className='col-lg-4'>
+                                                                    <button className='btn btn-outline-info w-100' type='button'
+                                                                        onClick={this.formPost}>
+                                                                        送出評論
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div className='col-lg-5'>
+
+                                                    </div>
+                                                </div>
+                                            </Typography>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                </div>
+                                )
+                            })}
+                        </div>
+                        )
+                    })}
                     </div>
                 </div>
                 <br /><br /><br />

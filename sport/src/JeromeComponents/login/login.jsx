@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import '../../scss/all.css';
+import 'bootstrap/dist/css/bootstrap.css';
+// import './login.css'
 import axios from 'axios';
 
 class Login extends Component {
@@ -374,7 +376,7 @@ class Login extends Component {
       }
       axios.post("http://localhost:80/spost/JeromePHP/login.php", singIn )
         .then( (response) => {
-          if ( typeof(response.data[0]) == 'string' ) {
+          if ( typeof response.data == 'object' ) {
             localStorage.setItem('id', `${response.data[0]}`);
             localStorage.setItem('info', `${response.data[1]}`);
             window.location.href = '/';

@@ -6,6 +6,7 @@ function Labels(props) {
     const [font, setFont] = useState([])
 
     useEffect( () => {
+        // console.log(props.types)
         if ( props.id != undefined ) {
             if ( props.id[1] ) {
                 if ( props.types.split(';').length <= 7) {
