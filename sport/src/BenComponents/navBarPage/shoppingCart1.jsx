@@ -10,25 +10,44 @@ class ShoppingCart extends Component {
         carData:[],
         carid:[],
         sumPrice:0,
+        ChoosePayment:"",
+        carDataTitle:[],
+        oid:[],
+        pid:"",
+        carState:[],
      } 
 
     async componentDidMount() {
-        var url = `http://localhost:80/spost/BenPHP/shoppingCartGet.php`;
-        var result = await Axios.get(url);
-        this.state.carData = result.data;
-        console.log(this.state.carData)
+
+        // 07/22 BEN 新增
+        if(localStorage.getItem('id')){
+
+        var carId = localStorage.getItem('id');
+        await Axios.post('http://localhost:80/spost/BenPHP/shoppingCartGet.php',carId)
+        .then(result=>{
+            // console.log(result.data);
+            this.state.carData = result.data;
+        })
+        console.log(this.state.carData);
+        
+
+        // 07/22 BEN 新增 判斷購物車狀態碼 0 = 未結帳 , 1 = 已結帳 , 2 = 交易取消
+        this.state.carState = this.state.carData.filter((value,index)=>{
+            return value.State == 0 
+        })
 
         this.state.sumPrice=0;
-        for(var i=0;i<this.state.carData.length;i++){
-            this.state.sumPrice += Number(this.state.carData[i].price);
+        for(var i=0;i<this.state.carState.length;i++){
+            this.state.sumPrice += Number(this.state.carState[i].price);
         }
+
         this.setState({});
 
-        // var test1 =document.getElementsByClassName('creditCard')
-        // // console.log(document.getAttribute('creditCard'))
-        // // var test2 = test1.getAttribute(value);
-        // console.log(test1)
-
+        }else  {
+            window.location.href = '/login'
+        }
+        
+        
     }
     deleCar= async (e)=>{
         // 取得點擊商品的value.carid的數字
@@ -59,7 +78,7 @@ class ShoppingCart extends Component {
                 this.setState({})
             }
             // console.log("NO")
-            console.log(this.state.sumPrice)
+            // console.log(this.state.sumPrice)
             
         })
 
@@ -72,17 +91,14 @@ class ShoppingCart extends Component {
     
     
     render() { 
-
-       
-
         return (
             <>
                 <div className='mt-6 container'>
                         <h3>購物車</h3>
                         <hr />
-                <form action="http://localhost:80/spost/BenPHP/ECPay.php" method="post">
+                <form action="http://localhost:80/spost/BenPHP/ECPay.php" method="post" enctype="application/x-www-form-urlencoded" name="cartData" >
 
-                {this.state.carData.map((value,index)=>{
+                {this.state.carState.map((value,index,array)=>{
                     return(
                         <>
                         <div className='container border-bottom' >
@@ -93,14 +109,19 @@ class ShoppingCart extends Component {
                         {/* 送結帳總金額 */}
                         <input class="form-control" name="TotalAmount" type="hidden" value={this.state.sumPrice} />
                         {/* 送商品描述 */}
-                        <input class="form-control" name="TradeDesc" type="hidden" value={value.title} />
+                        <input class="form-control" name="TradeDesc" type="hidden" value={"Spost專屬商品"} />
                         {/* 送商品資訊 */}
-                        <input class="form-control" name="ItemName" type="hidden" value={JSON.stringify(value)} />
+                        <input class="form-control" name="ItemName[]" type="hidden" value={JSON.stringify(this.state.carData)} />
+                        {/* <input class="form-control" name="ItemName[]" type="hidden" value={this.state.carData} /> */}
+                        {/* 商品單價 */}
+                        <input class="form-control" name="ItemPrice" type="hidden" value={value.price} />
+                        {/* 取得課程判斷 */}
+                        <input class="form-control" name="ItemType" type="hidden" value={value.oid[0] =='l'? "(課程)":"(場地)"} />
 
-                        
                             <div className='row mt-2 '>
                                 <div className="cartitle col">
-                                    <h5>{value.title}</h5>
+                                    <h5>{value.title}{value.oid[0] =='l'? "(課程)":"(場地)"}</h5>
+                                    
                             
                                 </div>
                                 <div className="cardata col " style={{lineHeight:"0.3"}}>
@@ -134,7 +155,16 @@ class ShoppingCart extends Component {
  
                     <div className='col-12'>
                         <a>選擇付款方式:</a>
-                        <select className='ChoosePayment'>
+                        <select className='' id="ChoosePaymentSelect" onChange={(e)=>{
+                            // console.log(e.target.value)
+                            this.state.ChoosePayment = e.target.value
+                            this.setState({});
+                            console.log(this.state.ChoosePayment)
+                        }}>
+                    {/* 送出交易方式 */}
+                    <input name="ChoosePayment" type="hidden" value={this.state.ChoosePayment} />
+
+        
                             {/* 選擇付款方式 */}
                             {/* 綠界提供下列付款方式，請於建立訂單時傳送過來:
                                 Credit:信用卡及銀聯卡
@@ -144,8 +174,11 @@ class ShoppingCart extends Component {
                                 CVS:超商代碼
                                 BARCODE:超商條碼
                                 ALL:不指定付款方式，由綠界顯示付款方式選擇頁面。 */}
-                            <option name="ChoosePayment" value="Credit">信用卡付款</option>
-                            <option name="ChoosePayment" value="ATM">銀行轉帳</option>
+                            <option name="" type="text" value="" selected="selected" >請選擇支付方式</option>
+                            <option name="" type="text" value="Credit">信用卡付款</option>
+                            <option name="" type="text" value="ATM">銀行轉帳</option>
+                            <option name="" type="text" value="CVS">超商代碼</option>
+                            
                         </select>
                     </div>
                 </div>
@@ -162,6 +195,8 @@ class ShoppingCart extends Component {
                     
                     </div>
                     </form>
+
+
 
 
                     

@@ -11613,12 +11613,85 @@ ul {
 }
 
 .btnRegister {
+  position: relative;
   height: auto;
   background-color: #FF0000;
+  border: none;
+  background: #FF0000;
+  background: linear-gradient(0deg, #FF0000 0%, #FF0000 100%);
+  color: #fff;
+  overflow: hidden;
 }
 
+.btnRegister:before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #fff;
+  -webkit-animation: shiny-btn1 3s ease-in-out infinite;
+          animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btnRegister:active {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3), -4px -4px 6px 0 rgba(116, 125, 136, 0.2), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2), inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+@-webkit-keyframes shiny-btn1 {
+  0% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0.5;
+  }
+  81% {
+    transform: scale(4) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shiny-btn1 {
+  0% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0.5;
+  }
+  81% {
+    transform: scale(4) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}
 .btnRegister:hover {
   background-color: #db8d8d;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.btnRegister:hover:before {
+  background-color: #db8d8d;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.btnRegister a {
+  font-weight: bolder;
+  font-size: 100%;
 }
 
 .HomeHeadBoxRightText {
@@ -11659,36 +11732,45 @@ ul {
   width: 100%;
   height: 35%;
   border-top: 1px solid black;
-  background: rgb(68, 68, 68);
+  background: rgb(0, 0, 0);
 }
 .rightBoxBottomText h1, .rightBoxBottomText .h1 {
   margin: auto;
 }
 
 .rightBoxBottomTextV1 {
-  align-content: center;
+  position: relative;
+  align-items: center;
   justify-content: center;
   margin: auto;
-  left: 0;
 }
 
 .rightBoxBottomTextV1 h1, .rightBoxBottomTextV1 .h1 {
-  font-size: 0.8rem;
+  font-size: 1.5rem;
 }
 .rightBoxBottomTextV1 h1:hover, .rightBoxBottomTextV1 .h1:hover {
   color: #FF0000;
 }
 .rightBoxBottomTextV1 p {
   font-size: 0.8rem;
-  color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  border: 1px outset white;
 }
 
 @media (min-width: 1200px) {
   .rightBoxBottomTextV1 h1, .rightBoxBottomTextV1 .h1 {
     font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
   }
   .rightBoxBottomTextV1 p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 .rightBoxTopText {
@@ -11700,7 +11782,7 @@ ul {
   width: 100%;
   height: 35%;
   border-bottom: 1px solid black;
-  background: rgb(68, 68, 68);
+  background: rgb(0, 0, 0);
 }
 .rightBoxTopText h1, .rightBoxTopText .h1 {
   margin: auto;
@@ -11714,6 +11796,8 @@ ul {
   bottom: 0;
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .rightBoxTopImg {
@@ -11763,6 +11847,10 @@ ul {
   z-index: 1;
 }
 
+.cardBox:hover {
+  opacity: 0.5 !important;
+}
+
 .carouselImgTest {
   -o-object-fit: cover;
      object-fit: cover;
@@ -11773,8 +11861,7 @@ ul {
 }
 
 .carouselImgTest:hover {
-  opacity: 0.7;
-  z-index: 1;
+  opacity: 0.7 !important;
 }
 
 .carouselBoxBigText {
@@ -11800,7 +11887,7 @@ ul {
 
 @media (min-width: 1200px) {
   .carouselBoxBigText a {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 .carouselBoxBottomText {
@@ -11854,30 +11941,19 @@ ul {
 
 .cardBoxText {
   position: absolute;
-  margin: auto;
   display: flex;
-  bottom: 10%;
   align-items: center;
   justify-content: center;
-  background-color: antiquewhite;
+  bottom: 5%;
   width: 90%;
   height: 50px;
-  opacity: 0.7;
+  opacity: 1;
   transition: all 0.6 ease-in-out;
   z-index: 1;
-}
-
-.cardBoxText:hover {
-  color: rgb(255, 255, 255) !important;
-  background-color: black;
-  opacity: 1;
-  z-index: 1;
-}
-
-.cardBoxText:hover a {
-  color: rgb(255, 255, 255) !important;
-  opacity: 1;
-  z-index: 1;
+  overflow: hidden;
+  line-height: 1;
+  background-color: rgb(0, 0, 0);
+  color: white;
 }
 
 .twoSectionBackgroundImg {
@@ -11885,34 +11961,324 @@ ul {
 }
 
 .threeSectionBox {
+  margin-top: 96px;
   position: relative;
   display: flex;
   width: 100%;
-  height: 450px;
+  height: 700px;
 }
 
 .threeSectionBoxBottomImg {
   padding-top: 25px;
-  background-image: url("~../imgs/ben1.jpg");
+  background-image: url("~../BenComponents/img/index/072404.jpg");
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;
   background-size: cover;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.192);
+  background-blend-mode: multiply;
 }
 
-.threeSectionBoxBottomImg2 {
+.threeSectionBoxContentText {
+  margin: auto;
+  position: absolute;
+  display: flex;
+  left: 0;
+  right: 0;
+  top: 27%;
+  background-color: rgb(0, 0, 0);
+  width: 50%;
+  height: 10%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  z-index: 99;
+  overflow: hidden;
+}
+.threeSectionBoxContentText h2, .threeSectionBoxContentText .h2 {
+  color: #333 !important;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  padding: auto;
+  position: relative;
+  font-weight: bolder !important;
+}
+.threeSectionBoxContentText h2::after, .threeSectionBoxContentText .h2::after {
+  content: "Spost+陪你從訓練到改變!";
+  color: transparent !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+          clip-path: ellipse(30px 30px at 0% 50%);
+  -webkit-animation: spotlightText 5s infinite;
+          animation: spotlightText 5s infinite;
+  background-image: url("~../BenComponents/img/index/22053.png");
+  background-size: 150%;
+  background-position: center center;
+  /* 設定依照背景圖片當顯示 */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@-webkit-keyframes spotlightText {
+  from {
+    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+            clip-path: ellipse(30px 30px at 0% 50%);
+  }
+  50% {
+    -webkit-clip-path: ellipse(30px 30px at 100% 50%);
+            clip-path: ellipse(30px 30px at 100% 50%);
+  }
+  to {
+    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+            clip-path: ellipse(30px 30px at 0% 50%);
+  }
+}
+
+@keyframes spotlightText {
+  from {
+    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+            clip-path: ellipse(30px 30px at 0% 50%);
+  }
+  50% {
+    -webkit-clip-path: ellipse(30px 30px at 100% 50%);
+            clip-path: ellipse(30px 30px at 100% 50%);
+  }
+  to {
+    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+            clip-path: ellipse(30px 30px at 0% 50%);
+  }
+}
+.threeSectionBoxContentTextType {
+  margin: auto;
+  position: absolute;
+  display: flex;
+  left: 0;
+  right: 0;
+  top: 24%;
+  background-color: rgb(0, 0, 0);
+  width: 50%;
+  height: 10%;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  z-index: 99;
+}
+.threeSectionBoxContentTextType h2, .threeSectionBoxContentTextType .h2 {
+  color: #333 !important;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  padding: auto;
+  position: relative;
+  font-weight: bolder !important;
+}
+.threeSectionBoxContentTextType h2::after, .threeSectionBoxContentTextType .h2::after {
+  content: "Spost+陪你從訓練到改變!";
+  color: transparent !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+          clip-path: ellipse(30px 30px at 0% 50%);
+  -webkit-animation: spotlightText 5s infinite;
+          animation: spotlightText 5s infinite;
+  background-image: url("~../BenComponents/img/index/22053.png");
+  background-size: 150%;
+  background-position: center center;
+  /* 設定依照背景圖片當顯示 */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes spotlightText {
+  from {
+    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+            clip-path: ellipse(30px 30px at 0% 50%);
+  }
+  50% {
+    -webkit-clip-path: ellipse(30px 30px at 100% 50%);
+            clip-path: ellipse(30px 30px at 100% 50%);
+  }
+  to {
+    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
+            clip-path: ellipse(30px 30px at 0% 50%);
+  }
+}
+.threeSectionBoxContentBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.threeCard {
+  display: flex;
+  width: 300px;
+  height: 250px;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  padding: 5px;
+  background-color: #000000 !important;
+  border: 0.5px solid white !important;
+}
+.threeCard img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center center;
+}
+.threeCard a {
+  font-size: 20px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  color: rgb(204, 199, 199) !important;
+}
+.threeCard p {
+  font-size: 16px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  color: rgb(204, 199, 199) !important;
+}
+
+.threeSectionBoxV1 {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 700px;
+}
+
+.threeSectionBoxBottomImgV1 {
   padding-top: 25px;
+  background-image: url("~../BenComponents/img/index/0724.jpg");
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;
   background-size: cover;
+  opacity: 1 !important;
+}
+
+.threeSectionBoxV1Card {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.threeSectionBoxV1CardContent {
+  display: flex;
+  height: 300px;
+  position: absolute;
+  border: 2px solid white !important;
+  perspective: 1000px !important;
+}
+.threeSectionBoxV1CardContent .BenImgCard {
+  position: relative;
+  display: flex;
+  width: 200px !important;
+  height: 300px;
+  margin: 0;
+  width: 100%;
+  border: 2px solid white !important;
+  text-align: center;
+  perspective: 1000px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.BenImgCardCover, .BenImgCardBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: transform 0.35s ease-in-out;
+}
+
+.BenImgCardCover {
+  background-color: #000000;
+  color: white;
+  transform: perspective(1000px) rotateY(0deg);
+}
+.BenImgCardCover img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.8;
+  background-color: rgb(0, 0, 0) !important;
+  background-blend-mode: multiply !important;
+}
+
+.BenImgCardBack {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000000;
+  color: white !important;
+  transform: perspective(1000px) rotateY(-180deg);
+  align-items: center;
+  justify-items: center;
+  margin: auto;
+}
+.BenImgCardBack h5, .BenImgCardBack .h5 {
+  top: 30px;
+  margin: 10px auto;
+  word-wrap: break-word;
+  align-items: center;
+  justify-content: center;
+}
+.BenImgCardBack h4, .BenImgCardBack .h4 {
+  margin: 10px auto;
+  word-wrap: break-word;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: rgb(153, 163, 163);
+}
+.BenImgCardBack p {
+  margin: 10px auto;
+  font-size: 16px;
+  border: 1px solid white;
+}
+
+.BenImgCard:hover .BenImgCardCover {
+  transform: rotateY(180deg);
+}
+
+.BenImgCard:hover .BenImgCardBack {
+  transform: rotateY(0deg);
 }
 
 .oneSectionBox {
   position: relative;
   display: flex;
   width: 100%;
-  height: 300px;
+  height: 270px;
   background-color: black;
 }
 

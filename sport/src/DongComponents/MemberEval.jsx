@@ -36,6 +36,7 @@ class MemberPlan extends Component {
         .then( response => {
             this.state.oderListInfo = [];
             this.state.oderNone = '';
+            this.state.newId = [];
             this.setState({})
             if ( typeof response.data == 'object' ) {
                 let lessonInfo = [];
@@ -103,7 +104,7 @@ class MemberPlan extends Component {
 
     render() {
         return (
-            <div className='container'>                
+            <div className='container'>{console.log(this.state.newId)}  
                 <div className='row' id='ok'>
                     <div className='col-2 mt-5 border-end'>
                         <MemberPage />
