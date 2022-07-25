@@ -164,7 +164,7 @@ class ShoppingCart extends Component {
                             // console.log(e.target.value)
                             this.state.ChoosePayment = e.target.value
                             this.setState({});
-                            console.log(this.state.ChoosePayment)
+                            // console.log(this.state.ChoosePayment)
                         }}>
                     {/* 送出交易方式 */}
                     <input name="ChoosePayment" type="hidden" value={this.state.ChoosePayment} />
