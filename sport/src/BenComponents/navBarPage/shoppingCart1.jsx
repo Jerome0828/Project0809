@@ -19,20 +19,6 @@ class ShoppingCart extends Component {
 
     async componentDidMount() {
 
-        // 07/25 BEN 新增 取時間
-        // var d,s;
-        // d = new Date();
-        // s = d.getYear() + "-";             //取年份
-        // s = s + (d.getMonth() + 1) + "-";//取月份
-        // s += d.getDate() + " ";         //取日期
-        // s += d.getHours() + ":";       //取小时
-        // s += d.getMinutes() + ":";    //取分
-        // s += d.getSeconds();         //取秒
-        // console.log(s)
-
-        // var today =new Date()
-        // alert((today.toLocaleString().replace(/年|月/g,'-')).replace(/日/g,''))
-
         // 07/22 BEN 新增
         if(localStorage.getItem('id')){
 
@@ -102,31 +88,6 @@ class ShoppingCart extends Component {
 
     };
 
-    checkOKAlert=()=>{
-        var d,s;
-        d = new Date();
-        s = d.getYear() + "-";             //取年份
-        s = s + (d.getMonth() + 1) + "-";//取月份
-        s += d.getDate() + " ";         //取日期
-        s += d.getHours() + ":";       //取小时
-        s += d.getMinutes() + ":";    //取分
-        s += d.getSeconds();         //取秒
-        return alert(s)
-    }
-
- 
- //取当前时间，格式为,yyyy-mm-dd hh:mm:ss
-    GetDateT=()=>{
-    var d,s;
-    d = new Date();
-    s = d.getYear() + "-";             //取年份
-    s = s + (d.getMonth() + 1) + "-";//取月份
-    s += d.getDate() + " ";         //取日期
-    s += d.getHours() + ":";       //取小时
-    s += d.getMinutes() + ":";    //取分
-    s += d.getSeconds();         //取秒
-    return s;  
-    } 
    
     
     render() { 
@@ -159,6 +120,8 @@ class ShoppingCart extends Component {
                         <input class="form-control" name="ItemPrice" type="hidden" value={value.price} />
                         {/* 取得課程判斷 */}
                         <input class="form-control" name="ItemType" type="hidden" value={value.oid[0] =='l'? "(課程)":"(場地)"} />
+                        {/* 送當前會員ID */}
+                        <input class="form-control" name="MemberID" type="hidden" value={value.id} />
 
                             <div className='row mt-2 '>
                                 <div className="cartitle col">
@@ -234,7 +197,6 @@ class ShoppingCart extends Component {
                     </NavLink> */}
                     
                     <button className='btn btn-outline-dark me-md-2'  type="submit">付款</button>
-                    {/* <button onClick={this.checkOKAlert}> test</button> */}
                     </div>
                     </form>
 

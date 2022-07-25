@@ -26,72 +26,35 @@ try {
     //    $obj->HashIV      = 'EkRm7iFT261dpevs' ;                                          //測試用HashIV，請自行帶入ECPay提供的HashIV
     //    $obj->MerchantID  = '3002607';                                                    //測試用MerchantID，請自行帶入ECPay提供的MerchantID
     //    $obj->EncryptType = '1';                                                          //CheckMacValue加密類型，請固定填入1，使用SHA256加密
-       $obj->ServiceURL  = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";  //服務位置，記得測試完要還成正式網址
-       $obj->HashKey     = '5294y06JbISpM5x9' ;                                          //測試用Hashkey，請自行帶入ECPay提供的HashKey
-       $obj->HashIV      = 'v77hoKGq4kWxNNIS' ;                                          //測試用HashIV，請自行帶入ECPay提供的HashIV
-       $obj->MerchantID  = '2000132';                                                    //測試用MerchantID，請自行帶入ECPay提供的MerchantID
-       $obj->EncryptType = "1";
-
-
-       function generate($arParameters = array(),$HashKey = '' ,$HashIV = '',$encType = 0) {
-        $sMacValue = '' ;
-        if(isset($arParameters))
-        {
-        // arParameters 為傳出的參數，並且做字母 A-Z 排序
-        unset($arParameters['CheckMacValue']);
-        uksort($arParameters, array('ECPay_CheckMacValue','merchantSort'));
-        // 組合字串
-        $sMacValue = 'HashKey=' . $HashKey ;
-        foreach($arParameters as $key => $value)
-        {
-        $sMacValue .= '&' . $key . '=' . $value ;
-        }
-        $sMacValue .= '&HashIV=' . $HashIV ;
-        // URL Encode 編碼
-        $sMacValue = urlencode($sMacValue);
-        // 轉成小寫
-        $sMacValue = strtolower($sMacValue);
-        // 取代為與 dotNet 相符的字元
-        $sMacValue = str_replace('%2d', '-', $sMacValue);
-        $sMacValue = str_replace('%5f', '_', $sMacValue);
-        $sMacValue = str_replace('%2e', '.', $sMacValue);
-        $sMacValue = str_replace('%21', '!', $sMacValue);
-        $sMacValue = str_replace('%2a', '*', $sMacValue);
-        $sMacValue = str_replace('%28', '(', $sMacValue);
-        $sMacValue = str_replace('%29', ')', $sMacValue);
-        // 編碼
-        switch ($encType) {
-        case ECPay_EncryptType::ENC_SHA256:
-        // SHA256 編碼
-        $sMacValue = hash('sha256', $sMacValue);
-        break;
-        case ECPay_EncryptType::ENC_MD5:
-        default:
-        // MD5 編碼$sMacValue = md5($sMacValue);
-        }
-        $sMacValue = strtoupper($sMacValue);
-        }
-        return $sMacValue ;
-        }
-       $obj->CheckMacValue = $sMacValue;                                                          //CheckMacValue加密類型，請固定填入1，使用SHA256加密
-
+        $obj->ServiceURL  = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";  //服務位置，記得測試完要還成正式網址
+        $obj->HashKey     = '5294y06JbISpM5x9' ;                                          //測試用Hashkey，請自行帶入ECPay提供的HashKey
+        $obj->HashIV      = 'v77hoKGq4kWxNNIS' ;                                          //測試用HashIV，請自行帶入ECPay提供的HashIV
+        $obj->MerchantID  = '2000132';                                                    //測試用MerchantID，請自行帶入ECPay提供的MerchantID
+       $obj->EncryptType  = 1;
+    //    $obj->CheckMacValue = $_POST;
 
        //基本參數(請依系統規劃自行調整)
-       $MerchantTradeNo = "Test".time() ;
+    //    $MerchantTradeNo = "Test".time() ;
     //    $obj->Send['ReturnURL']      = "https://2e1a-220-132-230-112.jp.ngrok.io/spost/Benphp/PlayOK.php";//付款完成通知回傳的網址
     //    $obj->Send['ReturnURL']         = "palTest.php" ;                 //付款完成通知回傳的網址
     //    $obj->Send['ReturnURL']         = "https://e340-118-163-218-100.jp.ngrok.io/spost/Benphp/palTest.php" ;                 //付款完成通知回傳的網址
-       $obj->Send['ReturnURL']         = "http://localhost:80/spost/Benphp/PlayOK.php" ;                 //付款完成通知回傳的網址
+    //    $obj->Send['ReturnURL']         = "http://localhost:80/spost/Benphp/PlayOK.php" ;                 //付款完成通知回傳的網址
+       $obj->Send['ReturnURL']         = "not.php" ;                 //付款完成通知回傳的網址
+
        $obj->Send['MerchantTradeNo']   = $_REQUEST['MerchantTradeNo']+rand(1,999)."carTest";   //訂單編號
        $obj->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');           //交易時間
+    //    $obj->Send['MerchantTradeDate'] = '2012/03/21 15:40:18';           //交易時間
        $obj->Send['TotalAmount']       = (int)$_REQUEST['TotalAmount']; //交易金額
        $obj->Send['TradeDesc']         = $_REQUEST['TradeDesc'];        //交易描述
        $obj->Send['NeedExtraPaidInfo'] = 'Y';                           //額外的付款資訊(消費者信用卡末四碼)
        $obj->Send['ChoosePayment']     = $_REQUEST['ChoosePayment'];    //付款方式:依照前端選擇值
-       $obj->Send['CheckMacValue']     = $sMacValue;
-       $obj->Send['ClientBackURL']     = "http://localhost:3000/";   // Client 端返回特店的按鈕連結
-    //    $obj->Send['OrderResultURL']    ="https://e340-118-163-218-100.jp.ngrok.io/spost/Benphp/palTest.php";
+    //    $obj->Send['CheckMacValue']     = $sMacValue;
+    //    $obj->Send['ClientBackURL']     = "http://localhost:3000/";   // Client 端返回特店的按鈕連結
+       $obj->Send['OrderResultURL']    ="http://localhost:80/spost/Benphp/PlayOK.php";
     //    $obj->Send['ChoosePayment']     = ECPay_PaymentMethod::ALL;      //付款方式:全部
+        $obj->Send['CustomField1'] = $_REQUEST['MemberID'];
+
+    $obj->SendExtend['MerchantTradeDate'] = '2012/03/21 15:40:18';
         /*  當 付款方式 [ChoosePayment] 為 ALL 時，可隱藏不需要的付款方式，多筆請以井號分隔(#)。
             可用的參數值：
             Credit:信用卡
@@ -145,9 +108,13 @@ try {
     //    'URL' => "dedwed"));
     //    var_dump($obj->Send['Items']);
     // }
+    // $obj->Query['MerchantTradeNo'] = $_REQUEST['MerchantTradeNo']+rand(1,999)."carTest";
 
     //    //產生訂單(auto submit至ECPay)
        $obj->CheckOut(); 
+    // $Response = (string)$obj->CheckOutString();
+    // echo $Response;
+
     
    } catch (Exception $e) {
     echo $e->getMessage();
