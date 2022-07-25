@@ -28,7 +28,10 @@ class MemberInfo extends Component {
     // memberInfo
     memberInfo = async(memberId) => {
         const Qs = require("qs");
-        await axios.post("http://localhost:80/spost/JeromePHP/memberInfo.php", Qs.stringify({ id: memberId }))
+        await axios.post("http://localhost:80/spost/JeromePHP/memberInfo.php", Qs.stringify({ 
+            id: memberId,
+            info: window.localStorage.info
+        }))
         .then( response => {
             this.state.img = response.data.img;
             this.state.realName = response.data.realname;
