@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import AlertDialog from './AlertDialog';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Rating from '@mui/material/Rating';
 
 
 // import '../scss/all.scss';
@@ -60,7 +62,9 @@ class MemberLessonPost extends Component {
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-between bg-white card-footer ">
-                                    <span>評價</span>
+                                    <Stack className='w-100' >
+                                        <Rating name="half-rating-read" defaultValue={4.5} precision={0.1} readOnly />
+                                    </Stack>
                                     <span>${elm.price}</span>
                                 </div>
                             </div>

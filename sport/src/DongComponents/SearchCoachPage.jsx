@@ -57,6 +57,9 @@ class SearchCoachPage extends Component {
         var url = `http://localhost/spost/DongPHP/lesson.php`;
         var result = await Axios.get(url);
         this.state.data = result.data;
+        this.state.data.map(elm=>{
+            elm.rate = (3+Math.random()*2).toFixed(1)
+        })
 
         var url1 = `http://localhost/spost/DongPHP/sportType.php`;
         var result1 = await Axios.get(url1);
@@ -81,6 +84,9 @@ class SearchCoachPage extends Component {
         });
         // console.log(resdata);
         this.state.data = resdata;
+        this.state.data.map(elm=>{
+            elm.rate = (3+Math.random()*2).toFixed(1)
+        })
         this.setState({});        
     }
 
