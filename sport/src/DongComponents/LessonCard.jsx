@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Stack from '@mui/material/Stack';
+import Rating from '@mui/material/Rating';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 // npm i react-animated-css
@@ -13,14 +15,18 @@ class LessonCard extends Component {
             // initialise with other settings
             duration: 1000
         });
+
+
     }
     render() {
+        // let randRate = (Math.random()+4).toFixed(1);
         let dataList = this.props.dataList;
         // console.log(dataList);
         return (
             <>
                 {
                     dataList.map(elm => {
+                        
                         return (
                             <div data-aos="zoom-in" className="border-0 col-xl-3 col-lg-5 col-md-5 card m-3">
                                 <div className="border rounded shadow card h-100">
@@ -54,7 +60,9 @@ class LessonCard extends Component {
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between bg-white card-footer ">
-                                        <span>評價</span>
+                                    <Stack className='w-100' >
+                                        <Rating name="half-rating-read" defaultValue={elm.lid=='l27' ? 4 : elm.rate} precision={0.5} readOnly />
+                                    </Stack>
                                         <span>${elm.price}</span>
                                     </div>
                                 </div>
