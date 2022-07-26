@@ -19,7 +19,6 @@ function Evaluation(props) {
             for (let i=0 ; i<8 ; i++ ) {
                 setNews( old => [...old, response.data[i]])
             }
-            console.log(response.data)
         })
     }
 
