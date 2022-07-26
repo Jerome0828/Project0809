@@ -25,7 +25,7 @@ function Evaluation(props) {
 
     return (
         <>
-            {news.map( (value, index) => {
+            {news && news.map( (value, index) => {
                 return (
                     <div className="card m-2" key={index} style={{border: '2px black solid' }} data-aos="fade-left">
                         <div className='card-body text-center'>
