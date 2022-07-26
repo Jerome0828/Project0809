@@ -196,7 +196,7 @@ class ShoppingCart extends Component {
                     {/* <NavLink to="/CreditCardPaymentPage" className="">
                     </NavLink> */}
                     
-                    <button className='btn btn-outline-dark me-md-2'  type="submit">付款</button>
+                    <button className='btn btn-outline-dark me-md-2'  type="submit">確認付款</button>
                     </div>
                     </form>
 
