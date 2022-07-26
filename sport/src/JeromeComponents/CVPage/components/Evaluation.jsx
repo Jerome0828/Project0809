@@ -26,24 +26,24 @@ function Evaluation(props) {
 
     return (
         <>
-            {news && news.map( (value, index) => {
+            {news.map( (value, index) => {
                 return (
                     <div className="card m-2" key={index} style={{border: '2px black solid' }} data-aos="fade-left">
                         <div className='card-body text-center'>
                             <div className='w-100 mt-3'>
-                                <p>{news && value.nickname}</p>
+                                <p>{value.nickname}</p>
                             </div>
                             <div className='row text-center'>
                                 <div className='col-lg-6'>
                                     <Stack>
-                                        <Rating defaultValue={news && value.rate} precision={0.5} readOnly />
+                                        <Rating defaultValue={value.rate} precision={0.5} readOnly />
                                     </Stack>
                                 </div>
                                 <div className='col-lg-6'>
-                                    <p>{news && value.time}</p>
+                                    <p>{value.time}</p>
                                 </div>
                                 <div className='text-start'>
-                                    <p>{news && value.info}。</p>
+                                    <p>{value.info}。</p>
                                 </div>
                             </div>
                         </div>
