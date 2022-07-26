@@ -1,9 +1,9 @@
 <?php
     include('sql.php');
 
-    $id = $materialPost['id'];
+    $oid = $materialPost['oid'];
 
-    $sql = " SELECT * FROM reaction WHERE id = '$id' ";
+    $sql = " SELECT member.nickname, reaction.rate, reaction.info, reaction.time FROM reaction INNER JOIN member ON reaction.id = member.id WHERE `PLId` = 'l27'; ";
     $result = $sportSql->query($sql);
 
     $i = 0;

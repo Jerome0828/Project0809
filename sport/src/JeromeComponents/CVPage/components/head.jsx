@@ -103,7 +103,7 @@ function Head(props) {
                                 </div>
                                 <div className='col-lg-6 mt-5'>{}
                                     <Stack className='w-100' >
-                                        <Rating name="half-rating-read" defaultValue={3.5} precision={0.5} readOnly />
+                                        <Rating value={id && id[0]=='l27' ? 4 : 3.5} precision={0.5} readOnly />
                                     </Stack>
                                 </div>
                             </div>

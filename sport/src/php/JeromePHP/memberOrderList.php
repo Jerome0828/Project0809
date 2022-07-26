@@ -8,7 +8,7 @@
     $myJSON=[];
     if( hash('sha256', $id.'spost') == $info ){
         // 會員訂單資料
-        $sql = " SELECT * FROM shoppingcar WHERE id = '1' AND `state` = '1' GROUP BY `oid` ORDER BY `shoppingcar`.`title` DESC ";
+        $sql = " SELECT * FROM shoppingcar WHERE id = '$id' AND `State` = '1' GROUP BY `oid` ORDER BY `shoppingcar`.`title` DESC ";
 
         $result = $sportSql->query($sql);
 
