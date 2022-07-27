@@ -7,6 +7,7 @@ import Axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 
+
 // 輪播課程卡片
 import CarouselCard from '../contentComponents/carouselCard/carouselCard.jsx'
 // 7/18 BEN 新增輪播場地卡片 
@@ -30,6 +31,9 @@ import CommentCard from '../contentComponents/CommentCard.jsx'
 
 // 7/25 BEN 新增下方首頁場地卡片
 import IndexSiteCard from '../contentComponents/indexSiteCard.jsx'
+
+// 7/27 BEN 新增footer頁尾
+import Footer from '../navBarPage/footer.jsx'
 class HomeHead extends Component {
     state = {
         // header 左側區塊設定
@@ -368,9 +372,9 @@ class HomeHead extends Component {
                 </section>
 
                 {/* 結尾footer處 */}
-                <footer className='mt-6'>
+                <footer className='mt-6 footer'>
                     <div>
-                        頁尾籌備中
+                        <Footer/>
                     </div>
                 </footer>
             </div>
