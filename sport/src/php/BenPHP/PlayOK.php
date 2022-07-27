@@ -68,8 +68,8 @@ if ( $_POST['RtnCode'] =='1' && $CheckMacValue == $_POST['CheckMacValue'] ){
  
     
 }
-echo "付款成功，3秒後返回首頁";
-header("refresh: 3;url=http://localhost:3000/");
+echo "付款成功，3秒後返回網站";
+header("refresh: 3;url=http://localhost:3000/member/$id");
 
 
 // 接收到資訊回應ok

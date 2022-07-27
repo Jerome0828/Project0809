@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousels from './carousels';
-import Labels from './label'
+import Labels from './label';
+import imgs from '../../img/1.jpg';
 
 import Rating from '@mui/material/Rating';  // npm install @mui/material @emotion/react @emotion/styled
 import Breadcrumbs from '@mui/material/Breadcrumbs';
@@ -53,8 +54,8 @@ function Head(props) {
             )
         }else {
             return (
-                <img src='https://img.onl/1WWQ9e'
-                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+                <img src={imgs}
+                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft '/>
             )
         }
     }
