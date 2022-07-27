@@ -6,8 +6,10 @@ import AOS from 'aos';
 import Axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faFacebook } from '@fortawesome/free-solid-svg-icons';
+// some icons
+import { RiFacebookFill,RiLinkedinFill,RiMailFill,RiGithubFill } from 'react-icons/ri';
+
+// npm install react-icon
 import pic from '../img/index/instagram.png';
 
 // 輪播課程卡片
@@ -372,15 +374,8 @@ class HomeHead extends Component {
                 </section>
 
                 {/* 結尾footer處 */}
-                <footer style={{ height: '300px', backgroundColor: '#000000' }}>
-                    <div className='row d-flex justify-content-between text-center h-100 mx-5 text-light'>
-                        <div style={this.footerstyle} className='col-2 h-100'>
-                            <p className='mt-5 h3'><b>江東祐</b></p>
-                            <div className='mt-5'>
-                                <img src={pic}/>
-                            </div>
-                        </div>
-                    </div>
+                <footer style={{ height: '200px', backgroundColor: '#000000' }}>
+                    
                 </footer>
             </div>
         );
