@@ -379,7 +379,7 @@ class Login extends Component {
           if ( typeof response.data == 'object' ) {
             localStorage.setItem('id', `${response.data[0]}`);
             localStorage.setItem('info', `${response.data[1]}`);
-            window.location.href = '/';
+            window.location.href = '/lesson/l27';
           }else {
             this.state.pwr = '帳號、信箱或密碼錯誤'
             this.setState({})
