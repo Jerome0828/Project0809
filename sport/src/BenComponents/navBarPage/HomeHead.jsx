@@ -31,6 +31,9 @@ import CommentCard from '../contentComponents/CommentCard.jsx'
 
 // 7/25 BEN 新增下方首頁場地卡片
 import IndexSiteCard from '../contentComponents/indexSiteCard.jsx'
+
+// 7/27 BEN 新增footer頁尾
+import Footer from '../navBarPage/footer.jsx'
 class HomeHead extends Component {
     state = {
         // header 左側區塊設定
@@ -40,15 +43,15 @@ class HomeHead extends Component {
         // header 右側區塊設定
         oneRightBoxStyle:[
             {id:1,value:"多功能訓練",value1:"一對一課程",src:rightimg3,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
-            {id:2,value:"多功能教室",value1:"室內運動",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
+            {id:2,value:"多功能教室",value1:"室內運動",src:rightImg4,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/site"},
             {id:3,value:"間歇訓練",value1:"團體課程",src:rightImg2,imgAlign:"rightBoxTopImg",TextAlign:"rightBoxBottomText",to:"/lesson"},
-            {id:4,value:"瑜珈空間",value1:"皮拉提斯",src:rightimg2,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/lesson"},
+            {id:4,value:"瑜珈空間",value1:"皮拉提斯",src:rightimg2,imgAlign:"rightBoxBottomImg",TextAlign:"rightBoxTopText",to:"/site"},
         ],
         CommentCard:[
             {id:1,name:"郡婕",date:"2022/6/01",star:5,value:'親切、活潑、專業、我會想再繼續購課!初學也很適合，強度老師會分級說明',img:'https://images.unsplash.com/photo-1521227889351-bf6f5b2e4e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
             {id:2,name:"林辰翰",date:"2022/6/29",star:5,value:'推薦，有不同老師不同類型，可以訓練不同部位，很適合想每天動一下的人',img:'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
             {id:3,name:"蓋兒",date:"2022/7/22",star:5,value:'很多課程教練都很不錯，初學跟想動一動伸展及小練一下肌力的都很適合✨',img:'https://images.unsplash.com/photo-1513738817443-e91e222031fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
-            {id:4,name:"曾千侑Sam",date:"2022/7/25",star:5,value:'課程種類豐富~ 提供的運動場地也很多，這樣就可以多邀約朋友一起運動健康!',img:'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80'},
+            {id:4,name:"曾千侑",date:"2022/7/25",star:5,value:'課程種類豐富~ 提供的運動場地也很多，這樣就可以多邀約朋友一起運動健康!',img:'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80'},
         ],
         indexSiteCard:[
             {id:1,name:"郡婕",date:"2022/6/01",star:5,value:'親切、活潑、專業、我會想再繼續購課!初學也很適合，強度老師會分級說明',img:'https://images.unsplash.com/photo-1521227889351-bf6f5b2e4e37?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&q=80'},
@@ -63,6 +66,7 @@ class HomeHead extends Component {
         lessonV2:[],
         lessonV3:[],
         placeV1:[],
+        
     }
               
     async componentDidMount() {
@@ -110,7 +114,7 @@ class HomeHead extends Component {
                 {/* 第一層header */}
                 <header className=''>
                     {/* header第一段左邊 */}
-                    <div className='HomeHeadBoxStyle row m-auto'                                                             
+                    <div className='HomeHeadBoxStyle row m-0 w-100'                                                             
                         // data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" 
                         >
                         {this.state.oneLeftBoxStyle.map((e,index)=>{return <IndexLeftBox 
@@ -137,7 +141,9 @@ class HomeHead extends Component {
                     <div className='oneSectionBox'>
                         <div className='row container m-auto'>
                             <div className='col-3 oneSectionBoxCol'
-                                data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0" >
+                                data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0" 
+                                
+                                >
                             <h1 className='container text-center mt-4 text-white'>30,000+</h1>
                             <h4 className='container text-center text-white'>運動愛好者</h4>
                                 <div className='oneSectionBoxButton'>
@@ -187,9 +193,9 @@ class HomeHead extends Component {
                 <section>
                     <div className='mt-3 m-5 h-100' 
                     
-                    data-aos="fade-up" 
-                    data-aos-easing="linear" 
-                    data-aos-duration="1500" 
+                    // data-aos="fade-up" 
+                    // data-aos-easing="linear" 
+                    // data-aos-duration="1500" 
                     
                     >
                         <div className='carouselBoxBigText container mb-3' 
@@ -328,16 +334,21 @@ class HomeHead extends Component {
                         </div>
                     </div> 
 
-                    <div className='threeSectionBoxV1 mt-6'>
+                    {/* 第四層section設定固定底圖 */}
+                    <div className='threeSectionBoxV1'>
                         <div className='threeSectionBoxBottomImgV1 h-100 w-100'>
-                                {/* <div className='threeSectionBoxContentTextType'>
-                                <h2>Spost+陪你從訓練到改變!</h2>
-                                </div> */}
+                                <div className='threeSectionBoxContentTextV1'>
+                                    <div className="container-text">
+                                    <h2>想揪團運動時</h2>
+                                        <div className="text-wrapper">
+                                            <div className="text" ><h2>天氣狀況不好時怎麼辦</h2></div>
+                                            <div className="text" ><h2>立即查看各式室內場地</h2></div>
+                                            <div className="text"><h2></h2></div>
+                                        </div>
+                                    </div>
+                                </div>
                             
                                 <div className='threeSectionBoxV1Card container '>
-
-                                
-
                                 <div className=' threeSectionBoxV1CardContent'>
                                     
                                     {this.state.placeV1.map((value,index)=>{
@@ -351,14 +362,8 @@ class HomeHead extends Component {
                                     img={value.img}
                                     
                                         />
-                                        
-                                        
-    
                                 )})}
-                   
-                                
-                                    
-                            
+                
                                 </div>
                                 
                                 </div>
@@ -366,31 +371,10 @@ class HomeHead extends Component {
                     </div> 
                 </section>
 
-                {/* 第四層section設定固定底圖 */}
-                {/* <section>
-                    <div className='bg-test h-100 w-100 container mt-6'>
-                        <div className='fourthSectionBox d-flex row m-auto'>
-                            <div className='col-sm-3 fourthSectionBoxCol'>123</div>
-                            <div className='col-sm-8 fourthSectionBoxColText'>123</div>
-                            <div className='col-sm-8 fourthSectionBoxCol'>123</div>
-                            <div className='col-sm-3 fourthSectionBoxColText'>123</div>
-                        </div>
-                    </div>
-                    
-                </section> */}
-
-                {/* 第五層section設定固定底圖 */}
-                <section>
-                    <div className='bg-test h-25 w-100 mt-5 mb-5 container'>
-                        <div className='fifthSectionBox'>
-                        </div>
-                    </div>
-                </section>
-
                 {/* 結尾footer處 */}
-                <footer className='mt-6'>
+                <footer className='mt-6 footer'>
                     <div>
-                        頁尾籌備中
+                        <Footer/>
                     </div>
                 </footer>
             </div>

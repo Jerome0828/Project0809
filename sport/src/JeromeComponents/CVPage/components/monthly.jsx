@@ -150,9 +150,7 @@ function Monthly(props) {
         post()
       })
     }
-
   }
-
 
   return (
     <div className="container">
@@ -190,13 +188,14 @@ function Monthly(props) {
         </div>
       </div>
       <div className='row justify-content-start mt-3'>
+      {/*  */}
         <h5 className="col-lg-12 text-center mt-3">{test}</h5>
           {
             btnData.map( (values, idx) => {
               return (
-                <div  className='col-lg-4 my-1' key={idx}>
+                <div className="col-lg-4 my-1 btnDate" key={idx} >
                   <button className="btn w-100 p-1 btnDiv" onClick={btnColor} checked={false} value={values}
-                    style={{backgroundColor: "white", border: "black solid 3px"}} >
+                    style={{backgroundColor: "white", border: "black solid 3px"}}>
                   {values}</button>
                 </div>
               )

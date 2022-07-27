@@ -261,6 +261,8 @@
 
   h2 {
     color:#333 !important;
+    display: flex;
+    margin: 0 auto;
     width: auto;
     align-items: center;
     justify-content: center;
@@ -285,7 +287,8 @@
     // right: 0;
     // bottom: 0;
     // background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhZGllbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60');
-    background-image: url('~../BenComponents/img/index/22053.png');
+    // background-image: url('~../BenComponents/img/index/22053.png');
+    background-image: url('https://dummyimage.com/600x400/FFF/FFF');
     background-size: 150%;
     background-position: center center;
 
@@ -307,8 +310,6 @@
         clip-path: ellipse(30px 30px at 0% 50%)
     }
 }
-
-
 
 
 // 動畫文字設定(打字)
@@ -351,8 +352,8 @@
     left: 0;
     top:0;
     // text-shadow:0 0 1px white,0 0 1px white;
-    clip-path: ellipse(30px 30px at 0% 50%) ;
-    animation:spotlightText 5s infinite;
+    clip-path: ellipse(30px 25px at 0% 50%) ;
+    animation:spotlightText 7s infinite !important;
     // right: 0;
     // bottom: 0;
     // background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhZGllbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60');
@@ -369,13 +370,13 @@
 
 @keyframes spotlightText{
     from{
-        clip-path: ellipse(30px 30px at 0% 50%)
+        clip-path: ellipse(30px 25px at 0% 50%)
     }
     50%{
-        clip-path: ellipse(30px 30px at 100% 50%)
+        clip-path: ellipse(30px 25px at 100% 50%)
     }
     to{
-        clip-path: ellipse(30px 30px at 0% 50%)
+        clip-path: ellipse(30px 25px at 0% 50%)
     }
 }
 
@@ -399,7 +400,8 @@
 // 評論區卡片設定
 .threeCard{
   display: flex;
-  width: 300px;
+  // width: 300px;
+  width: 17%;
   height:250px;
   align-items: center;
   justify-content: center;
@@ -476,7 +478,7 @@
 
 .threeSectionBoxV1CardContent{
   display: flex;
-    // width: 100%;
+    // width: 50%;
     height: 300px;
     // background-color: #333;
     position: absolute;
@@ -497,13 +499,10 @@
         margin:0;
         width: 100%;
 
-        border:2px solid white !important;
+        border:1px solid white !important;
         text-align: center;
         perspective: 1000px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                    
-
-   
       }
     }
     
@@ -537,7 +536,7 @@
       left: 0;
       right: 0;
       top: 0;
-      bottom: 0;
+      bottom: 1px;
       background-color: #000000 ;
       color: white !important;
       transform: perspective(1000px) rotateY(-180deg);
@@ -567,7 +566,20 @@
         // top:60px;
         margin: 10px auto;
         font-size: 16px;
-        border:1px solid white;
+        // border:1px solid rgb(0, 0, 0);
+      }
+      .BenImgCardBottom{
+        // display: flex;
+        position: absolute;
+        // top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color:#ff0000;
+        word-wrap: break-word;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid white;
       }
 
 
@@ -690,7 +702,124 @@
 }
 
 
+// 下方打字機效果區塊
+.threeSectionBoxContentTextV1{
+  display:flex;
+  position: relative;
+  left: 0;
+  right:0;
+  top:14%;
+  width: 100%;
+  height:12%;
+  align-items: center;
+  justify-content: center;
+  margin:auto;
+}
 
+.container-text{
+  position:relative;
+  display: flex;
+  height: 50px;
+  width: 50%;
+  // top:35%;
+  overflow:hidden;
+  align-content: center;
+  justify-content:center;
+  color: #ffffff;
+  margin:0 auto;
+  background-color: #000000;
+  border:1px solid white;
+  
+
+  font-weight: bold;
+  /* background-color: bisque; */
+}
+
+.container-text h2{
+  // font-weight: bolder;
+  margin: auto 0;
+  // text-shadow:0 0 2px rgb(255, 255, 255), 0 0 5px blueviolet;
+}
+
+
+/* 設定文字不換行 */
+.text-wrapper{
+  white-space:nowrap;
+
+}
+
+.text{
+  position:relative;
+  height: 50px;
+  margin-left:5px;
+  white-space:nowrap;
+  font-weight:bold;
+  color:aqua;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  // background-color: #ff0000;
+  ::before{
+    content:'';
+    position:absolute;
+    border-left:1px solid #ffffff;
+    width: 100%;
+    height:70%;
+    bottom:0;
+    left: 0;      
+    top:0;
+    right:0;      
+    align-items: center;
+    justify-content:center;
+    margin: auto 0;
+    background-color:black;
+    // overflow: hidden;
+    
+    animation: typewriter 3.5s steps(10) infinite,
+               blink 0.5s steps(10) infinite;
+  
+    
+  }
+}
+
+.text h2 {
+  left: 0;
+  align-items: center;
+  justify-content:center;
+  margin: auto 0;
+}
+
+
+@keyframes typewriter{
+  40%,60%{
+      left:100%;
+  }
+  100%{
+      left:0;
+  }
+}
+
+@keyframes blink{
+  from{
+      border-left:1px solid #ffffff;
+  }
+  to{
+      /* transparent 透明 (權絲潘勒次) */
+      border-left:1px solid transparent;
+  }
+}
+.text-wrapper{
+  position:relative;
+  animation:moveup 7s steps(2) infinite;
+}
+@keyframes moveup{
+  0%{
+      top:0;
+  }
+  100%{
+      top:-100px;
+  }
+}
 
 
 // 第五區塊Section滿版

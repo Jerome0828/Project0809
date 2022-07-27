@@ -11998,6 +11998,8 @@ ul {
 }
 .threeSectionBoxContentText h2, .threeSectionBoxContentText .h2 {
   color: #333 !important;
+  display: flex;
+  margin: 0 auto;
   width: auto;
   align-items: center;
   justify-content: center;
@@ -12015,7 +12017,7 @@ ul {
           clip-path: ellipse(30px 30px at 0% 50%);
   -webkit-animation: spotlightText 5s infinite;
           animation: spotlightText 5s infinite;
-  background-image: url("~../BenComponents/img/index/22053.png");
+  background-image: url("https://dummyimage.com/600x400/FFF/FFF");
   background-size: 150%;
   background-position: center center;
   /* 設定依照背景圖片當顯示 */
@@ -12083,10 +12085,10 @@ ul {
   position: absolute;
   left: 0;
   top: 0;
-  -webkit-clip-path: ellipse(30px 30px at 0% 50%);
-          clip-path: ellipse(30px 30px at 0% 50%);
-  -webkit-animation: spotlightText 5s infinite;
-          animation: spotlightText 5s infinite;
+  -webkit-clip-path: ellipse(30px 25px at 0% 50%);
+          clip-path: ellipse(30px 25px at 0% 50%);
+  -webkit-animation: spotlightText 7s infinite !important;
+          animation: spotlightText 7s infinite !important;
   background-image: url("~../BenComponents/img/index/22053.png");
   background-size: 150%;
   background-position: center center;
@@ -12098,16 +12100,16 @@ ul {
 
 @keyframes spotlightText {
   from {
-    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
-            clip-path: ellipse(30px 30px at 0% 50%);
+    -webkit-clip-path: ellipse(30px 25px at 0% 50%);
+            clip-path: ellipse(30px 25px at 0% 50%);
   }
   50% {
-    -webkit-clip-path: ellipse(30px 30px at 100% 50%);
-            clip-path: ellipse(30px 30px at 100% 50%);
+    -webkit-clip-path: ellipse(30px 25px at 100% 50%);
+            clip-path: ellipse(30px 25px at 100% 50%);
   }
   to {
-    -webkit-clip-path: ellipse(30px 30px at 0% 50%);
-            clip-path: ellipse(30px 30px at 0% 50%);
+    -webkit-clip-path: ellipse(30px 25px at 0% 50%);
+            clip-path: ellipse(30px 25px at 0% 50%);
   }
 }
 .threeSectionBoxContentBox {
@@ -12123,7 +12125,7 @@ ul {
 
 .threeCard {
   display: flex;
-  width: 300px;
+  width: 17%;
   height: 250px;
   align-items: center;
   justify-content: center;
@@ -12203,7 +12205,7 @@ ul {
   height: 300px;
   margin: 0;
   width: 100%;
-  border: 2px solid white !important;
+  border: 1px solid white !important;
   text-align: center;
   perspective: 1000px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -12237,7 +12239,7 @@ ul {
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
+  bottom: 1px;
   background-color: #000000;
   color: white !important;
   transform: perspective(1000px) rotateY(-180deg);
@@ -12263,7 +12265,17 @@ ul {
 .BenImgCardBack p {
   margin: 10px auto;
   font-size: 16px;
-  border: 1px solid white;
+}
+.BenImgCardBack .BenImgCardBottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ff0000;
+  word-wrap: break-word;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
 }
 
 .BenImgCard:hover .BenImgCardCover {
@@ -12363,6 +12375,138 @@ ul {
   align-content: center;
 }
 
+.threeSectionBoxContentTextV1 {
+  display: flex;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 14%;
+  width: 100%;
+  height: 12%;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.container-text {
+  position: relative;
+  display: flex;
+  height: 50px;
+  width: 50%;
+  overflow: hidden;
+  align-content: center;
+  justify-content: center;
+  color: #ffffff;
+  margin: 0 auto;
+  background-color: #000000;
+  border: 1px solid white;
+  font-weight: bold;
+  /* background-color: bisque; */
+}
+
+.container-text h2, .container-text .h2 {
+  margin: auto 0;
+}
+
+/* 設定文字不換行 */
+.text-wrapper {
+  white-space: nowrap;
+}
+
+.text {
+  position: relative;
+  height: 50px;
+  margin-left: 5px;
+  white-space: nowrap;
+  font-weight: bold;
+  color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text ::before {
+  content: "";
+  position: absolute;
+  border-left: 1px solid #ffffff;
+  width: 100%;
+  height: 70%;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  background-color: black;
+  -webkit-animation: typewriter 3.5s steps(10) infinite, blink 0.5s steps(10) infinite;
+          animation: typewriter 3.5s steps(10) infinite, blink 0.5s steps(10) infinite;
+}
+
+.text h2, .text .h2 {
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+}
+
+@-webkit-keyframes typewriter {
+  40%, 60% {
+    left: 100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes typewriter {
+  40%, 60% {
+    left: 100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+@-webkit-keyframes blink {
+  from {
+    border-left: 1px solid #ffffff;
+  }
+  to {
+    /* transparent 透明 (權絲潘勒次) */
+    border-left: 1px solid transparent;
+  }
+}
+@keyframes blink {
+  from {
+    border-left: 1px solid #ffffff;
+  }
+  to {
+    /* transparent 透明 (權絲潘勒次) */
+    border-left: 1px solid transparent;
+  }
+}
+.text-wrapper {
+  position: relative;
+  -webkit-animation: moveup 7s steps(2) infinite;
+          animation: moveup 7s steps(2) infinite;
+}
+
+@-webkit-keyframes moveup {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100px;
+  }
+}
+
+@keyframes moveup {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100px;
+  }
+}
 .fifthSectionBox {
   width: 100%;
   height: 300px;
