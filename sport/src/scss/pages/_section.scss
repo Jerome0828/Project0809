@@ -830,4 +830,26 @@
 }
 
 
+.cardata{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h5{
+      margin: 0 auto 0;
+      padding: 0;
+  }
+}
 
+
+.carTitleHover:hover{
+  background-color: #333;
+  color: white;
+}
+
+.carTitleHover:hover path{
+  color: rgb(255, 255, 255);
+}
+
+.carTitleHover path {
+  color: #000000;
+}

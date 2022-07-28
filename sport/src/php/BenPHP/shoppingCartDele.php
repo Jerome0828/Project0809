@@ -10,9 +10,16 @@ header("Access-Control-Allow-Origin:*");
     
     // ==========移除資料用
     // 給予刪除的目標id值
+    
     $id = $_REQUEST['carID'];
-    // $id = $_POST['carID'];
-    // var_dump($id);
     echo $id;
 
-    // MySQL刪除語法:   
+    // MySQL刪除語法:
+    $sql = "DELETE FROM shoppingcar WHERE carid=?";
+    // prepare回傳該物件的實體
+    $stmt = $mysqli->prepare($sql);
+    // bind_param綁定參數 ('i')i代表是數值型態,(參數變數)
+    $stmt->bind_param('i',$id);
+    // 執行
+    $stmt->execute();
+    // 執行成功後查看資料庫內是否有新增

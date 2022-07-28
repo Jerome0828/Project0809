@@ -32,13 +32,13 @@ class ShoppingCart extends Component {
         
 
         // 07/22 BEN 新增 判斷購物車狀態碼 0 = 未結帳 , 1 = 已結帳 , 2 = 交易取消
-        this.state.carState = this.state.carData.filter((value,index)=>{
+        this.state.carData = this.state.carData.filter((value,index)=>{
             return value.State == 0 
         })
 
         this.state.sumPrice=0;
-        for(var i=0;i<this.state.carState.length;i++){
-            this.state.sumPrice += Number(this.state.carState[i].price);
+        for(var i=0;i<this.state.carData.length;i++){
+            this.state.sumPrice += Number(this.state.carData[i].price);
         }
 
         this.setState({});
@@ -54,6 +54,7 @@ class ShoppingCart extends Component {
         
     }
     deleCar= async (e)=>{
+        
         // 取得點擊商品的value.carid的數字
         const carID = e.target.getAttribute('data_car');
 
@@ -63,7 +64,7 @@ class ShoppingCart extends Component {
         let tempData ='';   //新增變數初始化字串
         await Axios.post(`http://localhost:/spost/BenPHP/shoppingCartDele.php`,Qs.stringify({ carID:carID}))
         .then((response)=>{
-            // console.log(response.data); //查看回傳的內容是個字串
+            console.log(response.data); //查看回傳的內容是個字串
             tempData = response.data;      //放到外層變數,用於外層判斷
             // this.setState({});    
         })
@@ -98,9 +99,29 @@ class ShoppingCart extends Component {
                 <div className='mt-6 container'>
                         <h3>購物車</h3>
                         <hr />
+                        <div className='row m-auto' style={{justifyItems:'center',alignItems:'center',backgroundColor:'black',color:'white',height:'50px',fontSize:'20px',borderRadius:'10px'}} >
+
+                        <div className="cardata col-3 ">
+                            <h5>商品名稱</h5>
+                        </div>
+                        <div className="cardata col-2 " >
+                        <a >日期</a>
+                        </div>
+
+                        <div className="cardata col-2" >
+                        <a >時段</a>
+                        </div>
+
+                        <div className="cardata col-2">
+                            <a>價錢</a>
+                        </div>
+                        <div className='cardata col-3' >
+                            <a>移除商品</a>
+                        </div>
+                </div>
                 <form action="http://localhost:80/spost/BenPHP/ECPay.php" method="post" enctype="application/x-www-form-urlencoded" name="cartData" >
 
-                {this.state.carState.map((value,index,array)=>{
+                {this.state.carData.map((value,index,array)=>{
                     return(
                         <>
                         <div className='container border-bottom' >
@@ -123,27 +144,29 @@ class ShoppingCart extends Component {
                         {/* 送當前會員ID */}
                         <input class="form-control" name="MemberID" type="hidden" value={value.id} />
 
-                            <div className='row mt-2 '>
-                                <div className="cartitle col">
-                                    <h5>{value.title}{value.oid[0] =='l'? "(課程)":"(場地)"}</h5>
-                                    
-                            
-                                </div>
-                                <div className="cardata col " style={{lineHeight:"0.3"}}>
-                                <p >{value.date}</p>
-                                <a >{value.time}</a>
-                                    
-                                    </div>
-                                <div className="carprice col">NT${value.price}</div>
-                                {/* {this.state.sumPrice = this.state.carData[0].price} */}
-                                {/* {value.carid} 點擊時對應當與資料庫中的carid */}
-                                
-                                <button className='col-1 btn' name="deleCar" onClick={this.deleCar} type="button" data_car={value.carid} ><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                    </svg></button>
-                            
+                        <div className='row carTitleHover'  style={{justifyItems:'center',alignItems:'center'}} >
 
-                                
+                            <div className="cardata col-3">
+                                <h5>{value.title}{value.oid[0] =='l'? "(課程)":"(場地)"}</h5>
+                            </div>
+                            {/* <div className="cardata col " style={{lineHeight:"0.3"}}> */}
+                            <div className="cardata col-2" >
+                            <a  >{value.date}</a>
+                            </div>
+                            <div className="cardata col-2" >
+                            <a >{value.time}</a>
+                            </div>
+
+                            <div className="cardata col-2">NT${value.price}</div>
+                            {/* {this.state.sumPrice = this.state.carData[0].price} */}
+                            {/* {value.carid} 點擊時對應當與資料庫中的carid */}
+
+                            <button className='col-3 btn' name="deleCar"  onClick={this.deleCar} type="button" data_car={value.carid} ><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                <path className='deleButton' d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                </svg></button>
+
+
+
                             </div>
                         </div>
                         </>
