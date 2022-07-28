@@ -1,0 +1,12 @@
+.text-grey{
+    color:rgba(128, 128, 128, 0.719);
+}
+
+.form-check-input:checked {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.shadow {
+    box-shadow: 0 0.3rem 0.5rem rgb(0 0 0 / 15%) !important;
+}

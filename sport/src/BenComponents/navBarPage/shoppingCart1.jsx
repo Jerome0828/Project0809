@@ -28,7 +28,7 @@ class ShoppingCart extends Component {
             // console.log(result.data);
             this.state.carData = result.data;
         })
-        console.log(this.state.carData);
+        // console.log(this.state.carData);
         
 
         // 07/22 BEN 新增 判斷購物車狀態碼 0 = 未結帳 , 1 = 已結帳 , 2 = 交易取消
@@ -46,6 +46,10 @@ class ShoppingCart extends Component {
         }else  {
             window.location.href = '/login'
         }
+
+
+
+       
         
         
     }
@@ -84,13 +88,11 @@ class ShoppingCart extends Component {
 
     };
 
-    checkOKAlert=()=>{
-        // alert("OK");
-    }
-
-    
+   
     
     render() { 
+
+    
         return (
             <>
                 <div className='mt-6 container'>
@@ -105,7 +107,8 @@ class ShoppingCart extends Component {
                         {/* 送購物車訂單號 */}
                         <input class="" name="MerchantTradeNo" type="hidden" value={value.carid} />
                         {/* 送當前下單時間 */}
-                        <input class="form-control" name="MerchantTradeDate" type="hidden" value={new Date()} />
+                        {/* <input class="form-control" name="MerchantTradeDate" type="text" value={new Date()} /> */}
+                        <input class="form-control" name="MerchantTradeDate" type="hidden" value={"2009/07/12 12:34:56"} />
                         {/* 送結帳總金額 */}
                         <input class="form-control" name="TotalAmount" type="hidden" value={this.state.sumPrice} />
                         {/* 送商品描述 */}
@@ -117,6 +120,8 @@ class ShoppingCart extends Component {
                         <input class="form-control" name="ItemPrice" type="hidden" value={value.price} />
                         {/* 取得課程判斷 */}
                         <input class="form-control" name="ItemType" type="hidden" value={value.oid[0] =='l'? "(課程)":"(場地)"} />
+                        {/* 送當前會員ID */}
+                        <input class="form-control" name="MemberID" type="hidden" value={value.id} />
 
                             <div className='row mt-2 '>
                                 <div className="cartitle col">
@@ -191,8 +196,7 @@ class ShoppingCart extends Component {
                     {/* <NavLink to="/CreditCardPaymentPage" className="">
                     </NavLink> */}
                     
-                    <button className='btn btn-outline-dark me-md-2' onClick={this.checkOKAlert} type="submit">付款</button>
-                    
+                    <button className='btn btn-outline-dark me-md-2'  type="submit">確認付款</button>
                     </div>
                     </form>
 

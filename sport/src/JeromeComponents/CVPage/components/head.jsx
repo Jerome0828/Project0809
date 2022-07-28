@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousels from './carousels';
-import Labels from './label'
+import Labels from './label';
+import imgs from '../../img/1.jpg';
 
 import Rating from '@mui/material/Rating';  // npm install @mui/material @emotion/react @emotion/styled
 import Breadcrumbs from '@mui/material/Breadcrumbs';
@@ -53,8 +54,8 @@ function Head(props) {
             )
         }else {
             return (
-                <img src='https://img.onl/1WWQ9e'
-                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft'/>
+                <img src={imgs}
+                className='img-fluid rounded-circle animate__animated animate__rotateInDownLeft '/>
             )
         }
     }
@@ -103,7 +104,7 @@ function Head(props) {
                                 </div>
                                 <div className='col-lg-6 mt-5'>{}
                                     <Stack className='w-100' >
-                                        <Rating name="half-rating-read" defaultValue={news && news.plimit} precision={0.5} readOnly />
+                                        <Rating value={id && id[0]=='l27' ? 4 : 3.5} precision={0.5} readOnly />
                                     </Stack>
                                 </div>
                             </div>
@@ -112,7 +113,6 @@ function Head(props) {
                             <div className='w-100 py-2 px-3 my-3'>
                                 {id && id[1] ? <Labels types={news && news.type} id={id && id}/> : 
                                     <Labels types={news && news.type} mode={news && news.mode} id={id && id}/>}
-                                {/* {labelsChange()} */}
                             </div> 
                         </div>
                     </div>

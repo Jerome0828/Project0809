@@ -14,8 +14,8 @@ class MemberPlan extends Component {
         oderListInfo: [], oderNone: '',
         // 會員帳號Id, 會員帳號
         accountId: undefined, account: '', newId: [],
-        // 評論id, 評論內容, 評論星數, 
-        id: '', info: '', value: '',
+        // 評論id, 評論內容, 評論星數, 評論完成
+        id: '', info: '', value: '', reactionOK: ''
 
     }
 
@@ -69,6 +69,8 @@ class MemberPlan extends Component {
 
     // 變化 Accordion 圖片
     accChange = (e) => {
+        this.state.reactionOK = '';
+        this.setState({})
         if ( e.currentTarget.getAttribute('aria-expanded') == 'false') {
             e.currentTarget.querySelector('img').src = require('../imgs/up-arrow.png')
         }else {
@@ -92,7 +94,26 @@ class MemberPlan extends Component {
 
     // 評論寫入自料庫
     formPost = () => {
-        
+        let time = new Date()
+        const Qs = require("qs");
+        this.state.newId.map( val => {
+            if ( window.localStorage.getItem(val) ) {
+                axios.post("http://localhost:80/spost/JeromePHP/reaction.php", Qs.stringify({
+                    id: window.localStorage.id,
+                    info: window.localStorage.info,
+                    PLId: val,
+                    rate: window.localStorage.getItem(val).split(',')[1],
+                    reactionInfo: window.localStorage.getItem(val).split(',')[0],
+                    time: `${time.getFullYear()}-${time.getMonth()}-${time.getDay()}`
+                }))
+                .then( response => {
+                    if ( response.data == 1) {
+                        this.state.reactionOK = '評論成功'
+                        this.setState({})
+                    }
+                })
+            }
+        })
     }
 
     // 清除 localStorage
@@ -104,13 +125,13 @@ class MemberPlan extends Component {
 
     render() {
         return (
-            <div className='container'>{console.log(this.state.newId)}  
+            <div className='container'> 
                 <div className='row' id='ok'>
                     <div className='col-2 mt-5 border-end'>
                         <MemberPage />
                     </div>
                     <div className='col-1'></div>
-                    <div className='col-9 mt-5 shadow'>
+                    <div className='col-9 mt-4 shadow'>
                     <p className='text-center'>{this.state.oderNone}</p>
                     {this.state.oderListInfo.map( (value, index) => {
                         return (
@@ -135,8 +156,8 @@ class MemberPlan extends Component {
                                                         <form value={val.oid}> 
                                                             <textarea className="w-100" rows='5' onChange={this.onChangeForm} />
                                                             <div className='row align-items-center mt-2'>
-                                                                <div id='val' className="col-lg-8" value={val.oid} data-val={0}>
-                                                                    <Rating value={0} onChange={this.onChangeForm} />
+                                                                <div id='val' className="col-lg-8" value={val.oid} data-val={1}>
+                                                                    <Rating onChange={this.onChangeForm} />
                                                                 </div>
                                                                 <div className='col-lg-4'>
                                                                     <button className='btn btn-outline-info w-100' type='button'
@@ -148,7 +169,7 @@ class MemberPlan extends Component {
                                                         </form>
                                                     </div>
                                                     <div className='col-lg-5'>
-
+                                                        <p className='text-center text-success'>{this.state.reactionOK}</p>
                                                     </div>
                                                 </div>
                                             </Typography>

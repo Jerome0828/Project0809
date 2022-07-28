@@ -2,12 +2,19 @@
 include("sql.php");
 header("Access-Control-Allow-Origin:*");
 
+$carID = "";
+$res = $_REQUEST;
 // =========查詢資料用
 // 測試inner join關聯資料庫內容
 // $sql = "SELECT lid,title,addr,info,mode,type from `lesson` inner join `coach` where lesson.cid = coach.cid";
 
+
+foreach($res as $k =>$v){
+        $carID = $k;
+}
+
 // 取得lesson(課程表格)內容
-$sql = "SELECT * from `shoppingcar`";
+$sql = "SELECT * from `shoppingcar` WHERE id = $carID";
 $result = $mysqli->query($sql); // 使用query連接mysqli資料庫後下sql指令
 // var_dump($result);  // dump是個object物件
 // var_dump($result->fetch_object()); //取出是個object物件

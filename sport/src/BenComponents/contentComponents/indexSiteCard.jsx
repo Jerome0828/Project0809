@@ -25,8 +25,11 @@ class IndexSiteCard extends Component {
                         </div>
 
                         <div className=''>
-                        <p className='border-danger border-3'>{this.props.info.substr(0,50)}</p>
-                        <p>查看詳情</p>
+                        <p className='border-danger border-3'>{this.props.info.substr(0,40)}</p>
+                        <div className='BenImgCardBottom'>
+                        <p className=''>查看詳情</p>
+                        </div>
+                        
                         
                         </div>
                     </div>

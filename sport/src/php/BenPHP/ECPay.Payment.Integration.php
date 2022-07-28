@@ -501,6 +501,7 @@ class ECPay_AllInOne {
             'CreditCheckCode' => ''
         );
 
+
         $this->Funding = array(
             "PayDateType" => '',
             "StartDate" => '',

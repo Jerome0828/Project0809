@@ -159,9 +159,8 @@ function Body(props) {
                 {/* 課後評價 */}
                 <div className='col-lg-3 bg-black'>
                     <h3 className='container text-end m-1 text-white'>課後評價</h3>
-                    <div style={{transform: 'translate(10%, 0)'}}>
-                        <Evaluation />
-                        {/* //6// */}
+                    <div  style={{transform: 'translate(5%, 0)', width: '120%'}} >
+                        <Evaluation id={id}/>
                     </div>
                 </div>
             </div>
