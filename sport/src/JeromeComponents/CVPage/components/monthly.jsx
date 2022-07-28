@@ -15,14 +15,14 @@ function Monthly(props) {
   const [test, setTest] = useState([]); // 場地無開放提示
   const [news, setNews] = useState(undefined);// news: 資料庫(place)資訊
   const [maxDate, setMaxDate] = useState(""); // 月曆最大期限
-  const [value, setValue] = useState(new Date()); // 月曆的值
+  const [value, setValue] = useState(new Date('2022-08-05')); // 月曆的值
   const [checkDay, setCheckDay] = useState([
     new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), day[new Date().getDay()]
   ]); // 月曆點選日期(預設今天)
 
   // 設定月曆最大期限(+1個月)
   useEffect( () => {
-    let month = new Date().getMonth() + 2;
+    let month = new Date().getMonth() + 3;
     let tod = new Date().getFullYear() + "-" + month + "-" + new Date().getDate();
     setMaxDate(tod);
   }, [])
@@ -83,9 +83,7 @@ function Monthly(props) {
   // 月曆點選更新日期
   let onChange = (e) => {
     setValue(e)
-
     setCheckDay( () => [e.getFullYear(), e.getMonth() + 1, e.getDate(), day[e.getDay()]] );
-
     let btn = document.getElementsByClassName('btnDiv');
     Object.keys(btn).map( (val) => {
       if ( btn[val].style.backgroundColor == "rgb(64, 160, 112)" ) {
@@ -159,7 +157,7 @@ function Monthly(props) {
           <Calendar
             onChange={onChange}
             value={value}
-            minDate={new Date()}
+            minDate={new Date('2022-08-05')}
             maxDate={new Date(maxDate)}
           />
         </div>

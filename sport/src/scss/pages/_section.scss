@@ -36,7 +36,7 @@
 
 // 輪播上方大標題文字底部區塊設定
 .carouselBoxBigText {
-    margin: 20px auto 0;
+    margin: 96px auto 0;
     // border: 1px solid red ;
     justify-content: center;
     text-align: center;
@@ -830,4 +830,26 @@
 }
 
 
+.cardata{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h5{
+      margin: 0 auto 0;
+      padding: 0;
+  }
+}
 
+
+.carTitleHover:hover{
+  background-color: #333;
+  color: white;
+}
+
+.carTitleHover:hover path{
+  color: rgb(255, 255, 255);
+}
+
+.carTitleHover path {
+  color: #000000;
+}

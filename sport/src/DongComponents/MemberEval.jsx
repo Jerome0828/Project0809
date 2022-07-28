@@ -132,7 +132,7 @@ class MemberPlan extends Component {
                     </div>
                     <div className='col-1'></div>
                     <div className='col-9 mt-4 shadow'>
-                    <p className='text-center'>{this.state.oderNone}</p>
+                    <p className='text-center'>&nbsp;{this.state.oderNone}</p>
                     {this.state.oderListInfo.map( (value, index) => {
                         return (
                         <div className='my-4' key={index}>

@@ -198,7 +198,8 @@ class HomeHead extends Component {
                     // data-aos-duration="1500" 
                     
                     >
-                        <div className='carouselBoxBigText container mb-3'  >
+                        <div className='carouselBoxBigText container mb-3' 
+                            data-aos="fade-up" data-aos-easing="linear"data-aos-duration="1500" >
                             <h1>全台超過1000位專業教練</h1>
                             <div 
                                 data-aos="fade-up" 
