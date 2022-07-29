@@ -52,7 +52,7 @@ class Citys extends Component {
         let selectedOptionId = '';
         return (
             <>
-                <select name="city" style={inputBoxStyle} className='shadow form-control' id="city" 
+                <select name="city" style={inputBoxStyle} className='shadow border border-dark form-control' id="city" 
                 defaultValue={selectedOptionId} onChange={this.check} required={required}>
                     <option value="">縣市</option>
                     <option value="線上視訊教學">線上視訊教學</option>                    
@@ -60,7 +60,7 @@ class Citys extends Component {
                         <option key={idx} value={val.CityName}>{val.CityName}</option>
                         )}
                 </select >
-                <select name="district" style={inputBoxStyle} className='shadow mt-2 form-control' id="district" required={required}>
+                <select name="district" style={inputBoxStyle} className='shadow border border-dark mt-2 form-control' id="district" required={required}>
                     
                 </select>
             </>

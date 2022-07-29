@@ -2,27 +2,28 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import InesrtSportList from './InesrtSportList';
 import '../scss/all.css';
+import './textcolor.css';
 import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 class EditLesson extends Component {
     state = {
-        sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 2, value: '重量訓練', cName: '重量訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 3, value: '有氧訓練', cName: '有氧訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 4, value: '高強度間歇訓練', cName: '高強度間歇訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 5, value: '混合健身', cName: '混合健身', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 6, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 7, value: '皮拉提斯', cName: '皮拉提斯', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 8, value: '懸吊運動', cName: '懸吊運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 9, value: '舞蹈', cName: '舞蹈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 10, value: '拳擊格鬥', cName: '拳擊格鬥', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 11, value: '球類運動', cName: '球類運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },],
+        sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 2, value: '重量訓練', cName: '重量訓練', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 3, value: '有氧訓練', cName: '有氧訓練', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 4, value: '高強度間歇訓練', cName: '高強度間歇訓練', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 5, value: '混合健身', cName: '混合健身', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 6, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 7, value: '皮拉提斯', cName: '皮拉提斯', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 8, value: '懸吊運動', cName: '懸吊運動', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 9, value: '舞蹈', cName: '舞蹈', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 10, value: '拳擊格鬥', cName: '拳擊格鬥', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 11, value: '球類運動', cName: '球類運動', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },],
         // 其他 重量訓練 有氧訓練 高強度間歇訓練 混合健身 瑜珈 皮拉提斯 懸吊運動 舞蹈 拳擊格鬥 球類運動 極限運動
 
-        peopleList: [{ key: 0, checked: false, value: '一對一課程', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' },
-        { key: 1, checked: false, value: '團體課程', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' }],
+        peopleList: [{ key: 0, checked: false, value: '一對一課程', className: 'd-none text-dark', labelClass: 'w-100 p-1 shadow rounded border text-grey text-center mt-1' },
+        { key: 1, checked: false, value: '團體課程', className: 'd-none text-grey', labelClass: 'w-100 p-1 shadow rounded border text-grey text-center mt-1' }],
 
         agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
         src: [pic, pic, pic],
@@ -87,7 +88,7 @@ class EditLesson extends Component {
                 document.getElementById(Object.keys(elm)[0]).checked = true;
                 let timetemp = '';
                 timetemp = Object.values(elm)[0].replace(' ', '').replace(' ', '');
-                document.querySelectorAll(`div[name=${Object.keys(elm)[0]}]`)[0].className = 'mt-2';
+                document.querySelectorAll(`div[name=${Object.keys(elm)[0]}]`)[0].className = 'mt-3';
                 document.querySelectorAll(`select[name='${Object.keys(elm)[0]}Begin']`)[0].value = timetemp.split('～')[0]
                 document.querySelectorAll(`select[name='${Object.keys(elm)[0]}End']`)[0].value = timetemp.split('～')[1]
             }
@@ -109,8 +110,8 @@ class EditLesson extends Component {
             if (elm.value == typetemp) {
                 document.querySelectorAll(`input[value=${elm.value}]`)[0].checked = true;
                 elm.chkicon = faCheck;
-                elm.color = 'text-success';
-                elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
+                elm.color = 'text-dark';
+                elm.class = 'rounded border border-dark shadow p-1 mx-2 mt-2';
             }
         })
         this.setState({});
@@ -127,12 +128,12 @@ class EditLesson extends Component {
                 }
                 e.target.checked = true;
                 elm.chkicon = faCheck;
-                elm.color = 'text-success';
-                elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
+                elm.color = 'text-dark';
+                elm.class = 'rounded border border-dark text-dark shadow p-1 mx-2 mt-2';
             } else {
                 elm.chkicon = faTimes;
-                elm.color = 'text-danger';
-                elm.class = 'rounded border border-danger shadow p-1 mx-2 mt-2';
+                elm.color = 'text-grey';
+                elm.class = 'rounded border text-grey shadow p-1 mx-2 mt-2';
             }
         })
         this.setState({});
@@ -143,12 +144,12 @@ class EditLesson extends Component {
         this.state.peopleList.map((elm) => {
             if (e.target.value == elm.value) {
                 elm.checked = true;
-                elm.className = 'text-success';
-                elm.labelClass = 'w-100 p-1 shadow rounded border border-success text-center mt-1';
+                elm.className = 'text-dark';
+                elm.labelClass = 'w-100 p-1 shadow rounded border border-dark text-dark text-center mt-1';
             } else {
                 elm.checked = false;
-                elm.className = 'd-none text-success';
-                elm.labelClass = 'w-100 p-1 shadow rounded border border-danger text-center mt-1'
+                elm.className = 'd-none text-dark';
+                elm.labelClass = 'w-100 p-1 shadow rounded border text-grey text-center mt-1'
             }
         })
         this.setState({})
@@ -192,7 +193,7 @@ class EditLesson extends Component {
             e.target.parentElement.parentElement.childNodes[1].children[0].required = true;
             e.target.parentElement.parentElement.childNodes[1].children[2].required = true;
         } else {
-            e.target.parentElement.parentElement.childNodes[1].className = 'mt-2 d-none';
+            e.target.parentElement.parentElement.childNodes[1].className = 'mt-3 d-none';
             e.target.parentElement.parentElement.childNodes[1].children[0].required = false;
             e.target.parentElement.parentElement.childNodes[1].children[2].required = false;
             e.target.parentElement.parentElement.childNodes[1].children[0].value = '';
@@ -244,7 +245,7 @@ class EditLesson extends Component {
             <div className="container mt-6">
                 <h3>編輯課程</h3>
                 <hr />
-                <form id='editLesson' className="was-validated form-group" enctype="multipart/form-data"
+                <form id='editLesson' className="form-group" enctype="multipart/form-data"
                     action="http://localhost/spost/DongPHP/form.php" method='POST'>
 
                     {/* 編輯圖片 */}
@@ -266,7 +267,7 @@ class EditLesson extends Component {
                                         }} src={`data:image/jpeg;base64,${elm.img}`} className="mt-3 mx-2" />
                                         <input name={`img${idx+1}`} id={`imgInput${idx+1}`} 
                                             accept="image/gif, image/jpeg, image/png"
-                                            type="file" onChange={this.editImage} className="mt-3 rounded shadow form-control" />
+                                            type="file" onChange={this.editImage} className="mt-3 rounded shadow border border-dark form-control" />
                                         <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
                                         <input type="hidden" name={`imgFlag${idx+1}`} id={`imgFlag${idx+1}`} value={false}/>
                                     </div>
@@ -283,7 +284,7 @@ class EditLesson extends Component {
                             <input name='img0' id='imgInput0'
                                 accept="image/gif, image/jpeg, image/png"
                                 type="file" onChange={this.editImage}
-                                className="mt-3 rounded shadow form-control" />
+                                className="mt-3 rounded shadow border border-dark form-control" />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
                             <input type="hidden" name="imgFlag0" id="imgFlag0" value={false}/>
                         </div>
@@ -299,7 +300,7 @@ class EditLesson extends Component {
                             <input name='img5' id='imgInput5'
                                 accept="image/gif, image/jpeg, image/png"
                                 type="file" onChange={this.editImage}
-                                className="mt-3 rounded shadow form-control" 
+                                className="mt-3 rounded shadow border border-dark form-control" 
                                 />
                             <span onClick={this.deleteImage} className="mt-3 btn btn-outline-danger w-100"><b>刪除</b></span>
                             <input type="hidden" name="imgFlag5" id="imgFlag5" value={false}/>
@@ -314,7 +315,7 @@ class EditLesson extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 w-50">
-                        <input name="title" type="text" defaultValue={this.state.data[0] && this.state.data[0].title} className="rounded shadow form-control" required />
+                        <input name="title" type="text" defaultValue={this.state.data[0] && this.state.data[0].title} className="rounded shadow form-control border border-dark" required />
                     </div>
                     <hr />
 
@@ -324,7 +325,7 @@ class EditLesson extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 w-50">
-                        <textarea name="info" className="rounded shadow form-control" rows="3" defaultValue={this.state.data[0] && this.state.data[0].info} required></textarea>
+                        <textarea name="info" className="rounded shadow form-control border border-dark" rows="3" defaultValue={this.state.data[0] && this.state.data[0].info} required></textarea>
                     </div>
                     <hr />
 
@@ -334,7 +335,7 @@ class EditLesson extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 mt-1 w-50" >
-                        <input name="addr" type="text" defaultValue={this.state.data[0] && this.state.addr} className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required={false} />
+                        <input name="addr" type="text" defaultValue={this.state.data[0] && this.state.addr} className="rounded shadow border border-dark mt-2 form-control" placeholder="請請輸入地址" required={false} />
                     </div>
                     <hr />
 
@@ -356,8 +357,8 @@ class EditLesson extends Component {
                                         <input className="form-check-input" type="checkbox" id={elm.eName} onChange={this.weekTimeChange} />
                                         <label className="form-check-label" htmlFor={elm.eName}>{elm.cName}</label>
                                     </div>
-                                    <div name={elm.eName} className="mt-2 d-none">
-                                        <select name={elm.timeBegin} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                    <div name={elm.eName} className="mt-3 d-none">
+                                        <select name={elm.timeBegin} defaultValue={selectedOptionId} className="rounded shadow form-control border border-dark" required={elm.required}>
                                             <option value=''></option>
                                             <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
                                             <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
@@ -367,7 +368,7 @@ class EditLesson extends Component {
                                             <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
                                         </select>
                                         <p className="mt-2 mb-2">至</p>
-                                        <select name={elm.timeEnd} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                        <select name={elm.timeEnd} defaultValue={selectedOptionId} className="rounded shadow form-control border border-dark" required={elm.required}>
                                             <option value=''></option>
                                             <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
                                             <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
@@ -405,7 +406,7 @@ class EditLesson extends Component {
                     </ul>
                     <div className="form-group mb-3">
                         <label>
-                            <select className="custom-select rounded shadow form-control" name="timeLength" required>
+                            <select className="custom-select rounded shadow form-control border border-dark" name="timeLength" required>
                                 <option value="" className='d-none'>請選擇課程長度</option>
                                 <option value="30分鐘">30</option>
                                 <option value="60分鐘">60</option>
@@ -445,8 +446,8 @@ class EditLesson extends Component {
                     </ul>
                     <div className="mb-3 mt-1">
                         <label>
-                            <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control" defaultValue={this.state.data[0] && this.state.data[0].price} placeholder="請輸入價錢" required />
-                            <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue='' required>
+                            <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control border border-dark" defaultValue={this.state.data[0] && this.state.data[0].price} placeholder="請輸入價錢" required />
+                            <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control border border-dark" defaultValue='' required>
                                 <option name="" value=""></option>
                                 <option name="perTimes" value="次">次</option>
                                 <option name="perMin" value="1分鐘">1分鐘</option>

@@ -3,29 +3,30 @@ import { NavLink } from 'react-router-dom';
 import Citys from './Citys';
 import InesrtSportList from './InesrtSportList';
 import '../scss/all.css';
+import './textcolor.css';
 import pic from '../imgs/user1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 class BeCoach extends Component {
     state = {
-        sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 2, value: '重量訓練', cName: '重量訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 3, value: '有氧訓練', cName: '有氧訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 4, value: '高強度間歇訓練', cName: '高強度間歇訓練', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 5, value: '混合健身', cName: '混合健身', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 6, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 7, value: '皮拉提斯', cName: '皮拉提斯', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 8, value: '懸吊運動', cName: '懸吊運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 9, value: '舞蹈', cName: '舞蹈', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 10, value: '拳擊格鬥', cName: '拳擊格鬥', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 11, value: '球類運動', cName: '球類運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },
-        { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-danger', class: 'rounded border border-danger shadow p-1 mx-2 mt-2' },],
+        sportList: [{ id: 1, value: '其他', cName: '其他', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 2, value: '重量訓練', cName: '重量訓練', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 3, value: '有氧訓練', cName: '有氧訓練', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 4, value: '高強度間歇訓練', cName: '高強度間歇訓練', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 5, value: '混合健身', cName: '混合健身', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 6, value: '瑜珈', cName: '瑜珈', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 7, value: '皮拉提斯', cName: '皮拉提斯', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 8, value: '懸吊運動', cName: '懸吊運動', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 9, value: '舞蹈', cName: '舞蹈', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 10, value: '拳擊格鬥', cName: '拳擊格鬥', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 11, value: '球類運動', cName: '球類運動', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },
+        { id: 12, value: '極限運動', cName: '極限運動', chkicon: faTimes, color: 'text-grey', class: 'border rounded text-grey shadow p-1 mx-2 mt-2' },],
         // 其他 重量訓練 有氧訓練 高強度間歇訓練 混合健身 瑜珈 皮拉提斯 懸吊運動 舞蹈 拳擊格鬥 球類運動 極限運動
 
-        peopleList: [{ key: 0, checked: false, value: '一對一課程', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' },
-        { key: 1, checked: false, value: '團體課程', className: 'd-none text-success', labelClass: 'w-100 p-1 shadow rounded border border-danger text-center mt-1' }],
+        peopleList: [{ key: 0, checked: false, value: '一對一課程', className: 'd-none  ', labelClass: 'w-100 p-1 shadow rounded border text-grey text-center mt-1' },
+        { key: 1, checked: false, value: '團體課程', className: 'd-none  ', labelClass: 'w-100 p-1 shadow rounded border text-grey text-center mt-1' }],
 
-        agreeBox: [{ spanClass: '', pClass: 'text-danger', iconClass: 'd-none', labelClass: 'text-center shadow rounded border border-danger w-100 p-1' }],
+        agreeBox: [{ spanClass: '', pClass: 'text-grey', iconClass: 'd-none', labelClass: 'text-center text-grey border border-dark shadow rounded w-100 p-1' }],
         src: [pic, pic, pic],
 
         weekTime: [{ eName: 'monTime', cName: '週一', required: false, timeBegin: 'monBegin', timeEnd: 'monEnd' },
@@ -51,29 +52,7 @@ class BeCoach extends Component {
             document.querySelectorAll('button[type=submit]')[1].className = 'd-none'
         }
     }
-    // 運動類別變更
-    // sportListOnclick = (e) => {
-    //     let sportList = this.state.sportList
 
-    //     sportList.map(elm => {
-    //         if (e.target.id == elm.value) {
-    //             // 若icon為 XX
-    //             if (e.target.checked == true) {
-    //                 document.querySelectorAll(`span[name=${elm.value}]`).innerHTML = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" class="svg-inline--fa fa-check " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg>&nbsp;';
-    //                 elm.chkicon = faCheck;
-    //                 elm.color = 'text-success';
-    //                 elm.class = 'rounded border border-success shadow p-1 mx-2';
-    //             }// 若icon為 vv
-    //             else if (e.target.checked == false) {
-    //                 document.querySelectorAll(`span[name=${elm.value}]`).innerHTML = '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark" class="svg-inline--fa fa-xmark " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"></path></svg>&nbsp;';
-    //                 elm.chkicon = faTimes;
-    //                 elm.color = 'text-danger';
-    //                 elm.class = 'rounded border border-danger shadow p-1 mx-2';
-    //             }
-    //             this.setState({});
-    //         }
-    //     })
-    // }
     sportListOnclick = (e) => {
         let sportList = this.state.sportList
         sportList.map(elm => {
@@ -85,12 +64,13 @@ class BeCoach extends Component {
                 }
                 e.target.checked = true;
                 elm.chkicon = faCheck;
-                elm.color = 'text-success';
-                elm.class = 'rounded border border-success shadow p-1 mx-2 mt-2';
+                elm.color = 'text-dark';
+                elm.class = 'border border-dark rounded text-dark shadow p-1 mx-2 mt-2';
+                // 'border rounded text-grey shadow p-1 mx-2 mt-2'
             } else {
                 elm.chkicon = faTimes;
-                elm.color = 'text-danger';
-                elm.class = 'rounded border border-danger shadow p-1 mx-2 mt-2';
+                elm.color = 'text-grey';
+                elm.class = 'border rounded text-grey shadow p-1 mx-2 mt-2';
             }
         })
         this.setState({});
@@ -101,12 +81,12 @@ class BeCoach extends Component {
         this.state.peopleList.map((elm) => {
             if (e.target.value == elm.value) {
                 elm.checked = true;
-                elm.className = 'text-success';
-                elm.labelClass = 'w-100 p-1 shadow rounded border border-success text-center mt-1';
+                elm.className = ' ';
+                elm.labelClass = 'w-100 p-1 shadow rounded border border-dark text-dark text-center mt-1';
             } else {
                 elm.checked = false;
-                elm.className = 'd-none text-success';
-                elm.labelClass = 'w-100 p-1 shadow rounded border border-danger text-center mt-1'
+                elm.className = 'd-none  ';
+                elm.labelClass = 'w-100 p-1 shadow rounded border text-grey text-center mt-1'
             }
         })
         this.setState({})
@@ -114,19 +94,20 @@ class BeCoach extends Component {
 
     // button我同意
     agreeOnclick = (e) => {
+        // [{ spanClass: '', pClass: 'text-grey', iconClass: 'd-none', labelClass: 'text-center text-grey shadow rounded w-100 p-1' }]
         let agreeBox = this.state.agreeBox[0];
         let text = document.getElementById('myCheckText');
         if (e.target.checked) {
             agreeBox.spanClass = 'mx-1';
-            agreeBox.pClass = 'text-success';
-            agreeBox.iconClass = 'text-success';
-            agreeBox.labelClass = 'text-center shadow rounded border border-success w-100 p-1';
+            agreeBox.pClass = 'text-dark';
+            agreeBox.iconClass = '';
+            agreeBox.labelClass = 'text-center text-dark shadow border border-dark rounded w-100 p-1';
             text.innerHTML = '本人已閱讀及同意遵守上述條款及細則'
         } else {
             agreeBox.spanClass = 'mx-1';
-            agreeBox.pClass = 'text-danger';
+            agreeBox.pClass = 'text-grey';
             agreeBox.iconClass = 'd-none';
-            agreeBox.labelClass = 'text-center shadow rounded border border-danger w-100 p-1';
+            agreeBox.labelClass = 'text-center text-grey shadow border border-dark rounded w-100 p-1';
             text.innerHTML = '本人已閱讀及同意遵守上述條款及細則'
         }
         this.setState({});
@@ -169,11 +150,14 @@ class BeCoach extends Component {
 
     // 星期+時間
     weekTimeChange = (e) => {
+        console.log(e.target.parentElement.parentElement.childNodes[0].children[1].className)
         if (e.target.checked) {
+            e.target.parentElement.parentElement.childNodes[0].children[1].className = 'form-check-label text-dark'
             e.target.parentElement.parentElement.childNodes[1].className = 'mt-3';
             e.target.parentElement.parentElement.childNodes[1].children[0].required = true;
             e.target.parentElement.parentElement.childNodes[1].children[2].required = true;
         } else {
+            e.target.parentElement.parentElement.childNodes[0].children[1].className = 'form-check-label text-grey'
             e.target.parentElement.parentElement.childNodes[1].className = 'mt-2 d-none';
             e.target.parentElement.parentElement.childNodes[1].children[0].required = false;
             e.target.parentElement.parentElement.childNodes[1].children[2].required = false;
@@ -189,7 +173,7 @@ class BeCoach extends Component {
             <div className="container mt-6">
                 <h3>上傳課程</h3>
                 <hr />
-                <form id='beCoach' className="was-validated form-group" enctype="multipart/form-data"
+                <form id='beCoach' className=" form-group" enctype="multipart/form-data"
                     action="http://localhost/spost/form.php" method='POST'>
 
                     {/* 上傳圖片 */}
@@ -203,13 +187,13 @@ class BeCoach extends Component {
                     </ul>
                     <div className="row">
                         <div className="col-3 mb-3 d-flex">
-                            <input name='img1' id='imgInput1' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required />
+                            <input name='img1' id='imgInput1' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control border border-dark" required />
                         </div>
                         <div className="col-3 mb-3 d-flex">
-                            <input name='img2' id='imgInput2' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required />
+                            <input name='img2' id='imgInput2' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control border border-dark"  />
                         </div>
                         <div className="col-3 mb-3 d-flex">
-                            <input name='img3' id='imgInput3' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control" required />
+                            <input name='img3' id='imgInput3' accept="image/gif, image/jpeg, image/png" type="file" onChange={this.fileInput} className="rounded shadow form-control border border-dark"  />
                         </div>
                     </div>
 
@@ -246,7 +230,7 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 w-50">
-                        <input name="title" type="text" className="rounded shadow form-control" placeholder="請輸入課程名稱" required />
+                        <input name="title" type="text" className="rounded shadow form-control border border-dark" placeholder="請輸入課程名稱" required />
                     </div>
                     <hr />
 
@@ -261,7 +245,7 @@ class BeCoach extends Component {
                         </li>
                     </ul>
                     <div className="mb-3 w-50">
-                        <textarea name="info" className="rounded shadow form-control" rows="3" placeholder="輸入課程簡介" required></textarea>
+                        <textarea name="info" className="rounded shadow form-control border border-dark" rows="3" placeholder="輸入課程簡介" required></textarea>
                     </div>
                     <hr />
 
@@ -272,7 +256,7 @@ class BeCoach extends Component {
                     </ul>
                     <div className="mb-3 mt-1 w-50" >
                         <Citys required={true} />
-                        <input name="addr" type="text" className="rounded shadow mt-2 form-control" placeholder="請請輸入地址" required />
+                        <input name="addr" type="text" className="rounded shadow mt-2 form-control border border-dark" placeholder="請請輸入地址" required />
                     </div>
                     <hr />
 
@@ -292,10 +276,10 @@ class BeCoach extends Component {
                                 <div className="mb-3 mx-1">
                                     <div className="mx-3 form-check form-switch">
                                         <input className="form-check-input" type="checkbox" id={elm.eName} onChange={this.weekTimeChange} />
-                                        <label className="form-check-label" htmlFor={elm.eName}>{elm.cName}</label>
+                                        <label className="form-check-label text-grey" htmlFor={elm.eName}>{elm.cName}</label>
                                     </div>
                                     <div name={elm.eName} className="mt-2 d-none">
-                                        <select name={elm.timeBegin} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                        <select name={elm.timeBegin} defaultValue={selectedOptionId} className="rounded shadow form-control border border-dark" required={elm.required}>
                                             <option value=''></option>
                                             <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
                                             <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
@@ -305,7 +289,7 @@ class BeCoach extends Component {
                                             <option value='20:00'>20:00</option><option value='21:00'>21:00</option><option value='22:00'>22:00</option><option value='23:00'>23:00</option>
                                         </select>
                                         <p className="mt-2 mb-2">至</p>
-                                        <select name={elm.timeEnd} defaultValue={selectedOptionId} className="rounded shadow form-control" required={elm.required}>
+                                        <select name={elm.timeEnd} defaultValue={selectedOptionId} className="rounded shadow form-control border border-dark" required={elm.required}>
                                             <option value=''></option>
                                             <option value='00:00'>00:00</option><option value='01:00'>01:00</option><option value='02:00'>02:00</option><option value='03:00'>03:00</option>
                                             <option value='04:00'>04:00</option><option value='05:00'>05:00</option><option value='06:00'>06:00</option><option value='07:00'>07:00</option>
@@ -325,11 +309,11 @@ class BeCoach extends Component {
                                 <label className="form-check-label" htmlFor="monTime">週一</label>
                             </div>
                             <label className='mt-2'>
-                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
+                                <input name="monTime" type="time" className="rounded shadow form-control border border-dark" required={false} />
                             </label>
                             <p className="mt-2 mb-2">至</p>
                             <label>
-                                <input name="monTime" type="time" className="rounded shadow form-control" required={false} />
+                                <input name="monTime" type="time" className="rounded shadow form-control border border-dark" required={false} />
                             </label>
                         </div>*/}
                     </div>
@@ -356,7 +340,7 @@ class BeCoach extends Component {
                     </ul>
                     <div className="form-group mb-3">
                         <label>
-                            <select className="custom-select rounded shadow form-control" name="timeLength" required>
+                            <select className="custom-select rounded shadow form-control border border-dark" name="timeLength" required>
                                 <option value="" className='d-none'>請選擇課程長度</option>
                                 <option value="30">30</option>
                                 <option value="60">60</option>
@@ -375,6 +359,7 @@ class BeCoach extends Component {
                     </ul>
                     {this.state.peopleList.map(elm => {
                         return (
+                            // { key: 1, checked: false, value: '團體課程', (icon)className: 'd-none  ', labelClass: 'w-100 p-1 shadow rounded  text-center mt-1' }
                             <div style={this.style}>
                                 <label name='mode' className={elm.labelClass}>
                                     <input onClick={this.setPeople} key={elm.key} value={elm.value} type="radio" name='mode' className='form-control d-none' checked={elm.checked} required />
@@ -392,8 +377,8 @@ class BeCoach extends Component {
                     </ul>
                     <div className="mb-3 mt-1">
                         <label>
-                            <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control" placeholder="請輸入價錢" required />
-                            <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control" defaultValue={selectedOptionId} required>
+                            <input name='price' onInput={this.spanPrice} type="number" className="rounded shadow form-control border border-dark" placeholder="請輸入價錢" required />
+                            <select name="pricePerTime" onInput={this.spanTimes} className="mt-2 rounded shadow form-control border border-dark" defaultValue={selectedOptionId} required>
                                 <option name="" value=""></option>
                                 <option name="perTimes" value="1次">1次</option>
                                 <option name="perMin" value="1分鐘">1分鐘</option>
