@@ -32,7 +32,7 @@ class MemberPlan extends Component {
                                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
                             }}
                             events={[
-                                { id:'5',title: '客製化肌力與體能訓練課程',start: '2022-07-30T19:00:00',end: '2022-07-30T21:00:00',
+                                { id:'5',title: '客製化肌力與體能訓練課程',start: '2022-08-06T19:00:00',end: '2022-08-06T21:00:00',
                                 url: `http://localhost/spost/DongPHP/test.php?id=5`,backgroundColor:'#2C3E50',borderColor:'#2C3E50',textColor:'#ffffff' },
                             ]}
                         />
