@@ -50,12 +50,10 @@ class NavBarOK extends Component {
         this.state.carState = this.state.carData.filter((value,index)=>{
             return value.State == 0 
         })
-        console.log( this.state.carState)
         this.setState({});
         
     }
 
-        // console.log(this.state.carState)
     };
 
     render() { 

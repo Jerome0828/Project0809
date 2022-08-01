@@ -132,7 +132,6 @@ class ShoppingCart extends Component {
                         <select className='' id="ChoosePaymentSelect" onChange={(e)=>{
                             this.state.ChoosePayment = e.target.value
                             this.setState({});
-                            console.log(this.state.ChoosePayment)
                         }}>
                   
                     <input name="ChoosePayment" type="hidden" value={this.state.ChoosePayment} />
