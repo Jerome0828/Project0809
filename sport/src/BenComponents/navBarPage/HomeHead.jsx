@@ -113,9 +113,7 @@ class HomeHead extends Component {
             <div>
                 {/* 第一層header */}
                 <header className=''>
-                    {/* header第一段左邊 */}
                     <div className='HomeHeadBoxStyle row m-0 w-100'                                                             
-                        // data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" 
                         >
                         {this.state.oneLeftBoxStyle.map((e,index)=>{return <IndexLeftBox 
                                 id={e.id} key={index} title={e.title} value={e.value} src={e.src1}
@@ -193,9 +191,6 @@ class HomeHead extends Component {
                 <section>
                     <div className='mt-3 m-5 h-100' 
                     
-                    // data-aos="fade-up" 
-                    // data-aos-easing="linear" 
-                    // data-aos-duration="1500" 
                     
                     >
                         <div className='carouselBoxBigText container mb-3' 
