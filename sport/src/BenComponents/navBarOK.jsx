@@ -18,7 +18,6 @@ import MemberInfo from '../DongComponents/MemberInfo';
 import MemberPost from '../DongComponents/MemberPost';
 import MemberPlan from '../DongComponents/MemberPlan';
 import EditLesson from '../DongComponents/EditLesson';
-import MemberEval from '../DongComponents/MemberEval';
 import EditPlace from '../DongComponents/EditPlace';
 
 // 成為教練
@@ -30,35 +29,32 @@ import login from '../JeromeComponents/login/login.jsx';
 
 // 購物車頁面
 import ShoppingCart from './navBarPage/shoppingCart1.jsx';
-// 購物車結帳頁面 0718 BEN新增
-import checkoutPage from './navBarPage/checkoutPage.jsx';
-// 購物車結帳信用卡支付 0719 BEN新增
-import CreditCardPaymentPage from './navBarPage/creditCardPaymentPage.jsx';
-
-// chat
-// import chat from '../DongComponents/chat/Chat.jsx'
 
 class NavBarOK extends Component {
     state = { 
-        carData:[], sumPrice:[],carState:[]
+        carData:[], sumPrice:[],carState:[],
     } 
 
     // 取得購物車商品數量
     async componentDidMount() {
+
         // 0725 BEN 更新 有登錄才會顯示購物車數量
         if(localStorage.getItem('id') && localStorage.getItem('info')){
-            var carId = localStorage.getItem('id');
-            await axios.post('http://localhost:80/spost/BenPHP/shoppingCartGet.php',carId)
-            .then(result=>{
-                this.state.carData = result.data;
-            })
-            // 購物車狀態碼
-            this.state.carState = this.state.carData.filter((value,index)=>{
-                return value.State == 0 
-            })
-            this.setState({});
-        }
+        var carId = localStorage.getItem('id');
+        await axios.post('http://localhost:80/spost/BenPHP/shoppingCartGet.php',carId)
+        .then(result=>{
+            // console.log(result.data);
+            this.state.carData = result.data;
+        })
+        // 購物車狀態碼
+        this.state.carState = this.state.carData.filter((value,index)=>{
+            return value.State == 0 
+        })
+        this.setState({});
+        
     }
+
+    };
 
     render() { 
         return (
@@ -85,22 +81,13 @@ class NavBarOK extends Component {
                     {/* 購物車 */}
                     <Route path="/shoppingCart" component={ShoppingCart}/>
 
-                    {/* 購物車結帳頁面 0718 BEN新增 */}
-                    <Route path="/checkoutPage" component={checkoutPage}/>
-                    {/* 購物車結帳信用卡支付 0719 BEN新增 */}
-                    <Route path="/CreditCardPaymentPage" component={CreditCardPaymentPage} />
-
                     {/* 會員頁 0709 DONG新增 */}
                     <Route path="/member/:id" component={MemberPlan} exact/>
                     <Route path="/member/info/:id" component={MemberInfo} exact/>
                     <Route path="/member/post/:id" component={MemberPost} exact/>
                     <Route path="/member/plan/:id" component={MemberPlan} exact/>
-                    <Route path="/member/eval/:id" component={MemberEval} exact />
-                    <Route path="/member/editl/:id/:lid" component={EditLesson} exact/>
-                    <Route path="/member/editp/:id/:pid" component={EditPlace} exact/>
-
-                    {/* Chat */}
-                    {/* <Route path="/chat" component={chat} exact /> */}
+                    <Route path="/member/editl/:lid" component={EditLesson} exact/>
+                    <Route path="/member/editp/:pid" component={EditPlace} exact/>
 
                 </Switch>
 

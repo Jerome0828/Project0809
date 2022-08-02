@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Evaluation from './Evaluation';
 import Monthly from './monthly';
 
-import Rating from '@mui/material/Rating';
-
 function Body(props) {
     const [id, setId] = useState({});
     const [news, setNews] = useState({});
@@ -88,6 +86,7 @@ function Body(props) {
 
     return (
         <div className='container mt-1'>
+            {console.log(console.log(process.env.REACT_APP_ACCESS_NAME))}
             <div className='row'>
                 <div className='col-lg-8'>
                     {/* 場地簡介 */}

@@ -25,7 +25,7 @@ function NavBarContent1() {
     return (
       <div >
 
-        <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" fixed="top" >
+        <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" fixed="top"  className=''>
           <Container>
               {/* 更換LOGO圖片 */}
             <Navbar.Brand><NavLink  to="/" exact><img src={logo} alt="test1" width={150} height={50}/></NavLink></Navbar.Brand>

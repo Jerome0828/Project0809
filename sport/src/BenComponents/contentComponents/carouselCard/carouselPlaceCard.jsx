@@ -16,27 +16,9 @@ class CarouselPlaceCard extends Component {
             lid:"",
     
         }
-       
-    componentDidMount(e){
-        // console.log(e)
-        // this.state.lid += this.props.lid
-        // this.setState({})
-    }
-
-    setLocalStorage =(e)=>{
-        
-        // console.log(this.props.value);
-        // console.log(this.props.value);
-// calStorage.setItem("Test",JSON.stringify(this.state.commodity));            
-// localStorage.setItem("Test",JSON.stringify(this.props.date));
-    }
-
+    
 
     render() { 
-        // let lessonDate =this.props.lessonDate;
-        // console.log(lessonDate);
-        // let lessonData = this.props.lessonData;
-        // console.log(this.props.data)
 
 
         return (
@@ -52,14 +34,11 @@ class CarouselPlaceCard extends Component {
                     alt="First slide"
                     />
                     {/* 設定cardBoxText文字標題 */}
-                    {/* {console.log(this.props.lid)} */}
-                    
-                    
+                
                     <div className='m-auto d-flex container '>
                     <button className='cardBoxText rounded-3'
                     onClick={this.setLocalStorage}>
                         {/* 設定連接網址 */}
-                    {/* <span className='d-block'><NavLink to="/coursesAndVenues">{this.lessonDate}</NavLink></span> */}
                     <span className=''>{this.props.title}</span>
                     </button>
                     </div>
