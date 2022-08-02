@@ -5,6 +5,11 @@ import Monthly from './monthly';
 function Body(props) {
     const [id, setId] = useState({});
     const [news, setNews] = useState({});
+    const [key, setKey] = useState();
+
+    useEffect( () => {
+        setKey(process.env.REACT_APP_SECRET_NAME)
+    })
 
     // 傳入news ( news: 資料庫(place)資訊 )
     useEffect( () => {
@@ -13,11 +18,6 @@ function Body(props) {
             setNews(props.all)
         }
     }, [props])
-
-    // 更新google地圖
-    let address = () => {
-        return `https://www.google.com/maps/embed/v1/place?key=AIzaSyB09_GtwzgJdeUBYhUL91I60stBPgC_i4U&q=${news.addr}`
-    }
 
     // table
     let table = () => {
@@ -86,7 +86,6 @@ function Body(props) {
 
     return (
         <div className='container mt-1'>
-            {console.log(console.log(process.env.REACT_APP_ACCESS_NAME))}
             <div className='row'>
                 <div className='col-lg-8'>
                     {/* 場地簡介 */}
@@ -122,7 +121,8 @@ function Body(props) {
                         <p id='title' className='container'>地址</p>
                         <div className='row align-items-center m-2'>
                             <h4 className='text-center m-1'>{news.addr}</h4>
-                            <iframe src={address()} frameBorder="0" className='col-lg-12 mt-3' height='400vh'></iframe>
+                            <iframe src={`https://www.google.com/maps/embed/v1/place?key=${key}&q=${news.addr}`}
+                                frameBorder="0" className='col-lg-12 mt-3' height='400vh'></iframe>
                         </div>
                     </div>
                     <hr />

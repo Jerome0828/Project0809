@@ -18,6 +18,7 @@ function CVPage(props) {
     const [news, setNews] = useState();
 
     useEffect( () => {
+        
         if ( props.match.params.pid ) {
             setId([props.match.params.pid, true])
         }else {
