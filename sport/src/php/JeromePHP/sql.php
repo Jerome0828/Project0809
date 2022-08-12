@@ -5,5 +5,5 @@
 
     $materialPost = $_POST;
     $materialGet = $_GET;
-    $materialFILES = $_FILES; 
+    $materialFILES = $_FILES;
 ?>
